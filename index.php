@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Homeland &mdash; Colorlib Website Template</title>
+    <title>Mi Casa &mdash;</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -52,11 +52,8 @@
                 <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li class="active">
-                    <a href="index.php">Home</a>
-                  </li>
-                  <li><a href="registration.php">Register</a></li>
-                  <li><a href="#">Login</a></li>
+                  <li><input type="button" class="button" value="Register" onclick="window.location.href='registration.php'" /></li>
+                  <li><input type="button2" class="button" value="Login"  onclick="window.location.href='registration.php'" /></li>
                 </ul>
               </nav>
             </div>
@@ -73,8 +70,8 @@
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
               <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
-              <h1 class="mb-2">871 Crenshaw Blvd</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$2,250,500</strong></p>
+              <h1 class="mb-2">65 Garden Blvd</h1>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$32,250,500</strong></p>
               <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
             </div>
           </div>
@@ -86,8 +83,8 @@
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
               <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-              <h1 class="mb-2">625 S. Berendo St</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$1,000,500</strong></p>
+              <h1 class="mb-2">Beverley Hills, Jm</h1>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$35,000,500</strong></p>
               <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
             </div>
           </div>
@@ -101,9 +98,9 @@
         <div class="row justify-content-center">
           <div class="col-md-7 text-center">
             <div class="site-section-title">
-              <h2>Why Choose Us?</h2>
+              <h2>Why We Are The Best?</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores quisquam saepe architecto error corporis aliquam. Cum ipsam a consectetur aut sunt sint animi, pariatur corporis, eaque, deleniti cupiditate officia.</p>
+            <p>We offer the best solution to your real estate problems. We offer 100% Buy-Back guaranteed Services with enhanced inspections and private showings. Our Dedicated Full Service offer assistance in making offers when chosing the property that best suits you needs. </p>
           </div>
         </div>
 
@@ -111,25 +108,24 @@
           <div class="col-md-6 col-lg-4">
             <a href="#" class="service text-center">
               <span class="icon flaticon-house"></span>
-              <h2 class="service-heading">Research Subburbs</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure qui natus perspiciatis ex odio molestia.</p>
-              <p><span class="read-more">Read More</span></p>
+              <h2 class="service-heading">Guaranteed Research  </h2>
+              <p>Our experts try to find the best properties in the best areas in Jamaica by conducting various research on each locations. That's how much we value our customers</p>
+              
             </a>
           </div>
           <div class="col-md-6 col-lg-4">
             <a href="#" class="service text-center">
               <span class="icon flaticon-sold"></span>
               <h2 class="service-heading">Sold Houses</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure qui natus perspiciatis ex odio molestia.</p>
-              <p><span class="read-more">Read More</span></p>
+              <p>We have sold more houses, lots and office/business space than you can count.</p>
+             
             </a>
           </div>
           <div class="col-md-6 col-lg-4">
             <a href="#" class="service text-center">
               <span class="icon flaticon-camera"></span>
-              <h2 class="service-heading">Security Priority</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure qui natus perspiciatis ex odio molestia.</p>
-              <p><span class="read-more">Read More</span></p>
+              <h2 class="service-heading">Secure Transactions</h2>
+              <p>We are the bridge between you owning that lot, that new house on the block or that new office space</p>
             </a>
           </div>
         </div>
@@ -142,8 +138,8 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="mb-5">
-              <h3 class="footer-heading mb-4">About Homeland</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+              <h3 class="footer-heading mb-4">About Mi Casa</h3>
+              <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We that offers the best solutions to all your real estate problems! We specialize in find suitable properties and offering expert advice to each of our clients</p>
             </div>
 
             
@@ -152,23 +148,7 @@
           <div class="col-lg-4 mb-5 mb-lg-0">
             <div class="row mb-5">
               <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Navigations</h3>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Buy</a></li>
-                  <li><a href="#">Rent</a></li>
-                  <li><a href="#">Properties</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Terms</a></li>
-                </ul>
+               
               </div>
             </div>
 
@@ -193,9 +173,14 @@
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
             <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              
+            Copyright
+             &copy;<script data-cfasync="false"
+              src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script>
+              document.write(new Date().getFullYear());
+            </script> All rights reserved | Kelleshia Kinlocke
+            
             </p>
           </div>
           

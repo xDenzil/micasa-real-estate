@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <html lang="en">
 
 <head>
-  <title>Homeland &mdash; Colorlib Website Template</title>
+  <title>Mi Casa &mdash; </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -57,7 +57,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Homeland<span
+            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Mi Casa<span
                     class="text-danger">.</span></strong></a></h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
@@ -141,7 +141,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <div class="row form-group">
               <div class="col-md-12">
-                <input type="submit" value="Registrator" name="submit" class="btn btn-primary  py-2 px-4 rounded-0">
+                <input type="submit" value="Register" name="submit" class="btn btn-primary  py-2 px-4 rounded-0">
               </div>
             </div>
           </form>
@@ -222,14 +222,13 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="row pt-5 mt-5 text-center">
         <div class="col-md-12">
           <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            
             Copyright &copy;<script data-cfasync="false"
               src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
             <script>
               document.write(new Date().getFullYear());
-            </script> All rights reserved | This template is made with <i class="icon-heart text-danger"
-              aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </script> All rights reserved | Kelleshia Kinlocke
+            
           </p>
         </div>
 

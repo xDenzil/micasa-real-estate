@@ -62,6 +62,22 @@ a {
     .offcanvas-menu .site-wrap:before {
       opacity: 1;
       visibility: visible; }
+.button {
+  background-color:transparent;
+  font-weight: bold;
+  width: 150px;
+  padding: 8px 22px;
+  font-size: 18px;
+  color: white;
+  border-radius: 12px;
+  border: 2px solid rgb(247, 248, 247);
+  }
+  .button:hover {background-color: #696969;}
+
+  .button:active {
+    background-color: #696969;
+    transform: translateY(4px);
+  } 
 
 .btn {
   position: relative;
