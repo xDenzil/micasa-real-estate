@@ -1,4 +1,5 @@
 /* Base */
+
 body {
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.6);
@@ -186,7 +187,7 @@ a {
 @media (max-width: 767.98px) {
   .bg-sm-height {
     height: 300px; } }
-
+   
 .text-gray-100 {
   color: #f8f9fa !important; }
 
@@ -772,9 +773,11 @@ a {
     letter-spacing: .1em;
     color: rgba(255, 255, 255, 0.3); }
   .form-search .form-control {
-    border: none; }
+    border: none;
+    position: center; }
   .form-search .btn[type="submit"] {
-    height: 47px; }
+   
+    height: 37px; }
 
 .select-wrap {
   position: relative; }
@@ -828,7 +831,7 @@ a {
       width: 28px;
       height: 4px;
       border: none;
-      float: left;
+      float:left;
       background: #cccccc;
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;

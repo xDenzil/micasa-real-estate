@@ -83,7 +83,7 @@
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
               <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-              <h1 class="mb-2">Beverley Hills, Jm</h1>
+              <h1 class="mb-2">Beverley Hills, JM</h1>
               <p class="mb-5"><strong class="h2 text-success font-weight-bold">$35,000,500</strong></p>
               <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
             </div>

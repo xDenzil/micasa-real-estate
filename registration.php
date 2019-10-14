@@ -104,37 +104,37 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <div class="row form-group">
               <div class="col-md-12 mb-3 mb-md-0">
-                <label class="font-weight-bold" for="fullname">Full Name</label><?php if(!isset($_SESSION['fullname'])){ echo "Please enter fullname";} ?>
-                <input type="text" id="fullname" name="fullname" value="<?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : ""; ?>" class="form-control" placeholder="Full Name">
+                <label class="font-weight-bold" for="fullname">Full Name</label><?php if(!isset($_SESSION['fullname'])){ echo "";} ?>
+                <input type="text" id="fullname" name="fullname" value="<?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : ""; ?>" class="form-control" placeholder="Please Enter Fullname">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="telephone">Telephone</label><?php if(!isset($_SESSION['tel'])){ echo "Please enter telephone";} ?>
-                <input type="tel" id="telephone" name="telephone" value="<?php echo isset($_SESSION['tel']) ? $_SESSION['tel'] : ""; ?>" class="form-control" placeholder="Telephone number">
+                <label class="font-weight-bold" for="telephone">Telephone</label><?php if(!isset($_SESSION['tel'])){ echo "";} ?>
+                <input type="tel" id="telephone" name="telephone" value="<?php echo isset($_SESSION['tel']) ? $_SESSION['tel'] : ""; ?>" class="form-control" placeholder="Please Enter Telephone Number">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="email">Email</label><?php if(!isset($_SESSION['email'])){ echo "Please enter email";} ?>
-                <input type="email" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ""; ?>" class="form-control" placeholder="Email address">
+                <label class="font-weight-bold" for="email">Email</label><?php if(!isset($_SESSION['email'])){ echo "";} ?>
+                <input type="email" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ""; ?>" class="form-control" placeholder="Please Enter Email Address">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="username">Username</label><?php if(isset($_SESSION['username'])) echo "Please enter username"; else echo ""; ?>
-                <input type="text" id="username" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ""; ?>" class="form-control" placeholder="Username">
+                <label class="font-weight-bold" for="username">Username</label><?php if(isset($_SESSION['username'])) echo ""; ?>
+                <input type="text" id="username" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ""; ?>" class="form-control" placeholder="Please Enter Username">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="password">Password</label><?php if(!isset($_SESSION['password'])) echo "Please enter password"; else echo ""; ?>
+                <label class="font-weight-bold" for="password">Password</label><?php if(!isset($_SESSION['password'])) echo "  Please enter password"; else echo ""; ?>
                 <input type="password" id="password" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ""; ?>" class="form-control">
               </div>
             </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="font-weight-bold" for="password2">Password Confirm</label><?php if(!isset($_SESSION['password2'])) echo "Please enter valid confirmation password"; else echo ""; ?>
+                <label class="font-weight-bold" for="password2">Password Confirm</label><?php if(!isset($_SESSION['password2'])) echo "  Please Re-enter password"; else echo ""; ?>
                 <input type="password" id="password2" name="password2" value="<?php echo isset($_SESSION['password2']) ? $_SESSION['password2'] : ""; ?>" class="form-control">
               </div>
             </div>
