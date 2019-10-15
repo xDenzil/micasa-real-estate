@@ -43,7 +43,7 @@
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+              <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -94,18 +94,18 @@
     <div class="site-section site-section-sm pb-0">
       <div class="container">
         <div class="row">
-          <form class="form-search col-md-12" style="margin-top: -100px;">
+          <form class="form-search col-md-12" method="POST" action="locatevalid.php" style="margin-top: -100px;">
             <div class="row  align-items-end">
               <div class="col-md-3">
                 <label for="strt-add1">Street Address 1</label>
                 <div class="select-wrap">
-                <input type="text" name="Street Address 1">
+                <input type="text" name="address1">
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="strt-add2">Street Address 2</label>
                 <div class="select-wrap">
-                <input type="text" name="Street Address 2">
+                <input type="text" name="address2">
                 </div>
               </div>
               <div class="col-md-3">
@@ -117,12 +117,12 @@
               <div class="col-md-3">
                 <label for="parish">Parish</label>
                 <div class="select-wrap">
-                <input type="text" name="city">
+                <input type="text" name="parish">
                 </div>
               </div>
               <div class="col-md-3">
                 <br>
-                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search" onclick="window.location.href='Description.php'" >
+                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="add" >
               </div>
             </div>
           </form>

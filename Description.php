@@ -38,7 +38,7 @@
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+              <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -89,16 +89,16 @@
     <div class="site-section site-section-sm pb-0">
       <div class="container">
         <div class="row">
-          <form class="form-search col-md-12" style="margin-top: -100px;">
+          <form class="form-search col-md-12" method="POST" action="propertyvalid.php"  style="margin-top: -100px;">
             <div class="row  align-items-end">
               <div class="col-md-3">
                 <label for="properties">Types of Properties</label>
                 <div class="select-wrap">
                   <span class="icon icon-arrow_drop_down"></span>
                   <select name="properties" id="properties" class="form-control d-block rounded-0">
-                    <option value="">Vacant Lot</option>
-                    <option value="">Residential</option>
-                    <option value="">Commercial</option>
+                    <option value="Vacant Lot">Vacant Lot</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
                     </select>
                 </div>
               </div>
@@ -107,11 +107,11 @@
                 <div class="select-wrap">
                   <span class="icon icon-arrow_drop_down"></span>
                   <select name="building" id="building" class="form-control d-block rounded-0">
-                    <option value="">Housing</option>
-                    <option value="">Apartment</option>
-                    <option value="">Town House</option>
-                    <option value="">Office Space</option>
-                    <option value="">Other</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Town House">Town House</option>
+                    <option value="Office Space">Office Space</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
@@ -120,28 +120,28 @@
                 <div class="select-wrap">
                   <span class="icon icon-arrow_drop_down"></span>
                   <select name="listing" id="listing" class="form-control d-block rounded-0">
-                    <option value="">Rent</option>
-                    <option value="">Purchase</option>
-                    <option value="">Lease</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Lease">Lease</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="size">Size of Land (acres)</label>
                 <div class="select-wrap">
-                <input type="text" name="size">
+                <input type="number" name="size">
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="bedrooms"># of Bedrooms</label>
                 <div class="select-wrap">
-                <input type="text" name="bedrooms">
+                <input type="number" name="bedrooms">
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="bathrooms"> # of Bathrooms</label>
                 <div class="select-wrap">
-                <input type="text" name="bathrooms">
+                <input type="number" name="bathrooms">
                 </div>
               </div>
               <div class="col-md-3">
