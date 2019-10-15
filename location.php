@@ -60,12 +60,7 @@
                 <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li>
-                    <a href="index.html">Home</a>
-                  </li>
-                  
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="logout.php">Logout</a></li>
+                  <li><input type="button3" class="button" value="Logout" onclick="window.location.href='logout.php'" /></li>
                 </ul>
               </nav>
             </div>
@@ -131,57 +126,20 @@
                 </div>
               </div>
               <div class="col-md-3">
-                <label for="select-parish">Select Parish</label>
+                <label for="parish">Parish</label>
                 <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="select-parish" id="select-parish" class="form-control d-block rounded-0">
-                    <option value="">Kingston</option>
-                    <option value="">St Elizabeth</option>
-                    <option value="">St James</option>
-                    <option value="">St Ann</option>
-                    <option value="">Manchester</option>
-                  </select>
+                <input type="text" name="city">
                 </div>
               </div>
               <div class="col-md-3">
-                <input type="submit" class="btn btn-success text-white btn-block rounded-0"  value="Search">
+                <br>
+                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search" onclick="window.location.href='Description.php'" >
               </div>
             </div>
           </form>
         </div>  
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
-              <div class="mr-auto">
-                <a href="index.html" class="icon-view view-module active"><span class="icon-view_module"></span></a>
-                <a href="view-list.html" class="icon-view view-list"><span class="icon-view_list"></span></a>
-                
-              </div>
-              <div class="ml-auto d-flex align-items-center">
-                <div>
-                  <a href="#" class="view-list px-3 border-right active">All</a>
-                  <a href="#" class="view-list px-3 border-right">Rent</a>
-                  <a href="#" class="view-list px-3">Sale</a>
-                </div>
-
-
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select class="form-control form-control-sm d-block rounded-0">
-                    <option value="">Sort by</option>
-                    <option value="">Price Ascending</option>
-                    <option value="">Price Descending</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       
-      </div>
-    </div>
-
+    
     <footer class="site-footer">
       <div class="container">
         <div class="row">
