@@ -70,9 +70,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li>
                   <a href="index.php">Home</a>
                 </li>
-                <li><a href="about.html">About</a></li>
                 <li class="active"><a href="registration.php">Register</a></li>
-                <li><a href="#">Login</a></li>
               </ul>
             </nav>
           </div>
@@ -151,13 +149,13 @@ if (session_status() == PHP_SESSION_NONE) {
           <div class="p-4 mb-3 bg-white">
             <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
             <p class="mb-0 font-weight-bold">Address</p>
-            <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+            <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
 
             <p class="mb-0 font-weight-bold">Phone</p>
-            <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+            <p class="mb-4"><a href="#">876-123-1562</a></p>
 
-            <p class="mb-0 font-weight-bold">Email Address</p>
-            <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+            <p class="mb-0 font-weight-bold">Email</p>
+            <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
 
           </div>
 
@@ -168,73 +166,59 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="mb-5">
-            <h3 class="footer-heading mb-4">About Homeland</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque,
-              consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima
-              minus odio!</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="row mb-5">
-            <div class="col-md-12">
-              <h3 class="footer-heading mb-4">Navigations</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mb-5">
+              <h3 class="footer-heading mb-4">About Mi Casa</h3>
+              <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We that offers the best solutions to all your real estate problems! We specialize in find suitable properties and offering expert advice to each of our clients</p>
             </div>
-            <div class="col-md-6 col-lg-6">
-              <ul class="list-unstyled">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="#">Rent</a></li>
-                <li><a href="#">Properties</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-6">
-              <ul class="list-unstyled">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Terms</a></li>
-              </ul>
-            </div>
-          </div>
 
-
-        </div>
-
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h3 class="footer-heading mb-4">Follow Us</h3>
-
-          <div>
-            <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-            <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-            <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-            <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-          </div>
-
-
-
-        </div>
-
-      </div>
-      <div class="row pt-5 mt-5 text-center">
-        <div class="col-md-12">
-          <p>
             
-            Copyright &copy;<script data-cfasync="false"
+            
+          </div>
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="row mb-5">
+              <div class="col-md-12">
+               
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Follow Us</h3>
+
+                <div>
+                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                </div>
+
+            
+
+          </div>
+          
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              
+            Copyright
+             &copy;<script data-cfasync="false"
               src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
             <script>
               document.write(new Date().getFullYear());
             </script> All rights reserved | Kelleshia Kinlocke
             
-          </p>
+            </p>
+          </div>
+          
         </div>
-
       </div>
-    </div>
-  </footer>
+    </footer>
 
   </div>
 
@@ -250,9 +234,9 @@ if (session_status() == PHP_SESSION_NONE) {
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/aos.js"></script>
-  <script src="js/circleaudioplayer.js"></script>
 
   <script src="js/main.js"></script>
+    
 
 </body>
 

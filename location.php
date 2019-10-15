@@ -39,15 +39,6 @@
   
   <div class="site-wrap">
 
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-
     <div class="site-navbar mt-4">
         <div class="container py-1">
           <div class="row align-items-center">
@@ -79,8 +70,7 @@
             <div class="col-md-10">
               <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
               <h1 class="mb-2">65 Garden Blvd</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$32,250,500</strong></p>
-              <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p>
             </div>
           </div>
         </div>
@@ -92,8 +82,7 @@
             <div class="col-md-10">
               <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
               <h1 class="mb-2">Beverley Hills, JM</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$35,000,500</strong></p>
-              <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
             </div>
           </div>
         </div>
