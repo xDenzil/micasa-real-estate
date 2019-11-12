@@ -1,3 +1,0 @@
-# MiCasa
-## Kelly
-## Andrew
