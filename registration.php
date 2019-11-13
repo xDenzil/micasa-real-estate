@@ -46,8 +46,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 <body>
 
-  <div class="site-loader"></div>
-
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -71,10 +69,13 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
               <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li>
-                  <a href="index.php">Home</a>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="index.php">Home</a>
                 </li>
-                <li class="active"><a href="registration.php">Register</a></li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">All Properties</a>
+                </li>
+                <input class="btn btn-light rouund" type="button" value="Login" onclick="window.location.href='#'">
               </ul>
             </nav>
           </div>
@@ -85,7 +86,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     </div>
   </div>
 
-  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="site-blocks-cover inner-page-cover overlay">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
@@ -151,6 +152,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                                                                                         echo "is-invalid";
                                                                                                       } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
             </div>
+
 
 
 

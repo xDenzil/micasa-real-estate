@@ -10,8 +10,7 @@ if (isset($_POST['finish'])) {
         $$key = $value;
         $_SESSION[$key] = $value;
     }
-    
-   
+
     $_SESSION['errFlagPage3'] == false;
 
 
@@ -127,15 +126,12 @@ if (isset($_POST['finish'])) {
         $_SESSION['errFlagPage3'] = true;
         header("Location: ../description.php");
     } else {
-        if ($_SESSION['errFlagPage1'] == true || $_SESSION['firstname']==null) {
+        if ($_SESSION['errFlagPage1'] == true || $_SESSION['firstname'] == null) {
             header("Location: ../registration.php");
-        }
-        else if ($_SESSION['errFlagPage2'] == true || $_SESSION['address1']==null) {
+        } else if ($_SESSION['errFlagPage2'] == true || $_SESSION['address1'] == null) {
             header("Location: ../location.php");
-        }
-        else {
+        } else {
             header("Location: ../registerproperty.php");
         }
-        
     }
 }
