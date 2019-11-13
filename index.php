@@ -89,6 +89,7 @@
     <div class="container">
 
       <div class="row mb-5">
+
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="property-entry h-100">
             <a href="property-details.html" class="property-thumbnail">
@@ -442,6 +443,7 @@
   <div class="site-section">
     <div class="container m-5">
       <div class="row justify-content-center">
+
         <div class="col-md-7 text-center">
           <div class="site-section-title">
             <h2>Why We Are The Best?</h2>
@@ -455,7 +457,7 @@
           <a href="#" class="service text-center">
             <span class="icon flaticon-house"></span>
             <h2 class="service-heading">Guaranteed Research </h2>
-            <p>Our experts try to find the best properties in the best areas in Jamaica by conducting various research on each locations. That's how much we value our customers</p>
+            <p>Our experts find the best properties in Jamaica by conducting research on each location.</p>
 
           </a>
         </div>
