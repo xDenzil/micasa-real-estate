@@ -174,6 +174,8 @@ if (isset($_POST['continue'])) { //IF CONTINUE BUTTON IS PRESSED
         header("Location: ../registration.php");
     } else {
         $_SESSION['errFlagPage1'] = false;
+        $_SESSION['active'] = true;
         header("Location: ../location.php");
     }
 }
+

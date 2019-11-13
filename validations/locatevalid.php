@@ -78,6 +78,7 @@ if (isset($_POST['continuelocate'])) {
         $_SESSION['errFlagPage2'] = true;
         header("Location: ../location.php");
     } else {
+        $_SESSION['active'] = true;
         $_SESSION['errFlagPage2'] = false;
         header("Location: ../description.php");
     }

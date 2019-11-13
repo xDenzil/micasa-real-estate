@@ -23,4 +23,18 @@
   .error {
     color: red;
   }
+
+  .site-section {
+    padding: 0;
+    }
+
+  .site-footer{
+    background: black;
+  }
   
+  .hfix {
+    height: 40px;
+  }
+
+  /* old blue #364e68 new blue #163571
+
