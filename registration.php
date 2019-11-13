@@ -234,7 +234,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
-          <div class="mb-5">
+          <div>
             <h3 class="footer-heading mb-4">About Mi Casa</h3>
             <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
@@ -242,8 +242,8 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 
         </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="row mb-5">
+        <div class="col-lg-4">
+          <div class="row">
             <div class="col-md-12">
 
             </div>
@@ -267,7 +267,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
         </div>
 
       </div>
-      <div class="row pt-5 mt-5 text-center">
+      <div class="row mt-5 text-center">
         <div class="col-md-12">
           <p>
 

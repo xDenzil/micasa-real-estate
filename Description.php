@@ -220,41 +220,57 @@ if ((isset($_SESSION['errFlagPage3'])) && ($_SESSION['errFlagPage3']) == true) {
         </div>
       </div>
     </div>
-    <footer class="site-footer mt-5">
+
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <div class="mb-5">
+            <div>
               <h3 class="footer-heading mb-4">About Mi Casa</h3>
               <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
             </div>
+
+
+
           </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
+          <div class="col-lg-4">
+            <div class="row">
               <div class="col-md-12">
+
               </div>
             </div>
+
+
           </div>
+
           <div class="col-lg-4 mb-5 mb-lg-0">
             <h3 class="footer-heading mb-4">Follow Us</h3>
+
             <div>
               <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
             </div>
+
+
+
           </div>
+
         </div>
-        <div class="row pt-5 mt-5 text-center">
+        <div class="row mt-5 text-center">
           <div class="col-md-12">
             <p>
+
               Copyright
               &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
               <script>
                 document.write(new Date().getFullYear());
               </script> Kelleshia Kinlocke & Denzil Williams
+
             </p>
           </div>
+
         </div>
       </div>
     </footer>

@@ -76,9 +76,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
-            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-            <h1 class="mb-2">Beverley Hills, JM</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
+            <span class="mb-2 head">We connect people <br>to property.</span>
           </div>
         </div>
       </div>
@@ -86,8 +84,362 @@
 
   </div>
 
-  <div class="site-section">
+  <div class="site-section site-section-sm bg-light">
     <div class="container">
+
+      <div class="row mb-5">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Mona Heights</h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$132,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">3 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">2</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">9</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_11.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Runaway Bay</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>87 Gold Road, Runaway Bay, St Ann, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$200,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">4 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">2</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">16</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-info">Lease</span>
+              </div>
+              <img src="images/img_12.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Beverley Hills</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>86 Kingman Avenue, Beverley Hills, St Andrew, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$150,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">3 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">2</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">6</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Pennycooke Heights</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 25 Pennywise Road, Montego Bay, St James, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$210,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">6 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">4</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">16</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_5.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title"><a href="property-details.html">Doctors Cave</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 12 Hot Head Avenue, Montego Bay, St James, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$120,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">2 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">1</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">1.6</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-info">Lease</span>
+              </div>
+              <img src="images/img_6.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Falmouth</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$132,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">3 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">2</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">3</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_10.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Treasure Beach</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$168,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">5 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">4</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">10</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_8.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Old Habour Bay</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$142,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">3 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">1</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">SQ FT</span>
+                  <span class="property-specs-number">3.5</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-danger">Sale</span>
+                <span class="offer-type bg-success">Rent</span>
+              </div>
+              <img src="images/img_13.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Calabash Beach Front </a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> Treasure Beach, St Elizabeth, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$156,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">4 <sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">3</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">SQ FT</span>
+                  <span class="property-specs-number">5.5</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="property-entry h-100">
+            <a href="property-details.html" class="property-thumbnail">
+              <div class="offer-type-wrap">
+                <span class="offer-type bg-info">Lease</span>
+              </div>
+              <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+            </a>
+            <div class="p-4 property-body">
+              <h2 class="property-title">Mona Height</a></h2>
+              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
+              <strong class="property-price text-primary mb-3 d-block text-success">$113,265,500</strong>
+              <ul class="property-specs-wrap mb-3 mb-lg-0">
+                <li>
+                  <span class="property-specs">Beds</span>
+                  <span class="property-specs-number">2<sup>+</sup></span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Baths</span>
+                  <span class="property-specs-number">1</span>
+
+                </li>
+                <li>
+                  <span class="property-specs">Acres</span>
+                  <span class="property-specs-number">4</span>
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container m-5">
       <div class="row justify-content-center">
         <div class="col-md-7 text-center">
           <div class="site-section-title">
@@ -130,16 +482,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
-          <div class="mb-5">
+          <div>
             <h3 class="footer-heading mb-4">About Mi Casa</h3>
-            <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We that offers the best solutions to all your real estate problems! We specialize in find suitable properties and offering expert advice to each of our clients</p>
+            <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
 
 
 
         </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="row mb-5">
+        <div class="col-lg-4">
+          <div class="row">
             <div class="col-md-12">
 
             </div>
@@ -163,7 +515,7 @@
         </div>
 
       </div>
-      <div class="row pt-5 mt-5 text-center">
+      <div class="row mt-5 text-center">
         <div class="col-md-12">
           <p>
 
@@ -171,7 +523,7 @@
             &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
             <script>
               document.write(new Date().getFullYear());
-            </script> All rights reserved | Kelleshia Kinlocke
+            </script> Kelleshia Kinlocke & Denzil Williams
 
           </p>
         </div>

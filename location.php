@@ -8,7 +8,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
-      $$key = $value;
+    $$key = $value;
   }
 }
 
@@ -154,10 +154,10 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
             <div class="col-md-3">
               <div class="form-group"><label>Parish</label>
                 <select class="selectpicker hfix" data-style="btn-light" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
-                                                                                                              echo 'Select Parish';
-                                                                                                            } else {
-                                                                                                              echo $_SESSION['parish'];
-                                                                                                            } ?>">
+                                                                                                                  echo 'Select Parish';
+                                                                                                                } else {
+                                                                                                                  echo $_SESSION['parish'];
+                                                                                                                } ?>">
                   <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
                             echo 'selected="selected"';
                           } ?>>Kingston & St. Andrew</option>
@@ -215,11 +215,11 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
     </div>
 
 
-    <footer class="site-footer mt-5">
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <div class="mb-5">
+            <div>
               <h3 class="footer-heading mb-4">About Mi Casa</h3>
               <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
             </div>
@@ -227,8 +227,8 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
 
 
           </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
+          <div class="col-lg-4">
+            <div class="row">
               <div class="col-md-12">
 
               </div>
@@ -252,7 +252,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
           </div>
 
         </div>
-        <div class="row pt-5 mt-5 text-center">
+        <div class="row mt-5 text-center">
           <div class="col-md-12">
             <p>
 
