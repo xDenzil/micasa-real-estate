@@ -1,9 +1,15 @@
-<?php 
+<?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    if(isset($_SESSION['active'])){
-      header('Location: location.php');
-    }
+  session_start();
+  if (isset($_SESSION['active'])) {
+    header('Location: location.php');
+  }
+}
+
+if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
+  foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
+    $$key = $value;
+  }
 }
 
 
@@ -16,8 +22,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -35,11 +40,12 @@ if (session_status() == PHP_SESSION_NONE) {
   <link rel="stylesheet" href="css/aos.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom-styles.css">
 
 </head>
 
 <body>
-  
+
   <div class="site-loader"></div>
 
   <div class="site-wrap">
@@ -57,14 +63,12 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Mi Casa<span
-                    class="text-danger">.</span></strong></a></h1>
+            <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
             <nav class="site-navigation text-right text-md-right" role="navigation">
 
-              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
-                  class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li>
@@ -81,8 +85,7 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
   </div>
 
-  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);"
-    data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
@@ -98,55 +101,115 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="row">
 
         <div class="col-md-12 col-lg-8 mb-5">
-          <form action="regisvalid.php" class="p-5 bg-white border" method="POST">
+          <form action="./validations/regisvalid.php" method="POST" class="p-5">
+            <h1>User Information</h1>
+            <p class="m-0">Please fill out the following fields.</p>
 
-            <div class="row form-group">
-              <div class="col-md-12 mb-3 mb-md-0">
-                <label class="font-weight-bold" for="fullname">Full Name</label><?php if(!isset($_SESSION['fullname'])){ echo "";} ?>
-                <input type="text" id="fullname" name="fullname" value="<?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : ""; ?>" class="form-control" placeholder="Please Enter Fullname">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="telephone">Telephone</label><?php if(!isset($_SESSION['tel'])){ echo "";} ?>
-                <input type="tel" id="telephone" name="telephone" value="<?php echo isset($_SESSION['tel']) ? $_SESSION['tel'] : ""; ?>" class="form-control" placeholder="Please Enter Telephone Number">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="email">Email</label><?php if(!isset($_SESSION['email'])){ echo "";} ?>
-                <input type="email" id="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ""; ?>" class="form-control" placeholder="Please Enter Email Address">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="username">Username</label><?php if(isset($_SESSION['username'])) echo ""; ?>
-                <input type="text" id="username" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ""; ?>" class="form-control" placeholder="Please Enter Username">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="password">Password</label><?php if(!isset($_SESSION['password'])) echo "  Please enter password"; else echo ""; ?>
-                <input type="password" id="password" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ""; ?>" class="form-control">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="password2">Password Confirm</label><?php if(!isset($_SESSION['password2'])) echo "  Please Re-enter password"; else echo ""; ?>
-                <input type="password" id="password2" name="password2" value="<?php echo isset($_SESSION['password2']) ? $_SESSION['password2'] : ""; ?>" class="form-control">
-              </div>
+
+
+            <!--- FIRST NAME & LAST NAME SECTION --->
+
+            <?php if (isset($firstname_error)) {
+              echo $firstname_error;
+            } ?>
+            <?php if (isset($lastname_error)) {
+              echo $lastname_error;
+            } ?>
+
+            <div class="form-row mt-2">
+              <div class="form-group col-md-6"><label>First Name</label>
+                <input class="form-control <?php if (isset($firstname_error)) {
+                                              echo "is-invalid";
+                                            } ?>" type="text" name="firstname" value="<?php echo $_SESSION['firstname']; ?>"></div>
+              <div class="form-group col-md-6"><label>Last Name</label><input class="form-control <?php if (isset($lastname_error)) {
+                                                                                                    echo "is-invalid";
+                                                                                                  } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname'] ?>"></div>
             </div>
 
-            <div class="row form-group">
-              <div class="col-md-12">
-                <input type="submit" value="Register" name="submit" class="btn btn-primary  py-2 px-4 rounded-0">
+
+            <!--- USERNAME AND EMAIL SECTION --->
+
+            <?php if (isset($username_error)) {
+              echo $username_error;
+            } ?>
+            <?php if (isset($email_error)) {
+              echo $email_error;
+            } ?>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-6"><label>Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><span class="input-group-text">@</span>
+                  </div><input class="form-control <?php if (isset($username_error)) {
+                                                      echo "is-invalid";
+                                                    } ?>" type="text" name="username" value="<?php echo $_SESSION['username'] ?>">
+                  <div class="input-group-append"></div>
+                </div>
+              </div>
+              <div class="form-group col-md-6"><label>Email Address</label><input class="form-control <?php if (isset($email_error)) {
+                                                                                                        echo "is-invalid";
+                                                                                                      } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
+            </div>
+
+
+
+            <!--- PHONE NUMBER SECTION --->
+
+            <?php if (isset($areacode_error)) {
+              echo $areacode_error;
+            } ?>
+            <?php if (isset($phonenumber_error)) {
+              echo $phonenumber_error;
+            } ?>
+
+
+            <div class="form-group"><label>Phone Number</label>
+              <div class="form-row">
+                <div class="col col-md-5">
+                  <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control <?php if (isset($areacode_error)) {
+                                                                                                                                echo "is-invalid";
+                                                                                                                              } ?>" type="text" name="areacode" value="<?php echo $_SESSION['areacode'] ?>">
+                    <div class="input-group-append"></div>
+                  </div>
+                </div>
+                <div class="col col-md-7"><input class="form-control <?php if (isset($phonenumber_error)) {
+                                                                        echo "is-invalid";
+                                                                      } ?>" type="text" name="phonenumber" value="<?php echo $_SESSION['phonenumber'] ?>"></div>
               </div>
             </div>
+
+
+
+            <!--- PASSWORDS SECTION --->
+
+            <?php if (isset($password_error)) {
+              echo $password_error;
+            } ?>
+            <?php if (isset($passwordconfirm_error)) {
+              echo $passwordconfirm_error;
+            } ?>
+            <?php if (isset($notmatching_error)) {
+              echo $notmatching_error;
+            } ?>
+
+
+            <div class="form-group"><label>Password</label><input class="form-control <?php if (isset($password_error)) {
+                                                                                        echo "is-invalid";
+                                                                                      } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
+            <div class="form-group"><label>Confirm Password</label><input class="form-control <?php if (isset($passwordconfirm_error)) {
+                                                                                                echo "is-invalid";
+                                                                                              } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
+
+
+            <!--- CONTINUE BUTTON --->
+            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="continue" value="Continue"></input>
           </form>
         </div>
 
         <div class="col-lg-4">
-          <div class="p-4 mb-3 bg-white">
+          <div class="p-4 mb-3">
             <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
             <p class="mb-0 font-weight-bold">Address</p>
             <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
@@ -166,59 +229,58 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
   <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="mb-5">
-              <h3 class="footer-heading mb-4">About Mi Casa</h3>
-              <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We that offers the best solutions to all your real estate problems! We specialize in find suitable properties and offering expert advice to each of our clients</p>
-            </div>
-
-            
-            
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
-              <div class="col-md-12">
-               
-              </div>
-            </div>
-
-
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="mb-5">
+            <h3 class="footer-heading mb-4">About Mi Casa</h3>
+            <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
 
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">Follow Us</h3>
 
-                <div>
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                </div>
 
-            
-
-          </div>
-          
         </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="row mb-5">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h3 class="footer-heading mb-4">Follow Us</h3>
+
+          <div>
+            <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <div class="row pt-5 mt-5 text-center">
+        <div class="col-md-12">
+          <p>
+
             Copyright
-             &copy;<script data-cfasync="false"
-              src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
             <script>
               document.write(new Date().getFullYear());
-            </script> All rights reserved | Kelleshia Kinlocke
-            
-            </p>
-          </div>
-          
+            </script> Kelleshia Kinlocke & Denzil Williams
+
+          </p>
         </div>
+
       </div>
-    </footer>
+    </div>
+  </footer>
 
   </div>
 
@@ -236,7 +298,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
+
 
 </body>
 
