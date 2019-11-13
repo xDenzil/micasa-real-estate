@@ -61,8 +61,8 @@
 
 .site-blocks-cover.inner-page-cover,
 .site-blocks-cover.inner-page-cover .row {
-    min-height: 300px;
-    background-color: #163571;
+    min-height: 500px;
+    /*background-color: #163571;*/
     /*background: none;*/
 }
 

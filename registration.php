@@ -86,20 +86,20 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     </div>
   </div>
 
-  <div class="site-blocks-cover inner-page-cover">
-    <div class="container">
-      <div class="row align-items-center justify-content-center text-center">
-        <div class="col-md-10">
-          <h1 class="mb-2">Registration</h1>
-        </div>
+  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+    <div class=" container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-10">
+        <h1 class="mb-2">Registration</h1>
       </div>
     </div>
+  </div>
   </div>
 
 
   <div class="site-section">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center">
 
         <div class="col-md-12 col-lg-8 mb-5">
           <form action="./validations/regisvalid.php" method="POST" class="p-5">
