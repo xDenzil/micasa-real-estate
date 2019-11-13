@@ -37,10 +37,10 @@
   <div class="site-navbar mt-4">
     <div class="container py-1">
       <div class="row align-items-center">
-        <div class="col-8 col-md-8 col-lg-4">
+        <div class="col-2  col-md-4 col-lg-2 col-sm-8">
           <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
         </div>
-        <div class="col-4 col-md-4 col-lg-8">
+        <div class="col-10  col-md-8 col-lg-10 col-sm-4">
           <nav class="site-navigation text-right text-md-right" role="navigation">
 
             <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
@@ -48,6 +48,12 @@
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">All Properties</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Add Property</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">View My Properties</a>
               </li>
               <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
               <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
@@ -85,7 +91,21 @@
     </div>
   </div>
 
-  <div class="site-section site-section-sm">
+  <div class="site-section p-2 bg-white">
+    <div class="container">
+      <div class="row justify-content-center ">
+        <div class="col-md-8 text-center">
+          <div class="site-section-title">
+            <br>
+            <h2>Most Recent</h2>
+          </div>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-section site-section-sm p-1">
     <div class="container">
 
       <div class="row mb-5">
@@ -102,7 +122,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Mona Heights</h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$132,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -137,7 +157,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Runaway Bay</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>87 Gold Road, Runaway Bay, St Ann, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$200,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$200,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -171,7 +191,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Beverley Hills</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>86 Kingman Avenue, Beverley Hills, St Andrew, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$150,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$150,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -206,7 +226,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Pennycooke Heights</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 25 Pennywise Road, Montego Bay, St James, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$210,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$210,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -241,7 +261,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title"><a href="property-details.html">Doctors Cave</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 12 Hot Head Avenue, Montego Bay, St James, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$120,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$120,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -275,7 +295,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Falmouth</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$132,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -310,7 +330,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Treasure Beach</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$168,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$168,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -345,7 +365,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Old Habour Bay</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$142,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$142,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -380,7 +400,7 @@
             <div class="p-4 property-body">
               <h2 class="property-title">Mona Height</a></h2>
               <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$113,265,500</strong>
+              <strong class="property-price text-primary mb-3 d-block text-dark">$113,265,500</strong>
               <ul class="property-specs-wrap mb-3 mb-lg-0">
                 <li>
                   <span class="property-specs">Beds</span>
@@ -410,8 +430,9 @@
   <div class="site-section p-5 bg-light">
     <div class="container">
       <div class="row justify-content-center ">
-        <div class="col-md-6 text-center">
+        <div class="col-md-8 text-center">
           <div class="site-section-title">
+            <br>
             <h2>Why We Are The Best?</h2>
           </div>
           <p>We offer the best solution to your real estate problems. We offer 100% Buy-Back guaranteed Services with enhanced inspections and private showings. Our Dedicated Full Service offer assistance in making offers when chosing the property that best suits you needs. </p>

@@ -70,3 +70,14 @@
     /* background-color: #303168;*/
     background-color: #163571;
 }
+
+.section .dark {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bgg {
+    background-image: url('../images/bg-def2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: scroll;
+}

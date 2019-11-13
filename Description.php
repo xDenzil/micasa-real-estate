@@ -208,6 +208,7 @@ if ((isset($_SESSION['errFlagPage3'])) && ($_SESSION['errFlagPage3']) == true) {
                                                                       echo "is-invalid";
                                                                     } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
               </div>
+
             </div>
             <div class="col-md-3">
               <input class="btn btn-success text-white btn-block rounded-2" role="button" href="./registerproperty.php" name="finish" type="submit" value="Finish">
