@@ -67,38 +67,44 @@
     </div>
 
     <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover overlay" style="background-image: url(images/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">Buyers</span>
-                        <h1 class="mb-2">Find The Perfect Spot</h1>
-                        <p class="mb-5"><strong class="h2 text-white font-weight-bold">Right here.</strong></p>
-                    </div>
-                </div>
-            </div>
+
+    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
+            <h1 class="mb-2">65 Garden Blvd</h1>
+            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p>
+          </div>
         </div>
-        <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">Sellers</span>
-                        <h1 class="mb-2">Got Property? Get Listed.</h1>
-                        <p class="mb-5"><strong class="h2 text-white font-weight-bold">It's free.</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <div class="site-section p-2 bg-white">
+    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
+            <h1 class="mb-2">Beverley Hills, JM</h1>
+            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="site-section p-2 bg-light">
         <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-md-8 text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
                     <div class="site-section-title">
                         <br>
-                        <h5>Most Recent Listings</h5>
-                        <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='#'">
+                        <form>
+    <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
+   
+  </form>
+
                     </div>
                     <p></p>
                 </div>
@@ -106,12 +112,13 @@
         </div>
     </div>
 
+
     <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
         <div class="container">
 
             <div class="row mb-5">
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -146,7 +153,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -181,7 +188,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -215,7 +222,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -250,7 +257,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -285,7 +292,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -319,7 +326,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -354,7 +361,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
@@ -390,7 +397,7 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
