@@ -50,7 +50,7 @@
                 <a class="nav-link text-white" href="#">All Properties</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">Add Property</a>
+                <a class="nav-link text-white" href="location.php">Add Property</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">View My Properties</a>

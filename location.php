@@ -1,9 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
-  if (!$_SESSION['active']) {
-    header('Location: registration.php');
-  }
 }
 
 if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
@@ -81,32 +78,14 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
     </div>
   </div>
 
-  <div class="slide-one-item home-slider owl-carousel">
-
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
-            <h1 class="mb-2">65 Garden Blvd</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p>
-          </div>
-        </div>
+  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+    <div class=" container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-10">
+        <h1 class="mb-2">Add Property</h1>
       </div>
     </div>
-
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-            <h1 class="mb-2">Beverley Hills, JM</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  </div>
   </div>
 
 
