@@ -61,7 +61,7 @@
   </div>
 
   <div class="slide-one-item home-slider owl-carousel">
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover overlay" style="background-image: url(images/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
@@ -72,20 +72,20 @@
         </div>
       </div>
     </div>
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
             <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
             <h1 class="mb-2">Beverley Hills, JM</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
+            <p class="mb-5"><strong class="h2 text-white font-weight-bold">$180,000,500</strong></p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="site-section site-section-sm bg-light">
+  <div class="site-section site-section-sm">
     <div class="container">
 
       <div class="row mb-5">
@@ -367,40 +367,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="property-entry h-100">
-            <a href="property-details.html" class="property-thumbnail">
-              <div class="offer-type-wrap">
-                <span class="offer-type bg-danger">Sale</span>
-                <span class="offer-type bg-success">Rent</span>
-              </div>
-              <img src="images/img_13.jpg" alt="Image" class="img-fluid">
-            </a>
-            <div class="p-4 property-body">
-              <h2 class="property-title">Calabash Beach Front </a></h2>
-              <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> Treasure Beach, St Elizabeth, JM</span>
-              <strong class="property-price text-primary mb-3 d-block text-success">$156,265,500</strong>
-              <ul class="property-specs-wrap mb-3 mb-lg-0">
-                <li>
-                  <span class="property-specs">Beds</span>
-                  <span class="property-specs-number">4 <sup>+</sup></span>
 
-                </li>
-                <li>
-                  <span class="property-specs">Baths</span>
-                  <span class="property-specs-number">3</span>
-
-                </li>
-                <li>
-                  <span class="property-specs">SQ FT</span>
-                  <span class="property-specs-number">5.5</span>
-
-                </li>
-              </ul>
-
-            </div>
-          </div>
-        </div>
 
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="property-entry h-100">
@@ -440,7 +407,7 @@
     </div>
   </div>
 
-  <div class="site-section">
+  <div class="site-section bg-light p-3">
     <div class="container m-5">
       <div class="row justify-content-center">
 

@@ -86,7 +86,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     </div>
   </div>
 
-  <div class="site-blocks-cover inner-page-cover overlay">
+  <div class="site-blocks-cover inner-page-cover">
     <div class="container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
