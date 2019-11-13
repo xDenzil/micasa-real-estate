@@ -30,7 +30,7 @@
 
 <body>
 
-  <div class="site-loader"></div>
+
 
   <div class="site-wrap"></div>
 
@@ -407,44 +407,47 @@
     </div>
   </div>
 
-  <div class="site-section bg-light p-3">
-    <div class="container m-5">
-      <div class="row justify-content-center">
-
-        <div class="col-md-7 text-center">
+  <div class="site-section p-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center ">
+        <div class="col-md-6 text-center">
           <div class="site-section-title">
             <h2>Why We Are The Best?</h2>
           </div>
           <p>We offer the best solution to your real estate problems. We offer 100% Buy-Back guaranteed Services with enhanced inspections and private showings. Our Dedicated Full Service offer assistance in making offers when chosing the property that best suits you needs. </p>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-6 col-lg-4">
-          <a href="#" class="service text-center">
-            <span class="icon flaticon-house"></span>
-            <h2 class="service-heading">Guaranteed Research </h2>
-            <p>Our experts find the best properties in Jamaica by conducting research on each location.</p>
+  <div class="site-section p-5 blu text-white">
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <a href="#" class="service text-center">
+          <span class="icon flaticon-house text-white"></span>
+          <h2 class="service-heading text-white">Guaranteed Research </h2>
+          <p class="text-white">Our experts find the best properties in Jamaica by conducting research on each location.</p>
 
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <a href="#" class="service text-center">
-            <span class="icon flaticon-sold"></span>
-            <h2 class="service-heading">Sold Houses</h2>
-            <p>We have sold more houses, lots and office/business space than you can count.</p>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="#" class="service text-center">
+          <span class="icon flaticon-sold text-white"></span>
+          <h2 class="service-heading text-white">Sold Houses</h2>
+          <p class="text-white">We have sold more houses, lots and office/business space than you can count.</p>
 
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <a href="#" class="service text-center">
-            <span class="icon flaticon-camera"></span>
-            <h2 class="service-heading">Secure Transactions</h2>
-            <p>We are the bridge between you owning that lot, that new house on the block or that new office space</p>
-          </a>
-        </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="#" class="service text-center">
+          <span class="icon flaticon-camera text-white"></span>
+          <h2 class="service-heading text-white">Secure Transactions</h2>
+          <p class="text-white">We are the bridge between you owning that lot, that new house on the block or that new office space</p>
+        </a>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 
 
