@@ -83,7 +83,14 @@ session_start();
         </div>
     </div>
     </div> -->
-        <br><br><br><br><br>
+        <br><br><br>
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-10 mt-lg-5">
+                <h1 class="mb-2 text-white mt-lg-5">Admin Panel</h1>
+                <br>
+            </div>
+        </div>
+
         <div class="container bg-white p-0">
             <div class="row">
                 <div class="col-3 bg-light p-0">
@@ -91,119 +98,318 @@ session_start();
                         <h1>John</h1>
                         <h1>Brown</h1>
                     </div>
-                    <div class="col p-5">Admin</div>
-                    <div class="col">
-
+                    <div class="col p-5">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Users</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Properties</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-9 p-5">
                     <div class="row">
-                        <table class="table table-borderless table-responsive">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Firstname</th>
-                                    <th scope="col">Lastname</th>
-                                    <th scope="col">Email</th>
+                        <div class="col-12">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table class="table table-borderless table-responsive">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">Username</th>
+                                                        <th scope="col">Firstname</th>
+                                                        <th scope="col">Lastname</th>
+                                                        <th scope="col">Email</th>
 
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="pt-4">@mark</th>
-                                    <td class="pt-4">Markie</td>
-                                    <td class="pt-4">Otto</td>
-                                    <td class="pt-4">mark@gmail.com</td>
+                                                        <th scope="col"></th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row" class="pt-4">@mark</th>
+                                                        <td class="pt-4">Markie</td>
+                                                        <td class="pt-4">Otto</td>
+                                                        <td class="pt-4">mark@gmail.com</td>
 
-                                    <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
-                                    <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
-                                </tr>
+                                                        <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
+                                                        <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
+                                                    </tr>
 
-                                <tr>
-                                    <th scope="row" class="pt-4">@mark</th>
-                                    <td class="pt-4">Markie</td>
-                                    <td class="pt-4">Otto</td>
-                                    <td class="pt-4">mark@gmail.com</td>
+                                                    <tr>
+                                                        <th scope="row" class="pt-4">@mark</th>
+                                                        <td class="pt-4">Markie</td>
+                                                        <td class="pt-4">Otto</td>
+                                                        <td class="pt-4">mark@gmail.com</td>
 
-                                    <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
-                                    <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
-                                </tr>
+                                                        <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
+                                                        <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
+                                                    </tr>
 
-                                <tr>
-                                    <th scope="row" class="pt-4">@mark</th>
-                                    <td class="pt-4">Markie</td>
-                                    <td class="pt-4">Otto</td>
-                                    <td class="pt-4">mark@gmail.com</td>
+                                                    <tr>
+                                                        <th scope="row" class="pt-4">@mark</th>
+                                                        <td class="pt-4">Markie</td>
+                                                        <td class="pt-4">Otto</td>
+                                                        <td class="pt-4">mark@gmail.com</td>
 
-                                    <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
-                                    <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <br><br><br>
-
-
-
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div>
-                            <h3 class="footer-heading mb-4">About Mi Casa</h3>
-                            <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
-                        </div>
+                                                        <td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"></td>
+                                                        <td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
 
+                                    </div>
+                                </div>
 
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <div class="col-md-12">
+                                <div class="tab-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <div class="container">
+
+                                        <div class="row mb-5">
+
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div class="property-entry h-100">
+                                                    <a href="property-details.html" class="property-thumbnail">
+                                                        <div class="offer-type-wrap">
+                                                            <span class="offer-type bg-danger">Sale</span>
+                                                            <span class="offer-type bg-success">Rent</span>
+                                                        </div>
+                                                        <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+                                                    </a>
+                                                    <div class="p-4 property-body">
+                                                        <h2 class="property-title">Mona Heights</h2>
+                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
+                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
+                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                            <li>
+                                                                <span class="property-specs">Beds</span>
+                                                                <span class="property-specs-number">3 <sup>+</sup></span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Baths</span>
+                                                                <span class="property-specs-number">2</span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Acres</span>
+                                                                <span class="property-specs-number">9</span>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div class="property-entry h-100">
+                                                    <a href="property-details.html" class="property-thumbnail">
+                                                        <div class="offer-type-wrap">
+                                                            <span class="offer-type bg-info">Lease</span>
+                                                        </div>
+                                                        <img src="images/img_6.jpg" alt="Image" class="img-fluid">
+                                                    </a>
+                                                    <div class="p-4 property-body">
+                                                        <h2 class="property-title">Falmouth</a></h2>
+                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
+                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
+                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                            <li>
+                                                                <span class="property-specs">Beds</span>
+                                                                <span class="property-specs-number">3 <sup>+</sup></span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Baths</span>
+                                                                <span class="property-specs-number">2</span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Acres</span>
+                                                                <span class="property-specs-number">3</span>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div class="property-entry h-100">
+                                                    <a href="property-details.html" class="property-thumbnail">
+                                                        <div class="offer-type-wrap">
+                                                            <span class="offer-type bg-danger">Sale</span>
+                                                            <span class="offer-type bg-success">Rent</span>
+                                                        </div>
+                                                        <img src="images/img_10.jpg" alt="Image" class="img-fluid">
+                                                    </a>
+                                                    <div class="p-4 property-body">
+                                                        <h2 class="property-title">Treasure Beach</a></h2>
+                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
+                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$168,265,500</strong>
+                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                            <li>
+                                                                <span class="property-specs">Beds</span>
+                                                                <span class="property-specs-number">5 <sup>+</sup></span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Baths</span>
+                                                                <span class="property-specs-number">4</span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Acres</span>
+                                                                <span class="property-specs-number">10</span>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div class="property-entry h-100">
+                                                    <a href="property-details.html" class="property-thumbnail">
+                                                        <div class="offer-type-wrap">
+                                                            <span class="offer-type bg-danger">Sale</span>
+                                                            <span class="offer-type bg-success">Rent</span>
+                                                        </div>
+                                                        <img src="images/img_8.jpg" alt="Image" class="img-fluid">
+                                                    </a>
+                                                    <div class="p-4 property-body">
+                                                        <h2 class="property-title">Old Habour Bay</a></h2>
+                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
+                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$142,265,500</strong>
+                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                            <li>
+                                                                <span class="property-specs">Beds</span>
+                                                                <span class="property-specs-number">3 <sup>+</sup></span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Baths</span>
+                                                                <span class="property-specs-number">1</span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">SQ FT</span>
+                                                                <span class="property-specs-number">3.5</span>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div class="property-entry h-100">
+                                                    <a href="property-details.html" class="property-thumbnail">
+                                                        <div class="offer-type-wrap">
+                                                            <span class="offer-type bg-info">Lease</span>
+                                                        </div>
+                                                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                                                    </a>
+                                                    <div class="p-4 property-body">
+                                                        <h2 class="property-title">Mona Height</a></h2>
+                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
+                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$113,265,500</strong>
+                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                            <li>
+                                                                <span class="property-specs">Beds</span>
+                                                                <span class="property-specs-number">2<sup>+</sup></span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Baths</span>
+                                                                <span class="property-specs-number">1</span>
+
+                                                            </li>
+                                                            <li>
+                                                                <span class="property-specs">Acres</span>
+                                                                <span class="property-specs-number">4</span>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
-
-
                     </div>
-
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h3 class="footer-heading mb-4">Follow Us</h3>
-
-                        <div>
-                            <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                            <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                            <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                            <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                        </div>
-
-
-
-                    </div>
-
                 </div>
-                <div class="row mt-5 text-center">
-                    <div class="col-md-12">
-                        <p>
 
-                            Copyright
-                            &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> Kelleshia Kinlocke & Denzil Williams
-
-                        </p>
-                    </div>
-
-                </div>
             </div>
-        </footer>
+        </div>
+    </div>
+    <br><br><br>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div>
+                        <h3 class="footer-heading mb-4">About Mi Casa</h3>
+                        <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
+                    </div>
+
+
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h3 class="footer-heading mb-4">Follow Us</h3>
+
+                    <div>
+                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="row mt-5 text-center">
+                <div class="col-md-12">
+                    <p>
+
+                        Copyright
+                        &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> Kelleshia Kinlocke & Denzil Williams
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
 
     </div>
 
