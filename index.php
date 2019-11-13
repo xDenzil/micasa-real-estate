@@ -65,9 +65,9 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
-            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
-            <h1 class="mb-2">65 Garden Blvd</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p>
+            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">Buyers</span>
+            <h1 class="mb-2">Find The Perfect Spot</h1>
+            <p class="mb-5"><strong class="h2 text-white font-weight-bold">Right here.</strong></p>
           </div>
         </div>
       </div>
@@ -76,9 +76,9 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
-            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-            <h1 class="mb-2">Beverley Hills, JM</h1>
-            <p class="mb-5"><strong class="h2 text-white font-weight-bold">$180,000,500</strong></p>
+            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">Sellers</span>
+            <h1 class="mb-2">Got Property? Get Listed.</h1>
+            <p class="mb-5"><strong class="h2 text-white font-weight-bold">It's free.</strong></p>
           </div>
         </div>
       </div>
