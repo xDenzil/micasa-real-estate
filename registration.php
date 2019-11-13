@@ -210,7 +210,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
           </form>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" hidden>
           <div class="p-4 mb-3">
             <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
             <p class="mb-0 font-weight-bold">Address</p>
