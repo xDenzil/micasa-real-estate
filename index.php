@@ -47,7 +47,7 @@
 
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">All Properties</a>
+                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="location.php">Add Property</a>
