@@ -69,17 +69,18 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-4 bg-light m-5">
-                    <form action="./validations/regisvalid.php" method="POST" class="p-5">
-                        <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
+                    <form action="./validations/regisvalid.php" method="POST" class="p-3">
+                        <h4 class="mb-3">Existing User?</h1>
+                            <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
+                                                                                                                echo "is-invalid";
+                                                                                                            } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
+                            <div class="form-group"><label>Password</label><input class="form-control <?php if (isset($passwordconfirm_error)) {
                                                                                                             echo "is-invalid";
-                                                                                                        } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
-                        <div class="form-group"><label>Password</label><input class="form-control <?php if (isset($passwordconfirm_error)) {
-                                                                                                        echo "is-invalid";
-                                                                                                    } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
+                                                                                                        } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
 
 
-                        <!--- CONTINUE BUTTON --->
-                        <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="login" value="Login"></input>
+                            <!--- CONTINUE BUTTON --->
+                            <input class="btn btn-primary roundbut col-md-12 mt-4 mb-3" type="submit" name="login" value="Login"></input>
                     </form>
                 </div>
 

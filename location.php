@@ -64,7 +64,13 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
               <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li><input type="button3" class="button" value="Logout" onclick="window.location.href='logout.php'" /></li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">All Properties</a>
+                </li>
+                <input class="btn btn-light rouund" type="button" value="Login" onclick="window.location.href='login.php'">
               </ul>
             </nav>
           </div>
@@ -107,7 +113,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
   <div class="site-section site-section-sm pb-0">
     <div class="container">
       <div class="row">
-        <form class="form-search col-md-12" method="POST" action="./validations/locatevalid.php" style="margin-top: -100px;">
+        <form class="form-search col-md-12 mb-lg-5" method="POST" action="./validations/locatevalid.php" style="margin-top: -100px;">
           <div class="row  align-items-end">
 
             <div class="col-md-12">
@@ -204,8 +210,14 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
             </div>
             <div class="col-md-3">
               <br>
+              <input class="btn btn-danger text-white btn-block rounded-0" type="button" value="Back" onclick="window.location.href='registration.php'">
+            </div>
+            <div class="col-md-3">
+              <br>
               <input type="submit" class="btn btn-success text-white btn-block rounded-0" role="button" href="./description.php" name="continuelocate" value="Continue">
             </div>
+
+
           </div>
         </form>
       </div>
