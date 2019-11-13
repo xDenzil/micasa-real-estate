@@ -63,7 +63,7 @@ session_start();
                                     <a class="nav-link text-white" href="index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="#">All Properties</a>
+                                    <a class="nav-link text-white" href="all-properties.php">All Properties</a>
                                 </li>
                                 <input class="btn btn-light rouund" type="button" value="Logout" onclick="window.location.href='logout.php'">
                             </ul>
