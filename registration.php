@@ -72,7 +72,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li>
-                  <a href="/">Home</a>
+                  <a href="index.php">Home</a>
                 </li>
                 <li class="active"><a href="registration.php">Register</a></li>
               </ul>
@@ -209,7 +209,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
         </div>
 
         <div class="col-lg-4">
-          <div class="p-4 mb-3 bg-white">
+          <div class="p-4 mb-3">
             <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
             <p class="mb-0 font-weight-bold">Address</p>
             <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>

@@ -32,8 +32,12 @@
     background: black;
   }
   
-  .hfix {
-    height: 40px;
+  .btn{
+    padding:0.65rem 0.75rem
+  }
+
+  .form-search .btn[type="submit"]{
+    height: auto;
   }
 
   /* old blue #364e68 new blue #163571
