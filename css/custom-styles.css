@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100%;
     margin: 0;
-    background-image: url('../img/breno-assis-r3WAWU5Fi5Q-unsplash.jpg');
+    background-image: url("../img/breno-assis-r3WAWU5Fi5Q-unsplash.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: scroll;
@@ -34,7 +34,7 @@
 }
 
 .btn {
-    padding: 0.65rem 0.75rem
+    padding: 0.65rem 0.75rem;
 }
 
 .form-search .btn[type="submit"] {
@@ -46,7 +46,7 @@
 
 .rouund {
     border-radius: 25px;
-    min-width: 120px;
+    min-width: 100px;
     margin: 10px;
 }
 
@@ -76,8 +76,12 @@
 }
 
 .bgg {
-    background-image: url('../images/bg-def2.jpg');
+    background-image: url("../images/bg-def2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: scroll;
+}
+
+.push {
+    margin-top: 100px;
 }
