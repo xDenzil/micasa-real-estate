@@ -47,7 +47,7 @@
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">All Properties</a>
+                                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
                             </li>
                             <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
                             <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
@@ -68,8 +68,8 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-md-4 bg-light m-5">
-                    <form action="./validations/regisvalid.php" method="POST" class="p-3">
+                <div class="col-md-4 bg-light m-5 rounded">
+                    <form action="./validations/regisvalid.php" method="POST" class="p-4">
                         <h4 class="mb-3">Existing User?</h1>
                             <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
                                                                                                                 echo "is-invalid";

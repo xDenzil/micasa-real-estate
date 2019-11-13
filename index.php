@@ -31,7 +31,7 @@
 <body>
 
 
-
+  <div class="site-loader"></div>
   <div class="site-wrap"></div>
 
   <div class="site-navbar mt-4">
@@ -98,7 +98,7 @@
           <div class="site-section-title">
             <br>
             <h5>Most Recent Listings</h5>
-            <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='#'">
+            <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='all-properties.php'">
           </div>
           <p></p>
         </div>
