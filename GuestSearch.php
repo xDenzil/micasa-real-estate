@@ -1,3 +1,11 @@
+<?php 
+  if(session_status() == PHP_SESSION_NONE){
+    session_start();
+    if(!$_SESSION['active']){
+      header('Location: GuestSearch.php');
+    } 
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,16 +34,11 @@
     
   </head>
   <body>
-  
-  <div class="site-loader"></div>
-  
-  <div class="site-wrap"></div>
-
     <div class="site-navbar mt-4">
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a class="text-white h2 mb-0"><strong>MiCasa<span class="text-danger">.</span></strong></a></h1>
+              <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -43,20 +46,17 @@
                 <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li><a href="GuestSearch.php">Search Properties</a></li>
-                  <li><a href="login.php">Add Property</a></li>
-                  <li><a href="login.php">View My Properties</a></li>
-                  <li><input type="button" class="button" value="Register" onclick="window.location.href='registration.php'" /></li>
-                  <li><input type="button2" class="button" value="Login"  onclick="window.location.href='registration.php'" /></li>
+                  <li><a href="index.php">Home</a></li>
                 </ul>
               </nav>
             </div>
+           
 
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="slide-one-item home-slider owl-carousel">
 
       <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -82,7 +82,90 @@
           </div>
         </div>
       </div>  
+
     </div>
+
+    <div class="site-section site-section-sm pb-0">
+      <div class="container">
+        <div class="row">
+          <form class="form-search col-md-12" method="POST" action="propertyvalid.php"  style="margin-top: -100px;">
+            <div class="row  align-items-end">
+              <div class="col-md-3">
+                <label for="properties">Types of Properties</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="properties" id="properties" class="form-control d-block rounded-0">
+                    <option value="Vacant Lot">Vacant Lot</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    </select>
+                </div>
+              </div>
+              
+              <div class="col-md-3">
+                <label for="listing">Listing Types</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="listing" id="listing" class="form-control d-block rounded-0">
+                    <option value="Rent">Rent</option>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Lease">Lease</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="parish">Parish</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="parish" id="parish" class="form-control d-block rounded-0">
+                    <option value="st_elizabeth">St Elizabeth</option>
+                    <option value="kingston">Kingston</option>
+                    <option value="st_andrew">St Andrew</option>
+                    <option value="st_catherine">St Catherine</option>
+                    <option value="clarendon">Clarendon</option>
+                    <option value="manchester">Manchester</option>
+                    <option value="westmoreland">Westmoreland</option>
+                    <option value="hanover">Hanover</option>
+                    <option value="st_james">St James</option>
+                    <option value="trelawny">Trelawny</option>
+                    <option value="st_ann">St Ann</option>
+                    <option value="st_mary">St Mary</option>
+                    <option value="portland">Portland</option>
+                    <option value="st_thomas">St Thomas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="price_range">Price Range</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="price_range" id="price_range" class="form-control d-block rounded-0">
+                    <option value="price1">$50,000,000 - $99,000,000</option>
+                    <option value="price2">$100,000,000 - $149,000,000</option>
+                    <option value="price3">$150,000,000 - $199,000,000</option>
+                    <option value="price4">$200,000,000 - $249,000,000</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="price">Price ($ ,)</label>
+                <div class="select-wrap">
+                <input type="text" name="price">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+              </div>
+            </div>
+          </form>
+        </div>  
+
+        <div class="row">
+          <div class="col-md-12">       
+      </div>
+    </div>
+
     <div class="site-section site-section-sm bg-light">
       <div class="container">
       
@@ -168,7 +251,7 @@
               <div class="p-4 property-body">
                 <h2 class="property-title">Beverley Hills</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>86 Kingman Avenue, Beverley Hills, St Andrew, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$150,265,500</strong>
+                <strong class="property-price text-primary mb-3 d-block text-success">$10,265,500</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                     <span class="property-specs">Beds</span>
@@ -272,7 +355,7 @@
               <div class="p-4 property-body">
                 <h2 class="property-title">Falmouth</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$132,265,500</strong>
+                <strong class="property-price text-primary mb-3 d-block text-success">$15,265,500</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                     <span class="property-specs">Beds</span>
@@ -364,40 +447,6 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="images/img_13.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Calabash Beach Front </a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> Treasure Beach, St Elizabeth, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$156,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">4 <sup>+</sup></span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">3</span>
-                    
-                  </li>
-                  <li>
-                    <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number">5.5</span>
-                    
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
 
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
@@ -410,7 +459,7 @@
               <div class="p-4 property-body">
                 <h2 class="property-title">Mona Height</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$113,265,500</strong>
+                <strong class="property-price text-primary mb-3 d-block text-success">$15,265,500</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                     <span class="property-specs">Beds</span>
@@ -436,47 +485,6 @@
                 
       </div>
     </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 text-center">
-            <div class="site-section-title">
-              <h2>Why We Are The Best?</h2>
-            </div>
-            <p>We offer the best solution to your real estate problems. We offer 100% Buy-Back guaranteed Services with enhanced inspections and private showings. Our Dedicated Full Service staff offer assistance in making offers when chosing the property that best suits you needs. </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <a href="#" class="service text-center">
-              <span class="icon flaticon-house"></span>
-              <h2 class="service-heading">Guaranteed Research  </h2>
-              <p>Our experts try to find the best properties in the best areas in Jamaica by conducting various research on each locations. That's how much we value our customers</p>
-              
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a href="#" class="service text-center">
-              <span class="icon flaticon-sold"></span>
-              <h2 class="service-heading">Sold Houses</h2>
-              <p>We have sold more houses, lots and office/business space than you can count.</p>
-             
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a href="#" class="service text-center">
-              <span class="icon flaticon-camera"></span>
-              <h2 class="service-heading">Secure Transactions</h2>
-              <p>We are the bridge between you owning that lot, that new house on the block or that new office space</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
     <footer class="site-footer">
       <div class="container">
         <div class="row">
