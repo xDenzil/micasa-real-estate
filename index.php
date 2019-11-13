@@ -97,7 +97,8 @@
         <div class="col-md-8 text-center">
           <div class="site-section-title">
             <br>
-            <h2>Most Recent</h2>
+            <h5>Most Recent Listings</h5>
+            <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='#'">
           </div>
           <p></p>
         </div>
@@ -105,7 +106,7 @@
     </div>
   </div>
 
-  <div class="site-section site-section-sm p-1">
+  <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
     <div class="container">
 
       <div class="row mb-5">
