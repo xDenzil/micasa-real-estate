@@ -47,7 +47,7 @@
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">All Properties</a>
+                                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="location.php">Add Property</a>
@@ -93,17 +93,82 @@
     </div>
 
   </div>
-
-    <div class="site-section p-2 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="site-section-title">
-                        <br>
-                        <form>
-    <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
+      <div class="container">
+        <div class="row">
+          <form class="form-search col-md-12" method="POST" action="propertyvalid.php"  style="margin-top: -100px;">
+            <div class="row  align-items-end">
+              <div class="col-md-3">
+                <label for="properties">Types of Properties</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="properties" id="properties" class="form-control d-block rounded-0">
+                    <option value="Vacant Lot">Vacant Lot</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    </select>
+                </div>
+              </div>
+              
+              <div class="col-md-3">
+                <label for="listing">Listing Types</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="listing" id="listing" class="form-control d-block rounded-0">
+                    <option value="Rent">Rent</option>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Lease">Lease</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="parish">Parish</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="parish" id="parish" class="form-control d-block rounded-0">
+                    <option value="st_elizabeth">St Elizabeth</option>
+                    <option value="kingston">Kingston</option>
+                    <option value="st_andrew">St Andrew</option>
+                    <option value="st_catherine">St Catherine</option>
+                    <option value="clarendon">Clarendon</option>
+                    <option value="manchester">Manchester</option>
+                    <option value="westmoreland">Westmoreland</option>
+                    <option value="hanover">Hanover</option>
+                    <option value="st_james">St James</option>
+                    <option value="trelawny">Trelawny</option>
+                    <option value="st_ann">St Ann</option>
+                    <option value="st_mary">St Mary</option>
+                    <option value="portland">Portland</option>
+                    <option value="st_thomas">St Thomas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="price_range">Price Range</label>
+                <div class="select-wrap">
+                  <span class="icon icon-arrow_drop_down"></span>
+                  <select name="price_range" id="price_range" class="form-control d-block rounded-0">
+                    <option value="price1">$50,000,000 - $99,000,000</option>
+                    <option value="price2">$100,000,000 - $149,000,000</option>
+                    <option value="price3">$150,000,000 - $199,000,000</option>
+                    <option value="price4">$200,000,000 - $249,000,000</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="price">Price ($ ,)</label>
+                <div class="select-wrap">
+                <input type="text" name="price">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+              </div>
+            </div>
+          </form>
+        </div>  
    
-  </form>
+ 
 
                     </div>
                     <p></p>

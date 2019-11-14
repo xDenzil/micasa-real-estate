@@ -58,18 +58,21 @@
             </div>
         </div>
     </div>
-
     <div class="section blu">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
+            <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+                <div class="justify-content-center text-center">
+                <div class="container">
                 <div class="col-md-10 mt-lg-5">
-                    <h1 class="mb-2 text-white mt-lg-5">Login.</h1>
                 </div>
             </div>
-
+            
             <div class="row justify-content-center">
                 <div class="col-md-4 bg-light m-5 rounded">
+                
                     <form action="./validations/regisvalid.php" method="POST" class="p-4">
+                    <h4 class="mb-3">Login.</h1>
                         <h4 class="mb-3">Existing User?</h1>
                             <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
                                                                                                                 echo "is-invalid";
@@ -83,7 +86,9 @@
                             <input class="btn btn-primary roundbut col-md-12 mt-4 mb-3" type="submit" name="login" value="Login"></input>
                     </form>
                 </div>
-
+                </div> 
+                 </div> 
+                 </div>                                                                                          
             </div>
         </div>
 
@@ -105,13 +110,10 @@
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-md-12">
-
                         </div>
                     </div>
-
-
                 </div>
-
+                
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h3 class="footer-heading mb-4">Follow Us</h3>
 
