@@ -47,7 +47,10 @@
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="nav-item">
-                                <a class="nav-link text-white text-warning" href="property-seach.php">Property Search</a>
+                                <<<<<<< HEAD:property-search.php <a class="nav-link text-white text-warning" href="property-seach.php">Property Search</a>
+                                    =======
+                                    <a class="nav-link text-white" href="all-properties.php">All Properties</a>
+                                    >>>>>>> fe37994450dd78d46d9e689e1ec954fca551f883:all-properties.php
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="location.php">Add Property</a>
