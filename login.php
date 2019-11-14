@@ -68,7 +68,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-md-4 bg-light m-5 rounded">
+                <div class="col-md-4 bg-white m-5 rounded">
                     <form action="./validations/regisvalid.php" method="POST" class="p-4">
                         <h4 class="mb-3">Existing User?</h1>
                             <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
