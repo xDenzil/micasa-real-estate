@@ -5,10 +5,8 @@
   <title>Mi Casa &mdash;</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
@@ -19,13 +17,10 @@
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="css/fl-bigmug-line.css">
-
-
   <link rel="stylesheet" href="css/aos.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/custom-styles.css">
-
 </head>
 
 <body>
@@ -47,7 +42,7 @@
 
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="nav-item">
-                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
+                <a class="nav-link text-white" href="property-search.php">Property Search</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="location.php">Add Property</a>
@@ -98,7 +93,7 @@
           <div class="site-section-title">
             <br>
             <h5>Most Recent Listings</h5>
-            <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='all-properties.php'">
+            <input class="btn btn-primary rouund" type="button" value="View All" onclick="window.location.href='property-search.php'">
           </div>
           <p></p>
         </div>
@@ -173,7 +168,6 @@
                 <li>
                   <span class="property-specs">Acres</span>
                   <span class="property-specs-number">16</span>
-
                 </li>
               </ul>
 
