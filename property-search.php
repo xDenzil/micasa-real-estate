@@ -31,7 +31,7 @@
 <body>
 
 
-  <div class="site-loader"></div>
+    <div class="site-loader"></div>
     <div class="site-wrap"></div>
 
     <div class="site-navbar mt-4">
@@ -47,10 +47,7 @@
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="location.php">Add Property</a>
+                                <a class="nav-link text-white text-warning" href="property-search.php">Property Search</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">View My Properties</a>
@@ -60,7 +57,6 @@
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </div>
     </div>
@@ -68,121 +64,159 @@
 
     <div class="slide-one-item home-slider owl-carousel">
 
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
-            <h1 class="mb-2">65 Garden Blvd</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p>
-          </div>
+        <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-md-10">
+                        <!-- <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
+                        <h1 class="mb-2">65 Garden Blvd</h1>
+                        <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p> -->
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-md-10">
+                        <!-- <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
+                        <h1 class="mb-2">Beverley Hills, JM</h1>
+                        <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-            <h1 class="mb-2">Beverley Hills, JM</h1>
-            <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-      <div class="container">
-        <div class="row">
-          <form class="form-search col-md-12" method="POST" action="propertyvalid.php"  style="margin-top: -100px;">
+    <div class="row justify-content-center" style="background-color:#F0E7D8;">
+        <form class="form-search col-md-12" method="POST" action="./validations/propertvalid.php" style="margin-top: -100px;">
             <div class="row  align-items-end">
-              <div class="col-md-3">
-                <label for="properties">Types of Properties</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="properties" id="properties" class="form-control d-block rounded-0">
-                    <option value="Vacant Lot">Vacant Lot</option>
-                    <option value="Residential">Residential</option>
-                    <option value="Commercial">Commercial</option>
+                <div class="col-md-2">
+                    <label>Parish</label>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
+                                                                                                                    echo 'Select';
+                                                                                                                } else {
+                                                                                                                    echo $_SESSION['parish'];
+                                                                                                                } ?>">
+                        <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
+                                    echo 'selected="selected"';
+                                } ?>>Kingston & St. Andrew</option>
+                        <option <?php if ($_SESSION['parish'] == 'Portland') {
+                                    echo 'selected="selected"';
+                                } ?>>Portland</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. Thomas') {
+                                    echo 'selected="selected"';
+                                } ?>>St. Thomas</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. Catherine') {
+                                    echo 'selected="selected"';
+                                } ?>>St. Catherine</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. Mary') {
+                                    echo 'selected="selected"';
+                                } ?>>St. Mary</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. Ann') {
+                                    echo 'selected="selected"';
+                                } ?>>St. Ann</option>
+                        <option <?php if ($_SESSION['parish'] == 'Manchester') {
+                                    echo 'selected="selected"';
+                                } ?>>Manchester</option>
+                        <option <?php if ($_SESSION['parish'] == 'Clarendon') {
+                                    echo 'selected="selected"';
+                                } ?>>Clarendon</option>
+                        <option <?php if ($_SESSION['parish'] == 'Hanover') {
+                                    echo 'selected="selected"';
+                                } ?>>Hanover</option>
+                        <option <?php if ($_SESSION['parish'] == 'Westmoreland') {
+                                    echo 'selected="selected"';
+                                } ?>>Westmoreland</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. James') {
+                                    echo 'selected="selected"';
+                                } ?>>St. James</option>
+                        <option <?php if ($_SESSION['parish'] == 'Trelawny') {
+                                    echo 'selected="selected"';
+                                } ?>>Trelawny</option>
+                        <option <?php if ($_SESSION['parish'] == 'St. Elizabeth') {
+                                    echo 'selected="selected"';
+                                } ?>>St. Elizabeth</option>
+                    </select>
+
+
+
+                </div>
+                <div class="col-md-2">
+                    <label for="properties">Property Type</label>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type" title="<?php if ($_SESSION['property_type'] == null) {
+                                                                                                                            echo 'Select';
+                                                                                                                        } else {
+                                                                                                                            echo $_SESSION['property_type'];
+                                                                                                                        } ?>">
+                        <option <?php if ($_SESSION['property_type'] == 'Vacant Lot') {
+                                    echo 'selected="selected"';
+                                } ?>>Vacant Lot</option>
+                        <option <?php if ($_SESSION['property_type'] == 'Residential') {
+                                    echo 'selected="selected"';
+                                } ?>>Residential</option>
+                        <option <?php if ($_SESSION['property_type'] == 'Commercial') {
+                                    echo 'selected="selected"';
+                                } ?>>Commercial</option>
                     </select>
                 </div>
-              </div>
-              
-              <div class="col-md-3">
-                <label for="listing">Listing Types</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="listing" id="listing" class="form-control d-block rounded-0">
-                    <option value="Rent">Rent</option>
-                    <option value="Purchase">Purchase</option>
-                    <option value="Lease">Lease</option>
-                  </select>
+                <div class="col-md-2">
+                    <label for="listing">Listing Type</label>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="listing_type" title="<?php if ($_SESSION['listing_type'] == null) {
+                                                                                                                            echo 'Select';
+                                                                                                                        } else {
+                                                                                                                            echo $_SESSION['listing_type'];
+                                                                                                                        } ?>">
+                        <option <?php if ($_SESSION['listing_type'] == 'Rent') {
+                                    echo 'selected="selected"';
+                                } ?>>Rent</option>
+                        <option <?php if ($_SESSION['listing_type'] == 'Purchase') {
+                                    echo 'selected="selected"';
+                                } ?>>Purchase</option>
+                        <option <?php if ($_SESSION['listing_type'] == 'Lease') {
+                                    echo 'selected="selected"';
+                                } ?>>Lease</option>
+                    </select>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <label for="parish">Parish</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="parish" id="parish" class="form-control d-block rounded-0">
-                    <option value="st_elizabeth">St Elizabeth</option>
-                    <option value="kingston">Kingston</option>
-                    <option value="st_andrew">St Andrew</option>
-                    <option value="st_catherine">St Catherine</option>
-                    <option value="clarendon">Clarendon</option>
-                    <option value="manchester">Manchester</option>
-                    <option value="westmoreland">Westmoreland</option>
-                    <option value="hanover">Hanover</option>
-                    <option value="st_james">St James</option>
-                    <option value="trelawny">Trelawny</option>
-                    <option value="st_ann">St Ann</option>
-                    <option value="st_mary">St Mary</option>
-                    <option value="portland">Portland</option>
-                    <option value="st_thomas">St Thomas</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <label for="price_range">Price Range</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="price_range" id="price_range" class="form-control d-block rounded-0">
-                    <option value="price1">$50,000,000 - $99,000,000</option>
-                    <option value="price2">$100,000,000 - $149,000,000</option>
-                    <option value="price3">$150,000,000 - $199,000,000</option>
-                    <option value="price4">$200,000,000 - $249,000,000</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <label for="price">Price ($ ,)</label>
-                <div class="select-wrap">
-                <input type="text" name="price">
-                </div>
-              </div>
-              <div class="col-md-3">
-                <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
-              </div>
-            </div>
-          </form>
-        </div>  
-   
- 
-
+                <div class="col-md-2">
+                    <label for="price">Min Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
+                                                                                echo "is-invalid";
+                                                                            } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
                     </div>
-                    <p></p>
+
                 </div>
+                <div class="col-md-2">
+                    <label for="price">Max Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
+                                                                                echo "is-invalid";
+                                                                            } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <input class="btn btn-success text-white btn-block rounded-2" role="button" href="./registerproperty.php" name="finish" type="submit" value="Search">
+                </div>
+
             </div>
-        </div>
+        </form>
     </div>
 
 
     <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
         <div class="container">
-
             <div class="row mb-5">
-
+                <!-- Properties -->
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
@@ -509,14 +543,15 @@
                         <h3 class="footer-heading mb-4">About Mi Casa</h3>
                         <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
                     </div>
-
-
-
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col-md-12">
-
+                        <div class="col-md-12" hidden>
+                            <h3 class="footer-heading mb-4">Contact</h3>
+                            <p class="mb-0 font-weight-bold">Address</p>
+                            <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
+                            <p class="mb-0 font-weight-bold">Email</p>
+                            <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
                         </div>
                     </div>
 
@@ -571,6 +606,7 @@
     <script src="js/aos.js"></script>
 
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
 </body>
 

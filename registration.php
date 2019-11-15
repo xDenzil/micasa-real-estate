@@ -116,7 +116,9 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             } ?>
             <?php if (isset($lastname_error)) {
               echo $lastname_error;
-            } ?>
+            }
+
+            ?>
 
             <div class="form-row mt-2">
               <div class="form-group col-md-6"><label>First Name</label>
