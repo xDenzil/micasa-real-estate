@@ -113,6 +113,7 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
+      <p>Please enter User's ID you want to remove:</p>
       <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
       </div>
     </div>
