@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="css/custom-styles.css">
 
 </head>
-
 <body>
 
 
@@ -104,7 +103,6 @@
 
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h3 class="footer-heading mb-4">Follow Us</h3>
-
                     <div>
                         <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
                         <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
