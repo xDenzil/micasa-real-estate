@@ -48,7 +48,7 @@
                 <a class="nav-link text-white" href="location.php">Add Property</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">View My Properties</a>
+                <a class="nav-link text-white" href="my-properties.php">View My Properties</a>
               </li>
               <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
               <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
