@@ -46,7 +46,7 @@
 
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="all-properties.php">All Properties</a>
+                                <a class="nav-link text-white" href="property-search.php">Search Properties</a>
                             </li>
                             <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
                             <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">

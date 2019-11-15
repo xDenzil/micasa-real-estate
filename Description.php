@@ -1,9 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
-  if (!$_SESSION['active']) {
-    header('Location: registration.php');
-  }
 }
 
 if ((isset($_SESSION['errFlagPage3'])) && ($_SESSION['errFlagPage3']) == true) { //IF SESSION FLAG IS SET AND IS TRUE

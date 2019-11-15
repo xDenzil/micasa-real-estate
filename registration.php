@@ -73,7 +73,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                   <a class="nav-link text-white" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">All Properties</a>
+                  <a class="nav-link text-white" href="property-search.php">Search Properties</a>
                 </li>
                 <input class="btn btn-light rouund" type="button" value="Login" onclick="window.location.href='login.php'">
               </ul>

@@ -42,7 +42,7 @@
 
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="nav-item">
-                <a class="nav-link text-white" href="property-search.php">Property Search</a>
+                <a class="nav-link text-white" href="property-search.php">Search Properties</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="location.php">Add Property</a>
@@ -108,7 +108,7 @@
 
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="property-entry h-100">
-            <a href="property-details.html" class="property-thumbnail">
+            <a href="property-details.php" class="property-thumbnail">
               <div class="offer-type-wrap">
                 <span class="offer-type bg-danger">Sale</span>
                 <span class="offer-type bg-success">Rent</span>
