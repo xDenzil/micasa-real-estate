@@ -2,6 +2,7 @@
 
 
 session_start(); // CONTINUING SESSION
+include_once('../database/db_connection.php');
 
 // DECLARING VARIABLES
 
@@ -9,14 +10,14 @@ session_start(); // CONTINUING SESSION
 
 
 
-if (isset($_POST['continue'])) { //IF CONTINUE BUTTON IS PRESSED
+if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     //session_destroy();
     foreach ($_POST as $key => $value) {
         $$key = $value;
         $_SESSION[$key] = $value;
     }
 
-    
+
 
     // FIRST NAME VALIDATION
     if (empty($_POST['firstname'])) {
@@ -113,7 +114,7 @@ if (isset($_POST['continue'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['phonenumber'] = null;
         $_SESSION['errFlag5'] = true;
         $phoneNumberCorrect = false;
-    } else if (!preg_match("/^$|^\d{7}$/", $_POST['phonenumber'])) { 
+    } else if (!preg_match("/^$|^\d{7}$/", $_POST['phonenumber'])) {
         $_SESSION['phonenumber_error'] = "<span class='error small-text'>* Invalid phone number. </span>";
         $_SESSION['phonenumber'] = $_POST['phonenumber'];
         $_SESSION['errFlag5'] = true;
@@ -133,7 +134,7 @@ if (isset($_POST['continue'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['password'] = null;
         $_SESSION['errFlag6'] = true;
         $_SESSION['notmatching_error'] = null;
-    } else if (!preg_match("/[a-zA-Z0-9]{6,}/", $_POST['password'])) { 
+    } else if (!preg_match("/[a-zA-Z0-9]{6,}/", $_POST['password'])) {
         $_SESSION['password_error'] = "<span class='error small-text'>* Password must be at least 6 characters long. </span>";
         $_SESSION['password'] = $_POST['password'];
         $_SESSION['errFlag6'] = true;
@@ -167,15 +168,19 @@ if (isset($_POST['continue'])) { //IF CONTINUE BUTTON IS PRESSED
 
 
     // FORM VALIDATION - Return current page if errors, progress if none.
-    if (($_SESSION['errFlag0'] == true) || ($_SESSION['errFlag1'] == true) || ($_SESSION['errFlag2'] == true) 
-    || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true) 
-    || ($_SESSION['errFlag6'] == true) || ($_SESSION['errFlag7'] == true) || ($_SESSION['errFlag8'] == true)) {
+    if (($_SESSION['errFlag0'] == true) || ($_SESSION['errFlag1'] == true) || ($_SESSION['errFlag2'] == true)
+        || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true)
+        || ($_SESSION['errFlag6'] == true) || ($_SESSION['errFlag7'] == true) || ($_SESSION['errFlag8'] == true)
+    ) {
         $_SESSION['errFlagPage1'] = true;
         header("Location: ../registration.php");
     } else {
         $_SESSION['errFlagPage1'] = false;
         $_SESSION['active'] = true;
-        header("Location: ../location.php");
+
+
+        $sql = "INSERT INTO `users`(`username`, `first_name`, `last_name`, `email`, `phone`, `password`) VALUES ('$username', '$firstname', '$lastname', '$email', '$phonenumber', '$password');";
+        $result = mysqli_query($conn, $sql) or die("Failed to get data");
+        header("Location: index.php");
     }
 }
-

@@ -1,10 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-  if (isset($_SESSION['active'])) {
-    header('Location: location.php');
-  }
-}
+
+session_start();
+
 
 if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
@@ -205,7 +202,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 
             <!--- CONTINUE BUTTON --->
-            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="continue" value="Sign Up"></input>
+            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
           </form>
         </div>
 
