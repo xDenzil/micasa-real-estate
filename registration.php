@@ -24,7 +24,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
@@ -35,10 +34,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="css/fl-bigmug-line.css">
-
-
   <link rel="stylesheet" href="css/aos.css">
-
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/custom-styles.css">
 
@@ -46,9 +42,11 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 <body>
 
+  <!-- NAVIGATION SECTION -->
   <div class="site-wrap">
 
-    <div class="site-mobile-menu">
+    <!-- MOBILE NAV BAR -->
+    <div class="site-mobile-menu blu">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
           <span class="icon-close2 js-menu-toggle"></span>
@@ -57,6 +55,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
 
+    <!-- NAV BAR -->
     <div class="site-navbar mt-4">
       <div class="container py-1">
         <div class="row align-items-center">
@@ -87,6 +86,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     </div>
   </div>
 
+  <!-- IMAGE HEADER -->
   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
     <div class="row align-items-center justify-content-center text-center">
@@ -97,7 +97,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
   </div>
   </div>
 
-
+  <!-- REGISTRATION SECTION -->
   <div class="site-section">
     <div class="container">
       <div class="row justify-content-center">
@@ -106,7 +106,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
           <form action="./validations/regisvalid.php" method="POST" class="p-5">
             <h1>User Information</h1>
             <p class="m-0">Please fill out the following fields.</p>
-
 
 
             <!--- FIRST NAME & LAST NAME SECTION --->
@@ -157,8 +156,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             </div>
 
 
-
-
             <!--- PHONE NUMBER SECTION --->
 
             <?php if (isset($areacode_error)) {
@@ -186,7 +183,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             </div>
 
 
-
             <!--- PASSWORDS SECTION --->
 
             <?php if (isset($password_error)) {
@@ -209,7 +205,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 
             <!--- CONTINUE BUTTON --->
-            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="continue" value="Continue"></input>
+            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="continue" value="Sign Up"></input>
           </form>
         </div>
 
@@ -226,13 +222,12 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
 
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="row">
@@ -241,7 +236,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             <h3 class="footer-heading mb-4">About Mi Casa</h3>
             <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
-
 
 
         </div>

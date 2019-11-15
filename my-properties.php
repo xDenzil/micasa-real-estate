@@ -68,8 +68,10 @@
         <div class="container">
 
             <div class="row mb-5">
-
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-12">
+                    <h1 class="text-primary mb-5 text-center">My Properties</h1>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.php" class="property-thumbnail">
                             <div class="offer-type-wrap">

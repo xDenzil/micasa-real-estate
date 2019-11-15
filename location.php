@@ -46,8 +46,16 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
 <body>
 
 
-
+  <!-- NAVIGATION -->
   <div class="site-wrap">
+    <div class="site-mobile-menu blu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
 
     <div class="site-navbar mt-4">
       <div class="container py-1">
@@ -59,7 +67,6 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
             <nav class="site-navigation text-right text-md-right" role="navigation">
 
               <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="nav-item">
                   <a class="nav-link text-white" href="index.php">Home</a>
@@ -71,13 +78,12 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
               </ul>
             </nav>
           </div>
-
-
         </div>
       </div>
     </div>
   </div>
 
+  <!-- SECTION HEADER -->
   <div class="site-blocks-cover inner-page-cover overlay bg-primary" style="background-image: url(images/bg_def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
     <div class="row align-items-center justify-content-center text-center">
@@ -88,9 +94,11 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
   </div>
   </div>
 
-
+  <!-- FORM -->
   <div class="site-section site-section-sm pb-0">
+
     <div class="container">
+      <!-- PROPERTY LOCATION -->
       <div class="row">
         <form class="form-search col-md-12 mb-lg-5" method="POST" action="./validations/locatevalid.php" style="margin-top: -100px;">
           <div class="row  align-items-end">
@@ -195,16 +203,13 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
               <br>
               <input type="submit" class="btn btn-success text-white btn-block rounded-0" role="button" href="./description.php" name="continuelocate" value="Continue">
             </div>
-
-
           </div>
         </form>
       </div>
-
-
-
     </div>
 
+
+    <!-- PROPERTY DETAIlS -->
     <div class="container">
       <div class="row mb-5">
         <form class="form-search col-md-12" method="POST" action="./validations/propertvalid.php" style="margin-top: -100px;">
@@ -346,80 +351,73 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
         </div>
       </div>
     </div>
+  </div>
 
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div>
-              <h3 class="footer-heading mb-4">About Mi Casa</h3>
-              <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
-            </div>
-
-
-
-          </div>
-          <div class="col-lg-4">
-            <div class="row">
-              <div class="col-md-12">
-
-              </div>
-            </div>
-
-
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div>
+            <h3 class="footer-heading mb-4">About Mi Casa</h3>
+            <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
 
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">Follow Us</h3>
 
-            <div>
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-            </div>
-
-
-
-          </div>
 
         </div>
-        <div class="row mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-
-              Copyright
-              &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-              <script>
-                document.write(new Date().getFullYear());
-              </script> Kelleshia Kinlocke & Denzil Williams
-
-            </p>
+        <div class="col-lg-4">
+          <div class="row">
+            <div class="col-md-12">
+            </div>
           </div>
 
+
         </div>
+
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h3 class="footer-heading mb-4">Follow Us</h3>
+
+          <div>
+            <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+            <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+          </div>
+        </div>
+
       </div>
-    </footer>
+      <div class="row mt-5 text-center">
+        <div class="col-md-12">
+          <p>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mediaelement-and-player.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
+            Copyright
+            &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script>
+              document.write(new Date().getFullYear());
+            </script> Kelleshia Kinlocke & Denzil Williams
 
-    <script src="js/main.js"></script>
+          </p>
+        </div>
 
+      </div>
+    </div>
+  </footer>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
 </body>
 

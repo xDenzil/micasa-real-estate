@@ -29,41 +29,49 @@
 </head>
 
 <body>
-
-
     <div class="site-loader"></div>
-    <div class="site-wrap"></div>
 
-    <div class="site-navbar mt-4">
-        <div class="container py-1">
-            <div class="row align-items-center">
-                <div class="col-2  col-md-4 col-lg-2 col-sm-8">
-                    <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+    <!-- NAVIGATION SECTION -->
+    <div class="site-wrap">
+        <div class="site-mobile-menu blu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
                 </div>
-                <div class="col-10  col-md-8 col-lg-10 col-sm-4">
-                    <nav class="site-navigation text-right text-md-right" role="navigation">
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
 
-                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+        <div class="site-navbar mt-4">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                    <div class="col-2  col-md-4 col-lg-2 col-sm-8">
+                        <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+                    </div>
+                    <div class="col-10  col-md-8 col-lg-10 col-sm-4">
+                        <nav class="site-navigation text-right text-md-right" role="navigation">
 
-                        <ul class="site-menu js-clone-nav d-none d-lg-block">
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-warning" href="property-search.php">Search Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="my-properties.php">View My Properties</a>
-                            </li>
-                            <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
-                            <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
-                        </ul>
-                    </nav>
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+                            <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white text-warning" href="property-search.php">Search Properties</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="my-properties.php">View My Properties</a>
+                                </li>
+                                <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
+                                <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
+    <!-- IMAGE SLIDER -->
     <div class="slide-one-item home-slider owl-carousel">
-
         <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center">
@@ -90,94 +98,42 @@
 
     </div>
 
+    <!-- SEARCH FIELDS -->
     <div class="row justify-content-center" style="background-color:#F0E7D8;">
         <form class="form-search col-md-12" method="POST" action="./validations/propertvalid.php" style="margin-top: -100px;">
             <div class="row  align-items-end">
                 <div class="col-md-2">
                     <label>Parish</label>
-                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
-                                                                                                                    echo 'Select';
-                                                                                                                } else {
-                                                                                                                    echo $_SESSION['parish'];
-                                                                                                                } ?>">
-                        <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
-                                    echo 'selected="selected"';
-                                } ?>>Kingston & St. Andrew</option>
-                        <option <?php if ($_SESSION['parish'] == 'Portland') {
-                                    echo 'selected="selected"';
-                                } ?>>Portland</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. Thomas') {
-                                    echo 'selected="selected"';
-                                } ?>>St. Thomas</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. Catherine') {
-                                    echo 'selected="selected"';
-                                } ?>>St. Catherine</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. Mary') {
-                                    echo 'selected="selected"';
-                                } ?>>St. Mary</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. Ann') {
-                                    echo 'selected="selected"';
-                                } ?>>St. Ann</option>
-                        <option <?php if ($_SESSION['parish'] == 'Manchester') {
-                                    echo 'selected="selected"';
-                                } ?>>Manchester</option>
-                        <option <?php if ($_SESSION['parish'] == 'Clarendon') {
-                                    echo 'selected="selected"';
-                                } ?>>Clarendon</option>
-                        <option <?php if ($_SESSION['parish'] == 'Hanover') {
-                                    echo 'selected="selected"';
-                                } ?>>Hanover</option>
-                        <option <?php if ($_SESSION['parish'] == 'Westmoreland') {
-                                    echo 'selected="selected"';
-                                } ?>>Westmoreland</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. James') {
-                                    echo 'selected="selected"';
-                                } ?>>St. James</option>
-                        <option <?php if ($_SESSION['parish'] == 'Trelawny') {
-                                    echo 'selected="selected"';
-                                } ?>>Trelawny</option>
-                        <option <?php if ($_SESSION['parish'] == 'St. Elizabeth') {
-                                    echo 'selected="selected"';
-                                } ?>>St. Elizabeth</option>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="parish_search" title="Select Parish">
+                        <option>Kingston & St. Andrew</option>
+                        <option>Portland</option>
+                        <option>St. Thomas</option>
+                        <option>St. Catherine</option>
+                        <option>St. Mary</option>
+                        <option>St. Ann</option>
+                        <option>Manchester</option>
+                        <option>Clarendon</option>
+                        <option>Hanover</option>
+                        <option>Westmoreland</option>
+                        <option>St. James</option>
+                        <option>Trelawny</option>
+                        <option>St. Elizabeth</option>
                     </select>
-
-
-
                 </div>
                 <div class="col-md-2">
                     <label for="properties">Property Type</label>
-                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type" title="<?php if ($_SESSION['property_type'] == null) {
-                                                                                                                            echo 'Select';
-                                                                                                                        } else {
-                                                                                                                            echo $_SESSION['property_type'];
-                                                                                                                        } ?>">
-                        <option <?php if ($_SESSION['property_type'] == 'Vacant Lot') {
-                                    echo 'selected="selected"';
-                                } ?>>Vacant Lot</option>
-                        <option <?php if ($_SESSION['property_type'] == 'Residential') {
-                                    echo 'selected="selected"';
-                                } ?>>Residential</option>
-                        <option <?php if ($_SESSION['property_type'] == 'Commercial') {
-                                    echo 'selected="selected"';
-                                } ?>>Commercial</option>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type_search" title="Select">
+                        <option>Vacant Lot</option>
+                        <option>Residential</option>
+                        <option>Commercial</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="listing">Listing Type</label>
-                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="listing_type" title="<?php if ($_SESSION['listing_type'] == null) {
-                                                                                                                            echo 'Select';
-                                                                                                                        } else {
-                                                                                                                            echo $_SESSION['listing_type'];
-                                                                                                                        } ?>">
-                        <option <?php if ($_SESSION['listing_type'] == 'Rent') {
-                                    echo 'selected="selected"';
-                                } ?>>Rent</option>
-                        <option <?php if ($_SESSION['listing_type'] == 'Purchase') {
-                                    echo 'selected="selected"';
-                                } ?>>Purchase</option>
-                        <option <?php if ($_SESSION['listing_type'] == 'Lease') {
-                                    echo 'selected="selected"';
-                                } ?>>Lease</option>
+                    <select class="selectpicker" data-style="btn-light" data-width="100%" name="listing_type" title="Select">
+                        <option>Rent</option>
+                        <option>Purchase</option>
+                        <option>Lease</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -186,9 +142,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
+                        <input type="text" name="price" class="form-control <?php if (isset($price_min_search_error)) {
                                                                                 echo "is-invalid";
-                                                                            } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
+                                                                            } ?>" type="text" value="<?php echo $_SESSION['price_min_search'] ?>">
                     </div>
 
                 </div>
@@ -198,21 +154,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
+                        <input type="text" name="price" class="form-control <?php if (isset($price_max_search_error)) {
                                                                                 echo "is-invalid";
-                                                                            } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
+                                                                            } ?>" type="text" value="<?php echo $_SESSION['price_max_search'] ?>">
                     </div>
-
                 </div>
                 <div class="col-md-2">
-                    <input class="btn btn-success text-white btn-block rounded-2" role="button" href="./registerproperty.php" name="finish" type="submit" value="Search">
+                    <input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="property_search" type="submit" value="Search">
                 </div>
-
             </div>
         </form>
     </div>
 
-
+    <!-- SEARCH RESULTS -->
     <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
         <div class="container">
             <div class="row mb-5">
@@ -221,8 +175,7 @@
                     <div class="property-entry h-100">
                         <a href="property-details.html" class="property-thumbnail">
                             <div class="offer-type-wrap">
-                                <span class="offer-type bg-danger">Sale</span>
-                                <span class="offer-type bg-success">Rent</span>
+                                <span class="offer-type bg-primary px-3 p-2">Sale</span>
                             </div>
                             <img src="images/img_9.jpg" alt="Image" class="img-fluid">
                         </a>
@@ -534,7 +487,7 @@
         </div>
     </div>
 
-
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -567,29 +520,23 @@
                         <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
                         <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
                     </div>
-
-
-
                 </div>
 
             </div>
             <div class="row mt-5 text-center">
                 <div class="col-md-12">
                     <p>
-
                         Copyright
                         &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                         <script>
                             document.write(new Date().getFullYear());
                         </script> Kelleshia Kinlocke & Denzil Williams
-
                     </p>
                 </div>
 
             </div>
         </div>
     </footer>
-
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -604,7 +551,6 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="js/aos.js"></script>
-
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 

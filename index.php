@@ -25,42 +25,51 @@
 
 <body>
 
-
   <div class="site-loader"></div>
-  <div class="site-wrap"></div>
 
-  <div class="site-navbar mt-4">
-    <div class="container py-1">
-      <div class="row align-items-center">
-        <div class="col-2  col-md-4 col-lg-2 col-sm-8">
-          <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+  <!-- NAVIGATION SECTION -->
+  <div class="site-wrap">
+    <div class="site-mobile-menu blu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
         </div>
-        <div class="col-10  col-md-8 col-lg-10 col-sm-4">
-          <nav class="site-navigation text-right text-md-right" role="navigation">
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    <div class="site-navbar mt-4">
+      <div class="container py-1">
+        <div class="row align-items-center">
+          <div class="col-2  col-md-4 col-lg-2 col-sm-8">
+            <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
+          </div>
+          <div class="col-10  col-md-8 col-lg-10 col-sm-4">
+            <nav class="site-navigation text-right text-md-right" role="navigation">
 
-            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
-            <ul class="site-menu js-clone-nav d-none d-lg-block">
-              <li class="nav-item">
-                <a class="nav-link text-white" href="property-search.php">Search Properties</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="location.php">Add Property</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="my-properties.php">View My Properties</a>
-              </li>
-              <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
-              <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
-            </ul>
-          </nav>
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="property-search.php">Search Properties</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="location.php">Add Property</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="my-properties.php">View My Properties</a>
+                </li>
+                <input class="btn btn-primary rouund" type="button" value="Login" onclick="window.location.href='login.php'">
+                <input class="btn btn-light rouund" type="button" value="Register" onclick="window.location.href='registration.php'">
+              </ul>
+            </nav>
+          </div>
+
         </div>
-
       </div>
     </div>
   </div>
-  </div>
 
+  <!-- IMAGE SLIDER -->
   <div class="slide-one-item home-slider owl-carousel">
     <div class="site-blocks-cover overlay" style="background-image: url(images/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
@@ -86,6 +95,7 @@
     </div>
   </div>
 
+  <!-- VIEW ALL BUTTON -->
   <div class="site-section p-2 bg-white">
     <div class="container">
       <div class="row justify-content-center ">
@@ -101,17 +111,15 @@
     </div>
   </div>
 
+  <!-- LISTINGS SECTION -->
   <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
     <div class="container">
-
       <div class="row mb-5">
-
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="property-entry h-100">
             <a href="property-details.php" class="property-thumbnail">
               <div class="offer-type-wrap">
-                <span class="offer-type bg-danger">Sale</span>
-                <span class="offer-type bg-success">Rent</span>
+                <span class="offer-type bg-primary px-3 p-2">Sale</span>
               </div>
               <img src="images/img_9.jpg" alt="Image" class="img-fluid">
             </a>
@@ -123,17 +131,14 @@
                 <li>
                   <span class="property-specs">Beds</span>
                   <span class="property-specs-number">3 <sup>+</sup></span>
-
                 </li>
                 <li>
                   <span class="property-specs">Baths</span>
                   <span class="property-specs-number">2</span>
-
                 </li>
                 <li>
                   <span class="property-specs">Acres</span>
                   <span class="property-specs-number">9</span>
-
                 </li>
               </ul>
 
@@ -422,6 +427,7 @@
     </div>
   </div>
 
+  <!-- WHY WE ARE THE BEST -->
   <div class="site-section p-5 bg-light">
     <div class="container">
       <div class="row justify-content-center ">
@@ -436,6 +442,7 @@
     </div>
   </div>
 
+  <!-- MORE TEXT CONTENT -->
   <div class="site-section p-5 blu text-white">
     <div class="row">
       <div class="col-md-6 col-lg-4">
@@ -466,7 +473,7 @@
   </div>
   </div>
 
-
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="row">
@@ -475,52 +482,44 @@
             <h3 class="footer-heading mb-4">About Mi Casa</h3>
             <p>Fast growing Real Estate Company at 237 Old Hope Road, Kingston 6, Jamaica. We offer the best solutions to all your real estate problems! We specialize in locating suitable properties and offering expert advice to our clients.</p>
           </div>
-
-
-
         </div>
+
         <div class="col-lg-4">
           <div class="row">
-            <div class="col-md-12">
-
+            <div class="col-md-12" hidden>
+              <h3 class="footer-heading mb-4">Contact</h3>
+              <p class="mb-0 font-weight-bold">Address</p>
+              <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
+              <p class="mb-0 font-weight-bold">Email</p>
+              <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
             </div>
           </div>
-
-
         </div>
 
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Follow Us</h3>
-
           <div>
             <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
             <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
             <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
             <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
           </div>
-
-
-
         </div>
 
       </div>
       <div class="row mt-5 text-center">
         <div class="col-md-12">
           <p>
-
             Copyright
             &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
             <script>
               document.write(new Date().getFullYear());
             </script> Kelleshia Kinlocke & Denzil Williams
-
           </p>
         </div>
-
       </div>
     </div>
   </footer>
-
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -535,7 +534,6 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
 
 </body>
