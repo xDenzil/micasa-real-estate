@@ -71,7 +71,7 @@
                     <div class="bg-white property-body border rounded">
                         <div class="row mb-5">
                             <div class="col-12 mb-4">
-                            <img src="images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
+                                <img src="images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
                             </div>
                             <div class="col-md-6">
                                 <strong class="text-primary h1 mb-3">$1,000,500</strong>
@@ -111,32 +111,33 @@
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-12">
+                            <div class="col-12">
                                 <h2 class="h4 text-black mb-3">Location</h2>
                             </div>
-                        <div class="col">
-                        <span class="caption-text">Address Line 1</span>
-                        <strong class="d-block">5 Red Man Drive</strong>
-                        </div>
-                        <div class="col">
-                        <span class="caption-text">Address Line 2</span>
-                        <strong class="d-block">Mathew Park</strong>
-                        </div>
-                        <div class="col">
-                     
-                        <span class="caption-text">City</span>
-                        <strong class="d-block">Savanna-La-Mar</strong>
-                        </div>
-                        <div class="col">
-                        <span class="caption-text">Parish</span>
-                        <strong class="d-block">Westmoreland</strong>
-                        </div></div>
+                            <div class="col">
+                                <span class="caption-text">Address Line 1</span>
+                                <strong class="d-block">5 Red Man Drive</strong>
+                            </div>
+                            <div class="col">
+                                <span class="caption-text">Address Line 2</span>
+                                <strong class="d-block">Mathew Park</strong>
+                            </div>
+                            <div class="col">
 
-                        
-                        
-                        
-                        
-                        
+                                <span class="caption-text">City</span>
+                                <strong class="d-block">Savanna-La-Mar</strong>
+                            </div>
+                            <div class="col">
+                                <span class="caption-text">Parish</span>
+                                <strong class="d-block">Westmoreland</strong>
+                            </div>
+                        </div>
+
+
+
+
+
+
                         <div class="row no-gutters mt-5">
                             <div class="col-12">
                                 <h2 class="h4 text-black mb-3">Gallery</h2>
@@ -152,7 +153,7 @@
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,22 +161,22 @@
 
                     <div class="bg-white widget border rounded">
 
-                        <h3 class="h4 text-black widget-title mb-3">Contact Owner</h3>
-                        
-                            <div class="form-group">
-                                <h2 class="text-primary">John Brown</h1>
-                            </div>
-                            <div class="form-group">
-                                <p class="font-weight-bold">Email</p>
-                                <p>johnbrown@gmail.com</p>
-                            </div>
-                            <div class="form-group">
-                                <p class="font-weight-bold">Phone</p>
-                                <p>876-399-6224</p>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" id="phone" class="btn btn-primary" value="Send Email">
-                            </div>
+                        <h3 class="h4 text-black widget-title mb-3">Owner</h3>
+
+                        <div class="form-group">
+                            <h2 class="text-primary">John Brown</h1>
+                        </div>
+                        <div class="form-group">
+                            <p class="font-weight-bold">Email</p>
+                            <p>johnbrown@gmail.com</p>
+                        </div>
+                        <div class="form-group">
+                            <p class="font-weight-bold">Phone</p>
+                            <p>876-399-6224</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="phone" class="btn btn-primary" value="Contact">
+                        </div>
                         </form>
                     </div>
                 </div>
