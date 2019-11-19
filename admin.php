@@ -196,6 +196,12 @@ session_start();
                                                                 <span class="property-specs-number">9</span>
 
                                                             </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
+                                                            </li>
                                                         </ul>
 
                                                     </div>
@@ -229,6 +235,12 @@ session_start();
                                                                 <span class="property-specs">Acres</span>
                                                                 <span class="property-specs-number">3</span>
 
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
                                                             </li>
                                                         </ul>
 
@@ -265,6 +277,12 @@ session_start();
                                                                 <span class="property-specs-number">10</span>
 
                                                             </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
+                                                            </li>
                                                         </ul>
 
                                                     </div>
@@ -300,6 +318,12 @@ session_start();
                                                                 <span class="property-specs-number">3.5</span>
 
                                                             </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
+                                                            </li>
                                                         </ul>
 
                                                     </div>
@@ -334,6 +358,12 @@ session_start();
                                                                 <span class="property-specs">Acres</span>
                                                                 <span class="property-specs-number">4</span>
 
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
+                                                            </li>
+                                                            <li>
+                                                            <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
                                                             </li>
                                                         </ul>
 

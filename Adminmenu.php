@@ -114,7 +114,7 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
       <p>Please enter User's ID you want to remove:</p>
-      <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2"  type="search" placeholder="Search User" aria-label="Search">
       </div>
     </div>
   </div>
@@ -128,7 +128,8 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-      <input class="form-control mr-sm-2"  type="search2" placeholder="Search" aria-label="Search">
+      <p>Please enter the Property ID you want to remove:</p>
+      <input class="form-control mr-sm-2"  type="search2" placeholder="Search Property" aria-label="Search">
       </div>
     </div>
   </div>
@@ -142,7 +143,8 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-      <input class="form-control mr-sm-2"  type="search3" placeholder="Search" aria-label="Search">
+      <p>Please enter User's ID you want to edit:</p>
+      <input class="form-control mr-sm-2"  type="search3" placeholder="Search User" aria-label="Search">
     </div>
     </div>
   </div>
@@ -157,6 +159,7 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
       <div class="card-body">
+      <p>Please enter Property ID you want to edit:</p>
       <input class="form-control mr-sm-2"  type="search4" placeholder="Search" aria-label="Search">
     </div>
     </div>
