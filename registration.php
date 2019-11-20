@@ -8,7 +8,20 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     $$key = $value;
   }
 }
-
+//Doesn't work with "include('db_connection.php');" for me
+$conn = mysqli_connect("localhost","root","","mi_casa") or die("<h1>Could not connect to database.</h1>");
+//Check if form is submitted
+if(isset($_POST['new']) && $_POST['new']==1){
+    $username = $_REQUEST['Username'];
+    $firstname =$_REQUEST['FirstName'];
+    $lasttname =$_REQUEST['LastName'];
+    $email = $_REQUEST['Email'];
+    $phonenumber = $_REQUEST['Telephone'];
+    $password = $_REQUEST['Password'];
+    $password2 = $_REQUEST['Password2'];     
+    $query="INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
+    mysqli_query($conn,$query) or die("Could not insert Data");
+}
 
 ?>
 <!DOCTYPE html>
@@ -205,7 +218,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
             <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
           </form>
         </div>
-                                                                                              
 
         <div class="col-lg-4" hidden>
           <div class="p-4 mb-3">
@@ -300,19 +312,3 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 </body>
 
 </html>
-<?php
-          //Doesn't work with "include('db_connection.php');" for me
-          $conn = mysqli_connect("localhost","root","","mi_casa") or die("<h1>Could not connect to database.</h1>");
-          //Check if form is submitted
-          if (isset($_POST['submit']))
-          {
-            $query="INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password, Password2)VALUES('$firstname','$lastname','$email','$phonenumber','$username','$password', '$password2')";
-        //check for quotation error
-        echo $query;
-        mysqli_query($query) or die ("Could not insert Data");
-
-        mysqli_close($conn);
-          }
-          else{}
-
-        ?>
