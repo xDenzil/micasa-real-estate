@@ -94,7 +94,6 @@
       </div>
     </div>
   </div>
-
   <!-- VIEW ALL BUTTON -->
   <div class="site-section p-2 bg-white">
     <div class="container">
@@ -110,7 +109,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- LISTINGS SECTION -->
   <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
     <div class="container">
