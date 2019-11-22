@@ -24,11 +24,9 @@
                                 <a class="nav-link text-white" href="property-search.php">Search Properties</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="add-property.php">Add Property</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-white" href="user-dashboard.php">My Properties</a>
                             </li>
+                            <input class="btn btn-primary rouund" type="button" value="Add Property" onclick="window.location.href='add-property.php'">
                             <input class="btn btn-light rouund" type="button" value="Logout" onclick="window.location.href='scripts/logout.php'">
                         </ul>
                     </nav>
