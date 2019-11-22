@@ -109,7 +109,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- LISTINGS SECTION -->
   <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
     <div class="container">
