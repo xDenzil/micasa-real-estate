@@ -66,7 +66,7 @@
                     <div class="bg-white property-body border rounded">
                         <div class="row mb-5">
                             <div class="col-12 mb-4">
-                                <img src="images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
+                                <img src="assets/images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
                             </div>
                             <div class="col-md-6">
                                 <strong class="text-primary h1 mb-3">$1,000,500</strong>
@@ -138,16 +138,16 @@
                                 <h2 class="h4 text-black mb-3">Gallery</h2>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3">
-                                <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                                <a href="assets/images/img_1.jpg" class="image-popup gal-item"><img src="assets/images/img_1.jpg" alt="Image" class="img-fluid"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3">
-                                <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
+                                <a href="assets/images/img_2.jpg" class="image-popup gal-item"><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3">
-                                <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
+                                <a href="assets/images/img_3.jpg" class="image-popup gal-item"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3">
-                                <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
+                                <a href="assets/images/img_4.jpg" class="image-popup gal-item"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>

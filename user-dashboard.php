@@ -102,7 +102,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.php" class="property-thumbnail">
-                            <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Mona Heights</h2>
@@ -136,7 +136,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.php" class="property-thumbnail">
-                            <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Mona Heights</h2>
@@ -170,7 +170,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="property-details.php" class="property-thumbnail">
-                            <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Mona Heights</h2>

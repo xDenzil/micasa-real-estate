@@ -9,18 +9,18 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
   }
 }
 //Doesn't work with "include('db_connection.php');" for me
-$conn = mysqli_connect("localhost","root","","mi_casa") or die("<h1>Could not connect to database.</h1>");
+$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
 //Check if form is submitted
-if(isset($_POST['new']) && $_POST['new']==1){
-    $username = $_REQUEST['Username'];
-    $firstname =$_REQUEST['FirstName'];
-    $lasttname =$_REQUEST['LastName'];
-    $email = $_REQUEST['Email'];
-    $phonenumber = $_REQUEST['Telephone'];
-    $password = $_REQUEST['Password'];
-    $password2 = $_REQUEST['Password2'];     
-    $query="INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
-    mysqli_query($conn,$query) or die("Could not insert Data");
+if (isset($_POST['new']) && $_POST['new'] == 1) {
+  $username = $_REQUEST['Username'];
+  $firstname = $_REQUEST['FirstName'];
+  $lasttname = $_REQUEST['LastName'];
+  $email = $_REQUEST['Email'];
+  $phonenumber = $_REQUEST['Telephone'];
+  $password = $_REQUEST['Password'];
+  $password2 = $_REQUEST['Password2'];
+  $query = "INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
+  mysqli_query($conn, $query) or die("Could not insert Data");
 }
 
 ?>
@@ -97,7 +97,7 @@ if(isset($_POST['new']) && $_POST['new']==1){
   </div>
 
   <!-- IMAGE HEADER -->
-  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(assets/images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
     <div class="row align-items-center justify-content-center text-center">
       <div class="col-md-10">
