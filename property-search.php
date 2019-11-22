@@ -67,7 +67,7 @@
 
     <!-- IMAGE SLIDER -->
     <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="site-blocks-cover overlay" style="background-image: url(assets/images/bg_def4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center">
                     <div class="col-md-10">
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="site-blocks-cover overlay" style="background-image: url(images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="site-blocks-cover overlay" style="background-image: url(assets/images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center">
                     <div class="col-md-10">
@@ -172,7 +172,7 @@
                             <div class="offer-type-wrap">
                                 <span class="offer-type bg-primary px-3 p-2">Sale</span>
                             </div>
-                            <img src="images/img_9.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Mona Heights</h2>
@@ -207,7 +207,7 @@
                                 <span class="offer-type bg-danger">Sale</span>
                                 <span class="offer-type bg-success">Rent</span>
                             </div>
-                            <img src="images/img_11.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_11.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Runaway Bay</a></h2>
@@ -241,7 +241,7 @@
                             <div class="offer-type-wrap">
                                 <span class="offer-type bg-info">Lease</span>
                             </div>
-                            <img src="images/img_12.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_12.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Beverley Hills</a></h2>
@@ -276,7 +276,7 @@
                                 <span class="offer-type bg-danger">Sale</span>
                                 <span class="offer-type bg-success">Rent</span>
                             </div>
-                            <img src="images/img_4.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_4.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Pennycooke Heights</a></h2>
@@ -311,7 +311,7 @@
                                 <span class="offer-type bg-danger">Sale</span>
                                 <span class="offer-type bg-success">Rent</span>
                             </div>
-                            <img src="images/img_5.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_5.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title"><a href="property-details.html">Doctors Cave</a></h2>
@@ -345,7 +345,7 @@
                             <div class="offer-type-wrap">
                                 <span class="offer-type bg-info">Lease</span>
                             </div>
-                            <img src="images/img_6.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_6.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Falmouth</a></h2>
@@ -380,7 +380,7 @@
                                 <span class="offer-type bg-danger">Sale</span>
                                 <span class="offer-type bg-success">Rent</span>
                             </div>
-                            <img src="images/img_10.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_10.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Treasure Beach</a></h2>
@@ -415,7 +415,7 @@
                                 <span class="offer-type bg-danger">Sale</span>
                                 <span class="offer-type bg-success">Rent</span>
                             </div>
-                            <img src="images/img_8.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_8.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Old Habour Bay</a></h2>
@@ -450,7 +450,7 @@
                             <div class="offer-type-wrap">
                                 <span class="offer-type bg-info">Lease</span>
                             </div>
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                            <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
                             <h2 class="property-title">Mona Height</a></h2>
