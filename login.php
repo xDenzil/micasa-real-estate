@@ -68,9 +68,10 @@ session_start();
 
                     <form action="scripts/login.php" method="POST" class="p-4">
                         <div class="form-group"><label>Username</label><input required class="form-control 
-                        <?php if (isset($_SESSION['login_error'])) {
+                        <?php if (isset($_SESSION['login_error'])) { //If Log-In Error is Set in the session, Set class to 'invalid', this highlights the box with a red border
                             echo "is-invalid";
-                        } ?>" type="text" name="username_try" value="<?php echo $_SESSION['username_try'] ?>"></div>
+                        } ?>" type="text" name="username_try" value="<?php echo $_SESSION['username_try'] //Keep username attempt in input box after reload 
+                                                                        ?>"></div>
 
 
                         <div class="form-group"><label>Password</label><input required class="form-control 

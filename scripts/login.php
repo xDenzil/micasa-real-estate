@@ -15,10 +15,10 @@ if (isset($_POST['login'])) {
 
     if (mysqli_num_rows($result) != 0) {
         header("Location: ../user-dashboard.php");
-        $_SESSION['login_error'] = null; //If a result was returned
-        $_SESSION['username_try'] = null;
+        $_SESSION['login_error'] = null; // If a result was returned, reset login error in case it was set previously
+        $_SESSION['username_try'] = null; // If a result was returned, reset username try because the user got logged in so this variable is no longer needed
     } else {
-        $_SESSION['login_error'] = '<p class="error small-text">Incorrect username / password.</p>';
-        header("Location: ../login.php"); // If a result was not returned
+        $_SESSION['login_error'] = '<p class="error small-text">Incorrect username / password.</p>'; // Error message output if login fails
+        header("Location: ../login.php"); // If a result was not returned go back to the login page
     }
 }
