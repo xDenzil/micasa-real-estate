@@ -1,0 +1,2 @@
+INSERT INTO `register`(`RegID`,`FirstName`, `LastName`, `Email`, `Telephone`, `Username`, `Password`, `Password2`) 
+VALUES (‘023','John','Brown','johnbrown@gmail.com','8763996444','johnb','password','password')

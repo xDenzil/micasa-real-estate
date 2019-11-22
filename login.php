@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,23 +66,29 @@
             <div class="row justify-content-center">
                 <div class="col-md-4 bg-white m-5 rounded">
 
-                    <form action="./validations/regisvalid.php" method="POST" class="p-4">
-                        <div class="form-group"><label>Email Address</label><input class="form-control <?php if (isset($password_error)) {
-                                                                                                            echo "is-invalid";
-                                                                                                        } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
-                        <div class="form-group"><label>Password</label><input class="form-control <?php if (isset($passwordconfirm_error)) {
-                                                                                                        echo "is-invalid";
-                                                                                                    } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
+                    <form action="scripts/login.php" method="POST" class="p-4">
+                        <div class="form-group"><label>Email Address</label><input class="form-control 
+                        <?php if (isset($_SESSION['login_error'])) {
+                            echo "is-invalid";
+                        } ?>" type="text" name="username_try" value="<?php echo $_SESSION['username_try'] ?>"></div>
 
 
-                        <!--- CONTINUE BUTTON --->
+                        <div class="form-group"><label>Password</label><input class="form-control 
+                        <?php if (isset($_SESSION['login_error'])) {
+                            echo "is-invalid";
+                        } ?>" type="password" name="password_try"></div>
+
+                        <?php if (isset($_SESSION['login_error'])) {
+                            echo $_SESSION['login_error'];
+                        } ?>
+
+
+                        <!--- LOGIN BUTTON --->
                         <input class="btn btn-primary roundbut col-md-12 mt-4 mb-3" type="submit" name="login" value="Login"></input>
                     </form>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <!-- FOOTER -->
