@@ -33,6 +33,7 @@ session_start();
 
 <body>
 
+    <!-- NAVIGATION -->
 
     <?php
     switch ($_SESSION['userLevel']) {
@@ -48,6 +49,8 @@ session_start();
             //etc and default nav below
     }
     ?>
+
+        <!-- LOGIN -->
 
         <div class="section blu">
             <div class="container">

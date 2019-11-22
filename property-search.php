@@ -1,6 +1,38 @@
 <?php
 session_start();
 
+
+if (isset($_GET['property_search'])) {
+
+    //issempty($_GET['parish']) ? $parish_search = 'dog' : $parish_search = 'cat';
+    $listing_type_search = $_GET['listing_type'];
+    $parish_search = $_GET['parish'];
+    $property_type_search = $_GET['property_type'];
+    $min_price_search = $_GET['min_price'];
+    $max_price_search = $_GET['max_price'];
+
+    empty($parish_search) ? $parish_sql = "AND Parish LIKE '%'" : $parish_sql = "AND Parish = '$parish_search'";
+    empty($listing_type_search) ? $listing_sql = "AND ListingType LIKE '%'" : $listing_sql = "AND ListingType = '$listing_type_search'";
+    empty($property_type_search) ? $property_type_sql = "AND PropertyType LIKE '%'" : $property_type_sql = "AND PropertyType = '$property_type_search'";
+    empty($min_price_search) ? $min_price_search = 0 : $min_price_search = $min_price_search;
+    empty($max_price_search) ? $max_price_search = 0 : $max_price_search = $max_price_search;
+
+    if ($min_price_search == 0 & $max_price_search == 0) {
+        $price_sql = '';
+    } else if ($max_price_search == 0) {
+        $price_sql = "AND Price >= $min_price_search";
+    } else if ($min_price_search == 0) {
+        $price_sql = "AND Price <= $max_price_search";
+    } else {
+        $price_sql = "AND Price >= $min_price_search AND Price <= $max_price_search";
+    }
+
+
+    include './database/db_connection.php';
+    $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -53,9 +85,7 @@ session_start();
                 <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
-                            <!-- <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>
-                        <h1 class="mb-2">65 Garden Blvd</h1>
-                        <p class="mb-5"><strong class="h2 text-success font-weight-bold">$132,250,500</strong></p> -->
+
                         </div>
                     </div>
                 </div>
@@ -65,9 +95,7 @@ session_start();
                 <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
-                            <!-- <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Sale</span>
-                        <h1 class="mb-2">Beverley Hills, JM</h1>
-                        <p class="mb-5"><strong class="h2 text-success font-weight-bold">$180,000,500</strong></p> -->
+
                         </div>
                     </div>
                 </div>
@@ -77,11 +105,11 @@ session_start();
 
         <!-- SEARCH FIELDS -->
         <div class="row justify-content-center" style="background-color:#F0E7D8;">
-            <form class="form-search col-md-12" method="POST" action="./validations/propertvalid.php" style="margin-top: -100px;">
+            <form class="form-search col-md-12" method="GET" style="margin-top: -100px;">
                 <div class="row  align-items-end">
                     <div class="col-md-2">
                         <label>Parish</label>
-                        <select class="selectpicker" data-style="btn-light" data-width="100%" name="parish_search" title="Select Parish">
+                        <select class="selectpicker" data-style="btn-light" data-width="100%" name="parish" title="Select Parish">
                             <option>Kingston & St. Andrew</option>
                             <option>Portland</option>
                             <option>St. Thomas</option>
@@ -99,7 +127,7 @@ session_start();
                     </div>
                     <div class="col-md-2">
                         <label for="properties">Property Type</label>
-                        <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type_search" title="Select">
+                        <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type" title="Select">
                             <option>Vacant Lot</option>
                             <option>Residential</option>
                             <option>Commercial</option>
@@ -119,9 +147,9 @@ session_start();
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="text" name="price" class="form-control <?php if (isset($price_min_search_error)) {
-                                                                                    echo "is-invalid";
-                                                                                } ?>" type="text" value="<?php echo $_SESSION['price_min_search'] ?>">
+                            <input type="text" name="min_price" class="form-control <?php if (isset($price_min_search_error)) {
+                                                                                        echo "is-invalid";
+                                                                                    } ?>" type="text" value="<?php echo $_SESSION['price_min_search'] ?>">
                         </div>
 
                     </div>
@@ -131,13 +159,13 @@ session_start();
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="text" name="price" class="form-control <?php if (isset($price_max_search_error)) {
-                                                                                    echo "is-invalid";
-                                                                                } ?>" type="text" value="<?php echo $_SESSION['price_max_search'] ?>">
+                            <input type="text" name="max_price" class="form-control <?php if (isset($price_max_search_error)) {
+                                                                                        echo "is-invalid";
+                                                                                    } ?>" type="text" value="<?php echo $_SESSION['price_max_search'] ?>">
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="property_search" type="submit" value="Search">
+                        <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="property_search" type="submit" value="Search">
                     </div>
                 </div>
             </form>
@@ -147,318 +175,59 @@ session_start();
         <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
             <div class="container">
                 <div class="row mb-5">
+
+
                     <!-- Properties -->
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-primary px-3 p-2">Sale</span>
+                    <?php
+
+                    if (mysqli_num_rows($result) != 0) {
+                        //header('Location: ../property_search.php');
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo ' <div class="col-md-4 col-lg-3 mb-4">
+                                <div class="property-entry h-100">
+                                    <a href="property-details.html" class="property-thumbnail">
+                                        <div class="offer-type-wrap">
+                                            <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
+                                        </div>
+                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                                    </a>
+                                    <div class="p-4 property-body">
+                                        <h2 class="property-title">' . $row['PropertyID'] . '</h2>
+                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['Parish'] . '</span>
+                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                            <li>
+                                                <span class="property-specs">Beds</span>
+                                                <span class="property-specs-number">' . $row['NumBedroom'] . '</span>
+        
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Baths</span>
+                                                <span class="property-specs-number">' . $row['NumBathroom'] . '</span>
+        
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Acres</span>
+                                                <span class="property-specs-number">' . $row['Size'] . '</span>
+        
+                                            </li>
+                                        </ul>
+        
+                                    </div>
                                 </div>
-                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Mona Heights</h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
+                            </div>';
+                        }
+                        //$_SESSION['search_results'] = $row;
+                    } else {
+                        if (isset($_GET['property_search'])) {
+                            echo 'Sorry.. Nothing Found';
+                        } else {
+                            echo 'Please make a search.';
+                        }
+                    }
 
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
+                    ?>
 
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">9</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-danger">Sale</span>
-                                    <span class="offer-type bg-success">Rent</span>
-                                </div>
-                                <img src="assets/images/img_11.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Runaway Bay</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>87 Gold Road, Runaway Bay, St Ann, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$200,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">4 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">16</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-info">Lease</span>
-                                </div>
-                                <img src="assets/images/img_12.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Beverley Hills</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>86 Kingman Avenue, Beverley Hills, St Andrew, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$150,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">6</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-danger">Sale</span>
-                                    <span class="offer-type bg-success">Rent</span>
-                                </div>
-                                <img src="assets/images/img_4.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Pennycooke Heights</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 25 Pennywise Road, Montego Bay, St James, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$210,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">6 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">4</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">16</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-danger">Sale</span>
-                                    <span class="offer-type bg-success">Rent</span>
-                                </div>
-                                <img src="assets/images/img_5.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title"><a href="property-details.html">Doctors Cave</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 12 Hot Head Avenue, Montego Bay, St James, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$120,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">2 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">1</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">1.6</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-info">Lease</span>
-                                </div>
-                                <img src="assets/images/img_6.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Falmouth</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">3</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-danger">Sale</span>
-                                    <span class="offer-type bg-success">Rent</span>
-                                </div>
-                                <img src="assets/images/img_10.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Treasure Beach</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$168,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">5 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">4</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">10</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-danger">Sale</span>
-                                    <span class="offer-type bg-success">Rent</span>
-                                </div>
-                                <img src="assets/images/img_8.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Old Habour Bay</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$142,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">1</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">SQ FT</span>
-                                        <span class="property-specs-number">3.5</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.html" class="property-thumbnail">
-                                <div class="offer-type-wrap">
-                                    <span class="offer-type bg-info">Lease</span>
-                                </div>
-                                <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Mona Height</a></h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$113,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">2<sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">1</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">4</span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -466,6 +235,7 @@ session_start();
 
         <!-- FOOTER -->
         <?php include 'blocks/footer.php'; ?>
+
 </body>
 
 </html>
