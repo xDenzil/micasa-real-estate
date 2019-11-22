@@ -67,7 +67,7 @@ session_start();
                 <div class="col-md-4 bg-white m-5 rounded">
 
                     <form action="scripts/login.php" method="POST" class="p-4">
-                        <div class="form-group"><label>Email Address</label><input required class="form-control 
+                        <div class="form-group"><label>Username</label><input required class="form-control 
                         <?php if (isset($_SESSION['login_error'])) {
                             echo "is-invalid";
                         } ?>" type="text" name="username_try" value="<?php echo $_SESSION['username_try'] ?>"></div>
