@@ -75,6 +75,8 @@ session_start();
                                 echo $_SESSION['login_error'];
                             } ?>
 
+                            <p>Don't have an account? <a href="registration.php">Sign Up</a></p>
+
 
                             <!--- LOGIN BUTTON --->
                             <input class="btn btn-primary roundbut col-md-12 mt-4 mb-3" type="submit" name="login" value="Login"></input>
