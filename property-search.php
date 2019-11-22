@@ -4,7 +4,18 @@ session_start();
 
 if (isset($_GET['property_search'])) {
 
-    //issempty($_GET['parish']) ? $parish_search = 'dog' : $parish_search = 'cat';
+    // SEARCH FUNCTION 
+    /*
+    This search function works by storing the values from the GET into variables,
+    then checking if those variables are empty. A variable is created that will
+    store piece of the SQL string, if the GET was empty, it will append LIKE'%' to 
+    the SQL String, which will basically show all DB results, otherwise, it will
+    append AND $search='value' to the sql string, which will show results for the
+    filters the user selected. It's complicated and took me a long time to figure
+    out, not really good at explaining it.. -Denzil
+
+    */
+
     $listing_type_search = $_GET['listing_type'];
     $parish_search = $_GET['parish'];
     $property_type_search = $_GET['property_type'];
@@ -28,7 +39,7 @@ if (isset($_GET['property_search'])) {
     }
 
 
-    include './database/db_connection.php';
+    include './database/db_connection.php'; // Connect to Database
     $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
 }
@@ -220,7 +231,7 @@ if (isset($_GET['property_search'])) {
                         //$_SESSION['search_results'] = $row;
                     } else {
                         if (isset($_GET['property_search'])) {
-                            echo 'Sorry.. Nothing Found';
+                            echo 'Sorry.. Nothing Found.';
                         } else {
                             echo 'Please make a search.';
                         }
