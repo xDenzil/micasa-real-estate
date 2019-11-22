@@ -1,7 +1,10 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
+
+session_start();
+if ($_SESSION[userLevel] == null) { //If user is a guest, they cannot add a property, so redirect to login page
+  header('Location: login.php');
 }
+
 
 if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
@@ -269,20 +272,20 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
                 <input type="number" name="bedrooms" min="0" class="form-control <?php if (isset($bedrooms_error)) {
                                                                                     echo "is-invalid";
                                                                                   } ?>" type="text" value="<?php if (!isset($_SESSION['bedrooms'])) {
-                                                                                                            echo '0';
-                                                                                                          } else {
-                                                                                                            echo $_SESSION['bedrooms'];
-                                                                                                          } ?>">
+                                                                                                              echo '0';
+                                                                                                            } else {
+                                                                                                              echo $_SESSION['bedrooms'];
+                                                                                                            } ?>">
               </div>
               <div class="col-md-3">
                 <label for="bathrooms"> # of Bathrooms</label>
                 <input type="number" name="bathrooms" min="0" class="form-control <?php if (isset($bathrooms_error)) {
                                                                                     echo "is-invalid";
                                                                                   } ?>" type="text" value="<?php if (!isset($_SESSION['bathrooms'])) {
-                                                                                                            echo '0';
-                                                                                                          } else {
-                                                                                                            echo $_SESSION['bathrooms'];
-                                                                                                          } ?>">
+                                                                                                              echo '0';
+                                                                                                            } else {
+                                                                                                              echo $_SESSION['bathrooms'];
+                                                                                                            } ?>">
               </div>
               <div class="col-md-3">
                 <label for="price">Price</label>
