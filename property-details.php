@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+$propertyID = $_GET['PropID']; //Getting Property ID to use in the Query from the GET in Link
+
+include './database/db_connection.php'; // Connect to Database
+$query = "SELECT * FROM `property` WHERE PropertyID='$propertyID';"; // To Display the Property Info
+$result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+$query2 = "SELECT * FROM `register` WHERE RegID='$propertyID';"; // To Display the Owner Info
+$result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
 
 
 ?>
@@ -46,120 +56,142 @@
     }
     ?>
 
-        <br><br><br>
-        <div class="site-section site-section-sm">
+        <div class="site-section p-2 bg-black pt-4" name="nav-bg" style="height:120px;"></div>
+        <div class="site-section site-section-sm" style="background-color:#F0E7D8;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="bg-white property-body border rounded">
-                            <div class="row mb-5">
-                                <div class="col-12 mb-4">
-                                    <img src="assets/images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
+
+                        <?php
+
+                        if (mysqli_num_rows($result) != 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<div class="bg-white property-body border rounded">
+                                <div class="row mb-5">
+                                    <div class="col-12 mb-4">
+                                        <img src="assets/images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong class="text-primary h1 mb-3">$' . $row['Price'] . '</strong>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
+                                            <li>
+                                                <span class="property-specs">Beds</span>
+                                                <span class="property-specs-number">' . $row['NumBedroom'] . '</span>
+    
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Baths</span>
+                                                <span class="property-specs-number">' . $row['NumBathroom'] . '</span>
+    
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Acres</span>
+                                                <span class="property-specs-number">' . $row['Size'] . '</span>
+    
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <strong class="text-primary h1 mb-3">$1,000,500</strong>
+                                <div class="row mb-5">
+                                    <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
+                                        <span class="d-inline-block text-black mb-0 caption-text">Property Type</span>
+                                        <strong class="d-block">' . $row['PropertyType'] . '</strong>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
+                                        <span class="d-inline-block text-black mb-0 caption-text">Building Type</span>
+                                        <strong class="d-block">' . $row['BuildingType'] . '</strong>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
+                                        <span class="d-inline-block text-black mb-0 caption-text">Listing For</span>
+                                        <strong class="d-block">' . $row['ListingType'] . '</strong>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
-                                        <li>
-                                            <span class="property-specs">Beds</span>
-                                            <span class="property-specs-number">2 <sup>+</sup></span>
-
-                                        </li>
-                                        <li>
-                                            <span class="property-specs">Baths</span>
-                                            <span class="property-specs-number">2</span>
-
-                                        </li>
-                                        <li>
-                                            <span class="property-specs">Acres</span>
-                                            <span class="property-specs-number">7,000</span>
-
-                                        </li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="h4 text-black mb-3">Location</h2>
+                                    </div>
+                                    <div class="col">
+                                        <span class="caption-text">Address Line 1</span>
+                                        <strong class="d-block">' . $row['Address1'] . '</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span class="caption-text">Address Line 2</span>
+                                        <strong class="d-block">' . $row['Address2'] . '</strong>
+                                    </div>
+                                    <div class="col">
+    
+                                        <span class="caption-text">City</span>
+                                        <strong class="d-block">' . $row['City'] . '</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span class="caption-text">Parish</span>
+                                        <strong class="d-block">' . $row['Parish'] . '</strong>
+                                    </div>
+                                </div>
+    
+    
+    
+    
+    
+    
+                                <div class="row no-gutters mt-5">
+                                    <div class="col-12">
+                                        <h2 class="h4 text-black mb-3">Gallery</h2>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <a href="assets/images/img_1.jpg" class="image-popup gal-item"><img src="assets/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <a href="assets/images/img_2.jpg" class="image-popup gal-item"><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <a href="assets/images/img_3.jpg" class="image-popup gal-item"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <a href="assets/images/img_4.jpg" class="image-popup gal-item"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
-                                    <span class="d-inline-block text-black mb-0 caption-text">Property Type</span>
-                                    <strong class="d-block">Residential</strong>
-                                </div>
-                                <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
-                                    <span class="d-inline-block text-black mb-0 caption-text">Building Type</span>
-                                    <strong class="d-block">Apartment</strong>
-                                </div>
-                                <div class="col-md-6 col-lg-4 border-bottom border-top py-3">
-                                    <span class="d-inline-block text-black mb-0 caption-text">Listing For</span>
-                                    <strong class="d-block">Rent</strong>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="h4 text-black mb-3">Location</h2>
-                                </div>
-                                <div class="col">
-                                    <span class="caption-text">Address Line 1</span>
-                                    <strong class="d-block">5 Red Man Drive</strong>
-                                </div>
-                                <div class="col">
-                                    <span class="caption-text">Address Line 2</span>
-                                    <strong class="d-block">Mathew Park</strong>
-                                </div>
-                                <div class="col">
+    ';
+                            }
+                        } else {
+                            echo '';
+                        }
 
-                                    <span class="caption-text">City</span>
-                                    <strong class="d-block">Savanna-La-Mar</strong>
-                                </div>
-                                <div class="col">
-                                    <span class="caption-text">Parish</span>
-                                    <strong class="d-block">Westmoreland</strong>
-                                </div>
-                            </div>
+                        ?>
 
-
-
-
-
-
-                            <div class="row no-gutters mt-5">
-                                <div class="col-12">
-                                    <h2 class="h4 text-black mb-3">Gallery</h2>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <a href="assets/images/img_1.jpg" class="image-popup gal-item"><img src="assets/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <a href="assets/images/img_2.jpg" class="image-popup gal-item"><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <a href="assets/images/img_3.jpg" class="image-popup gal-item"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-lg-3">
-                                    <a href="assets/images/img_4.jpg" class="image-popup gal-item"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-lg-4">
 
                         <div class="bg-white widget border rounded">
 
                             <h3 class="h4 text-black widget-title mb-3">Owner</h3>
+                            <?php
+                            if (mysqli_num_rows($result2) != 0) {
+                                //header('Location: ../property_search.php');
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    echo '<div class="form-group">
+                                    <h2 class="text-primary">' . $row2['FirstName'] . " " . $row2['LastName'] . '</h1>
+                                </div>
+                                <div class="form-group">
+                                    <p class="font-weight-bold">Email</p>
+                                    <p>' . $row2['Email'] . '</p>
+                                </div>
+                                <div class="form-group">
+                                    <p class="font-weight-bold">Phone</p>
+                                    <p>' . $row2['Telephone'] . '</p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="button" id="phone" class="btn btn-primary" value="Contact" onclick="window.location.href=\'mailto:' . $row2['Email'] . '\'">
+                                </div>';
+                                }
+                            } else {
+                                echo ' Something went wrong.';
+                            }
 
-                            <div class="form-group">
-                                <h2 class="text-primary">John Brown</h1>
-                            </div>
-                            <div class="form-group">
-                                <p class="font-weight-bold">Email</p>
-                                <p>johnbrown@gmail.com</p>
-                            </div>
-                            <div class="form-group">
-                                <p class="font-weight-bold">Phone</p>
-                                <p>876-399-6224</p>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" id="phone" class="btn btn-primary" value="Contact">
-                            </div>
+                            ?>
                             </form>
                         </div>
                     </div>

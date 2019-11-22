@@ -13,7 +13,6 @@ if (isset($_GET['property_search'])) {
     append AND $search='value' to the sql string, which will show results for the
     filters the user selected. It's complicated and took me a long time to figure
     out, not really good at explaining it.. -Denzil
-
     */
 
     $listing_type_search = $_GET['listing_type'];
@@ -196,15 +195,15 @@ if (isset($_GET['property_search'])) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo ' <div class="col-md-4 col-lg-3 mb-4">
                                 <div class="property-entry h-100">
-                                    <a href="property-details.html" class="property-thumbnail">
+                                    <a href="property-details.php?propID=' . $row['PropertyID'] . '" class="property-thumbnail">
                                         <div class="offer-type-wrap">
                                             <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                                         </div>
                                         <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
                                     </a>
                                     <div class="p-4 property-body">
-                                        <h2 class="property-title">' . $row['PropertyID'] . '</h2>
-                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['Parish'] . '</span>
+                                        <h2 class="property-title">' . $row['Address1'] . '</h2>
+                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
                                         <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
                                         <ul class="property-specs-wrap mb-3 mb-lg-0">
                                             <li>

@@ -3,13 +3,15 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
-    foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
-        $$key = $value;
-    }
-}
+$loggedInUser = $_SESSION['currentUserID'];
+
+include './database/db_connection.php'; // Connect to Database
+$query = "SELECT * FROM `property` WHERE PropertyID='$loggedInUser';"; // To Display the Property Info
+$result = mysqli_query($conn, $query) or die("Failed to get data.");
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,107 +78,62 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
                 <div class="row"></div>
                 <div class="row mb-5">
 
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.php" class="property-thumbnail">
-                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Mona Heights</h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
+                    <!-- Properties -->
+                    <?php
 
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
+                    if (mysqli_num_rows($result) != 0) {
+                        //header('Location: ../property_search.php');
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo ' <div class="col-md-4 col-lg-3 mb-4">
+                                <div class="property-entry h-100">
+                                    <a href="property-details.php?propID=' . $row['PropertyID'] . '" class="property-thumbnail">
+                                        <div class="offer-type-wrap">
+                                            <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
+                                        </div>
+                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                                    </a>
+                                    <div class="p-4 property-body">
+                                        <h2 class="property-title">' . $row['Address1'] . '</h2>
+                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . ', Jamaica</span>
+                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                            <li>
+                                                <span class="property-specs">Beds</span>
+                                                <span class="property-specs-number">' . $row['NumBedroom'] . '</span>
+        
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Baths</span>
+                                                <span class="property-specs-number">' . $row['NumBathroom'] . '</span>
+        
+                                            </li>
+                                            <li>
+                                                <span class="property-specs">Acres</span>
+                                                <span class="property-specs-number">' . $row['Size'] . '</span>
+        
+                                            </li>
+                                        </ul>
+                                        <br>
 
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">9</span>
-
-                                    </li>
-                                </ul>
                                 <div class="row">
-                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
+                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.php" class="property-thumbnail">
-                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Mona Heights</h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">9</span>
-
-                                    </li>
-                                </ul>
-                                <div class="row">
-                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div>';
+                        }
+                        //$_SESSION['search_results'] = $row;
+                    } else {
+                        if (isset($_GET['property_search'])) {
+                            echo 'Sorry.. Nothing Found.';
+                        } else {
+                            echo 'Please make a search.';
+                        }
+                    }
 
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="property-entry h-100">
-                            <a href="property-details.php" class="property-thumbnail">
-                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="p-4 property-body">
-                                <h2 class="property-title">Mona Heights</h2>
-                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                    <li>
-                                        <span class="property-specs">Beds</span>
-                                        <span class="property-specs-number">3 <sup>+</sup></span>
+                    ?>
 
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Baths</span>
-                                        <span class="property-specs-number">2</span>
-
-                                    </li>
-                                    <li>
-                                        <span class="property-specs">Acres</span>
-                                        <span class="property-specs-number">9</span>
-
-                                    </li>
-                                </ul>
-                                <div class="row">
-                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
