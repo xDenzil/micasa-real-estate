@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2019 at 03:36 PM
+-- Generation Time: Nov 22, 2019 at 02:11 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.18
 
@@ -80,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `propertyimage` (
 
 DROP TABLE IF EXISTS `register`;
 CREATE TABLE IF NOT EXISTS `register` (
-  `RegID` int(5) NOT NULL,
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
@@ -88,31 +87,12 @@ CREATE TABLE IF NOT EXISTS `register` (
   `Username` varchar(10) NOT NULL,
   `Password` varchar(10) NOT NULL,
   `Password2` varchar(10) NOT NULL,
-  PRIMARY KEY (`RegID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `Username` varchar(10) NOT NULL,
-  `Password` varchar(10) NOT NULL,
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `property`
---
-ALTER TABLE `property`
-  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `register` (`RegID`);
 
 --
 -- Constraints for table `propertydetail`

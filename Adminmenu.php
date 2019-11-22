@@ -1,11 +1,13 @@
 <?php
 session_start();
 //Doesn't work with include('db_connection.php');
-$conn = mysqli_connect("localhost","root","","mi_casa") or die("<h1>Could not connect to database.</h1>");
+include 'db_connection.php';
+$conn = OpenCon();
+//$conn = mysqli_connect("localhost","root","","mi_casa") or die("<h1>Could not connect to database.</h1>");
 
 // get results from database
 $query = "SELECT * FROM register";
-$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+$result = mysqli_query($query) or die("<h1>Could not connect to database.</h1>");
 
 
 
