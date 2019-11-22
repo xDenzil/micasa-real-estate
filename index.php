@@ -53,7 +53,7 @@
                   <a class="nav-link text-white" href="property-search.php">Search Properties</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="location.php">Add Property</a>
+                  <a class="nav-link text-white" href="add-property.php">Add Property</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="user-dashboard.php">My Properties</a>

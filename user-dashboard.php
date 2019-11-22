@@ -85,7 +85,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
                     <div class="site-section-title">
                         <br>
                         <h5>My Properties</h5>
-                        <input class="btn btn-primary rouund" type="button" value="Add New" onclick="window.location.href='location.php'">
+                        <input class="btn btn-primary rouund" type="button" value="Add New" onclick="window.location.href='add-property.php'">
                     </div>
                     <p></p>
                 </div>
