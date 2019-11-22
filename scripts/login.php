@@ -10,12 +10,11 @@ if (isset($_POST['login'])) {
 
     include '../database/db_connection.php';
     $query = "SELECT * FROM `register` WHERE Username='$usernametry' AND Password='$password_try';";
-    $result = mysqli_query($conn, $query) or die("Failed to get data");
-
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
 
     if (mysqli_num_rows($result) != 0) {
-        header("Location: ../index.php");
+        header("Location: ../user-dashboard.php");
         $_SESSION['login_error'] = null; //If a result was returned
         $_SESSION['username_try'] = null;
     } else {
