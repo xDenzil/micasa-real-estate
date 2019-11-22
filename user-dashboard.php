@@ -39,175 +39,152 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
 
 
     <!-- NAVIGATION -->
-    <div class="site-wrap">
-        <div class="site-mobile-menu blu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
+    <?php
+    switch ($_SESSION['userLevel']) {
+        case "user": //Not logged in
+            require_once('blocks/user-navigation.php');
+            break;
+        case "admin": //regular user
+            require_once('blocks/admin-navigation.php');
+            break;
+        default: //admin nav
+            require_once('blocks/guest-navigation.php');
+            break;
+            //etc and default nav below
+    }
+    ?>
+        <div class="site-section p-2 bg-black pt-4" name="nav-bg" style="height:120px;"></div>
 
-        <div class="site-navbar bg-black">
-            <div class="container py-1">
-                <div class="row align-items-center">
-                    <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
-                    </div>
-                    <div class="col-4 col-md-4 col-lg-8">
-                        <nav class="site-navigation text-right text-md-right" role="navigation">
-
-                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-                            <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="index.php">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="property-search.php">Search Properties</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-warning" href="user-dashboard.php">My Properties</a>
-                                </li>
-                                <input class="btn btn-light rouund" type="button" value="Logout" onclick="window.location.href='scripts/logout.php'">
-                            </ul>
-                        </nav>
+        <div class="site-section bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <div class="site-section-title">
+                            <br>
+                            <h5>My Properties</h5>
+                            <input class="btn btn-primary rouund" type="button" value="Add New" onclick="window.location.href='add-property.php'">
+                        </div>
+                        <p></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="site-section p-2 bg-white pt-4">
-        <div class="container pt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <div class="site-section-title">
-                        <br>
-                        <h5>My Properties</h5>
-                        <input class="btn btn-primary rouund" type="button" value="Add New" onclick="window.location.href='add-property.php'">
+        <!-- LISTINGS SECTION -->
+        <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
+            <div class="container">
+                <div class="row"></div>
+                <div class="row mb-5">
+
+                    <div class="col-md-4 col-lg-3 mb-4">
+                        <div class="property-entry h-100">
+                            <a href="property-details.php" class="property-thumbnail">
+                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                            </a>
+                            <div class="p-4 property-body">
+                                <h2 class="property-title">Mona Heights</h2>
+                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
+                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
+                                <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                    <li>
+                                        <span class="property-specs">Beds</span>
+                                        <span class="property-specs-number">3 <sup>+</sup></span>
+
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Baths</span>
+                                        <span class="property-specs-number">2</span>
+
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Acres</span>
+                                        <span class="property-specs-number">9</span>
+
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
+                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- LISTINGS SECTION -->
-    <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
-        <div class="container">
-            <div class="row"></div>
-            <div class="row mb-5">
+                    <div class="col-md-4 col-lg-3 mb-4">
+                        <div class="property-entry h-100">
+                            <a href="property-details.php" class="property-thumbnail">
+                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                            </a>
+                            <div class="p-4 property-body">
+                                <h2 class="property-title">Mona Heights</h2>
+                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
+                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
+                                <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                    <li>
+                                        <span class="property-specs">Beds</span>
+                                        <span class="property-specs-number">3 <sup>+</sup></span>
 
-                <div class="col-md-4 col-lg-3 mb-4">
-                    <div class="property-entry h-100">
-                        <a href="property-details.php" class="property-thumbnail">
-                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                        </a>
-                        <div class="p-4 property-body">
-                            <h2 class="property-title">Mona Heights</h2>
-                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                            <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                            <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                <li>
-                                    <span class="property-specs">Beds</span>
-                                    <span class="property-specs-number">3 <sup>+</sup></span>
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Baths</span>
+                                        <span class="property-specs-number">2</span>
 
-                                </li>
-                                <li>
-                                    <span class="property-specs">Baths</span>
-                                    <span class="property-specs-number">2</span>
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Acres</span>
+                                        <span class="property-specs-number">9</span>
 
-                                </li>
-                                <li>
-                                    <span class="property-specs">Acres</span>
-                                    <span class="property-specs-number">9</span>
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
+                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                </li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                    <div class="col-md-4 col-lg-3 mb-4">
+                        <div class="property-entry h-100">
+                            <a href="property-details.php" class="property-thumbnail">
+                                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                            </a>
+                            <div class="p-4 property-body">
+                                <h2 class="property-title">Mona Heights</h2>
+                                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
+                                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
+                                <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                    <li>
+                                        <span class="property-specs">Beds</span>
+                                        <span class="property-specs-number">3 <sup>+</sup></span>
+
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Baths</span>
+                                        <span class="property-specs-number">2</span>
+
+                                    </li>
+                                    <li>
+                                        <span class="property-specs">Acres</span>
+                                        <span class="property-specs-number">9</span>
+
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
+                                    <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-3 mb-4">
-                    <div class="property-entry h-100">
-                        <a href="property-details.php" class="property-thumbnail">
-                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                        </a>
-                        <div class="p-4 property-body">
-                            <h2 class="property-title">Mona Heights</h2>
-                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                            <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                            <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                <li>
-                                    <span class="property-specs">Beds</span>
-                                    <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                </li>
-                                <li>
-                                    <span class="property-specs">Baths</span>
-                                    <span class="property-specs-number">2</span>
-
-                                </li>
-                                <li>
-                                    <span class="property-specs">Acres</span>
-                                    <span class="property-specs-number">9</span>
-
-                                </li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-lg-3 mb-4">
-                    <div class="property-entry h-100">
-                        <a href="property-details.php" class="property-thumbnail">
-                            <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                        </a>
-                        <div class="p-4 property-body">
-                            <h2 class="property-title">Mona Heights</h2>
-                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                            <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                            <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                <li>
-                                    <span class="property-specs">Beds</span>
-                                    <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                </li>
-                                <li>
-                                    <span class="property-specs">Baths</span>
-                                    <span class="property-specs-number">2</span>
-
-                                </li>
-                                <li>
-                                    <span class="property-specs">Acres</span>
-                                    <span class="property-specs-number">9</span>
-
-                                </li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" href="#" name="edit-property" type="submit" value="Edit"></div>
-                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
         </div>
-    </div>
 
 
-    <!-- FOOTER -->
-    <?php include 'footer.php'; ?>
+        <!-- FOOTER -->
+        <?php include 'blocks/footer.php'; ?>
 
 </body>
 

@@ -52,200 +52,172 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
 <body>
 
   <!-- NAVIGATION SECTION -->
-  <div class="site-wrap">
+  <?php
+  switch ($_SESSION['userLevel']) {
+    case "user": //Not logged in
+      require_once('blocks/user-navigation.php');
+      break;
+    case "admin": //regular user
+      require_once('blocks/admin-navigation.php');
+      break;
+    default: //admin nav
+      require_once('blocks/guest-navigation.php');
+      break;
+      //etc and default nav below
+  }
+  ?>
 
-    <!-- MOBILE NAV BAR -->
-    <div class="site-mobile-menu blu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-
-    <!-- NAV BAR -->
-    <div class="site-navbar mt-4">
-      <div class="container py-1">
-        <div class="row align-items-center">
-          <div class="col-8 col-md-8 col-lg-4">
-            <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
-          </div>
-          <div class="col-4 col-md-4 col-lg-8">
-            <nav class="site-navigation text-right text-md-right" role="navigation">
-
-              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="property-search.php">Search Properties</a>
-                </li>
-                <input class="btn btn-light rouund" type="button" value="Login" onclick="window.location.href='login.php'">
-              </ul>
-            </nav>
-          </div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- IMAGE HEADER -->
-  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(assets/images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+    <!-- IMAGE HEADER -->
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(assets/images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
-    <div class="row align-items-center justify-content-center text-center">
-      <div class="col-md-10">
-        <h1 class="mb-2">Registration</h1>
+      <div class="row align-items-center justify-content-center text-center">
+        <div class="col-md-10">
+          <h1 class="mb-2">Registration</h1>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+    </div>
 
-  <!-- REGISTRATION SECTION -->
-  <div class="site-section">
-    <div class="container">
-      <div class="row justify-content-center">
+    <!-- REGISTRATION SECTION -->
+    <div class="site-section">
+      <div class="container">
+        <div class="row justify-content-center">
 
-        <div class="col-md-12 col-lg-8 mb-5">
-          <form action="./scripts/regisvalid.php" method="POST" class="p-5">
-            <h1>User Information</h1>
-            <p class="m-0">Please fill out the following fields.</p>
+          <div class="col-md-12 col-lg-8 mb-5">
+            <form action="./scripts/regisvalid.php" method="POST" class="p-5">
+              <h1>User Information</h1>
+              <p class="m-0">Please fill out the following fields.</p>
 
 
-            <!--- FIRST NAME & LAST NAME SECTION --->
+              <!--- FIRST NAME & LAST NAME SECTION --->
 
-            <?php if (isset($firstname_error)) {
-              echo $firstname_error;
-            } ?>
-            <?php if (isset($lastname_error)) {
-              echo $lastname_error;
-            }
+              <?php if (isset($firstname_error)) {
+                echo $firstname_error;
+              } ?>
+              <?php if (isset($lastname_error)) {
+                echo $lastname_error;
+              }
 
-            ?>
+              ?>
 
-            <div class="form-row mt-2">
-              <div class="form-group col-md-6"><label>First Name</label>
-                <input class="form-control 
+              <div class="form-row mt-2">
+                <div class="form-group col-md-6"><label>First Name</label>
+                  <input class="form-control 
                 <?php if (isset($firstname_error)) {
                   echo "is-invalid";
                 } ?>" type="text" name="firstname" value="<?php echo $_SESSION['firstname']; ?>"></div>
-              <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
+                <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
               <?php if (isset($lastname_error)) {
                 echo "is-invalid";
               } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname'] ?>"></div>
-            </div>
+              </div>
 
 
-            <!--- USERNAME AND EMAIL SECTION --->
+              <!--- USERNAME AND EMAIL SECTION --->
 
-            <?php if (isset($username_error)) {
-              echo $username_error;
-            } ?>
-            <?php if (isset($email_error)) {
-              echo $email_error;
-            } ?>
+              <?php if (isset($username_error)) {
+                echo $username_error;
+              } ?>
+              <?php if (isset($email_error)) {
+                echo $email_error;
+              } ?>
 
 
-            <div class="form-row">
-              <div class="form-group col-md-6"><label>Username</label>
-                <div class="input-group">
-                  <div class="input-group-prepend"><span class="input-group-text">@</span>
-                  </div><input class="form-control 
+              <div class="form-row">
+                <div class="form-group col-md-6"><label>Username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">@</span>
+                    </div><input class="form-control 
                   <?php if (isset($username_error)) {
                     echo "is-invalid";
                   } ?>" type="text" name="username" value="<?php echo $_SESSION['username'] ?>">
-                  <div class="input-group-append"></div>
-                </div>
-              </div>
-              <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
-              <?php if (isset($email_error)) {
-                echo "is-invalid";
-              } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
-            </div>
-
-
-            <!--- PHONE NUMBER SECTION --->
-
-            <?php if (isset($areacode_error)) {
-              echo $areacode_error;
-            } ?>
-            <?php if (isset($phonenumber_error)) {
-              echo $phonenumber_error;
-            } ?>
-
-
-            <div class="form-group"><label>Phone Number</label>
-              <div class="form-row">
-                <div class="col col-md-5">
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
-                    <?php if (isset($areacode_error)) {
-                      echo "is-invalid";
-                    } ?>" type="text" name="areacode" value="<?php echo $_SESSION['areacode'] ?>">
                     <div class="input-group-append"></div>
                   </div>
                 </div>
-                <div class="col col-md-7"><input class="form-control 
+                <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
+              <?php if (isset($email_error)) {
+                echo "is-invalid";
+              } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
+              </div>
+
+
+              <!--- PHONE NUMBER SECTION --->
+
+              <?php if (isset($areacode_error)) {
+                echo $areacode_error;
+              } ?>
+              <?php if (isset($phonenumber_error)) {
+                echo $phonenumber_error;
+              } ?>
+
+
+              <div class="form-group"><label>Phone Number</label>
+                <div class="form-row">
+                  <div class="col col-md-5">
+                    <div class="input-group">
+                      <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
+                    <?php if (isset($areacode_error)) {
+                      echo "is-invalid";
+                    } ?>" type="text" name="areacode" value="<?php echo $_SESSION['areacode'] ?>">
+                      <div class="input-group-append"></div>
+                    </div>
+                  </div>
+                  <div class="col col-md-7"><input class="form-control 
                 <?php if (isset($phonenumber_error)) {
                   echo "is-invalid";
                 } ?>" type="text" name="phonenumber" value="<?php echo $_SESSION['phonenumber'] ?>"></div>
+                </div>
               </div>
-            </div>
 
 
-            <!--- PASSWORDS SECTION --->
+              <!--- PASSWORDS SECTION --->
 
-            <?php if (isset($password_error)) {
-              echo $password_error;
-            } ?>
-            <?php if (isset($passwordconfirm_error)) {
-              echo $passwordconfirm_error;
-            } ?>
-            <?php if (isset($notmatching_error)) {
-              echo $notmatching_error;
-            } ?>
+              <?php if (isset($password_error)) {
+                echo $password_error;
+              } ?>
+              <?php if (isset($passwordconfirm_error)) {
+                echo $passwordconfirm_error;
+              } ?>
+              <?php if (isset($notmatching_error)) {
+                echo $notmatching_error;
+              } ?>
 
 
-            <div class="form-group"><label>Password</label><input class="form-control 
+              <div class="form-group"><label>Password</label><input class="form-control 
             <?php if (isset($password_error)) {
               echo "is-invalid";
             } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
-            <div class="form-group"><label>Confirm Password</label><input class="form-control 
+              <div class="form-group"><label>Confirm Password</label><input class="form-control 
             <?php if (isset($passwordconfirm_error)) {
               echo "is-invalid";
             } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
 
 
-            <!--- CONTINUE BUTTON --->
-            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
-          </form>
-        </div>
+              <!--- CONTINUE BUTTON --->
+              <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
+            </form>
+          </div>
 
-        <div class="col-lg-4" hidden>
-          <div class="p-4 mb-3">
-            <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
-            <p class="mb-0 font-weight-bold">Address</p>
-            <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
+          <div class="col-lg-4" hidden>
+            <div class="p-4 mb-3">
+              <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
+              <p class="mb-0 font-weight-bold">Address</p>
+              <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
 
-            <p class="mb-0 font-weight-bold">Phone</p>
-            <p class="mb-4"><a href="#">876-123-1562</a></p>
+              <p class="mb-0 font-weight-bold">Phone</p>
+              <p class="mb-4"><a href="#">876-123-1562</a></p>
 
-            <p class="mb-0 font-weight-bold">Email</p>
-            <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
+              <p class="mb-0 font-weight-bold">Email</p>
+              <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- FOOTER -->
-  <?php include 'footer.php'; ?>
+    <!-- FOOTER -->
+    <?php include 'blocks/footer.php'; ?>
 
 
 </body>

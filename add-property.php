@@ -39,299 +39,278 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
 
 
   <!-- NAVIGATION -->
-  <div class="site-wrap">
-    <div class="site-mobile-menu blu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
+  <?php
+  switch ($_SESSION['userLevel']) {
+    case "user": //Not logged in
+      require_once('blocks/user-navigation.php');
+      break;
+    case "admin": //regular user
+      require_once('blocks/admin-navigation.php');
+      break;
+    default: //admin nav
+      require_once('blocks/guest-navigation.php');
+      break;
+      //etc and default nav below
+  }
+  ?>
 
-    <div class="site-navbar mt-4">
-      <div class="container py-1">
-        <div class="row align-items-center">
-          <div class="col-8 col-md-8 col-lg-4">
-            <h1 class="mb-0"><a href="index.php" class="text-white h2 mb-0"><strong>Mi Casa<span class="text-danger">.</span></strong></a></h1>
-          </div>
-          <div class="col-4 col-md-4 col-lg-8">
-            <nav class="site-navigation text-right text-md-right" role="navigation">
-
-              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="property-search.php">Search Properties</a>
-                </li>
-                <input class="btn btn-light rouund" type="button" value="Logout" onclick="window.location.href='logout.php'">
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION HEADER -->
-  <div class="site-blocks-cover inner-page-cover overlay bg-primary" style="background-image: url(assets/images/bg_def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+    <!-- SECTION HEADER -->
+    <div class="site-blocks-cover inner-page-cover overlay bg-primary" style="background-image: url(assets/images/bg_def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
-    <div class="row align-items-center justify-content-center text-center">
-      <div class="col-md-10">
-        <h1 class="mb-2">Add Property</h1>
+      <div class="row align-items-center justify-content-center text-center">
+        <div class="col-md-10">
+          <h1 class="mb-2">Add Property</h1>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+    </div>
 
-  <!-- FORM -->
-  <div class="site-section site-section-sm pb-0">
-
-
-    <!-- PROPERTY DETAIlS -->
-    <div class="container">
-      <div class="row mb-5">
-        <form class="form-search col-md-12" method="POST" action="./scripts/propertvalid.php" style="margin-top: -100px;">
-          <div class="row  align-items-end">
-
-            <div class="col-md-12">
-              <h1 class="text-white">Location</h1>
-              <?php if (isset($address1_error)) {
-                echo $address1_error;
-              } ?>
+    <!-- FORM -->
+    <div class="site-section site-section-sm pb-0">
 
 
-              <?php if (isset($address2_error)) {
-                echo $address2_error;
-              } ?>
-              <?php if (isset($city_error)) {
-                echo $city_error;
-              } ?>
+      <!-- PROPERTY DETAIlS -->
+      <div class="container">
+        <div class="row mb-5">
+          <form class="form-search col-md-12" method="POST" action="./scripts/propertvalid.php" style="margin-top: -100px;">
+            <div class="row  align-items-end">
 
-              <?php if (isset($parish_error)) {
-                echo $parish_error;
-              } ?>
+              <div class="col-md-12">
+                <h1 class="text-white">Location</h1>
+                <?php if (isset($address1_error)) {
+                  echo $address1_error;
+                } ?>
 
-            </div>
 
-            <div class="col-md-3">
-              <div class="form-group mt-4"><label>Address Line 1</label><input class="form-control <?php if (isset($address1_error)) {
-                                                                                                      echo "is-invalid";
-                                                                                                    } ?>" type="text" name="address1" value="<?php echo $_SESSION['address1'] ?>"></div>
+                <?php if (isset($address2_error)) {
+                  echo $address2_error;
+                } ?>
+                <?php if (isset($city_error)) {
+                  echo $city_error;
+                } ?>
 
-            </div>
-            <div class="col-md-3">
-              <div class="form-group"><label>Address Line 2</label>
-                <input class="form-control <?php if (isset($address2_error)) {
-                                              echo "is-invalid";
-                                            } ?>" type="text" name="address2" value="<?php echo $_SESSION['address2'] ?>">
+                <?php if (isset($parish_error)) {
+                  echo $parish_error;
+                } ?>
+
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group mt-4"><label>Address Line 1</label><input class="form-control <?php if (isset($address1_error)) {
+                                                                                                        echo "is-invalid";
+                                                                                                      } ?>" type="text" name="address1" value="<?php echo $_SESSION['address1'] ?>"></div>
+
+              </div>
+              <div class="col-md-3">
+                <div class="form-group"><label>Address Line 2</label>
+                  <input class="form-control <?php if (isset($address2_error)) {
+                                                echo "is-invalid";
+                                              } ?>" type="text" name="address2" value="<?php echo $_SESSION['address2'] ?>">
+                </div>
+
+              </div>
+              <div class="col-md-3">
+                <div class="form-group"><label>City</label><input class="form-control <?php if (isset($city_error)) {
+                                                                                        echo "is-invalid";
+                                                                                      } ?>" type="text" name="city" value="<?php echo $_SESSION['city'] ?>">
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group"><label>Parish</label>
+                  <select class="selectpicker hfix" data-style="btn-light" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
+                                                                                                                    echo 'Select Parish';
+                                                                                                                  } else {
+                                                                                                                    echo $_SESSION['parish'];
+                                                                                                                  } ?>">
+                    <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
+                              echo 'selected="selected"';
+                            } ?>>Kingston & St. Andrew</option>
+                    <option <?php if ($_SESSION['parish'] == 'Portland') {
+                              echo 'selected="selected"';
+                            } ?>>Portland</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. Thomas') {
+                              echo 'selected="selected"';
+                            } ?>>St. Thomas</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. Catherine') {
+                              echo 'selected="selected"';
+                            } ?>>St. Catherine</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. Mary') {
+                              echo 'selected="selected"';
+                            } ?>>St. Mary</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. Ann') {
+                              echo 'selected="selected"';
+                            } ?>>St. Ann</option>
+                    <option <?php if ($_SESSION['parish'] == 'Manchester') {
+                              echo 'selected="selected"';
+                            } ?>>Manchester</option>
+                    <option <?php if ($_SESSION['parish'] == 'Clarendon') {
+                              echo 'selected="selected"';
+                            } ?>>Clarendon</option>
+                    <option <?php if ($_SESSION['parish'] == 'Hanover') {
+                              echo 'selected="selected"';
+                            } ?>>Hanover</option>
+                    <option <?php if ($_SESSION['parish'] == 'Westmoreland') {
+                              echo 'selected="selected"';
+                            } ?>>Westmoreland</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. James') {
+                              echo 'selected="selected"';
+                            } ?>>St. James</option>
+                    <option <?php if ($_SESSION['parish'] == 'Trelawny') {
+                              echo 'selected="selected"';
+                            } ?>>Trelawny</option>
+                    <option <?php if ($_SESSION['parish'] == 'St. Elizabeth') {
+                              echo 'selected="selected"';
+                            } ?>>St. Elizabeth</option>
+                  </select>
+
+
+                </div>
               </div>
 
             </div>
-            <div class="col-md-3">
-              <div class="form-group"><label>City</label><input class="form-control <?php if (isset($city_error)) {
-                                                                                      echo "is-invalid";
-                                                                                    } ?>" type="text" name="city" value="<?php echo $_SESSION['city'] ?>">
-              </div>
-            </div>
+            <div class="row  align-items-end">
+              <div class="col-md-12 mb-4 mt-0">
+                <h1 class="text-white">Details</h1>
 
-            <div class="col-md-3">
-              <div class="form-group"><label>Parish</label>
-                <select class="selectpicker hfix" data-style="btn-light" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
-                                                                                                                  echo 'Select Parish';
-                                                                                                                } else {
-                                                                                                                  echo $_SESSION['parish'];
-                                                                                                                } ?>">
-                  <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
+                <?php if (isset($property_type_error)) {
+                  echo $property_type_error;
+                } ?>
+                <?php if (isset($building_type_error)) {
+                  echo $building_type_error;
+                } ?>
+                <?php if (isset($listing_type_error)) {
+                  echo $listing_type_error;
+                } ?>
+                <?php if (isset($landsize_error)) {
+                  echo $landsize_error;
+                } ?>
+                <?php if (isset($bedrooms_error)) {
+                  echo $bedrooms_error;
+                } ?>
+                <?php if (isset($bathrooms_error)) {
+                  echo $bathrooms_error;
+                } ?>
+                <?php if (isset($price_error)) {
+                  echo $price_error;
+                } ?>
+              </div>
+              <div class="col-md-3">
+                <label for="properties">Types of Property</label>
+                <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type" title="<?php if ($_SESSION['property_type'] == null) {
+                                                                                                                    echo 'Select';
+                                                                                                                  } else {
+                                                                                                                    echo $_SESSION['property_type'];
+                                                                                                                  } ?>">
+                  <option <?php if ($_SESSION['property_type'] == 'Vacant Lot') {
                             echo 'selected="selected"';
-                          } ?>>Kingston & St. Andrew</option>
-                  <option <?php if ($_SESSION['parish'] == 'Portland') {
+                          } ?>>Vacant Lot</option>
+                  <option <?php if ($_SESSION['property_type'] == 'Residential') {
                             echo 'selected="selected"';
-                          } ?>>Portland</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. Thomas') {
+                          } ?>>Residential</option>
+                  <option <?php if ($_SESSION['property_type'] == 'Commercial') {
                             echo 'selected="selected"';
-                          } ?>>St. Thomas</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. Catherine') {
-                            echo 'selected="selected"';
-                          } ?>>St. Catherine</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. Mary') {
-                            echo 'selected="selected"';
-                          } ?>>St. Mary</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. Ann') {
-                            echo 'selected="selected"';
-                          } ?>>St. Ann</option>
-                  <option <?php if ($_SESSION['parish'] == 'Manchester') {
-                            echo 'selected="selected"';
-                          } ?>>Manchester</option>
-                  <option <?php if ($_SESSION['parish'] == 'Clarendon') {
-                            echo 'selected="selected"';
-                          } ?>>Clarendon</option>
-                  <option <?php if ($_SESSION['parish'] == 'Hanover') {
-                            echo 'selected="selected"';
-                          } ?>>Hanover</option>
-                  <option <?php if ($_SESSION['parish'] == 'Westmoreland') {
-                            echo 'selected="selected"';
-                          } ?>>Westmoreland</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. James') {
-                            echo 'selected="selected"';
-                          } ?>>St. James</option>
-                  <option <?php if ($_SESSION['parish'] == 'Trelawny') {
-                            echo 'selected="selected"';
-                          } ?>>Trelawny</option>
-                  <option <?php if ($_SESSION['parish'] == 'St. Elizabeth') {
-                            echo 'selected="selected"';
-                          } ?>>St. Elizabeth</option>
+                          } ?>>Commercial</option>
                 </select>
-
-
               </div>
-            </div>
-
-          </div>
-          <div class="row  align-items-end">
-            <div class="col-md-12 mb-4 mt-0">
-              <h1 class="text-white">Details</h1>
-
-              <?php if (isset($property_type_error)) {
-                echo $property_type_error;
-              } ?>
-              <?php if (isset($building_type_error)) {
-                echo $building_type_error;
-              } ?>
-              <?php if (isset($listing_type_error)) {
-                echo $listing_type_error;
-              } ?>
-              <?php if (isset($landsize_error)) {
-                echo $landsize_error;
-              } ?>
-              <?php if (isset($bedrooms_error)) {
-                echo $bedrooms_error;
-              } ?>
-              <?php if (isset($bathrooms_error)) {
-                echo $bathrooms_error;
-              } ?>
-              <?php if (isset($price_error)) {
-                echo $price_error;
-              } ?>
-            </div>
-            <div class="col-md-3">
-              <label for="properties">Types of Property</label>
-              <select class="selectpicker" data-style="btn-light" data-width="100%" name="property_type" title="<?php if ($_SESSION['property_type'] == null) {
-                                                                                                                  echo 'Select';
-                                                                                                                } else {
-                                                                                                                  echo $_SESSION['property_type'];
-                                                                                                                } ?>">
-                <option <?php if ($_SESSION['property_type'] == 'Vacant Lot') {
-                          echo 'selected="selected"';
-                        } ?>>Vacant Lot</option>
-                <option <?php if ($_SESSION['property_type'] == 'Residential') {
-                          echo 'selected="selected"';
-                        } ?>>Residential</option>
-                <option <?php if ($_SESSION['property_type'] == 'Commercial') {
-                          echo 'selected="selected"';
-                        } ?>>Commercial</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="building">Building Type</label>
-              <select class="selectpicker" data-style="btn-light" data-width="100%" name="building_type" title="<?php if ($_SESSION['building_type'] == null) {
-                                                                                                                  echo 'Select';
-                                                                                                                } else {
-                                                                                                                  echo $_SESSION['building_type'];
-                                                                                                                } ?>">
-                <option <?php if ($_SESSION['building_type'] == 'Housing') {
-                          echo 'selected="selected"';
-                        } ?>>Housing</option>
-                <option <?php if ($_SESSION['building_type'] == 'Apartment') {
-                          echo 'selected="selected"';
-                        } ?>>Apartment</option>
-                <option <?php if ($_SESSION['building_type'] == 'Town House') {
-                          echo 'selected="selected"';
-                        } ?>>Town House</option>
-                <option <?php if ($_SESSION['building_type'] == 'Office Space') {
-                          echo 'selected="selected"';
-                        } ?>>Office Space</option>
-                <option <?php if ($_SESSION['building_type'] == 'None') {
-                          echo 'selected="selected"';
-                        } ?>>None</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="listing">Listing Types</label>
-              <select class="selectpicker" data-style="btn-light" data-width="100%" name="listing_type" title="<?php if ($_SESSION['listing_type'] == null) {
-                                                                                                                  echo 'Select';
-                                                                                                                } else {
-                                                                                                                  echo $_SESSION['listing_type'];
-                                                                                                                } ?>">
-                <option <?php if ($_SESSION['listing_type'] == 'Rent') {
-                          echo 'selected="selected"';
-                        } ?>>Rent</option>
-                <option <?php if ($_SESSION['listing_type'] == 'Purchase') {
-                          echo 'selected="selected"';
-                        } ?>>Purchase</option>
-                <option <?php if ($_SESSION['listing_type'] == 'Lease') {
-                          echo 'selected="selected"';
-                        } ?>>Lease</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="size">Size of Land (acres)</label>
-              <div class="input-group">
-                <input type="text" name="landsize" class="form-control <?php if (isset($landsize_error)) {
-                                                                          echo "is-invalid";
-                                                                        } ?>" type="text" value="<?php echo $_SESSION['landsize'] ?>">
-                <div class="input-group-append"><span class="input-group-text">acres</span></div>
+              <div class="col-md-3">
+                <label for="building">Building Type</label>
+                <select class="selectpicker" data-style="btn-light" data-width="100%" name="building_type" title="<?php if ($_SESSION['building_type'] == null) {
+                                                                                                                    echo 'Select';
+                                                                                                                  } else {
+                                                                                                                    echo $_SESSION['building_type'];
+                                                                                                                  } ?>">
+                  <option <?php if ($_SESSION['building_type'] == 'Housing') {
+                            echo 'selected="selected"';
+                          } ?>>Housing</option>
+                  <option <?php if ($_SESSION['building_type'] == 'Apartment') {
+                            echo 'selected="selected"';
+                          } ?>>Apartment</option>
+                  <option <?php if ($_SESSION['building_type'] == 'Town House') {
+                            echo 'selected="selected"';
+                          } ?>>Town House</option>
+                  <option <?php if ($_SESSION['building_type'] == 'Office Space') {
+                            echo 'selected="selected"';
+                          } ?>>Office Space</option>
+                  <option <?php if ($_SESSION['building_type'] == 'None') {
+                            echo 'selected="selected"';
+                          } ?>>None</option>
+                </select>
               </div>
-            </div>
-            <div class="col-md-3">
-              <label for="bedrooms"># of Bedrooms</label>
-              <input type="number" name="bedrooms" min="0" class="form-control <?php if (isset($bedrooms_error)) {
-                                                                                  echo "is-invalid";
-                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['bedrooms'])) {
+              <div class="col-md-3">
+                <label for="listing">Listing Types</label>
+                <select class="selectpicker" data-style="btn-light" data-width="100%" name="listing_type" title="<?php if ($_SESSION['listing_type'] == null) {
+                                                                                                                    echo 'Select';
+                                                                                                                  } else {
+                                                                                                                    echo $_SESSION['listing_type'];
+                                                                                                                  } ?>">
+                  <option <?php if ($_SESSION['listing_type'] == 'Rent') {
+                            echo 'selected="selected"';
+                          } ?>>Rent</option>
+                  <option <?php if ($_SESSION['listing_type'] == 'Purchase') {
+                            echo 'selected="selected"';
+                          } ?>>Purchase</option>
+                  <option <?php if ($_SESSION['listing_type'] == 'Lease') {
+                            echo 'selected="selected"';
+                          } ?>>Lease</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="size">Size of Land (acres)</label>
+                <div class="input-group">
+                  <input type="text" name="landsize" class="form-control <?php if (isset($landsize_error)) {
+                                                                            echo "is-invalid";
+                                                                          } ?>" type="text" value="<?php echo $_SESSION['landsize'] ?>">
+                  <div class="input-group-append"><span class="input-group-text">acres</span></div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="bedrooms"># of Bedrooms</label>
+                <input type="number" name="bedrooms" min="0" class="form-control <?php if (isset($bedrooms_error)) {
+                                                                                    echo "is-invalid";
+                                                                                  } ?>" type="text" value="<?php if (!isset($_SESSION['bedrooms'])) {
                                                                                                             echo '0';
                                                                                                           } else {
                                                                                                             echo $_SESSION['bedrooms'];
                                                                                                           } ?>">
-            </div>
-            <div class="col-md-3">
-              <label for="bathrooms"> # of Bathrooms</label>
-              <input type="number" name="bathrooms" min="0" class="form-control <?php if (isset($bathrooms_error)) {
-                                                                                  echo "is-invalid";
-                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['bathrooms'])) {
+              </div>
+              <div class="col-md-3">
+                <label for="bathrooms"> # of Bathrooms</label>
+                <input type="number" name="bathrooms" min="0" class="form-control <?php if (isset($bathrooms_error)) {
+                                                                                    echo "is-invalid";
+                                                                                  } ?>" type="text" value="<?php if (!isset($_SESSION['bathrooms'])) {
                                                                                                             echo '0';
                                                                                                           } else {
                                                                                                             echo $_SESSION['bathrooms'];
                                                                                                           } ?>">
-            </div>
-            <div class="col-md-3">
-              <label for="price">Price</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                </div>
-                <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
-                                                                      echo "is-invalid";
-                                                                    } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
               </div>
+              <div class="col-md-3">
+                <label for="price">Price</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="text" name="price" class="form-control <?php if (isset($price_error)) {
+                                                                        echo "is-invalid";
+                                                                      } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
+                </div>
 
+              </div>
+              <div class="col-md-3">
+                <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-property" type="submit" value="Continue">
+              </div>
             </div>
-            <div class="col-md-3">
-              <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-property" type="submit" value="Continue">
-            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
           </div>
-        </form>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- FOOTER -->
-  <?php include 'footer.php'; ?>
+    <!-- FOOTER -->
+    <?php include 'blocks/footer.php'; ?>
 
 </body>
 
