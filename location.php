@@ -100,7 +100,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
     <div class="container">
       <!-- PROPERTY LOCATION -->
       <div class="row">
-        <form class="form-search col-md-12 mb-lg-5" method="POST" action="./validations/locatevalid.php" style="margin-top: -100px;">
+        <form class="form-search col-md-12 mb-lg-5" method="POST" action="./scripts/locatevalid.php" style="margin-top: -100px;">
           <div class="row  align-items-end">
 
             <div class="col-md-12">
@@ -212,7 +212,7 @@ if ((isset($_SESSION['errFlagPage2'])) && ($_SESSION['errFlagPage2']) == true) {
     <!-- PROPERTY DETAIlS -->
     <div class="container">
       <div class="row mb-5">
-        <form class="form-search col-md-12" method="POST" action="./validations/propertvalid.php" style="margin-top: -100px;">
+        <form class="form-search col-md-12" method="POST" action="./scripts/propertvalid.php" style="margin-top: -100px;">
           <div class="row  align-items-end">
             <div class="col-md-12 mb-4 mt-0">
               <h1 class="text-white">Details</h1>

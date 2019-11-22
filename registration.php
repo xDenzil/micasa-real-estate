@@ -113,7 +113,7 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
       <div class="row justify-content-center">
 
         <div class="col-md-12 col-lg-8 mb-5">
-          <form action="./validations/regisvalid.php" method="POST" class="p-5">
+          <form action="./scripts/regisvalid.php" method="POST" class="p-5">
             <h1>User Information</h1>
             <p class="m-0">Please fill out the following fields.</p>
 
