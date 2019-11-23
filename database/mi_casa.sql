@@ -33,11 +33,12 @@ USE `mi_casa`;
 
 DROP TABLE IF EXISTS `property`;
 CREATE TABLE IF NOT EXISTS `property` (
-  `PropertyID` int(5) NOT NULL,
+  `PropertyID` int(5) NOT NULL AUTO_INCREMENT,
+  `userID` int(5) NOT NULL,
   `Address1` varchar(30) NOT NULL,
-  `Address2` varchar(30) NOT NULL,
+  `Address2` varchar(30),
   `City` varchar(20) NOT NULL,
-  `Parish` varchar(20) NOT NULL,
+  `Parish` varchar(30) NOT NULL,
   `Size` float NOT NULL,
   `ListingType` varchar(12) NOT NULL,
   `PropertyType` varchar(12) NOT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
 
 DROP TABLE IF EXISTS `register`;
 CREATE TABLE IF NOT EXISTS `register` (
-  `RegID` int(5) NOT NULL,
+  `RegID` int(5) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
@@ -114,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `register` (
 -- Constraints for table `property`
 --
 ALTER TABLE `property`
-  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `register` (`RegID`);
+  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`);
 
 --
 -- Constraints for table `propertydetail`
