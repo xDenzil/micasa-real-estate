@@ -199,7 +199,7 @@ if (isset($_GET['property_search'])) {
                                         <div class="offer-type-wrap">
                                             <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                                         </div>
-                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                                        <img src="uploads/' . $row['PreviewImageURL'] . '" alt="Image" class="img-fluid">
                                     </a>
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>

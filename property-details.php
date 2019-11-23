@@ -71,7 +71,7 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                                 echo '<div class="bg-white property-body border rounded">
                                 <div class="row mb-5">
                                     <div class="col-12 mb-4">
-                                        <img src="assets/images/bg-def2.jpg" class="img-fluid" alt="Responsive image">
+                                        <img src="uploads/' . $row['PreviewImageURL'] . '" class="img-fluid" alt="Responsive image">
                                     </div>
                                     <div class="col-md-6">
                                         <strong class="text-primary h1 mb-3">$' . $row['Price'] . '</strong>

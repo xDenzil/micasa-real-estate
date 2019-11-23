@@ -5,7 +5,7 @@ session_start();
 $loggedInUser = $_SESSION['currentUserID'];
 
 include './database/db_connection.php'; // Connect to Database
-$query = "SELECT * FROM `property` WHERE PropertyID='$loggedInUser';"; // To Display the Property Info
+$query = "SELECT * FROM `property` WHERE userID='$loggedInUser';"; // To Display the Property Info
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
 ?>
@@ -84,12 +84,12 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
                         //header('Location: ../property_search.php');
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo ' <div class="col-md-4 col-lg-3 mb-4">
-                                <div class="property-entry h-100">
+                                <div class="property-entry"> 
                                     <a href="property-details.php?propID=' . $row['PropertyID'] . '" class="property-thumbnail">
                                         <div class="offer-type-wrap">
                                             <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                                         </div>
-                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                                        <img src="uploads/' . $row['PreviewImageURL'] . '" alt="Image" class="img-fluid">
                                     </a>
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>

@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
         <div class="row mb-5">
           <?php
 
-          if (mysqli_num_rows($result) != 0) {
+          if (mysqli_num_rows($result) != 0) { //use h-100 for fixed height
             //header('Location: ../property_search.php');
             while ($row = mysqli_fetch_assoc($result)) {
               echo ' <div class="col-md-6 col-lg-4 mb-4">
@@ -112,7 +112,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
                     <div class="offer-type-wrap">
                         <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                     </div>
-                    <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                    <img src="uploads/' . $row['PreviewImageURL'] . '"  alt="Image" class="img-fluid">
                 </a>
                 <div class="p-4 property-body">
                     <h2 class="property-title">' . $row['Address1'] . '</h2>

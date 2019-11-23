@@ -70,7 +70,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="row  align-items-end">
 
                             <div class="col-md-12">
-                                <h1 class="text-white">Preview / Main Image</h1>
+                                <h1 class="text-white">Main Image</h1>
                             </div>
 
                             <div class="col-md-6">
@@ -105,7 +105,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_1">
-                                        <label class="custom-file-label text-black" for="inputGroupFile02">Choose</label>
+                                        <label class="custom-file-label text-black" for="inputGroupFile02">Choose a</label>
                                     </div>
                                 </div>
                             </div>
