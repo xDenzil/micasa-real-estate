@@ -4,6 +4,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
     $$key = $value;
   }
+  
 }
 
 ?>
@@ -180,6 +181,16 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
               <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
             </form>
           </div>
+          <?php
+            //Doesn't work with "include('db_connection.php');" for me
+            $conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+            //Check if form is submitted
+            if (isset($_POST['submit']) && $_POST['submit'] == true) {
+            $query = "INSERT INTO resgister (Username, FirstName, LastName, Email, Telephone, Password, Password2)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
+            mysqli_query($conn, $query) or die("Could not insert Data");
+            //mysqli_query ("INSERT register SET FirstName='$firstname', FirstName='$firstname', Email='$email', Telephone='$phonenumber', Password='$password', Password2='$password2'") or die("Could not insert Data");
+           //  header("Location: login.php");
+          ?>
 
 
           <div class="col-lg-4" hidden>
@@ -205,22 +216,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 </body>
 
 </html>
-<?php
-//Doesn't work with "include('db_connection.php');" for me
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-//Check if form is submitted
-if (isset($_POST['submit']) && $_POST['submit'] == 1) {
-  $username = $_REQUEST['Username'];
-  $firstname = $_REQUEST['FirstName'];
-  $lasttname = $_REQUEST['LastName'];
-  $email = $_REQUEST['Email'];
-  $phonenumber = $_REQUEST['Telephone'];
-  $password = $_REQUEST['Password'];
-  $password2 = $_REQUEST['Password2'];
-  mysqli_query ("INSERT register SET FirstName='$firstname', FirstName='$firstname', Email='$email', Telephone='$phonenumber', Password='$password', Password2='$password2'") or die("Could not insert Data");
-  //  header("Location: login.php");
-  //$query = "INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
-  //mysqli_query($conn, $query) or die("Could not insert Data");
-}
 
-?>
+
+
