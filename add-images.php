@@ -71,13 +71,15 @@ if (session_status() == PHP_SESSION_NONE) {
 
                             <div class="col-md-12">
                                 <h1 class="text-white">Preview / Main Image</h1>
-                                <?php if (isset($_SESSION['preview_img_error'])) {
-                                    echo $_SESSION['preview_img_error'];
-                                } ?>
                             </div>
 
                             <div class="col-md-6">
-                                <label>Required</label>
+                                <label>Required</label><br>
+
+
+                                <?php if (isset($_SESSION['preview_img_error'])) {
+                                    echo $_SESSION['preview_img_error'];
+                                } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="preview_img" id="inputGroupFile01">
@@ -91,42 +93,60 @@ if (session_status() == PHP_SESSION_NONE) {
                             <div class="col-md-12 mb-4 mt-4">
                                 <h1 class="text-white">Gallery Images</h1>
 
-                                <?php if (isset($gallery_img_error)) {
-                                    echo $gallery_img_error;
-                                } ?>
+
                             </div>
                             <div class="col-md-6">
-                                <label>Optional</label>
+                                <label>Optional</label><br>
+
+                                <?php if (isset($gallery_1_error)) {
+                                    echo $gallery_1_error;
+                                } ?>
+
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_img_1">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_1">
                                         <label class="custom-file-label text-black" for="inputGroupFile02">Choose</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
+
+                                <?php if (isset($gallery_2_error)) {
+                                    echo $gallery_2_error;
+                                } ?>
+
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile03">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile03" name="gallery_2">
                                         <label class="custom-file-label text-black" for="inputGroupFile03">Choose</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
+
+                                <?php if (isset($gallery_3_error)) {
+                                    echo $gallery_3_error;
+                                } ?>
+
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile04" name="gallery_3">
                                         <label class="custom-file-label text-black" for="inputGroupFile04">Choose</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
+
+                                <?php if (isset($gallery_4_error)) {
+                                    echo $gallery_4_error;
+                                } ?>
+
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile05">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile05" name="gallery_4">
                                         <label class="custom-file-label text-black" for="inputGroupFile05">Choose</label>
                                     </div>
                                 </div>
