@@ -195,7 +195,7 @@ if (isset($_GET['property_search'])) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo ' <div class="col-md-4 col-lg-3 mb-4">
                                 <div class="property-entry h-100">
-                                    <a href="property-details.php?propID=' . $row['PropertyID'] . '&userID=' . $row['userID'] . '" class="property-thumbnail">
+                                    <a href="property-details.php?propID=' . $row['PropertyID'] . '" class="property-thumbnail">
                                         <div class="offer-type-wrap">
                                             <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                                         </div>
@@ -205,24 +205,6 @@ if (isset($_GET['property_search'])) {
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>
                                         <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
                                         <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
-                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                            <li>
-                                                <span class="property-specs">Beds</span>
-                                                <span class="property-specs-number">' . $row['NumBedroom'] . '</span>
-        
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">Baths</span>
-                                                <span class="property-specs-number">' . $row['NumBathroom'] . '</span>
-        
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">Acres</span>
-                                                <span class="property-specs-number">' . $row['Size'] . '</span>
-        
-                                            </li>
-                                        </ul>
-        
                                     </div>
                                 </div>
                             </div>';
