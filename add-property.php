@@ -1,11 +1,16 @@
 <?php
 
 session_start();
-if ($_SESSION[userLevel] == null) { //If user is a guest, they cannot add a property, so redirect to login page
+
+if ($_SESSION['userLevel'] == null) { // If user is a guest, they cannot add a property, so redirect to login page
   header('Location: login.php');
+} else if ($_SESSION['userLevel'] == 'user') { // If user is a logged in user, add property to themself
+  $addPropertyToUser = $_SESSION['currentUserID'];
+} else if ($_SESSION['userLevel'] == 'admin') { // If user is an admin, add property to the user that was selected in admin panel
+  $addPropertyToUser = $_GET['userID'];
 }
 
-
+// Checking if there are errors, therefore display error messages
 if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
     $$key = $value;
@@ -13,6 +18,8 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
