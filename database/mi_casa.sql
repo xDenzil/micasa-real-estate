@@ -22,6 +22,9 @@ SET time_zone = "+00:00";
 -- Database: `mi_casa`
 --
 
+CREATE DATABASE IF NOT EXISTS `mi_casa` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `mi_casa`;
+
 -- --------------------------------------------------------
 
 --
