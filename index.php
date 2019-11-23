@@ -34,7 +34,7 @@ session_start();
 
   <!-- NAVIGATION SECTION -->
   <?php
-  switch ($_SESSION['userLevel']) {
+  switch (isset($_SESSION['userLevel'])) {
     case "user": //Not logged in
       require_once('blocks/user-navigation.php');
       break;

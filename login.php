@@ -36,7 +36,7 @@ session_start();
     <!-- NAVIGATION -->
 
     <?php
-    switch ($_SESSION['userLevel']) {
+    switch (isset($_SESSION['userLevel'])) {
         case "user": //Not logged in
             require_once('blocks/user-navigation.php');
             break;
@@ -62,7 +62,7 @@ session_start();
                             <div class="form-group"><label>Username</label><input required class="form-control 
                         <?php if (isset($_SESSION['login_error'])) { //If Log-In Error is Set in the session, Set class to 'invalid', this highlights the box with a red border
                             echo "is-invalid";
-                        } ?>" type="text" name="username_try" value="<?php echo $_SESSION['username_try'] //Keep username attempt in input box after reload 
+                        } ?>" type="text" name="username_try" value="<?php echo isset($_SESSION['username_try']) //Keep username attempt in input box after reload 
                                                                         ?>"></div>
 
 

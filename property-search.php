@@ -75,7 +75,7 @@ if (isset($_GET['property_search'])) {
 
     <!-- NAVIGATION SECTION -->
     <?php
-    switch ($_SESSION['userLevel']) {
+    switch (isset($_SESSION['userLevel'])) {
         case "user": //Not logged in
             require_once('blocks/user-navigation.php');
             break;
@@ -95,7 +95,7 @@ if (isset($_GET['property_search'])) {
                 <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
-
+                        <h1 class="mb-2">Property Search</h1>
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@ if (isset($_GET['property_search'])) {
                             </div>
                             <input type="text" name="min_price" class="form-control <?php if (isset($price_min_search_error)) {
                                                                                         echo "is-invalid";
-                                                                                    } ?>" type="text" value="<?php echo $_SESSION['price_min_search'] ?>">
+                                                                                    } ?>" type="text" value="<?php echo isset($_SESSION['price_min_search']) ?>">
                         </div>
 
                     </div>
@@ -171,7 +171,7 @@ if (isset($_GET['property_search'])) {
                             </div>
                             <input type="text" name="max_price" class="form-control <?php if (isset($price_max_search_error)) {
                                                                                         echo "is-invalid";
-                                                                                    } ?>" type="text" value="<?php echo $_SESSION['price_max_search'] ?>">
+                                                                                    } ?>" type="text" value="<?php echo isset($_SESSION['price_max_search']) ?>">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -190,7 +190,7 @@ if (isset($_GET['property_search'])) {
                     <!-- Properties -->
                     <?php
 
-                    if (mysqli_num_rows($result) != 0) {
+                    if (mysqli_num_rows(isset($result)) != 0) {
                         //header('Location: ../property_search.php');
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo ' <div class="col-md-4 col-lg-3 mb-4">

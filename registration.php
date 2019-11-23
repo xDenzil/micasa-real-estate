@@ -1,26 +1,9 @@
 <?php
-
 session_start();
-
-
 if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
     $$key = $value;
   }
-}
-//Doesn't work with "include('db_connection.php');" for me
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-//Check if form is submitted
-if (isset($_POST['new']) && $_POST['new'] == 1) {
-  $username = $_REQUEST['Username'];
-  $firstname = $_REQUEST['FirstName'];
-  $lasttname = $_REQUEST['LastName'];
-  $email = $_REQUEST['Email'];
-  $phonenumber = $_REQUEST['Telephone'];
-  $password = $_REQUEST['Password'];
-  $password2 = $_REQUEST['Password2'];
-  $query = "INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
-  mysqli_query($conn, $query) or die("Could not insert Data");
 }
 
 ?>
@@ -53,7 +36,7 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
 
   <!-- NAVIGATION SECTION -->
   <?php
-  switch ($_SESSION['userLevel']) {
+  switch (isset($_SESSION['userLevel'])) {
     case "user": //Not logged in
       require_once('blocks/user-navigation.php');
       break;
@@ -105,11 +88,11 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                   <input class="form-control 
                 <?php if (isset($firstname_error)) {
                   echo "is-invalid";
-                } ?>" type="text" name="firstname" value="<?php echo $_SESSION['firstname']; ?>"></div>
+                } ?>" type="text" name="firstname" value="<?php echo isset($_SESSION['firstname']); ?>"></div>
                 <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
               <?php if (isset($lastname_error)) {
                 echo "is-invalid";
-              } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname'] ?>"></div>
+              } ?>" type="text" name="lastname" value="<?php echo isset($_SESSION['lastname']); ?>"></div>
               </div>
 
 
@@ -130,14 +113,14 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                     </div><input class="form-control 
                   <?php if (isset($username_error)) {
                     echo "is-invalid";
-                  } ?>" type="text" name="username" value="<?php echo $_SESSION['username'] ?>">
+                  } ?>" type="text" name="username" value="<?php echo isset($_SESSION['username']) ?>">
                     <div class="input-group-append"></div>
                   </div>
                 </div>
                 <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
               <?php if (isset($email_error)) {
                 echo "is-invalid";
-              } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
+              } ?>" type="text" name="email" value="<?php echo isset($_SESSION['email']) ?>"></div>
               </div>
 
 
@@ -158,14 +141,14 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                       <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
                     <?php if (isset($areacode_error)) {
                       echo "is-invalid";
-                    } ?>" type="text" name="areacode" value="<?php echo $_SESSION['areacode'] ?>">
+                    } ?>" type="text" name="areacode" value="<?php echo isset($_SESSION['areacode']) ?>">
                       <div class="input-group-append"></div>
                     </div>
                   </div>
                   <div class="col col-md-7"><input class="form-control 
                 <?php if (isset($phonenumber_error)) {
                   echo "is-invalid";
-                } ?>" type="text" name="phonenumber" value="<?php echo $_SESSION['phonenumber'] ?>"></div>
+                } ?>" type="text" name="phonenumber" value="<?php echo isset($_SESSION['phonenumber']) ?>"></div>
                 </div>
               </div>
 
@@ -186,17 +169,18 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
               <div class="form-group"><label>Password</label><input class="form-control 
             <?php if (isset($password_error)) {
               echo "is-invalid";
-            } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
+            } ?>" type="password" name="password" value="<?php echo isset($_SESSION['password']) ?>"></div>
               <div class="form-group"><label>Confirm Password</label><input class="form-control 
             <?php if (isset($passwordconfirm_error)) {
               echo "is-invalid";
-            } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
+            } ?>" type="password" name="passwordconfirm" value="<?php echo isset($_SESSION['passwordconfirm']) ?>"></div>
 
 
               <!--- CONTINUE BUTTON --->
               <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
             </form>
           </div>
+
 
           <div class="col-lg-4" hidden>
             <div class="p-4 mb-3">
@@ -215,11 +199,28 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
         </div>
       </div>
     </div>
-
     <!-- FOOTER -->
     <?php include 'blocks/footer.php'; ?>
-
 
 </body>
 
 </html>
+<?php
+//Doesn't work with "include('db_connection.php');" for me
+$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+//Check if form is submitted
+if (isset($_POST['submit']) && $_POST['submit'] == 1) {
+  $username = $_REQUEST['Username'];
+  $firstname = $_REQUEST['FirstName'];
+  $lasttname = $_REQUEST['LastName'];
+  $email = $_REQUEST['Email'];
+  $phonenumber = $_REQUEST['Telephone'];
+  $password = $_REQUEST['Password'];
+  $password2 = $_REQUEST['Password2'];
+  mysqli_query ("INSERT register SET FirstName='$firstname', FirstName='$firstname', Email='$email', Telephone='$phonenumber', Password='$password', Password2='$password2'") or die("Could not insert Data");
+  //  header("Location: login.php");
+  //$query = "INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
+  //mysqli_query($conn, $query) or die("Could not insert Data");
+}
+
+?>

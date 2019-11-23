@@ -1,6 +1,4 @@
 <?php
-
-
 session_start(); // CONTINUING SESSION
 include_once('../database/db_connection.php');
 
@@ -174,9 +172,9 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['active'] = true;
 
 
-        $sql = "INSERT INTO `users`(`username`, `first_name`, `last_name`, `email`, `phone`, `password`) VALUES ('$username', '$firstname', '$lastname', '$email', '$phonenumber', '$password');";
-        $result = mysqli_query($conn, $sql) or die("Failed to get data");
+        //$query = "INSERT INTO `users`(`username`, `first_name`, `last_name`, `email`, `phone`, `password`) VALUES ('$username', '$firstname', '$lastname', '$email', '$phonenumber', '$password');";
+        //$result = mysqli_query($conn, $query) or die("Failed to get data");
         //session_destroy();
-        header("Location: index.php");
+            header("Location: user-dashboard.php");
     }
 }
