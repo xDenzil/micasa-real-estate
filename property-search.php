@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$result = null;
 
 if (isset($_GET['property_search'])) {
 
@@ -38,9 +38,9 @@ if (isset($_GET['property_search'])) {
     }
 
 
-    include './database/db_connection.php'; // Connect to Database
+    /*include './database/db_connection.php'; // Connect to Database
     $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
-    $result = mysqli_query($conn, $query) or die("Failed to get data.");
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");*/
 }
 
 ?>
@@ -189,8 +189,11 @@ if (isset($_GET['property_search'])) {
 
                     <!-- Properties -->
                     <?php
-
-                    if (mysqli_num_rows(isset($result)) != 0) {
+                        //adjustment to remove database error
+                         include './database/db_connection.php'; // Connect to Database
+                         $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
+                         $result = mysqli_query($conn, $query) or die("Failed to get data.");   
+                    if (mysqli_num_rows($result) > 0) {
                         //header('Location: ../property_search.php');
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo ' <div class="col-md-4 col-lg-3 mb-4">

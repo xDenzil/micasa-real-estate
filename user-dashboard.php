@@ -2,9 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+if(isset($_POST["currentUserID"])){
 $loggedInUser = $_SESSION['currentUserID'];
-
+}
 include './database/db_connection.php'; // Connect to Database
 $query = "SELECT * FROM `property` WHERE PropertyID='$loggedInUser';"; // To Display the Property Info
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
