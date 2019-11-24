@@ -20,6 +20,12 @@ if (isset($_POST['login'])) {
             $_SESSION['login_error'] = null; // If a result was returned, reset login error in case it was set previously
             $_SESSION['username_try'] = null; // If a result was returned, reset username try because the user got logged in so this variable is no longer needed
             $_SESSION['userLevel'] = 'user'; // Set permissions to user so that different navigation links are displayed
+
+            // REDIRECT TO SUCCESS PAGE
+            $_SESSION['redirect']['header'] = 'LOGIN SUCCESS';
+            $_SESSION['redirect']['path'] = 'user-dashboard.php';
+            $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
+            header('Location: ../error-or-success.php');
         }
     } else {
         $_SESSION['login_error'] = '<p class="error small-text">Incorrect username / password.</p>'; // Error message output if login fails

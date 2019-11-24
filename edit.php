@@ -1,6 +1,6 @@
 <?php
 //Doesn't work with include('db_connection.php');
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+$conn = mysqli_connect("localhost", "root", "root", "mi_casa") or die("<h1>Could not connect to database.</h1>");
 
 //$username = $_REQUEST['Username'];
 $query = "SELECT * FROM register"; //WHERE Username ='".$username."'"; 
