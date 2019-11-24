@@ -15,7 +15,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     $areacode;
     $phonenumber;
     $password;
-    $passwordconfirm;
+
 
 
     // FIRST NAME VALIDATION
@@ -177,9 +177,10 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['errFlagPage1'] = false;
         $_SESSION['active'] = true;
         //connect and insert to database
-        $conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-        $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password, Password2) 
-        VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password','$passwordconfirm');";
+        include '../database/db_connection.php';
+        //$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+        $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password) 
+        VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
         mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
         header('Location: ../user-dashboard.php');

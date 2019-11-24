@@ -1,11 +1,6 @@
 <?php
-//Doesn't work with include('db_connection.php');
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-
-//$username = $_REQUEST['Username'];
-$query = "SELECT * FROM register"; //WHERE Username ='".$username."'"; 
-$result = mysqli_query($conn, $query) or die(mysqli_error());
-$row = mysqli_fetch_assoc($result);
+session_start();
+include './database/db_connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,23 +11,23 @@ $row = mysqli_fetch_assoc($result);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/mediaelementplayer.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/fl-bigmug-line.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/css/mediaelementplayer.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="assets/css/fl-bigmug-line.css">
 
 
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom-styles.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom-styles.css">
 </head>
 
 <body class="blu">
@@ -95,38 +90,83 @@ $row = mysqli_fetch_assoc($result);
                                 <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
                                         <div class="col-12">
-                                            <?php
-                                            $status = "";
-                                            if (isset($_POST['submit']) && $_POST['submit'] == 1) {
-                                                $username = $_REQUEST['Username'];
-                                                $firstname = $_REQUEST['FirstName'];
-                                                $lastname = $_REQUEST['LastName'];
-                                                $email = $_REQUEST['Email'];
-                                                $phonenumber = $_REQUEST['Telephone'];
-                                                $password = $_REQUEST['Password'];
-                                                $password2 = $_REQUEST['Password2'];
-                                                $update = "UPDATE register SET FirstName='" . $firstname . "', FirstName='" . $firstname . "', Email='" . $email . "', Telephone='" . $phonenumber . "',
-                                                Password='" . $password . "', Password2='" . $password2 . "', WHERE UserName='" . $username . "'";
-
-                                                mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
-                                                $status = "Record Updated Successfully. </br></br>
-                                                <a href='Adminmenu.php'>View Updated Record</a>";
-                                                echo '<p style="color:#FF0000;">' . $status . '</p>';
-                                            } else {
-                                                ?>
                                                 <div>
+                                                <?php
+                                                    if(isset($_POST['submit'])){//if the submit button is clicked                                                  
+                                                    $firstname = $_POST['updatefirstname'];
+                                                    $lastname = $_POST['updatelastname'];
+                                                    $email = $_POST['updateemail'];                                                    
+                                                    $phonenumber = $_POST['updatephone'];                                                                                      
+                                                    $password = $_POST['updatepassword'];
+                                                        
+                                                    $update = "UPDATE register SET FirstName='$firstname', LastName='$lastname', Email='$email', Telephone='$phonenumber', Password='$password' WHERE RegID = ".$RegID;
+                                                    $conn->query($update) or die("<h1>Could not Update database.</h1>");//update or error
+                                                    
+                                                    //Create a query
+                                                    $result = "SELECT * FROM register WHERE RegID = '".$RegID."'";
+                                                    //submit the query and capture the result
+                                                    mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
+                                                    }
+                                                    $row="";
+                                                    while ($row == $result) 
+                                                    {
+                                                ?>
+    
                                                     <form name="form" method="post" action="">
-                                                        <input type="hidden" name="new" value="1" />
-                                                        <input name="username" type="hidden" value="<?php echo $row['UserName']; ?>" />
-                                                        <p><input type="text" name="firstname" placeholder="Enter first Name" required value="<?php echo $row['FirstName']; ?>" /></p>
-                                                        <p><input type="text" name="lastname" placeholder="Enter Last Name" required value="<?php echo $row['LastName']; ?>" /></p>
-                                                        <p><input type="text" name="email" placeholder="Enter Email" required value="<?php echo $row['Email']; ?>" /></p>
-                                                        <p><input type="text" name="phonenumber" placeholder="Enter Telephone" required value="<?php echo $row['Telephone']; ?>" /></p>
-                                                        <p><input type="text" name="password" placeholder="Enter Password update" required value="<?php echo $row['Password']; ?>" /></p>
-                                                        <p><input type="text" name="password2" placeholder="Confirm password update" required value="<?php echo $row['Password2']; ?>" /></p>
-                                                        <p><input name="submit" type="submit" value="Update" /></p>
-                                                    </form>
-                                                <?php } ?>
+                                                        <h1>User Information</h1>
+                                                            <p class="m-0">Please add Updates to the relevant fields.</p>
+                                                            <div class="form-row mt-2">
+                                                                <div class="form-group col-md-6"><label>First Name</label>
+                                                                <input class="form-control" type="text" name="updatefirstname" value="<?php echo $row['FirstName']; ?>"></div>
+                                                                <div class="form-group col-md-6"><label>Last Name</label><input class="form-control" type="text" name="updatelastname" value="<?php echo $row['LastName']; ?>"></div>
+                                                            </div>
+
+
+                                                            <!--- USERNAME AND EMAIL SECTION --->
+
+                                                                <div class="form-row">
+                                                                <div class="form-group col-md-6"><label>Username</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend"><span class="input-group-text">@</span>
+                                                                    </div><input class="form-control" type="text" name="updateusername" value="<?php echo $row['Username'] ?>">
+                                                                    <div class="input-group-append"></div>
+                                                                </div>
+                                                                </div>
+                                                                <div class="form-group col-md-6"><label>Email Address</label><input class="form-control" type="text" name="updateemail" value="
+                                                                <?php echo $_row['Email'] ?>"></div>
+                                                            </div>
+
+                                                            <!--- PHONE NUMBER SECTION --->
+                                                            <div class="form-group"><label>Phone Number</label>
+                                                                <div class="form-row">
+                                                                <div class="col col-md-5">
+                                                                    <div class="input-group">
+                                                                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control" type="text" name="areacode" value="">
+                                                                    <div class="input-group-append"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-7"><input class="form-control" type="text" name="updatephone" value="<?php echo $row['Telephone'] ?>"></div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!--- PASSWORDS SECTION --->         
+
+                                                            <div class="form-group"><label>Password</label><input class="form-control" type="password" name="updatepassword" value="<?php echo $row['Password'] ?>"></div>
+                                                            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="submit" value="Update Record"></input>
+                                                            <?php
+                                                         }
+                                                         $update ="";
+                                                         if($update){//if the update worked
+                                                            
+                                                            echo "<b>Update successful!</b>";  
+                                                            }
+                                                              
+                                                            ?>
+                                                     </form>
+                                                    
+                                                    </div>
+                                                
                                                 </div>
                                         </div>
                                     </div>
@@ -192,18 +232,18 @@ $row = mysqli_fetch_assoc($result);
 
         </div>
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/mediaelement-and-player.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/jquery.countdown.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/bootstrap-datepicker.min.js"></script>
-        <script src="js/aos.js"></script>
+        <script src="assets/js/jquery-3.3.1.min.js"></script>
+        <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="assets/js/jquery-ui.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/mediaelement-and-player.min.js"></script>
+        <script src="assets/js/jquery.stellar.min.js"></script>
+        <script src="assets/js/jquery.countdown.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="assets/js/aos.js"></script>
 
         <script src="js/main.js"></script>
 </body>
