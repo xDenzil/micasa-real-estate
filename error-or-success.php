@@ -61,8 +61,8 @@ session_start();
                 <div class="d-flex align-items-center justify-content-center h-100">
                     <div class="d-flex flex-column">
 
-                        <h1 class="text-center text-white"><?php echo $_SESSION['redirect']['header']; ?></h1>
-                        <p class="text-center text-white"><?php echo $_SESSION['redirect']['message']; ?></p>
+                        <h1 class="text-center text-white"><?php echo $_SESSION['redirect']['header']; ?> !</h1>
+                        <h5 class="text-center text-white"><?php echo $_SESSION['redirect']['message']; ?></h5>
                         <p class="text-center text-white"><b>Redirecting..</b></p>
                         <?php unset($_SESSION['redirect']); ?>
 

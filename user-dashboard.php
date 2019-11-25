@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
 
                                 <div class="row">
                                 <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" onclick="window.location.href=\'edit-property.php?propID=' . $row['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
-                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button" href="#" name="delete-property" type="submit" value="Delete"></div>
+                                <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button"  onclick="window.location.href=\'scripts/delete-property.php?propID=' . $row['PropertyID'] . '\'"name="delete-property" type="submit" value="Delete"></div>
                                 </div>
                                     </div>
                                 </div>

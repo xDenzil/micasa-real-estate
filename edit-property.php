@@ -21,8 +21,8 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
         header('Location: ./error-or-success.php');
     }
 } else if (isset($_GET['propID'])) { // If the user hasn't pressed the 'Save Changes' button yet, just pull data from the database 
-    $_SESSION['propID'] = $_GET['propID'];
-    $query = "SELECT * FROM `property` WHERE PropertyID='" . $_SESSION['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
+    //$_SESSION['propID'] = $_GET['propID'];
+    $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
     if ($result->num_rows > 0) {
