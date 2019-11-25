@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$propertyID = $_GET['PropID']; //Getting Property ID to use in the Query from the GET in Link
+$propertyID = isset($_GET['PropID']); //Getting Property ID to use in the Query from the GET in Link
 
 include './database/db_connection.php'; // Connect to Database
 //Removed `` from table name
 $query = "SELECT * FROM property WHERE PropertyID='$propertyID';"; // To Display the Property Info
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
-$query2 = "SELECT * FROM register WHERE RegID='$propertyID';"; // To Display the Owner Info
+$query2 = "SELECT * FROM register WHERE RegID ='$propertyID';"; // To Display the Owner Info
 $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
 
 
@@ -43,7 +43,7 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
 <body>
 
     <?php
-    switch ($_SESSION['userLevel']) {
+    switch (isset($_SESSION['userLevel'])) {
         case "user": //Not logged in
             require_once('blocks/user-navigation.php');
             break;
