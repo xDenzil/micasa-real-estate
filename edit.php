@@ -1,7 +1,7 @@
 <?php
 include './database/db_connection.php';
-//$username = $_REQUEST['Username'];
-$query = "SELECT * FROM register"; //WHERE Username ='".$username."'"; 
+$username = isset($_REQUEST['Username']);
+$query = "SELECT * FROM register WHERE Username ='".$username."'"; 
 $result = mysqli_query($conn, $query) or die(mysqli_error());
 $row = mysqli_fetch_assoc($result);
 ?>
