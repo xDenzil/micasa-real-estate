@@ -28,6 +28,5 @@ VALUES (1,'10 Wynter Drive','Portmore','St. Catherine',22,'Rent','Commercial','A
 
 
 INSERT INTO `mi_casa`.`property`(`userID`, `Address1`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-VALUES (3,'9 Arthur Lane','Spanish Town','St. Catherine',56,'Lease','Residential','Housing',2,2,950000,'default-home3.jpg';
-
+VALUES (3,'9 Arthur Lane','Spanish Town','St. Catherine',56,'Lease','Residential','Housing',2,2,950000,'default-home3.jpg');
 

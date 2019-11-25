@@ -34,7 +34,7 @@ USE `mi_casa`;
 DROP TABLE IF EXISTS `property`;
 CREATE TABLE IF NOT EXISTS `property` (
   `PropertyID` int(5) NOT NULL AUTO_INCREMENT,
-  `userID` int(5) NOT NULL,
+  `UserID` int(5) NOT NULL,
   `Address1` varchar(30) NOT NULL,
   `Address2` varchar(30),
   `City` varchar(20) NOT NULL,
