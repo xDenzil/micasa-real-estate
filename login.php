@@ -2,6 +2,39 @@
 
 session_start();
 
+if (isset($_POST['login'])) {
+    $_SESSION['username_try'] = $_POST['username_try'];
+    $usernametry =  $_SESSION['username_try']; // Saving username in session to put in form 
+    $password_try = $_POST['password_try']; // Not saving password in session, using POST instead
+
+    // Connect to Database & Run Query
+    include 'database/db_connection.php';
+    $query = "SELECT * FROM `register` WHERE Username='$usernametry' AND Password='$password_try';";
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+    if (mysqli_num_rows($result) != 0) { // If login successfull
+        while ($row = mysqli_fetch_assoc($result)) {
+            $_SESSION['currentUserID'] = $row['RegID']; // Keep track of who the logged in user is at all times
+            $_SESSION['login_error'] = null; // If a result was returned, reset login error in case it was set previously
+            $_SESSION['username_try'] = null; // If a result was returned, reset username try because the user got logged in so this variable is no longer needed
+
+            if ($row['Username'] == 'micasadmin') {
+                $_SESSION['userLevel'] = 'admin'; // Set permissions to admin
+            } else {
+                $_SESSION['userLevel'] = 'user'; // Set permissions to user so that different navigation links and levels of access are available
+            }
+
+            // REDIRECT TO SUCCESS PAGE
+            $_SESSION['redirect']['header'] = 'LOGIN SUCCESS';
+            $_SESSION['redirect']['path'] = 'user-dashboard.php';
+            $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
+            header('Location: error-or-success.php');
+        }
+    } else {
+        $_SESSION['login_error'] = '<p class="error small-text">Incorrect username / password.</p>'; // Error message output if login fails
+        header("Location: login.php"); // If a result was not returned go back to the login page
+    }
+}
 
 ?>
 
@@ -34,19 +67,17 @@ session_start();
 <body>
 
     <!-- NAVIGATION -->
-
     <?php
     switch ($_SESSION['userLevel']) {
-        case "user": //Not logged in
+        case "user": // logged in user
             require_once('blocks/user-navigation.php');
             break;
-        case "admin": //regular user
+        case "admin": // admin user
             require_once('blocks/admin-navigation.php');
             break;
-        default: //admin nav
+        default: // guest
             require_once('blocks/guest-navigation.php');
             break;
-            //etc and default nav below
     }
     ?>
 
@@ -58,7 +89,7 @@ session_start();
                 <div class="row justify-content-center">
                     <div class="col-md-4 bg-white m-5 rounded">
 
-                        <form action="scripts/login.php" method="POST" class="p-4">
+                        <form action="" method="POST" class="p-4">
                             <div class="form-group"><label>Username</label><input required class="form-control 
                         <?php if (isset($_SESSION['login_error'])) { //If Log-In Error is Set in the session, Set class to 'invalid', this highlights the box with a red border
                             echo "is-invalid";

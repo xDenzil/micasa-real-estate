@@ -1,49 +1,66 @@
 <?php
-
 session_start();
-$propertyID = $_GET['propID'];
-$loggedInUser = $_SESSION['currentUserID'];
+include 'database/db_connection.php';
 
 
-include './database/db_connection.php'; // Connect to Database
-$query = "SELECT * FROM `property` WHERE PropertyID='$propertyID' AND userID='$loggedInUser';"; // To Display the Property Info
-$result = mysqli_query($conn, $query) or die("Failed to get data.");
+if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was clicked
+    include 'scripts/validate_update_property.php'; // Validate if the entries are correct
 
-if ($result->num_rows > 0) {
-    // If there are results, output data.
-    while ($row = $result->fetch_assoc()) {
-        $_SESSION['parish'] = $row['Parish'];
-        $_SESSION['address1'] = $row['Address1'];
-        $_SESSION['address2'] = $row['Address2'];
-        $_SESSION['city'] = $row['City'];
-        $_SESSION['landsize'] = $row['Size'];
-        $_SESSION['listing_type'] = $row['ListingType'];
-        $_SESSION['property_type'] = $row['PropertyType'];
-        $_SESSION['building_type'] = $row['BuildingType'];
-        $_SESSION['bedrooms'] = $row['NumBedroom'];
-        $_SESSION['bathrooms'] = $row['NumBathroom'];
-        $_SESSION['price'] = $row['Price'];
-        //$_SESSION['preview_img'] = ;
+    if ((isset($_SESSION['errFlagEditProperty'])) && ($_SESSION['errFlagEditProperty']) == true) { // If there are errors
+        foreach ($_SESSION as $key => $value) { // Show errors
+            $$key = $value;
+        }
+    } else { // If there weren't any errors, update database
+        $query = "UPDATE `property` SET `Address1`='" . $_SESSION['address1'] . "',`Address2`='" . $_SESSION['address2'] . "' ,`City`='" . $_SESSION['city'] . "',`Parish`='" . $_SESSION['parish'] . "',`Size`='" . $_SESSION['landsize'] . "',`ListingType`='" . $_SESSION['listing_type'] . "',`PropertyType`='" . $_SESSION['property_type'] . "',`BuildingType`='" . $_SESSION['building_type'] . "',`NumBedroom`=" . $_SESSION['bedrooms'] . ",`NumBathroom`=" . $_SESSION['bathrooms'] . ",`Price`=" . $_SESSION['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
+        $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+        // Redirect to Success Page
+        $_SESSION['redirect']['header'] = 'SUCCESS';
+        $_SESSION['redirect']['path'] = 'user-dashboard.php';
+        $_SESSION['redirect']['message'] = 'Property Updated.';
+        header('Location: ./error-or-success.php');
     }
-} else { // EMPTY SESSION VARIABLES IF NOTHING IS FOUND IN THE DATABASE OR IF THE USER TRIES TO EDIT THE LINK TO VIEW A PROPERTY THAT IS NOT THERE
-    $_SESSION['parish'] = null;
-    $_SESSION['address1'] = null;
-    $_SESSION['address2'] = null;
-    $_SESSION['city'] = null;
-    $_SESSION['landsize'] = null;
-    $_SESSION['listing_type'] = null;
-    $_SESSION['property_type'] = null;
-    $_SESSION['building_type'] = null;
-    $_SESSION['bedrooms'] = null;
-    $_SESSION['bathrooms'] = null;
-    $_SESSION['price'] = null;
-    $_SESSION['preview_img'] = null;
+} else if (isset($_GET['propID'])) { // If the user hasn't pressed the 'Save Changes' button yet, just pull data from the database 
+    $_SESSION['propID'] = $_GET['propID'];
+    $query = "SELECT * FROM `property` WHERE PropertyID='" . $_SESSION['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
-    // REDIRECT TO ERROR PAGE
-    $_SESSION['redirect']['header'] = 'ERROR';
-    $_SESSION['redirect']['path'] = 'user-dashboard.php';
-    $_SESSION['redirect']['message'] = 'It seems you attempted something you\'re not allowed access to.';
-    header('Location: ./error-or-success.php');
+    if ($result->num_rows > 0) {
+        /*If there are results, output data into the input boxes 
+        so the user can see what they edit.*/
+        while ($row = $result->fetch_assoc()) {
+            $_SESSION['parish'] = $row['Parish'];
+            $_SESSION['address1'] = $row['Address1'];
+            $_SESSION['address2'] = $row['Address2'];
+            $_SESSION['city'] = $row['City'];
+            $_SESSION['landsize'] = $row['Size'];
+            $_SESSION['listing_type'] = $row['ListingType'];
+            $_SESSION['property_type'] = $row['PropertyType'];
+            $_SESSION['building_type'] = $row['BuildingType'];
+            $_SESSION['bedrooms'] = $row['NumBedroom'];
+            $_SESSION['bathrooms'] = $row['NumBathroom'];
+            $_SESSION['price'] = $row['Price'];
+        }
+    } else { // If the property couldn't be found that belongs to the user logged in, reset all variables and show error page
+        $_SESSION['parish'] = null;
+        $_SESSION['address1'] = null;
+        $_SESSION['address2'] = null;
+        $_SESSION['city'] = null;
+        $_SESSION['landsize'] = null;
+        $_SESSION['listing_type'] = null;
+        $_SESSION['property_type'] = null;
+        $_SESSION['building_type'] = null;
+        $_SESSION['bedrooms'] = null;
+        $_SESSION['bathrooms'] = null;
+        $_SESSION['price'] = null;
+        $_SESSION['preview_img'] = null;
+
+        // Redirect to Error Page
+        $_SESSION['redirect']['header'] = 'ERROR';
+        $_SESSION['redirect']['path'] = 'user-dashboard.php';
+        $_SESSION['redirect']['message'] = 'It seems you attempted something you\'re not allowed access to.';
+        header('Location: ./error-or-success.php');
+    }
 }
 
 ?>
@@ -80,26 +97,25 @@ if ($result->num_rows > 0) {
     <!-- NAVIGATION -->
     <?php
     switch ($_SESSION['userLevel']) {
-        case "user": //Not logged in
+        case "user": // logged in user
             require_once('blocks/user-navigation.php');
             break;
-        case "admin": //regular user
+        case "admin": // admin user
             require_once('blocks/admin-navigation.php');
             break;
-        default: //admin nav
+        default: // guest
             require_once('blocks/guest-navigation.php');
             break;
-            //etc and default nav below
     }
     ?>
+
         <div class="site-section p-2 bg-black pt-4" name="nav-bg" style="height:120px;"></div>
 
 
-
-        <!-- LISTINGS SECTION -->
+        <!-- FORM -->
         <div class="site-section site-section-sm p-5" style="background-color:#F0E7D8;">
             <div class="container border p-5 bg-white w-75">
-                <form class="">
+                <form method="POST" action="">
                     <div class="row">
                         <div class="col-12">
                             <h4>Location</h4>
@@ -195,8 +211,6 @@ if ($result->num_rows > 0) {
                             <h4>Details</h4>
 
                             <!--- PROPERTY TYPE & LAND SIZE --->
-
-
 
                             <?php if (isset($property_type_error)) {
                                 echo $property_type_error;
@@ -373,7 +387,7 @@ if ($result->num_rows > 0) {
                             <div class="input-group mb-3">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_1">
-                                    <label class="custom-file-label text-black" for="inputGroupFile02">Choose a</label>
+                                    <label class="custom-file-label text-black" for="inputGroupFile02">Choose</label>
                                 </div>
                             </div>
                         </div>
@@ -421,7 +435,7 @@ if ($result->num_rows > 0) {
                         </div>
 
                         <div class="col-md-6">
-                            <input class="btn btn-primary text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Save Changes">
+                            <input class="btn btn-primary text-white btn-block rounded-2" role="submit" name="save-property-update" type="submit" value="Save Changes">
                         </div>
                     </div>
                 </form>

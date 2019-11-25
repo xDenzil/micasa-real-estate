@@ -1,12 +1,11 @@
 <?php
 
 session_start();
-
 $loggedInUser = $_SESSION['currentUserID'];
 
 include './database/db_connection.php'; // Connect to Database
 $query = "SELECT * FROM `property` WHERE userID='$loggedInUser';"; // To Display the Property Info
-$result = mysqli_query($conn, $query) or die("Failed to get data.");
+$result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to show.");
 
 ?>
 
@@ -42,16 +41,15 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
     <!-- NAVIGATION -->
     <?php
     switch ($_SESSION['userLevel']) {
-        case "user": //Not logged in
+        case "user": // logged in user
             require_once('blocks/user-navigation.php');
             break;
-        case "admin": //regular user
+        case "admin": // admin user
             require_once('blocks/admin-navigation.php');
             break;
-        default: //admin nav
+        default: // guest
             require_once('blocks/guest-navigation.php');
             break;
-            //etc and default nav below
     }
     ?>
         <div class="site-section p-2 bg-black pt-4" name="nav-bg" style="height:120px;"></div>

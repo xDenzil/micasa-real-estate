@@ -51,16 +51,15 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
   <!-- NAVIGATION -->
   <?php
   switch ($_SESSION['userLevel']) {
-    case "user": //Not logged in
+    case "user": // logged in user
       require_once('blocks/user-navigation.php');
       break;
-    case "admin": //regular user
+    case "admin": // admin user
       require_once('blocks/admin-navigation.php');
       break;
-    default: //admin nav
+    default: // guest
       require_once('blocks/guest-navigation.php');
       break;
-      //etc and default nav below
   }
   ?>
 
@@ -82,7 +81,7 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
       <!-- PROPERTY DETAIlS -->
       <div class="container">
         <div class="row mb-5">
-          <form class="form-search col-md-12" method="POST" action="./scripts/propertvalid.php" style="margin-top: -100px;">
+          <form class="form-search col-md-12" method="POST" action="./scripts/validate_property.php" style="margin-top: -100px;">
             <div class="row  align-items-end">
 
               <div class="col-md-12">

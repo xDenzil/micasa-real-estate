@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 
@@ -43,18 +42,18 @@ session_start();
 
 <body class="overlay">
 
+    <!-- NAVIGATION -->
     <?php
     switch ($_SESSION['userLevel']) {
-        case "user": //Not logged in
+        case "user": // logged in user
             require_once('blocks/user-navigation.php');
             break;
-        case "admin": //regular user
+        case "admin": // admin user
             require_once('blocks/admin-navigation.php');
             break;
-        default: //admin nav
+        default: // guest
             require_once('blocks/guest-navigation.php');
             break;
-            //etc and default nav below
     }
     ?>
         <section class="h-100 blu">

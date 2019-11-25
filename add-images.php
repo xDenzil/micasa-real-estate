@@ -1,9 +1,10 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
+session_start();
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,16 +36,15 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- NAVIGATION -->
     <?php
     switch ($_SESSION['userLevel']) {
-        case "user": //Not logged in
+        case "user": // logged in user
             require_once('blocks/user-navigation.php');
             break;
-        case "admin": //regular user
+        case "admin": // admin user
             require_once('blocks/admin-navigation.php');
             break;
-        default: //admin nav
+        default: // guest
             require_once('blocks/guest-navigation.php');
             break;
-            //etc and default nav below
     }
     ?>
 
@@ -61,12 +61,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <!-- FORM -->
         <div class="site-section site-section-sm pb-0">
-
-
             <!-- PROPERTY DETAIlS -->
             <div class="container">
                 <div class="row mb-5 justify-content-center">
-                    <form class="form-search col-lg-8 col-md-8" method="POST" enctype="multipart/form-data" action="./scripts/imagevalid.php" style="margin-top: -100px;">
+                    <form class="form-search col-lg-8 col-md-8" method="POST" enctype="multipart/form-data" action="./scripts/validate_imageuploads.php" style="margin-top: -100px;">
                         <div class="row  align-items-end">
 
                             <div class="col-md-12">
@@ -92,8 +90,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="row  align-items-end">
                             <div class="col-md-12 mb-4 mt-4">
                                 <h1 class="text-white">Gallery Images</h1>
-
-
                             </div>
                             <div class="col-md-6">
                                 <label>Optional</label><br>

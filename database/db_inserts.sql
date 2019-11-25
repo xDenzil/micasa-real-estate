@@ -13,6 +13,8 @@ INSERT INTO `mi_casa`.`register`(`FirstName`, `LastName`, `Email`, `Telephone`, 
 VALUES ('Crystal','Wright','ckrys@gmail.com','8763998754','crys','password');
 
 
+INSERT INTO `mi_casa`.`register`(`FirstName`, `LastName`, `Email`, `Telephone`, `Username`, `Password`) 
+VALUES ('Rushane','Brown','admin@micasa.com','8768980320','micasadmin','micasa#123');
 
 -- PROPERTIES
 

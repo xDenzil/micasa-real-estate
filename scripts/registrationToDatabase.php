@@ -2,7 +2,7 @@
 
 session_start();
 
-// Pass Data from all the sessions into variable to be sent into the SQL query
+// Pass Data from the session into variables to be sent into the SQL query
 $userID = $_SESSION['currentUserID'];
 $address1 = $_SESSION['address1'];
 $address2 = $_SESSION['address2'];
@@ -23,7 +23,6 @@ $sql = "INSERT INTO `property`(`userID`, `Address1`, `Address2`, `City`, `Parish
 VALUES ($userID,'$address1','$address2','$city','$parish','$size','$listingType','$propertyType','$buildingType','$bedroom','$bathroom','$price','$previewImgUrl');";
 $result = mysqli_query($conn, $sql) or die("Failed to get data");
 header('Location: ../user-dashboard.php');
-
 
 // Clear session variables when done, not needed anymore
 $_SESSION['address1'] = null;
