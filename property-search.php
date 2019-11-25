@@ -38,9 +38,9 @@ if (isset($_GET['property_search'])) {
     }
 
 
-    /*include './database/db_connection.php'; // Connect to Database
+    include './database/db_connection.php'; // Connect to Database
     $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
-    $result = mysqli_query($conn, $query) or die("Failed to get data.");*/
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
 }
 
 ?>
@@ -189,10 +189,11 @@ if (isset($_GET['property_search'])) {
 
                     <!-- Properties -->
                     <?php
-                        //adjustment to remove database error
+                        /*//adjustment to remove database error
                          include './database/db_connection.php'; // Connect to Database
                          $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
-                         $result = mysqli_query($conn, $query) or die("Failed to get data.");   
+                         $result = mysqli_query($conn, $query) or die("Failed to get data."); 
+                         <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid"> */
                     if (mysqli_num_rows($result) > 0) {
                         //header('Location: ../property_search.php');
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -202,29 +203,12 @@ if (isset($_GET['property_search'])) {
                                         <div class="offer-type-wrap">
                                             <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                                         </div>
-                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
+                                        <img src="uploads/' . $row['PreviewImageURL'] . '" alt="Image" class="img-fluid">
                                     </a>
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>
                                         <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
                                         <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
-                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                            <li>
-                                                <span class="property-specs">Beds</span>
-                                                <span class="property-specs-number">' . $row['NumBedroom'] . '</span>
-        
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">Baths</span>
-                                                <span class="property-specs-number">' . $row['NumBathroom'] . '</span>
-        
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">Acres</span>
-                                                <span class="property-specs-number">' . $row['Size'] . '</span>
-        
-                                            </li>
-                                        </ul>
         
                                     </div>
                                 </div>

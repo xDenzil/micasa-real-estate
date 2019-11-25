@@ -26,3 +26,4 @@ if (isset($_POST['login'])) {
         header("Location: ../login.php"); // If a result was not returned go back to the login page
     }
 }
+?>

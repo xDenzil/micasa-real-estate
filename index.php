@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+  session_start();
+  include './database/db_connection.php'; // Connect to Database
+  $query = "SELECT * FROM property ORDER BY PropertyID DESC LIMIT 10;";
+  $result = mysqli_query($conn, $query) or die("Failed to get data."); 
 ?>
 
 <!DOCTYPE html>
@@ -89,321 +92,40 @@ session_start();
       </div>
     </div>
 
-    <!-- LISTINGS SECTION -->
+    <!-- LISTINGS SECTION -->      
     <div class="site-section site-section-sm p-1 pt-5" style="background-color:#F0E7D8;">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.php" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-primary px-3 p-2">Sale</span>
-                </div>
-                <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Mona Heights</h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">3 <sup>+</sup></span>
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">9</span>
-                  </li>
-                </ul>
+          <?php
+          if (mysqli_num_rows($result) != 0) { //use h-100 for fixed height
+            //header('Location: ../property_search.php');
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo ' <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="property-entry h-100">
+                      <a href="property-details.php?propID=' . $row['PropertyID'] . '&userID=' . $row['userID'] . '" class="property-thumbnail">
+                          <div class="offer-type-wrap">
+                              <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
+                          </div>
+                          <img src="uploads/' . $row['PreviewImageURL'] . '"  alt="Image" class="img-fluid">
+                      </a>
+                      <div class="p-4 property-body">
+                          <h2 class="property-title">' . $row['Address1'] . '</h2>
+                          <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
+                          <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                      </div>
+                  </div>
+              </div>';
+            }
+            //$_SESSION['search_results'] = $row;
+          } else {
+            echo 'No properties to show.';
+          } ?>
 
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="assets/images/img_11.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Runaway Bay</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>87 Gold Road, Runaway Bay, St Ann, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$200,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">4 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">16</span>
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-info">Lease</span>
-                </div>
-                <img src="assets/images/img_12.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Beverley Hills</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>86 Kingman Avenue, Beverley Hills, St Andrew, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$150,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">3 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">6</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="assets/images/img_4.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Pennycooke Heights</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 25 Pennywise Road, Montego Bay, St James, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$210,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">6 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">4</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">16</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="assets/images/img_5.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title"><a href="property-details.html">Doctors Cave</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 12 Hot Head Avenue, Montego Bay, St James, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$120,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">2 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">1</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">1.6</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-info">Lease</span>
-                </div>
-                <img src="assets/images/img_6.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Falmouth</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">3 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">2</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">3</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="assets/images/img_10.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Treasure Beach</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$168,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">5 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">4</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">10</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-danger">Sale</span>
-                  <span class="offer-type bg-success">Rent</span>
-                </div>
-                <img src="assets/images/img_8.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Old Habour Bay</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$142,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">3 <sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">1</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number">3.5</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="property-details.html" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  <span class="offer-type bg-info">Lease</span>
-                </div>
-                <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
-              </a>
-              <div class="p-4 property-body">
-                <h2 class="property-title">Mona Height</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
-                <strong class="property-price text-primary mb-3 d-block text-dark">$113,265,500</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  <li>
-                    <span class="property-specs">Beds</span>
-                    <span class="property-specs-number">2<sup>+</sup></span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Baths</span>
-                    <span class="property-specs-number">1</span>
-
-                  </li>
-                  <li>
-                    <span class="property-specs">Acres</span>
-                    <span class="property-specs-number">4</span>
-
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
     </div>
+
 
     <!-- WHY WE ARE THE BEST -->
     <div class="site-section p-5 bg-light">

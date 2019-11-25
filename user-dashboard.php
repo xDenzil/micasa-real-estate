@@ -1,12 +1,10 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-if(isset($_POST["currentUserID"])){
-$loggedInUser = $_SESSION['currentUserID'];
-}
+session_start();
+
+$loggedInUser = isset($_SESSION['currentUserID']);
+
 include './database/db_connection.php'; // Connect to Database
-$query = "SELECT * FROM `property` WHERE PropertyID='$loggedInUser';"; // To Display the Property Info
+$query = "SELECT * FROM property WHERE PropertyID='$loggedInUser';"; // To Display the Property Info
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
 ?>
@@ -42,7 +40,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
     <!-- NAVIGATION -->
     <?php
-    switch ($_SESSION['userLevel']) {
+    switch (isset($_SESSION['userLevel'])) {
         case "user": //Not logged in
             require_once('blocks/user-navigation.php');
             break;

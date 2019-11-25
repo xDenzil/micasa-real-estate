@@ -2,13 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
-    foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
-        $$key = $value;
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,82 +57,80 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
             </div>
         </div>
         </div>
-
         <!-- FORM -->
         <div class="site-section site-section-sm pb-0">
-
-
             <!-- PROPERTY DETAIlS -->
             <div class="container">
                 <div class="row mb-5 justify-content-center">
-                    <form class="form-search col-lg-6 col-md-8" method="POST" action="./scripts/imagesvalid.php" style="margin-top: -100px;">
+                    <form class="form-search col-lg-8 col-md-8" method="POST" enctype="multipart/form-data" action="./scripts/imagevalid.php" style="margin-top: -100px;">
                         <div class="row  align-items-end">
-
                             <div class="col-md-12">
-                                <h1 class="text-white">Preview / Main Image</h1>
-                                <?php if (isset($preview_img_error)) {
-                                    echo $preview_img_error;
-                                } ?>
+                                <h1 class="text-white">Main Image</h1>
                             </div>
-
                             <div class="col-md-6">
-                                <label>Required</label>
+                                <label>Required</label><br>
+                                <?php if (isset($_SESSION['preview_img_error'])) {
+                                    echo $_SESSION['preview_img_error'];
+                                } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" name="preview_img" id="inputGroupFile01">
+                                        <label class="custom-file-label text-black" for="inputGroupFile01">Choose</label>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row  align-items-end">
                             <div class="col-md-12 mb-4 mt-4">
                                 <h1 class="text-white">Gallery Images</h1>
-
-                                <?php if (isset($gallery_img_error)) {
-                                    echo $gallery_img_error;
+                            </div>
+                            <div class="col-md-6">
+                                <label>Optional</label><br>
+                                <?php if (isset($gallery_1_error)) {
+                                    echo $gallery_1_error;
                                 } ?>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Optional</label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_1">
+                                        <label class="custom-file-label text-black" for="inputGroupFile02">Choose a</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
+                                <?php if (isset($gallery_2_error)) {
+                                    echo $gallery_2_error;
+                                } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile03" name="gallery_2">
+                                        <label class="custom-file-label text-black" for="inputGroupFile03">Choose</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
+                                <?php if (isset($gallery_3_error)) {
+                                    echo $gallery_3_error;
+                                } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile04" name="gallery_3">
+                                        <label class="custom-file-label text-black" for="inputGroupFile04">Choose</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
+                                <?php if (isset($gallery_4_error)) {
+                                    echo $gallery_4_error;
+                                } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile05" name="gallery_4">
+                                        <label class="custom-file-label text-black" for="inputGroupFile05">Choose</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-images" type="submit" value="Finish">
+                                <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Finish">
                             </div>
                         </div>
                     </form>
@@ -150,10 +141,13 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
                 </div>
             </div>
         </div>
-
         <!-- FOOTER -->
         <?php include 'blocks/footer.php'; ?>
-
+        <!-- Getting the file name to show inside the input field -->
+        <script type="text/javascript">
+            $('.custom-file input').change(function(e) {
+                $(this).next('.custom-file-label').html(e.target.files[0].name);
+            });
+        </script>
 </body>
-
 </html>

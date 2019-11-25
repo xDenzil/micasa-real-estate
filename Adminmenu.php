@@ -142,8 +142,8 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                                 echo '<td class="pt-4">' . $row['LastName'] . '</td>';
                                                 echo '<td class="pt-4">' . $row['Email'] . '</td>';
 
-                                                echo '<td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"> <a href="edit.php?username=' . $row['RegID'] . '"></a></td>';
-                                                echo '<td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"><a href="delete.php?username=' . $row['RegID'] . '"></a></td>';
+                                                echo '<td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"> <a href="edit.php?RegID=' . $row['RegID'] . '"></a></td>';
+                                                echo '<td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"><a href="delete.php?RegID=' . $row['RegID'] . '"></a></td>';
                                                 echo "</tr>";
                                             }
                                             echo "</tbody>";
