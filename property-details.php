@@ -205,10 +205,8 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
         </div>
 
 
-</body>
-
-<!-- FOOTER -->
-<?php include 'blocks/footer.php'; ?>
+        <!-- FOOTER -->
+        <?php include 'blocks/footer.php'; ?>
 
 </body>
 
