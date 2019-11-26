@@ -75,8 +75,8 @@ session_start();
                                 <label>Required</label><br>
 
 
-                                <?php if (isset($_SESSION['preview_img_error'])) {
-                                    echo $_SESSION['preview_img_error'];
+                                <?php if (isset($_SESSION['add-new']['preview_img_error'])) {
+                                    echo $_SESSION['add-new']['preview_img_error'];
                                 } ?>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">

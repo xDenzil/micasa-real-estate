@@ -23,10 +23,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="property-search.php">Search Properties</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="adminmenu.php">Admin Panel</a>
-                            </li>
-                            <input class="btn btn-primary rouund" type="button" value="Add Property" onclick="window.location.href='add-property.php'">
+                            <input class="btn btn-danger rouund" type="button" value="Admin Panel" onclick="window.location.href='adminmenu.php'">
                             <input class="btn btn-light rouund" type="button" value="Logout" onclick="window.location.href='scripts/logout.php'">
                         </ul>
                     </nav>

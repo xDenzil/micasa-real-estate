@@ -42,52 +42,23 @@ session_start();
 
 <body class="overlay">
 
-    <!-- NAVIGATION -->
-    <?php
-    switch ($_SESSION['userLevel']) {
-        case "user": // logged in user
-            require_once('blocks/user-navigation.php');
-            break;
-        case "admin": // admin user
-            require_once('blocks/admin-navigation.php');
-            break;
-        default: // guest
-            require_once('blocks/guest-navigation.php');
-            break;
-    }
-    ?>
-        <section class="h-100 blu">
-            <header class="container h-100">
-                <div class="d-flex align-items-center justify-content-center h-100">
-                    <div class="d-flex flex-column">
 
-                        <h1 class="text-center text-white"><?php echo $_SESSION['redirect']['header']; ?> !</h1>
-                        <h5 class="text-center text-white"><?php echo $_SESSION['redirect']['message']; ?></h5>
-                        <p class="text-center text-white"><b>Redirecting..</b></p>
-                        <?php unset($_SESSION['redirect']); ?>
+    <section class="h-100 bg-light">
+        <header class="container h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column">
 
-                    </div>
+                    <h1 class="text-center text-primary"><b><?php echo $_SESSION['redirect']['header']; ?> !</b></h1>
+                    <h5 class="text-center text-black"><?php echo $_SESSION['redirect']['message']; ?></h5><br>
+                    <p class="text-center text-primary">Redirecting..</p>
+                    <?php unset($_SESSION['redirect']); ?>
+
                 </div>
-            </header>
-        </section>
+            </div>
+        </header>
+    </section>
 
 </body>
-
-<!-- FOOTER -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="assets/js/jquery-ui.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/mediaelement-and-player.min.js"></script>
-<script src="assets/js/jquery.stellar.min.js"></script>
-<script src="assets/js/jquery.countdown.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/bootstrap-datepicker.min.js"></script>
-<script src="assets/js/aos.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
 </body>
 

@@ -196,6 +196,8 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                             ?>
                             </form>
                         </div>
+
+
                     </div>
 
                 </div>

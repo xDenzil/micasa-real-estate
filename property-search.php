@@ -41,6 +41,10 @@ if (isset($_GET['property_search'])) {
     include './database/db_connection.php'; // Connect to Database
     $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
+} else {
+    include './database/db_connection.php';
+    $query = "SELECT * FROM property;";
+    $result = mysqli_query($conn, $query) or die("Failed to get data.");
 }
 
 ?>

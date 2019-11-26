@@ -16,22 +16,22 @@ if (isset($_POST['add-image'])) {
             if ($fileSize < 5000000) {
                 $fileDestination = "../uploads/" . $fileName;
                 move_uploaded_file($fileTempLocation, $fileDestination); // Move file from temp location on user machine to the new location on web 
-                $_SESSION['preview_img'] = $fileName; //Saving URL in the session to be sent to the Database later
-                $_SESSION['preview_img_error'] = null; //Reset error session variable if it was previously set
-                header("Location: registrationToDatabase.php");
+                $_SESSION['add-new']['preview_img'] = $fileName; //Saving URL in the session to be sent to the Database later
+                $_SESSION['add-new']['preview_img_error'] = null; //Reset error session variable if it was previously set
+                header("Location: save-new-property.php");
             } else {
-                unset($_SESSION['preview_img']);
+                unset($_SESSION['add-new']['preview_img']);
                 header("Location: ../add-images.php");
-                $_SESSION['preview_img_error'] = "<span class='error small-text'>* File size too large Must be less than 5mb.</span>";
+                $_SESSION['add-new']['preview_img_error'] = "<span class='error small-text'>* File size too large Must be less than 5mb.</span>";
             }
         } else {
-            unset($_SESSION['preview_img']);
+            unset($_SESSION['add-new']['preview_img']);
             header("Location: ../add-images.php");
-            $_SESSION['preview_img_error'] = "<span class='error small-text'>* There was an error uploading this file.</span>";
+            $_SESSION['add-new']['preview_img_error'] = "<span class='error small-text'>* There was an error uploading this file.</span>";
         }
     } else {
-        unset($_SESSION['preview_img']);
+        unset($_SESSION['add-new']['preview_img']);
         header("Location: ../add-images.php");
-        $_SESSION['preview_img_error'] = "<span class='error small-text'>* Unsupported file type.</span>";
+        $_SESSION['add-new']['preview_img_error'] = "<span class='error small-text'>* Unsupported file type.</span>";
     }
 }
