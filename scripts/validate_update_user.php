@@ -92,41 +92,55 @@ $_SESSION['errFlagEditPage'] == false;
     }
 
     // PHONE NUMBER VALIDATION
+    if (empty($_POST['areacode'])) {
+        $_SESSION['areacode_error'] = "<span class='error small-text'>* Please enter the area code. </span>";
+        $_SESSION['areacode'] = null;
+        $_SESSION['errFlag4'] = true;
+        $phoneNumberCorrect = false;
+    } else if (!preg_match("/^$|^\d{3}$/", $_POST['areacode'])) {
+        $_SESSION['areacode_error'] = "<span class='error small-text'>* Invalid area code. </span>";
+        $_SESSION['areacode'] = $_POST['areacode'];
+        $_SESSION['errFlag4'] = true;
+    } else {
+        $_SESSION['areacode_error'] = null;
+        $phoneNumberCorrect = true;
+        $_SESSION['errFlag4'] = false;
+    }
     if (empty($_POST['phonenumber'])) {
         $_SESSION['phonenumber_error'] = "<span class='error small-text'>* Please enter user's phone number. </span>";
         $_SESSION['phonenumber'] = null;
-        $_SESSION['errFlag4'] = true;
+        $_SESSION['errFlag5'] = true;
         $phoneNumberCorrect = false;
     } else if (!preg_match("/^$|^\d{7}$/", $_POST['phonenumber'])) {
         $_SESSION['phonenumber_error'] = "<span class='error small-text'>* Invalid phone number. </span>";
         $_SESSION['phonenumber'] = $_POST['phonenumber'];
-        $_SESSION['errFlag4'] = true;
+        $_SESSION['errFlag5'] = true;
     } else {
         $_SESSION['phonenumber_error'] = null;
         $phoneNumberCorrect = true;
-        $_SESSION['errFlag4'] = false;
+        $_SESSION['errFlag5'] = false;
     }
     // PASSWORD VALIDATION
 
     if (empty($_POST['password'])) { // If password is empty
         $_SESSION['password_error'] = "<span class='error small-text'>* Please enter updated password. </span>";
         $_SESSION['password'] = null;
-        $_SESSION['errFlag5'] = true;
+        $_SESSION['errFlag6'] = true;
         $_SESSION['notmatching_error'] = null;
     } else if (!preg_match("/[a-zA-Z0-9]{6,}/", $_POST['password'])) {
         $_SESSION['password_error'] = "<span class='error small-text'>* Password must be at least 6 characters long. </span>";
         $_SESSION['password'] = $_POST['password'];
-        $_SESSION['errFlag5'] = true;
+        $_SESSION['errFlag6'] = true;
     } else { // If password is not empty check confirm password
         $_SESSION['password'] = $_POST['password'];
         $_SESSION['password_error'] = null;
-        $_SESSION['errFlag5'] = false;
+        $_SESSION['errFlag6'] = false;
         $_SESSION['notmatching_error'] = null;
         }
 
     // FORM VALIDATION - Return current page if errors, progress if none.
     if (($_SESSION['errFlag0'] == true) || ($_SESSION['errFlag1'] == true) || ($_SESSION['errFlag2'] == true)
-        || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true)
+        || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true) || ($_SESSION['errFlag6'] == true)
     ) {
         $_SESSION['errFlagEditPage'] = true;
     } else {

@@ -11,6 +11,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
         $lastname= $row['LastName'];
         $username = $row['Username'];
         $email = $row['Email'];
+        $areacode = $row['Telephone'];
         $phonenumber = $row['Telephone'];
         $password = $row['Password'];
     }
@@ -33,6 +34,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
             $firstname=$_POST['firstname'];
             $lastname=$_POST['lastname'];
             $email=$_POST['email'];
+            $areacode=$_POST['areacode'];
             $phonenumber=$_POST['phonenumber'];
             $username=$_POST['username'];
             $password=$_POST['password'];
@@ -41,7 +43,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
             FirstName='$firstname',
             LastName='$lastname', 
             Email='$email',
-            Telephone='$phonenumber',
+            Telephone='$areacode$phonenumber',
             Username ='$username',
             Password = '$password'
             WHERE RegID= '$RegID'";   
@@ -190,23 +192,30 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                                             </div>
                                                            
                                                             <!--- PHONE NUMBER SECTION --->
+                                                            <?php if (isset($areacode_error)) {
+                                                                echo $areacode_error;
+                                                            } ?>
                                                             <?php if (isset($phonenumber_error)) {
                                                                 echo $phonenumber_error;
                                                             } ?>
-                                                            <div class="form-group"><label>Phone Number</label>
+                                                             <div class="form-group"><label>Phone Number</label>
                                                                 <div class="form-row">
                                                                 <div class="col col-md-5">
                                                                     <div class="input-group">
-                                                                    <div class="input-group-prepend"><span class="input-group-text">+1</span>
-                                                                    <input class="form-control 
-                                                                <?php if (isset($phonenumber_error)) {
-                                                                echo "is-invalid";
-                                                                } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber; ?>"></div>
+                                                                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
+                                                                    <?php if (isset($areacode_error)) {
+                                                                    echo "is-invalid";
+                                                                    } ?>" type="text" name="areacode" value="<?php echo $areacode ?>">
+                                                                    <div class="input-group-append"></div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col col-md-7"><input class="form-control 
+                                                                <?php if (isset($phonenumber_error)) {
+                                                                echo "is-invalid";
+                                                                } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber ?>"></div>
                                                                 </div>
-                                                            </div>
-                                                            </div>
+                                                            </div>        
+
                                                             
 
                                                             <!--- PASSWORDS SECTION --->         
