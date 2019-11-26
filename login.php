@@ -20,13 +20,14 @@ if (isset($_POST['login'])) {
 
             if ($row['Username'] == 'micasadmin') {
                 $_SESSION['userLevel'] = 'admin'; // Set permissions to admin
+                $_SESSION['redirect']['path'] = 'index.php';
             } else {
                 $_SESSION['userLevel'] = 'user'; // Set permissions to user so that different navigation links and levels of access are available
+                $_SESSION['redirect']['path'] = 'user-dashboard.php';
             }
 
             // REDIRECT TO SUCCESS PAGE
             $_SESSION['redirect']['header'] = 'LOGIN SUCCESS';
-            $_SESSION['redirect']['path'] = 'user-dashboard.php';
             $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
             header('Location: error-or-success.php');
         }
