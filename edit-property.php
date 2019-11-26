@@ -15,14 +15,25 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
         $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
         // Redirect to Success Page
+        if ($_SESSION['userLevel'] == 'user') {
+            $_SESSION['redirect']['path'] = 'user-dashboard.php';
+        } else if ($_SESSION['userLevel'] == 'admin') {
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+        }
+
         $_SESSION['redirect']['header'] = 'SUCCESS';
-        $_SESSION['redirect']['path'] = 'user-dashboard.php';
         $_SESSION['redirect']['message'] = 'Property Updated.';
         header('Location: ./error-or-success.php');
     }
 } else if (isset($_GET['propID'])) { // If the user hasn't pressed the 'Save Changes' button yet, just pull data from the database 
     //$_SESSION['propID'] = $_GET['propID'];
-    $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
+
+    if ($_SESSION['userLevel'] == 'user') {
+        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
+    } else if ($_SESSION['userLevel'] == 'admin') {
+        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "';"; // To Display the Property Info
+    }
+
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
     if ($result->num_rows > 0) {

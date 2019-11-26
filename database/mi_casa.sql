@@ -79,7 +79,8 @@ CREATE TABLE IF NOT EXISTS `register` (
   `Telephone` varchar(10) NOT NULL,
   `Username` varchar(10) NOT NULL,
   `Password` varchar(10) NOT NULL,
-  PRIMARY KEY (`RegID`)
+  PRIMARY KEY (`RegID`),
+  UNIQUE KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

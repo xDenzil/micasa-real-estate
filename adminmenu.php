@@ -6,6 +6,10 @@ $query = "SELECT * FROM register WHERE RegID <> '" . $_SESSION['currentUserID'] 
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
 
+$query2 = "SELECT * FROM property;";
+$result2 = mysqli_query($conn, $query2) or die("<h1>Could not connect to database.</h1>");
+
+
 
 ?>
 
@@ -119,212 +123,40 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                 <div class="tab-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                     <div class="container">
 
-                                        <div class="row mb-5">
+                                        <div class="row">
+                                            <!-- Properties -->
+                                            <?php
 
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="property-entry h-100">
-                                                    <a href="property-details.html" class="property-thumbnail">
-                                                        <div class="offer-type-wrap">
-                                                            <span class="offer-type bg-danger">Sale</span>
-                                                            <span class="offer-type bg-success">Rent</span>
-                                                        </div>
-                                                        <img src="assets/images/img_9.jpg" alt="Image" class="img-fluid">
-                                                    </a>
-                                                    <div class="p-4 property-body">
-                                                        <h2 class="property-title">Mona Heights</h2>
-                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 650 Garden Boulevard, Kingston 6, Jamaica</span>
-                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                                            <li>
-                                                                <span class="property-specs">Beds</span>
-                                                                <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Baths</span>
-                                                                <span class="property-specs-number">2</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Acres</span>
-                                                                <span class="property-specs-number">9</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="property-entry h-100">
-                                                    <a href="property-details.html" class="property-thumbnail">
-                                                        <div class="offer-type-wrap">
-                                                            <span class="offer-type bg-info">Lease</span>
-                                                        </div>
-                                                        <img src="assets/images/img_6.jpg" alt="Image" class="img-fluid">
-                                                    </a>
-                                                    <div class="p-4 property-body">
-                                                        <h2 class="property-title">Falmouth</a></h2>
-                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 853 Maple Road, Falmouth, Trewlawny, JM</span>
-                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$132,265,500</strong>
-                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                                            <li>
-                                                                <span class="property-specs">Beds</span>
-                                                                <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Baths</span>
-                                                                <span class="property-specs-number">2</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Acres</span>
-                                                                <span class="property-specs-number">3</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="property-entry h-100">
-                                                    <a href="property-details.html" class="property-thumbnail">
-                                                        <div class="offer-type-wrap">
-                                                            <span class="offer-type bg-danger">Sale</span>
-                                                            <span class="offer-type bg-success">Rent</span>
-                                                        </div>
-                                                        <img src="assets/images/img_10.jpg" alt="Image" class="img-fluid">
-                                                    </a>
-                                                    <div class="p-4 property-body">
-                                                        <h2 class="property-title">Treasure Beach</a></h2>
-                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Treasure Beach, St elizabeth, JM</span>
-                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$168,265,500</strong>
-                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                                            <li>
-                                                                <span class="property-specs">Beds</span>
-                                                                <span class="property-specs-number">5 <sup>+</sup></span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Baths</span>
-                                                                <span class="property-specs-number">4</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Acres</span>
-                                                                <span class="property-specs-number">10</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="property-entry h-100">
-                                                    <a href="property-details.html" class="property-thumbnail">
-                                                        <div class="offer-type-wrap">
-                                                            <span class="offer-type bg-danger">Sale</span>
-                                                            <span class="offer-type bg-success">Rent</span>
-                                                        </div>
-                                                        <img src="assets/images/img_8.jpg" alt="Image" class="img-fluid">
-                                                    </a>
-                                                    <div class="p-4 property-body">
-                                                        <h2 class="property-title">Old Habour Bay</a></h2>
-                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> 210 Old Habour Bay, St Catherine, JM</span>
-                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$142,265,500</strong>
-                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                                            <li>
-                                                                <span class="property-specs">Beds</span>
-                                                                <span class="property-specs-number">3 <sup>+</sup></span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Baths</span>
-                                                                <span class="property-specs-number">1</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">SQ FT</span>
-                                                                <span class="property-specs-number">3.5</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="property-entry h-100">
-                                                    <a href="property-details.html" class="property-thumbnail">
-                                                        <div class="offer-type-wrap">
-                                                            <span class="offer-type bg-info">Lease</span>
-                                                        </div>
-                                                        <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
-                                                    </a>
-                                                    <div class="p-4 property-body">
-                                                        <h2 class="property-title">Mona Height</a></h2>
-                                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>Orchid Path, Kingston 6, JM</span>
-                                                        <strong class="property-price text-primary mb-3 d-block text-dark">$113,265,500</strong>
-                                                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                                            <li>
-                                                                <span class="property-specs">Beds</span>
-                                                                <span class="property-specs-number">2<sup>+</sup></span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Baths</span>
-                                                                <span class="property-specs-number">1</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <span class="property-specs">Acres</span>
-                                                                <span class="property-specs-number">4</span>
-
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit">
-                                                            </li>
-                                                            <li>
-                                                                <input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete">
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            if (mysqli_num_rows($result2) != 0) {
+                                                //header('Location: ../property_search.php');
+                                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                    echo ' <div class="col-4">
+<div class="property-entry"> 
+<a href="property-details.php?propID=' . $row2['PropertyID'] . '" class="property-thumbnail">
+<div class="offer-type-wrap">
+<span class="offer-type bg-primary px-3 p-2">' . $row2['ListingType'] . '</span>
+</div>
+<img src="uploads/' . $row2['PreviewImageURL'] . '" alt="Image" class="img-fluid">
+</a>
+<div class="p-4 property-body">
+<h2 class="property-title">' . $row2['Address1'] . '</h2>
+<span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row2['City'] . ", " . $row2['Parish'] . '</span>
+<strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row2['Price'] . '</strong>
+<div class="row">
+<div class="col-6"><input class="btn btn-success text-white btn-block" role="button" onclick="window.location.href=\'edit-property.php?propID=' . $row2['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
+<div class="col-6"><input class="btn btn-danger text-white btn-block" role="button"  onclick="window.location.href=\'scripts/delete-property.php?propID=' . $row2['PropertyID'] . '\'"name="delete-property" type="submit" value="Delete"></div>
+</div>
+</div>
+</div>
+</div>';
+                                                }
+                                                //$_SESSION['search_results'] = $row;
+                                            } else {
+                                                echo 'Please make a search.';
+                                            }
+                                            ?>
                                         </div>
+
 
                                     </div>
                                 </div>
