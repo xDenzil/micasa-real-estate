@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `register` (
 -- Constraints for table `property`
 --
 ALTER TABLE `property`
-  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`);
+  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `gallery`
