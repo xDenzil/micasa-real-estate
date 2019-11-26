@@ -30,15 +30,16 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
             }
         }else{
             $Update_query = "UPDATE register SET 
-        FirstName='$firstname',
-        LastName='$lastname', 
-        Email='$email',
-        Telephone='$phonenumber',
-        Username ='$username',
-        Password = '$password'
-        WHERE RegID= '$RegID'";   
-        //Redirect if Successful
-         header("Location: Adminmenu.php");
+            FirstName='$firstname',
+            LastName='$lastname', 
+            Email='$email',
+            Telephone='$phonenumber',
+            Username ='$username',
+            Password = '$password'
+            WHERE RegID= '$RegID'";   
+            mysqli_query($conn, $Update_query) or die("<h1>Could not connect to database.</h1>");
+            //Redirect if Successful
+            header("Location: Adminmenu.php");
         }
     }
     
