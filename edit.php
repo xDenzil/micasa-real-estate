@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include 'database/db_connection.php';
 //include 'scripts/validate_update_user.php';
 $RegID=$_REQUEST['RegID'];
@@ -16,19 +16,27 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
     }
     if(isset($_POST['Update']))
     {   
-        //$RegID = $_POST['RegID'];
+        /*//$RegID = $_POST['RegID'];
         $firstname=$_POST['firstname'];
         $lastname=$_POST['lastname'];
         $email=$_POST['email'];
         $phonenumber=$_POST['phonenumber'];
         $username=$_POST['username'];
-        $password=$_POST['password'];
+        $password=$_POST['password'];*/
         include 'scripts/validate_update_user.php'; // Validate if the entries are correct
         if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) { 
             foreach ($_SESSION as $key => $value) { // Show errors
                 $$key = $value;
             }
         }else{
+            $RegID = $_REQUEST['RegID'];
+            $firstname=$_POST['firstname'];
+            $lastname=$_POST['lastname'];
+            $email=$_POST['email'];
+            $phonenumber=$_POST['phonenumber'];
+            $username=$_POST['username'];
+            $password=$_POST['password'];
+
             $Update_query = "UPDATE register SET 
             FirstName='$firstname',
             LastName='$lastname', 

@@ -1,6 +1,7 @@
 <?php
 session_start(); // CONTINUING SESSION
 
+$_SESSION['errFlagEditPage'] == false;
     foreach ($_POST as $key => $value) {
         $$key = $value;
         $_SESSION[$key] = $value;
@@ -128,12 +129,8 @@ session_start(); // CONTINUING SESSION
         || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true)
     ) {
         $_SESSION['errFlagEditPage'] = true;
-        header("Location: ../edit.php");
     } else {
-        $_SESSION['errFlagEditPage'] = false;
-        $_SESSION['active'] = true;   
-        
-        
+        $_SESSION['errFlagEditPage'] = false;    
         
 
                                                         
