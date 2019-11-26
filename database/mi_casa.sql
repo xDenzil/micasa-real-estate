@@ -53,19 +53,6 @@ CREATE TABLE IF NOT EXISTS `property` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `propertydetail`
---
-
--- DROP TABLE IF EXISTS `propertydetail`;
--- CREATE TABLE IF NOT EXISTS `propertydetail` (
---   `PropertyID` int(5) DEFAULT NULL,
---   `Detail` varchar(300) NOT NULL,
---   UNIQUE KEY `Foreign Key` (`PropertyID`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `propertyimage`
 --
 
@@ -97,34 +84,13 @@ CREATE TABLE IF NOT EXISTS `register` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
-
--- DROP TABLE IF EXISTS `user`;
--- CREATE TABLE IF NOT EXISTS `user` (
---   `Username` varchar(10) NOT NULL,
---   `Password` varchar(10) NOT NULL,
---   PRIMARY KEY (`Username`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
---
-
---
 -- Constraints for table `property`
 --
 ALTER TABLE `property`
   ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`);
 
 --
--- Constraints for table `propertydetail`
--- --
--- ALTER TABLE `propertydetail`
---   ADD CONSTRAINT `propertydetail_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
-
---
--- Constraints for table `propertyimage`
+-- Constraints for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
