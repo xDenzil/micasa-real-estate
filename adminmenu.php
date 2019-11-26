@@ -9,6 +9,12 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
 $query2 = "SELECT * FROM property;";
 $result2 = mysqli_query($conn, $query2) or die("<h1>Could not connect to database.</h1>");
 
+if ($_SESSION['userLevel'] != 'admin') {
+    $_SESSION['redirect']['path'] = 'index.php';
+    $_SESSION['redirect']['header'] = 'Woops';
+    $_SESSION['redirect']['message'] = 'Sorry, but you don\'t have access to this page.';
+    header('Location: error-or-success.php');
+}
 
 
 ?>
@@ -63,12 +69,12 @@ $result2 = mysqli_query($conn, $query2) or die("<h1>Could not connect to databas
 
         <div class="container bg-white m-5 mx-auto">
             <div class="row">
-                <div class="col-3 bg-light p-0">
+                <div class="col-3  bg-light p-0">
                     <div class="col p-5">
                         <h1 class="text-black">Admin</h1>
                         <h1 class="text-black">Panel</h1>
                     </div>
-                    <div class="col p-5">
+                    <div class="col  p-5">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Users</a>
                             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Properties</a>
