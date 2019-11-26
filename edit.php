@@ -191,49 +191,48 @@ if (isset($_POST['Update'])) {
                                                             <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
                                                                 <?php if (isset($email_error)) {
                                                                     echo "is-invalid";
-                                                                } ?>" type="text" name="email" value="
-                                                                <?php echo $email; ?>"></div>
+                                                                } ?>" type="text" name="email" value="<?php echo $email; ?>"></input>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <!--- PHONE NUMBER SECTION --->
-                                                    <?php if (isset($areacode_error)) {
-                                                        echo $areacode_error;
-                                                    } ?>
-                                                    <?php if (isset($phonenumber_error)) {
-                                                        echo $phonenumber_error;
-                                                    } ?>
-                                                    <div class="form-group"><label>Phone Number</label>
-                                                        <div class="form-row">
-                                                            <div class="col col-md-5">
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
+                                                        <!--- PHONE NUMBER SECTION --->
+                                                        <?php if (isset($areacode_error)) {
+                                                            echo $areacode_error;
+                                                        } ?>
+                                                        <?php if (isset($phonenumber_error)) {
+                                                            echo $phonenumber_error;
+                                                        } ?>
+                                                        <div class="form-group"><label>Phone Number</label>
+                                                            <div class="form-row">
+                                                                <div class="col col-md-5">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
                                                                     <?php if (isset($areacode_error)) {
                                                                         echo "is-invalid";
                                                                     } ?>" type="text" name="areacode" value="<?php echo $areacode ?>">
-                                                                    <div class="input-group-append"></div>
+                                                                        <div class="input-group-append"></div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col col-md-7"><input class="form-control 
+                                                                <div class="col col-md-7"><input class="form-control 
                                                                 <?php if (isset($phonenumber_error)) {
                                                                     echo "is-invalid";
                                                                 } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber ?>"></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
 
 
-                                                    <!--- PASSWORDS SECTION --->
-                                                    <?php if (isset($password_error)) {
-                                                        echo $password_error;
-                                                    } ?>
-                                                    <div class="form-group"><label>Password</label><input class="form-control 
+                                                        <!--- PASSWORDS SECTION --->
+                                                        <?php if (isset($password_error)) {
+                                                            echo $password_error;
+                                                        } ?>
+                                                        <div class="form-group"><label>Password</label><input class="form-control 
                                                                 <?php if (isset($password_error)) {
                                                                     echo "is-invalid";
                                                                 } ?>" type="password" name="password" value="<?php echo $password ?>"></div>
 
 
-                                                    <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>
+                                                        <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>
 
                                                 </form>
                                             </div>
