@@ -1,17 +1,47 @@
 <?php
 session_start();
 include 'database/db_connection.php';
+//include 'scripts/validate_update_user.php';
+$RegID=$_REQUEST['RegID'];
+$query = "SELECT * FROM register WHERE RegID ='".$RegID."'"; 
+$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
-/*        $update = "UPDATE register SET FirstName='" . $_SESSION[firstname] . "', LastName='" . $_SESSION['lastname'] . "', Email='" . $_SESSION['email'] . "', Telephone='" . $_SESSION['phonenumber'] . "', Email='" . $_SESSION['email'] . "',
-        Password='" . $_SESSION['password'] . "' WHERE RegID='" . $RegID . "'";
-        mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
-        header('location: Adminmenu.php');
-    $RegID = $_REQUEST['RegID'];  
-    $query = "SELECT * FROM register WHERE RegID ='". $_GET['RegID']."'"; 
-    $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-    $row = mysqli_fetch_assoc($result);            
+    while($row = mysqli_fetch_assoc($result)) {     
+        $firstname = $row['FirstName'];
+        $lastname= $row['LastName'];
+        $username = $row['Username'];
+        $email = $row['Email'];
+        $phonenumber = $row['Telephone'];
+        $password = $row['Password'];
+    }
+    if(isset($_POST['Update']))
+    {   
+        //$RegID = $_POST['RegID'];
+        $firstname=$_POST['firstname'];
+        $lastname=$_POST['lastname'];
+        $email=$_POST['email'];
+        $phonenumber=$_POST['phonenumber'];
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        include 'scripts/validate_update_user.php'; // Validate if the entries are correct
+        if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) { 
+            foreach ($_SESSION as $key => $value) { // Show errors
+                $$key = $value;
+            }
+        }else{
+            $Update_query = "UPDATE register SET 
+        FirstName='$firstname',
+        LastName='$lastname', 
+        Email='$email',
+        Telephone='$phonenumber',
+        Username ='$username',
+        Password = '$password'
+        WHERE RegID= '$RegID'";   
+        //Redirect if Successful
+         header("Location: Adminmenu.php");
+        }
+    }
     
-*/
     
  
 ?>
@@ -105,7 +135,7 @@ include 'database/db_connection.php';
                                         <div class="col-12">
                                                 <div>
                                                 <!-- UPDATE FORM -->
-                                                <form action="scripts/validate_update_user.php" method="POST" >
+                                                <form action="" method="POST" >
                                                         <h1>User Information</h1>
 
                                                             <p class="m-0">Please add updates to the relevant fields.</p>
@@ -122,9 +152,9 @@ include 'database/db_connection.php';
                                                                 <div class="form-row mt-2">
                                                                     <div class="form-group col-md-6"><label>First Name</label>
                                                                     <input class="form-control <?php if (isset($firstname_error)) { 
-                                                                        echo "is-invalid"; } ?>" type="text" name="firstname" value="<?php echo isset($_SESSION['FirstName']); ?>"></div>
+                                                                        echo "is-invalid"; } ?>" type="text" name="firstname" value="<?php echo $firstname; ?>"></div>
                                                                     <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
-                                                                    <?php if (isset($lastname_error)) { echo "is-invalid"; } ?>" type="text" name="lastname" value="<?php echo isset($_SESSION['LastName']); ?>"></div>
+                                                                    <?php if (isset($lastname_error)) { echo "is-invalid"; } ?>" type="text" name="lastname" value="<?php echo $lastname; ?>"></div>
                                                                 </div>
 
 
@@ -140,13 +170,13 @@ include 'database/db_connection.php';
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend"><span class="input-group-text">@</span>
                                                                     </div><input class="form-control <?php if (isset($username_error)) { echo "is-invalid"; } ?>" 
-                                                                    type="text" name="username" value="<?php echo isset($_SESSION['Username']); ?>">
+                                                                    type="text" name="username" value="<?php echo $username; ?>">
                                                                     <div class="input-group-append"></div>
                                                                 </div>
                                                                 </div>
                                                                 <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
                                                                 <?php if (isset($email_error)) { echo "is-invalid"; } ?>" type="text" name="email" value="
-                                                                <?php echo isset($_SESSION['Email']); ?>"></div>
+                                                                <?php echo $email; ?>"></div>
                                                             </div>
                                                             </div>
                                                            
@@ -162,7 +192,7 @@ include 'database/db_connection.php';
                                                                     <input class="form-control 
                                                                 <?php if (isset($phonenumber_error)) {
                                                                 echo "is-invalid";
-                                                                } ?>" type="text" name="phonenumber" value="<?php echo isset($_SESSION['Telephone']); ?>"></div>
+                                                                } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber; ?>"></div>
                                                                     </div>
                                                                 </div>
                                                                 </div>
@@ -177,7 +207,7 @@ include 'database/db_connection.php';
                                                              <div class="form-group"><label>Password</label><input class="form-control 
                                                                 <?php if (isset($password_error)) {
                                                                 echo "is-invalid";
-                                                                } ?>" type="password" name="password" value="<?php echo isset($_SESSION['Password']) ?>"></div>
+                                                                } ?>" type="password" name="password" value="<?php echo $password ?>"></div>
                                                             
                                                             
                                                             <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>

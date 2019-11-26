@@ -131,7 +131,11 @@ session_start(); // CONTINUING SESSION
         header("Location: ../edit.php");
     } else {
         $_SESSION['errFlagEditPage'] = false;
-        $_SESSION['active'] = true;      
+        $_SESSION['active'] = true;   
+        
+        
+        
+
                                                         
                
     }
