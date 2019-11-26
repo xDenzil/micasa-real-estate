@@ -57,11 +57,12 @@ CREATE TABLE IF NOT EXISTS `property` (
 --
 
 DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
-  `PropertyID` int(5) DEFAULT NULL,
-  `ImageURL` varchar(200) NOT NULL,
-  UNIQUE KEY `Foreign Key` (`PropertyID`)
+CREATE TABLE `gallery` (
+  `ImgID` varchar(30) NOT NULL,
+  `PropertyID` int(5) NOT NULL,
+  `ImageURL` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -92,9 +93,10 @@ ALTER TABLE `property`
 --
 -- Constraints for table `gallery`
 --
+
 ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`ImgID`),
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
