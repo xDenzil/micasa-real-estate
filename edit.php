@@ -1,22 +1,19 @@
 <?php
 session_start();
+include 'database/db_connection.php';
 
-if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
-    foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
-      $$key = $value;
-    }
-        include './database/db_connection.php';
-        $RegID = isset($_REQUEST['RegID']);
-        $query = "SELECT * FROM register WHERE RegID ='".$RegID."'"; 
-        $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-        $row = mysqli_fetch_assoc($result);
-  }
-  /*include './database/db_connection.php';
-  $update = "UPDATE register SET FirstName='" . $firstname . "', FirstName='" . $firstname . "', Email='" . $email . "', Telephone='" . $phonenumber . "',
-  Password='" . $password . "' WHERE RegID='" . $RegID . "'";
-  mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
-  header('location: Adminmenu.php');*/
-
+/*        $update = "UPDATE register SET FirstName='" . $_SESSION[firstname] . "', LastName='" . $_SESSION['lastname'] . "', Email='" . $_SESSION['email'] . "', Telephone='" . $_SESSION['phonenumber'] . "', Email='" . $_SESSION['email'] . "',
+        Password='" . $_SESSION['password'] . "' WHERE RegID='" . $RegID . "'";
+        mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
+        header('location: Adminmenu.php');
+    $RegID = $_REQUEST['RegID'];  
+    $query = "SELECT * FROM register WHERE RegID ='". $_GET['RegID']."'"; 
+    $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+    $row = mysqli_fetch_assoc($result);            
+    
+*/
+    
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +105,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                         <div class="col-12">
                                                 <div>
                                                 <!-- UPDATE FORM -->
-                                                <form action="./scripts/validate_update_user.php" method="POST" >
+                                                <form action="scripts/validate_update_user.php" method="POST" >
                                                         <h1>User Information</h1>
 
                                                             <p class="m-0">Please add updates to the relevant fields.</p>
@@ -125,9 +122,9 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                                                 <div class="form-row mt-2">
                                                                     <div class="form-group col-md-6"><label>First Name</label>
                                                                     <input class="form-control <?php if (isset($firstname_error)) { 
-                                                                        echo "is-invalid"; } ?>" type="text" name="firstname" value="<?php echo $row['FirstName']; ?>"></div>
+                                                                        echo "is-invalid"; } ?>" type="text" name="firstname" value="<?php echo isset($_SESSION['FirstName']); ?>"></div>
                                                                     <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
-                                                                    <?php if (isset($lastname_error)) { echo "is-invalid"; } ?>" type="text" name="lastname" value="<?php echo $row['LastName']; ?>"></div>
+                                                                    <?php if (isset($lastname_error)) { echo "is-invalid"; } ?>" type="text" name="lastname" value="<?php echo isset($_SESSION['LastName']); ?>"></div>
                                                                 </div>
 
 
@@ -143,13 +140,13 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend"><span class="input-group-text">@</span>
                                                                     </div><input class="form-control <?php if (isset($username_error)) { echo "is-invalid"; } ?>" 
-                                                                    type="text" name="username" value="<?php echo $row['Username'] ?>">
+                                                                    type="text" name="username" value="<?php echo isset($_SESSION['Username']); ?>">
                                                                     <div class="input-group-append"></div>
                                                                 </div>
                                                                 </div>
                                                                 <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
                                                                 <?php if (isset($email_error)) { echo "is-invalid"; } ?>" type="text" name="email" value="
-                                                                <?php echo $row['Email'] ?>"></div>
+                                                                <?php echo isset($_SESSION['Email']); ?>"></div>
                                                             </div>
                                                             </div>
                                                            
@@ -165,7 +162,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                                                     <input class="form-control 
                                                                 <?php if (isset($phonenumber_error)) {
                                                                 echo "is-invalid";
-                                                                } ?>" type="text" name="phonenumber" value="<?php echo $row['Telephone'] ?>"></div>
+                                                                } ?>" type="text" name="phonenumber" value="<?php echo isset($_SESSION['Telephone']); ?>"></div>
                                                                     </div>
                                                                 </div>
                                                                 </div>
@@ -180,7 +177,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                                                              <div class="form-group"><label>Password</label><input class="form-control 
                                                                 <?php if (isset($password_error)) {
                                                                 echo "is-invalid";
-                                                                } ?>" type="password" name="password" value="<?php echo $row['Password'] ?>"></div>
+                                                                } ?>" type="password" name="password" value="<?php echo isset($_SESSION['Password']) ?>"></div>
                                                             
                                                             
                                                             <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>

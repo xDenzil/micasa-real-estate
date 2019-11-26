@@ -1,6 +1,6 @@
 <?php
 session_start(); // CONTINUING SESSION
-if (isset($_POST['Update'])) { //IF CONTINUE BUTTON IS PRESSED
+
     foreach ($_POST as $key => $value) {
         $$key = $value;
         $_SESSION[$key] = $value;
@@ -135,6 +135,6 @@ if (isset($_POST['Update'])) { //IF CONTINUE BUTTON IS PRESSED
                                                         
                
     }
-}
+
 
 ?>
