@@ -1,11 +1,8 @@
 <?php
 session_start();
 include './database/db_connection.php';
-//Doesn't work with include('db_connection.php');
-//$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-
 // get results from database
-$query = "SELECT * FROM register";
+$query = "SELECT * FROM register ORDER BY RegID desc;";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
 
@@ -118,36 +115,38 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                             <div class="tab-content" id="v-pills-tabContent">
                                 <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-12">                                                                                
+                                            <table class="table table-borderless table-responsive">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                            <th scope="col">RegID</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Firstname</th>
+                                            <th scope="col">Lastname</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
                                             <?php
-                                            
-                                            echo '<table class="table table-borderless table-responsive">';
-                                            echo '<thead class="thead-dark">';
-                                            echo "<tr>";
-                                            echo '<th scope="col">Username</th>';
-                                            echo '<th scope="col">Firstname</th>';
-                                            echo '<th scope="col">Lastname</th>';
-                                            echo '<th scope="col">Email</th>';
-                                            echo '<th scope="col"></th>';
-                                            echo '<th scope="col"></th>';
-                                            echo "</tr>";
-                                            echo "</thead>";
-                                            echo "<tbody>";
                                             // loop through results of database query, displaying them in the table
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                echo "<tr>";
-                                                echo '<th scope="row" class="pt-4">' . $row['Username'] . '</th>';
-                                                echo '<td class="pt-4">' . $row['FirstName'] . '</td>';
-                                                echo '<td class="pt-4">' . $row['LastName'] . '</td>';
-                                                echo '<td class="pt-4">' . $row['Email'] . '</td>';
-
-                                                echo '<td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"> <a href="edit.php?RegID=' . $row['RegID'] . '"></a></td></input>';
-                                                echo '<td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"><a href="delete.php?RegID=' . $row['RegID'] . '"></a></td></input>';
-                                                echo "</tr>";
-                                            }
-                                            echo "</tbody>";
-                                            echo "</table>";
-                                            ?>
+                                            while ($row = mysqli_fetch_array($result)) { ?>
+                                                <tr>
+                                                <th scope="row" class="pt-4"><?php echo $row['RegID'];?> </th>
+                                                <th scope="row" class="pt-4"><?php echo $row['Username']; ?></th>
+                                                <td class="pt-4"><?php echo $row['FirstName']; ?></td>
+                                                <td class="pt-4"><?php echo $row['LastName']; ?></td>
+                                                <td class="pt-4"><?php echo $row['Email'];?></td>
+                                                
+                                                <td><a href="edit.php?RegID=<?php echo $row['RegID']; ?>">Edit</a></td>
+                                                <td><a href="delete.php?RegID=<?php echo $row['RegID']; ?>">Delete</a></td>
+                                                </tr>
+                                            
+                                           <?php } ?>
+                                            </tbody>
+                                            </table>
+                                            
                                             <p><a href="registration.php">Add a new User</a></p>
                                         </div>
 

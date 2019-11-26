@@ -1,12 +1,12 @@
 <?php
-/*session_start();
+session_start();
 include './database/db_connection.php'; // Connect to Database
 $RegID = $_REQUEST['RegID'];
 $query = "DELETE FROM register WHERE RegID = $RegID";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-header("Location: ../adminmenu.php");*/
+header("Location: ../adminmenu.php");
 
-include './database/db_connection.php'; // Connect to Database
+/*include './database/db_connection.php'; // Connect to Database
 
 // check if the 'id' variable is set in URL, and check that it is valid
 if (isset($_GET['RegID']) && is_numeric($_GET['RegID']))
@@ -24,5 +24,5 @@ else
 {
     header("Location: Adminmenu.php");
 
-}
+}*/
 ?>

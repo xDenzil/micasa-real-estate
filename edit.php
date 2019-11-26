@@ -1,8 +1,9 @@
 <?php
+session_start();
 include './database/db_connection.php';
-$username = isset($_REQUEST['Username']);
-$query = "SELECT * FROM register WHERE Username ='".$username."'"; 
-$result = mysqli_query($conn, $query) or die(mysqli_error());
+$RegID = isset($_REQUEST['RegID']);
+$query = "SELECT * FROM register WHERE RegID ='".$RegID."'"; 
+$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -96,7 +97,8 @@ $row = mysqli_fetch_assoc($result);
                                                 <div>
                                                 <?php
                                                     $status = "";
-                                                    if (isset($_POST['submit']) && $_POST['submit'] == 1) {
+                                                    if (isset($_POST['POST']) && $_POST['POST'] == 1) {
+                                                        $RegID = $_REQUEST['RegID'];
                                                         $username = $_REQUEST['Username'];
                                                         $firstname = $_REQUEST['FirstName'];
                                                         $lastname = $_REQUEST['LastName'];
@@ -105,21 +107,20 @@ $row = mysqli_fetch_assoc($result);
                                                         $password = $_REQUEST['Password'];
                                                         $password2 = $_REQUEST['Password2'];
                                                         $update = "UPDATE register SET FirstName='" . $firstname . "', FirstName='" . $firstname . "', Email='" . $email . "', Telephone='" . $phonenumber . "',
-                                                        Password='" . $password . "', Password2='" . $password2 . "', WHERE UserName='" . $username . "'";
+                                                        Password='" . $password . "' WHERE RegID='" . $RegID . "'";
                                                         mysqli_query($conn, $update) or die("<h1>Could not connect to database.</h1>");
-                                                        $status = "Record Updated Successfully. </br></br>
-                                                        <a href='Adminmenu.php'>View Updated Record</a>";
-                                                        echo '<p style="color:#FF0000;">' . $status . '</p>';
+                                                        $_SESSION['message'] = "User Information updated!"; 
+                                                        header('location: Adminmenu.php');
                                                     } else {
                                                 ?>
     
-                                                    <form name="form" method="post" action="">
+                                                    <form name="form" method="POST" action="">
                                                         <h1>User Information</h1>
-                                                            <p class="m-0">Please add Updates to the relevant fields.</p>
+                                                            <p class="m-0">Please add updates to the relevant fields.</p>
                                                             <div class="form-row mt-2">
                                                                 <div class="form-group col-md-6"><label>First Name</label>
-                                                                <input class="form-control" type="text" name="updatefirstname" value="<?php echo $row['FirstName']; ?>"></div>
-                                                                <div class="form-group col-md-6"><label>Last Name</label><input class="form-control" type="text" name="updatelastname" value="<?php echo $row['LastName']; ?>"></div>
+                                                                <input class="form-control" type="text" name="FirstName" value="<?php echo $row['FirstName']; ?>"></div>
+                                                                <div class="form-group col-md-6"><label>Last Name</label><input class="form-control" type="text" name="LastName" value="<?php echo $row['LastName']; ?>"></div>
                                                             </div>
 
 
@@ -129,11 +130,11 @@ $row = mysqli_fetch_assoc($result);
                                                                 <div class="form-group col-md-6"><label>Username</label>
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend"><span class="input-group-text">@</span>
-                                                                    </div><input class="form-control" type="text" name="updateusername" value="<?php echo $row['Username'] ?>">
+                                                                    </div><input class="form-control" type="text" name="Username" value="<?php echo $row['Username'] ?>">
                                                                     <div class="input-group-append"></div>
                                                                 </div>
                                                                 </div>
-                                                                <div class="form-group col-md-6"><label>Email Address</label><input class="form-control" type="text" name="updateemail" value="
+                                                                <div class="form-group col-md-6"><label>Email Address</label><input class="form-control" type="text" name="Email" value="
                                                                 <?php echo $row['Email'] ?>"></div>
                                                             </div>
 
@@ -146,14 +147,14 @@ $row = mysqli_fetch_assoc($result);
                                                                     <div class="input-group-append"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col col-md-7"><input class="form-control" type="text" name="updatephone" value="<?php echo $row['Telephone'] ?>"></div>
+                                                                <div class="col col-md-7"><input class="form-control" type="text" name="Telephone" value="<?php echo $row['Telephone'] ?>"></div>
                                                                 </div>
                                                             </div>
 
 
                                                             <!--- PASSWORDS SECTION --->         
 
-                                                            <div class="form-group"><label>Password</label><input class="form-control" type="password" name="updatepassword" value="<?php echo $row['Password'] ?>"></div>
+                                                            <div class="form-group"><label>Password</label><input class="form-control" type="password" name="Password" value="<?php echo $row['Password'] ?>"></div>
                                                             
                                                             <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="submit" value="Update Record"></input>
                                                             
