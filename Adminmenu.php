@@ -140,7 +140,7 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                                 <td class="pt-4"><?php echo $row['Email'];?></td>
                                                 
                                                 <td><a class="btn btn-success text-white rouund m-0" role="button" href="edit.php?RegID=<?php echo $row['RegID']; ?>">Edit</a></td>
-                                                <td><a class="btn btn-success text-white rouund m-0" role="button" href="delete.php?RegID=<?php echo $row['RegID']; ?>">Delete</a></td>
+                                                <td><a class="btn btn-danger rouund m-0" role="button"  href="delete.php?RegID=<?php echo $row['RegID']; ?>">Delete</a></td>
                                                 </tr>
                                             
                                            <?php } ?>
