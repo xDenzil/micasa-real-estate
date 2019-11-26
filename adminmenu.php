@@ -1,10 +1,8 @@
 <?php
 session_start();
-//Doesn't work with include('db_connection.php');
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-
+include './database/db_connection.php';
 // get results from database
-$query = "SELECT * FROM register";
+$query = "SELECT * FROM register ORDER BY RegID desc;";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
 
@@ -20,23 +18,23 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/mediaelementplayer.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/fl-bigmug-line.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/css/mediaelementplayer.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="assets/css/fl-bigmug-line.css">
 
 
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom-styles.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom-styles.css">
 
 </head>
 
@@ -118,36 +116,37 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                 <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
                                         <div class="col-12">
-                                            <?php
-                                            // get results from database
-                                            //$result = mysql_query("SELECT * FROM register") or die("<h1>Could not connect to database.</h1>");
-                                            echo '<table class="table table-borderless table-responsive">';
-                                            echo '<thead class="thead-dark">';
-                                            echo "<tr>";
-                                            echo '<th scope="col">Username</th>';
-                                            echo '<th scope="col">Firstname</th>';
-                                            echo '<th scope="col">Lastname</th>';
-                                            echo '<th scope="col">Email</th>';
-                                            echo '<th scope="col"></th>';
-                                            echo '<th scope="col"></th>';
-                                            echo "</tr>";
-                                            echo "</thead>";
-                                            echo "<tbody>";
-                                            // loop through results of database query, displaying them in the table
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                echo "<tr>";
-                                                echo '<th scope="row" class="pt-4">' . $row['Username'] . '</th>';
-                                                echo '<td class="pt-4">' . $row['FirstName'] . '</td>';
-                                                echo '<td class="pt-4">' . $row['LastName'] . '</td>';
-                                                echo '<td class="pt-4">' . $row['Email'] . '</td>';
+                                            <table class="table table-borderless table-responsive">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">RegID</th>
+                                                        <th scope="col">Username</th>
+                                                        <th scope="col">Firstname</th>
+                                                        <th scope="col">Lastname</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col"></th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    // loop through results of database query, displaying them in the table
+                                                    while ($row = mysqli_fetch_array($result)) { ?>
+                                                        <tr>
+                                                            <th scope="row" class="pt-4"><?php echo $row['RegID']; ?> </th>
+                                                            <th scope="row" class="pt-4"><?php echo $row['Username']; ?></th>
+                                                            <td class="pt-4"><?php echo $row['FirstName']; ?></td>
+                                                            <td class="pt-4"><?php echo $row['LastName']; ?></td>
+                                                            <td class="pt-4"><?php echo $row['Email']; ?></td>
 
-                                                echo '<td><input type="submit" class="btn btn-success text-white rouund m-0" role="button" value="Edit"> <a href="edit.php?username=' . $row['Username'] . '"></a></td>';
-                                                echo '<td><input type="submit" class="btn btn-danger rouund m-0" role="button" value="Delete"><a href="delete.php?username=' . $row['Username'] . '"></a></td>';
-                                                echo "</tr>";
-                                            }
-                                            echo "</tbody>";
-                                            echo "</table>";
-                                            ?>
+                                                            <td><a class="btn btn-success text-white rouund m-0" role="button" href="edit.php?RegID=<?php echo $row['RegID']; ?>">Edit</a></td>
+                                                            <td><a class="btn btn-danger rouund m-0" role="button" href="delete.php?RegID=<?php echo $row['RegID']; ?>">Delete</a></td>
+                                                        </tr>
+
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+
                                             <p><a href="registration.php">Add a new User</a></p>
                                         </div>
 
@@ -436,20 +435,20 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
 
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mediaelement-and-player.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/mediaelement-and-player.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/aos.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
 </body>
