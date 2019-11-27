@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'database/db_connection.php';
+
 if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was clicked
     include 'scripts/validate_update_property.php'; // Validate if the entries are correct
     if ((isset($_SESSION['errFlagEditProperty'])) && ($_SESSION['errFlagEditProperty']) == true) { // If there are errors
@@ -10,16 +11,26 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
     } else { // If there weren't any errors, update database
         $query = "UPDATE `property` SET `Address1`='" . $_SESSION['address1'] . "',`Address2`='" . $_SESSION['address2'] . "' ,`City`='" . $_SESSION['city'] . "',`Parish`='" . $_SESSION['parish'] . "',`Size`='" . $_SESSION['landsize'] . "',`ListingType`='" . $_SESSION['listing_type'] . "',`PropertyType`='" . $_SESSION['property_type'] . "',`BuildingType`='" . $_SESSION['building_type'] . "',`NumBedroom`=" . $_SESSION['bedrooms'] . ",`NumBathroom`=" . $_SESSION['bathrooms'] . ",`Price`=" . $_SESSION['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
         $result = mysqli_query($conn, $query) or die("Failed to get data.");
-        // Redirect to Success Page
+        // Redirect to Success Page		         // Redirect to Success Page
+        if ($_SESSION['userLevel'] == 'user') {
+            $_SESSION['redirect']['path'] = 'user-dashboard.php';
+        } else if ($_SESSION['userLevel'] == 'admin') {
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+        }
         $_SESSION['redirect']['header'] = 'SUCCESS';
-        $_SESSION['redirect']['path'] = 'user-dashboard.php';
         $_SESSION['redirect']['message'] = 'Property Updated.';
-        header('Location: ./error-or-success.php');
+        header('Location: error-or-success.php');
     }
 } else if (isset($_GET['propID'])) { // If the user hasn't pressed the 'Save Changes' button yet, just pull data from the database 
     //$_SESSION['propID'] = $_GET['propID'];
-    $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info
+    if ($_SESSION['userLevel'] == 'user') {
+        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info		
+    } else if ($_SESSION['userLevel'] == 'admin') {
+        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "';"; // To Display the Property Info		
+    }
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+
     if ($result->num_rows > 0) {
         /*If there are results, output data into the input boxes 
         so the user can see what they edit.*/

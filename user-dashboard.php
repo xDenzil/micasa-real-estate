@@ -122,12 +122,10 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
                         }
                         //$_SESSION['search_results'] = $row;
                     } else {
-                        if (isset($_GET['property_search'])) {
-                            echo 'Sorry.. Nothing Found.';
-                        } else {
-                            echo 'Please make a search.';
-                        }
+
+                        echo '<a class="mx-auto">You have no properties at the moment.</a>';
                     }
+
 
                     ?>
 

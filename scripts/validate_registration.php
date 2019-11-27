@@ -28,7 +28,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['firstname'] = $_POST['firstname'];
             $_SESSION['errFlag0'] = true;
         } else {
-            $_SESSION['first_name'] = $_POST['firstname'];  
+            $_SESSION['first_name'] = $_POST['firstname'];
             $_SESSION['firstname_error'] = null;
             $_SESSION['errFlag0'] = false;
         }
@@ -161,11 +161,19 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
         mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
         //header('Location: ../user-dashboard.php');
-        $_SESSION['userLevel']='user';
+        $_SESSION['userLevel'] = 'user';
+
+        $query2 = "SELECT * FROM `register` WHERE Username='" . $_SESSION['username'] . "';";
+        $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
+
+        if (mysqli_num_rows($result2) != 0) { // If login successfull
+            while ($row2 = mysqli_fetch_assoc($result2)) {
+                $_SESSION['currentUserID'] = $row2['RegID'];
+            }
+        }
         $_SESSION['redirect']['header'] = 'REGISTRATION SUCCESS';
         $_SESSION['redirect']['path'] = 'user-dashboard.php';
         $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
         header('Location: ../error-or-success.php');
-       
     }
 }

@@ -215,9 +215,9 @@ if (isset($_GET['property_search'])) {
                         //$_SESSION['search_results'] = $row;
                     } else {
                         if (isset($_GET['property_search'])) {
-                            echo 'Sorry.. Nothing Found.';
+                            echo '<a class="mx-auto">Sorry, nothing matches your criteria.</a>';
                         } else {
-                            echo 'Please make a search.';
+                            echo '<a class="mx-auto">Please make a search.</a>';
                         }
                     }
 
