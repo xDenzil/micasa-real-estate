@@ -114,7 +114,7 @@ if ((isset($_SESSION['errFlagAddProperty'])) && ($_SESSION['errFlagAddProperty']
                 <div class="form-group"><label>Address Line 2</label>
                   <input class="form-control <?php if (isset($address2_error)) {
                                                 echo "is-invalid";
-                                              } ?>" type="text" name="address2" value="<?php echo $_SESSION['address2'] ?>">
+                                              } ?>" type="text" name="address2" value="<?php echo $_SESSION['add-new']['address2'] ?>">
                 </div>
 
               </div>

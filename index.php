@@ -2,6 +2,7 @@
 
 session_start();
 include './database/db_connection.php'; // Connect to Database
+include './scripts/variables.php';
 $query = "SELECT * FROM property ORDER BY PropertyID DESC LIMIT 10;";
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
 ?>
