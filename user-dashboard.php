@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-$loggedInUser = $_SESSION['currentUserID'];
+$loggedInUser = $_SESSION['currentUserID']; //KEEP TRACK OF WHO THE USER LOGGED IN IS
 
-include './database/db_connection.php'; // Connect to Database
-$query = "SELECT * FROM `property` WHERE userID='$loggedInUser';"; // To Display the Property Info
+include './database/db_connection.php';
+$query = "SELECT * FROM `property` WHERE userID='$loggedInUser';"; // SHOW ALL THE USER'S PROPERTIES
 $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to show.");
 
 ?>
@@ -53,7 +53,6 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
     }
     ?>
         <div class="site-section p-2 bg-black pt-4" name="nav-bg" style="height:120px;"></div>
-
         <div class="site-section bg-white">
             <div class="container">
                 <div class="row justify-content-center">
@@ -91,7 +90,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
                                     </a>
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>
-                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
+                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . number_format($row['City']) . ", " . $row['Parish'] . '</span>
                                         <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
                                         <ul class="property-specs-wrap mb-3 mb-lg-0">
                                             <li>

@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-include './database/db_connection.php'; // Connect to Database
-include './scripts/variables.php';
-$query = "SELECT * FROM property ORDER BY PropertyID DESC LIMIT 10;";
+include './database/db_connection.php'; // CONNECT TO DATABASE
+include './scripts/variables.php'; // THIS FILE DECLARES VARIABLES
+$query = "SELECT * FROM property ORDER BY PropertyID DESC LIMIT 10;"; // 10 MOST RECENT PROPERTIES QUERY
 $result = mysqli_query($conn, $query) or die("Failed to get data.");
 ?>
 
@@ -112,14 +112,14 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
                 <div class="p-4 property-body">
                     <h2 class="property-title">' . $row['Address1'] . '</h2>
                     <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
-                    <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                    <strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row['Price']) . '</strong>
                 </div>
             </div>
         </div>';
             }
             //$_SESSION['search_results'] = $row;
           } else {
-            echo 'No properties to show.';
+            echo '<a class="mx-auto">No properties to show.</a>';
           } ?>
 
         </div>

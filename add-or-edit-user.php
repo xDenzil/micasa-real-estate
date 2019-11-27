@@ -1,58 +1,93 @@
 <?php
 session_start();
-include 'database/db_connection.php';
-//include 'scripts/validate_update_user.php';
+include './database/db_connection.php';
 $RegID = $_REQUEST['RegID'];
-$query = "SELECT * FROM register WHERE RegID ='" . $RegID . "'";
-$result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-while ($row = mysqli_fetch_assoc($result)) {
-    $firstname = $row['FirstName'];
-    $lastname = $row['LastName'];
-    $username = $row['Username'];
-    $email = $row['Email'];
-    $areacode = substr($row['Telephone'], 0, -7);
-    $phonenumber = substr($row['Telephone'], 3);
-    $password = $row['Password'];
-}
-if (isset($_POST['Update'])) {
-    /*//$RegID = $_POST['RegID'];
-        $firstname=$_POST['firstname'];
-        $lastname=$_POST['lastname'];
-        $email=$_POST['email'];
-        $phonenumber=$_POST['phonenumber'];
-        $username=$_POST['username'];
-        $password=$_POST['password'];*/
-    include 'scripts/validate_update_user.php'; // Validate if the entries are correct
-    if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) {
-        foreach ($_SESSION as $key => $value) { // Show errors
-            $$key = $value;
-        }
-    } else {
-        $RegID = $_REQUEST['RegID'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $email = $_POST['email'];
-        $areacode = $_POST['areacode'];
-        $phonenumber = $_POST['phonenumber'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $Update_query = "UPDATE register SET 
-            FirstName='$firstname',
-            LastName='$lastname', 
-            Email='$email',
-            Telephone='$areacode$phonenumber',
-            Username ='$username',
-            Password = '$password'
-            WHERE RegID= '$RegID'";
-        mysqli_query($conn, $Update_query) or die("<h1>Could not connect to database.</h1>");
 
-        //Redirect if Successful
-        $_SESSION['redirect']['header'] = 'SUCCESS';
-        $_SESSION['redirect']['path'] = 'adminmenu.php';
-        $_SESSION['redirect']['message'] = 'User Account Updated.';
-        header('Location: ./error-or-success.php');
+// UPDATE TEXT LABELS BASED ON IF IT'S AN ADD OR DELETE USER REQUEST
+$_GET['action'] == 'edit' ? $formtitle = 'Update User Information' : $formtitle = 'Create User Account';
+$_GET['action'] == 'edit' ? $btntitle = 'Save Changes' : $btntitle = 'Create User';
+
+
+// IF AN EDIT USER REQUEST
+if ($_GET['action'] == 'edit') {
+
+    // CONNECT TO DB AND POPULATE FIELDS WITH EXISTING DATA
+    include './database/db_connection.php';
+    $query = "SELECT * FROM register WHERE RegID ='" . $RegID . "'";
+    $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $firstname = $row['FirstName'];
+        $lastname = $row['LastName'];
+        $username = $row['Username'];
+        $email = $row['Email'];
+        $areacode = substr($row['Telephone'], 0, -7);
+        $phonenumber = substr($row['Telephone'], 3);
+        $password = $row['Password'];
+    }
+    // IF THE USER PRESSES THE SUBMIT BUTTON, VALIDATE INPUT THEN SEND TO DATABASE ONLY IF VALID
+
+    if (isset($_POST['Submit'])) {
+
+        include 'scripts/validate_update_user.php';
+        if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) {
+            foreach ($_SESSION as $key => $value) { // SHOW ERRORS ON PAGE
+                $$key = $value;
+            }
+        } else {
+            $RegID = $_REQUEST['RegID'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $areacode = $_POST['areacode'];
+            $phonenumber = $_POST['phonenumber'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+
+            include './database/db_connection.php';
+            $query = "UPDATE register SET FirstName='$firstname',LastName='$lastname', Email='$email',Telephone='$areacode$phonenumber',Username ='$username',Password = '$password' WHERE RegID= '$RegID';";
+            mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+
+
+            // REDIRECT TO ADMIN MENU PAGE
+            $_SESSION['redirect']['header'] = 'SUCCESS';
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            $_SESSION['redirect']['message'] = 'User Account Updated.';
+            header('Location: ./error-or-success.php');
+        }
+    }
+} else if ($_GET['action'] == 'add') { // IF AN ADD USER REQUEST
+    if (isset($_POST['Submit'])) { // IF THE USER PRESSES THE SUBMIT BUTTON, VALIDATE ENTRIES THEN SEND TO DB IF VALID
+
+        include 'scripts/validate_update_user.php'; // VALIDATE ENTRIES
+        if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) {
+            foreach ($_SESSION as $key => $value) { // SHOW ERRORS
+                $$key = $value;
+            }
+        } else { // IF NO ERRORS, UPDATE DATABASE
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $areacode = $_POST['areacode'];
+            $phonenumber = $_POST['phonenumber'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            include './database/db_connection.php';
+            $query = "INSERT INTO `register`(`FirstName`, `LastName`, `Email`, `Telephone`, `Username`, `Password`) VALUES ('$firstname', '$lastname', '$email','$areacode$phonenumber','$username','$password');";
+            mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+
+            // REDIRECT TO ADMIN MENU
+            $_SESSION['redirect']['header'] = 'Success';
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            $_SESSION['redirect']['message'] = 'User Account created successfully.';
+            header('Location: ./error-or-success.php');
+        }
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,7 +136,7 @@ if (isset($_POST['Update'])) {
 
         <div class="container bg-white p-0 m-5 mx-auto">
             <div class="row">
-                <div class="col-3 bg-light p-0">
+                <div class="col-12 col-md-12 col-lg-3 bg-light p-0">
                     <div class="col p-5">
                         <h1 class="text-black">Admin</h1>
                         <h1 class="text-black">Panel</h1>
@@ -109,7 +144,7 @@ if (isset($_POST['Update'])) {
                         <a class="btn btn-danger btn-block" role="button" href="adminmenu.php">Go Back</a>
                     </div>
                 </div>
-                <div class="col-9 p-5">
+                <div class="col-12 col-md-12 col-lg-9 p-5">
                     <div class="row">
                         <div class="col-12">
                             <div class="tab-content" id="v-pills-tabContent">
@@ -119,8 +154,8 @@ if (isset($_POST['Update'])) {
                                             <div>
                                                 <!-- UPDATE FORM -->
                                                 <form action="" method="POST">
-                                                    <h1 class="text-black">Update User Information</h1>
-                                                    <p class="m-0">Please add updates to the relevant fields.</p>
+                                                    <h1 class="text-black"><?php echo $formtitle; ?></h1>
+                                                    <p class="m-0">Please complete the form.</p>
                                                     <div class="form-row mt-2">
                                                         <!--- FIRST NAME & LAST NAME SECTION --->
                                                         <?php if (isset($firstname_error)) {
@@ -206,7 +241,7 @@ if (isset($_POST['Update'])) {
                                                                 } ?>" type="password" name="password" value="<?php echo $password ?>"></div>
 
 
-                                            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>
+                                            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Submit" value="<?php echo $btntitle ?>"></input>
 
                                             </form>
                                         </div>

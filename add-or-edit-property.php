@@ -1,43 +1,100 @@
 <?php
 session_start();
+include './database/db_connection.php';
+
+// UPDATE TEXT LABELS BASED ON IF IT'S AN ADD OR DELETE USER REQUEST
+$_GET['action'] == 'edit' ? $formtitle = 'Edit Property' : $formtitle = 'Add Property';
+$_GET['action'] == 'edit' ? $btntitle = 'Save Changes' : $btntitle = 'Create Property';
 
 
-if (isset($_POST['admin-add-property'])) { // If the 'Add Property' button was clicked
-    include 'scripts/validate_update_property.php'; // Validate if the entries are correct
+if ($_GET['action'] == 'add') {
+    if (isset($_POST['submit'])) { // IF THE SUBMIT BUTTON WAS CLICKED
+        include 'scripts/validate_update_property.php'; // VALIDATE ENTRIES
 
-    if ((isset($_SESSION['errFlagEditProperty'])) && ($_SESSION['errFlagEditProperty']) == true) { // If there are errors
-        foreach ($_SESSION as $key => $value) { // Show errors
-            $$key = $value;
+        if ((isset($_SESSION['errFlagEditProperty'])) && ($_SESSION['errFlagEditProperty']) == true) { // If there are errors
+            foreach ($_SESSION as $key => $value) { // Show errors
+                $$key = $value;
+            }
+        } else { // IF ALL VALID, SEND TO DATABASE
+            $RegID = $_GET['RegID'];
+            $address1 = $_SESSION['prop']['address1'];
+            $address2 = $_SESSION['prop']['address2'];
+            $city = $_SESSION['prop']['city'];
+            $parish = $_SESSION['prop']['parish'];
+            $size = $_SESSION['prop']['landsize'];
+            $listingType = $_SESSION['prop']['listing_type'];
+            $propertyType = $_SESSION['prop']['property_type'];
+            $buildingType =  $_SESSION['prop']['building_type'];
+            $bedroom =  $_SESSION['prop']['bedrooms'];
+            $bathroom = $_SESSION['prop']['bathrooms'];
+            $price = $_SESSION['prop']['price'];
+
+            //echo "user id: " . $userID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price;
+
+            include 'database/db_connection.php';
+            $query = "INSERT INTO `property`(`UserID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
+            VALUES ($RegID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'trsh');";
+            $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+            // REDIRECT TO SUCCESS PAGE
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            $_SESSION['redirect']['header'] = 'Success';
+            $_SESSION['redirect']['message'] = 'Property Added.';
+            header('Location: error-or-success.php');
+            $_SESSION['prop'] = null;
         }
-    } else { // If there weren't any errors, update database
-        $userID = $_GET['UserID'];
-        $address1 = $_SESSION['prop']['address1'];
-        $address2 = $_SESSION['prop']['address2'];
-        $city = $_SESSION['prop']['city'];
-        $parish = $_SESSION['prop']['parish'];
-        $size = $_SESSION['prop']['landsize'];
-        $listingType = $_SESSION['prop']['listing_type'];
-        $propertyType = $_SESSION['prop']['property_type'];
-        $buildingType =  $_SESSION['prop']['building_type'];
-        $bedroom =  $_SESSION['prop']['bedrooms'];
-        $bathroom = $_SESSION['prop']['bathrooms'];
-        $price = $_SESSION['prop']['price'];
-        //$previewImgUrl = $_SESSION['prop']['preview_img'];
+    }
+} else if ($_GET['action'] == 'edit') {
+    if (isset($_POST['submit'])) { // IF THE SUBMIT BUTTON WAS PRESSED
+        include 'scripts/validate_update_property.php'; // VALIDATE ENTRIES
+        if ((isset($_SESSION['errFlagEditProperty'])) && ($_SESSION['errFlagEditProperty']) == true) { // If there are errors
+            foreach ($_SESSION as $key => $value) { // SHOW ERRORS IF INVALID
+                $$key = $value;
+            }
+        } else { // IF ALL DATA VALID, UPDATE DATABASE
+            include './database/db_connection.php';
+            $query = "UPDATE `property` SET `Address1`='" . $_SESSION['prop']['address1'] . "',`Address2`='" . $_SESSION['prop']['address2'] . "' ,`City`='" . $_SESSION['prop']['city'] . "',`Parish`='" . $_SESSION['prop']['parish'] . "',`Size`='" . $_SESSION['prop']['landsize'] . "',`ListingType`='" . $_SESSION['prop']['listing_type'] . "',`PropertyType`='" . $_SESSION['prop']['property_type'] . "',`BuildingType`='" . $_SESSION['prop']['building_type'] . "',`NumBedroom`=" . $_SESSION['prop']['bedrooms'] . ",`NumBathroom`=" . $_SESSION['prop']['bathrooms'] . ",`Price`=" . $_SESSION['prop']['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
+            $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
-        //echo "user id: " . $userID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price;
-
-        include 'database/db_connection.php';
-        $query = "INSERT INTO `property`(`UserID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-        VALUES ($userID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'trsh');";
+            // REDIRECT TO SUCCESS PAGE
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            $_SESSION['redirect']['header'] = 'Update Successful';
+            $_SESSION['redirect']['message'] = 'Property Updated.';
+            header('Location: error-or-success.php');
+        }
+    } else {
+        include './database/db_connection.php';
+        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "';";
         $result = mysqli_query($conn, $query) or die("Failed to get data.");
-        //Redirect to Success Page
-        $_SESSION['redirect']['path'] = 'adminmenu.php';
-        $_SESSION['redirect']['header'] = 'Success';
-        $_SESSION['redirect']['message'] = 'Property Added.';
-        header('Location: error-or-success.php');
-        $_SESSION['prop'] = null;
+
+        if ($result->num_rows > 0) {
+            /*If there are results, output data into the input boxes 
+            so the user can see what they edit.*/
+            while ($row = $result->fetch_assoc()) {
+                $_SESSION['prop']['parish'] = $row['Parish'];
+                $_SESSION['prop']['address1'] = $row['Address1'];
+                $_SESSION['prop']['address2'] = $row['Address2'];
+                $_SESSION['prop']['city'] = $row['City'];
+                $_SESSION['prop']['landsize'] = $row['Size'];
+                $_SESSION['prop']['listing_type'] = $row['ListingType'];
+                $_SESSION['prop']['property_type'] = $row['PropertyType'];
+                $_SESSION['prop']['building_type'] = $row['BuildingType'];
+                $_SESSION['prop']['bedrooms'] = $row['NumBedroom'];
+                $_SESSION['prop']['bathrooms'] = $row['NumBathroom'];
+                $_SESSION['prop']['price'] = $row['Price'];
+            }
+        } else { // If the property couldn't be found reset all variables and show error page
+            $_SESSION['prop'] = null;
+
+            // REFIRECT TO ERROR PAGE
+            $_SESSION['redirect']['header'] = 'ERROR';
+            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            $_SESSION['redirect']['message'] = 'It seems you attempted something invalid.';
+            header('Location: ./error-or-success.php');
+        }
     }
 }
+
 
 
 ?>
@@ -97,7 +154,7 @@ if (isset($_POST['admin-add-property'])) { // If the 'Add Property' button was c
                             <h1 class="text-black">Admin</h1>
                             <h1 class="text-black">Panel</h1>
                             <br>
-                            <btn class="btn btn-danger px-5" role="button" href="adminmenu.php"> Go Back </a>
+                            <td><a class="btn btn-danger px-5" role="button" href="adminmenu.php">Go Back</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +162,7 @@ if (isset($_POST['admin-add-property'])) { // If the 'Add Property' button was c
                 <!-- FORM -->
 
                 <div class="col-12 col-md-12 col-lg-9 p-5 bg-white">
-                    <h1 class="text-black">Add Property</h1>
+                    <h1 class="text-black"><?php echo $formtitle; ?></h1>
 
                     <form method="POST">
                         <!-- LOCATION -->
@@ -435,7 +492,7 @@ if (isset($_POST['admin-add-property'])) { // If the 'Add Property' button was c
                         </div>
 
                         <div class="col-md-6">
-                            <input class="btn btn-primary text-white btn-block rounded-2" role="submit" name="admin-add-property" type="submit" value="Add Property">
+                            <input class="btn btn-primary text-white btn-block rounded-2" role="submit" name="submit" type="submit" value="<?php echo $btntitle; ?>">
                         </div>
                     </form>
 

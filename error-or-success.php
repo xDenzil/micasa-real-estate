@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+/* THIS PAGE IS USED TO SHOW THE STATUS OF REQUESTS 
+THE REDIRECT PATH, MESSAGE HEADER, AND MESSAGE BODY ARE SENT 
+TO THIS PAGE FROM WHERE IT IS CALLED. WHEN THE PAGE CLOSES THOSE
+VARIABLES ARE DESTROYED AND READY TO BE SET AGAIN FOR ANOTHER REQUEST. */
 ?>
 
 
@@ -41,8 +46,6 @@ session_start();
 </head>
 
 <body class="overlay">
-
-
     <section class="h-100 bg-light">
         <header class="container h-100">
             <div class="d-flex align-items-center justify-content-center h-100">
@@ -52,14 +55,10 @@ session_start();
                     <h5 class="text-center text-black"><?php echo $_SESSION['redirect']['message']; ?></h5><br>
                     <p class="text-center text-primary">Redirecting..</p>
                     <?php unset($_SESSION['redirect']); ?>
-
                 </div>
             </div>
         </header>
     </section>
-
-</body>
-
 </body>
 
 </html>

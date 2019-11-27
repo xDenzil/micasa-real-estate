@@ -4,7 +4,6 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
     $$key = $value;
   }
-  
 }
 ?>
 <!DOCTYPE html>
@@ -34,19 +33,18 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
 
 <body>
 
-  <!-- NAVIGATION SECTION -->
+  <!-- NAVIGATION -->
   <?php
-  switch (isset($_SESSION['userLevel'])) {
-    case "user": //Not logged in
+  switch ($_SESSION['userLevel']) {
+    case "user": // logged in user
       require_once('blocks/user-navigation.php');
       break;
-    case "admin": //regular user
+    case "admin": // admin user
       require_once('blocks/admin-navigation.php');
       break;
-    default: //admin nav
+    default: // guest
       require_once('blocks/guest-navigation.php');
       break;
-      //etc and default nav below
   }
   ?>
 
@@ -173,4 +171,5 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     <!-- FOOTER -->
     <?php include 'blocks/footer.php'; ?>
 </body>
+
 </html>

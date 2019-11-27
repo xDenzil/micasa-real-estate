@@ -6,6 +6,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $$key = $value;
         $_SESSION[$key] = $value;
     }
+
     $firstname;
     $lastname;
     $username;
@@ -13,6 +14,8 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     $areacode;
     $phonenumber;
     $password;
+
+
     // FIRST NAME VALIDATION
     if (empty($_POST['firstname'])) {
         $_SESSION['firstname_error'] = "<span class='error small-text'>* Please enter your first name. </span>";
@@ -154,13 +157,12 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     } else {
         $_SESSION['errFlagPage1'] = false;
         $_SESSION['active'] = true;
-        //connect and insert to database
+
         include '../database/db_connection.php';
-        //$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+
         $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password) 
         VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
         mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-        //header('Location: ../user-dashboard.php');
         $_SESSION['userLevel'] = 'user';
 
         $query2 = "SELECT * FROM `register` WHERE Username='" . $_SESSION['username'] . "';";

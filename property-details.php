@@ -74,7 +74,7 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                                         <img src="uploads/' . $row['PreviewImageURL'] . '" class="img-fluid" alt="Responsive image">
                                     </div>
                                     <div class="col-md-6">
-                                        <strong class="text-primary h1 mb-3">$' . $row['Price'] . '</strong>
+                                        <strong class="text-primary h1 mb-3">$' . number_format($row['Price']) . '</strong>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
@@ -155,8 +155,7 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                                         <a href="assets/images/img_4.jpg" class="image-popup gal-item"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
                                     </div>
                                 </div>
-                            </div>
-    ';
+                            </div>';
                             }
                         } else {
                             echo '';

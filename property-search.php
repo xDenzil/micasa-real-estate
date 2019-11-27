@@ -2,7 +2,7 @@
 session_start();
 
 
-if (isset($_GET['property_search'])) {
+if (isset($_GET['property_search'])) { // IF THE USER CLICKED SEARCH, SHOW ONLY SEARCH RESULTS
 
     // SEARCH FUNCTION 
     /*
@@ -10,7 +10,7 @@ if (isset($_GET['property_search'])) {
     then checking if those variables are empty. A variable is created that will
     store piece of the SQL string, if the GET was empty, it will append LIKE'%' to 
     the SQL String, which will basically show all DB results, otherwise, it will
-    append AND $search='value' to the sql string, which will show results for the
+    append "AND $search='value'" to the sql string, which will show results for the
     filters the user selected. It's complicated and took me a long time to figure
     out, not really good at explaining it.. -Denzil
     */
@@ -38,10 +38,10 @@ if (isset($_GET['property_search'])) {
     }
 
 
-    include './database/db_connection.php'; // Connect to Database
+    include './database/db_connection.php';
     $query = "SELECT * FROM property WHERE PropertyID IS NOT NULL $parish_sql $listing_sql $property_type_sql $price_sql;";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
-} else {
+} else { // IF THE USER VISITED THE PAGE WITHOUT CLICKING SEARCH, SHOW ALL HOUSES
     include './database/db_connection.php';
     $query = "SELECT * FROM property;";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
@@ -98,7 +98,7 @@ if (isset($_GET['property_search'])) {
                 <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
-
+                            <h1>Search Properties</h1>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ if (isset($_GET['property_search'])) {
                 <div class="container">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-md-10">
-
+                            <h1>Search Properties</h1>
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@ if (isset($_GET['property_search'])) {
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>
                                         <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
-                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row['Price']) . '</strong>
                                     </div>
                                 </div>
                             </div>';
@@ -217,7 +217,7 @@ if (isset($_GET['property_search'])) {
                         if (isset($_GET['property_search'])) {
                             echo '<a class="mx-auto">Sorry, nothing matches your criteria.</a>';
                         } else {
-                            echo '<a class="mx-auto">Please make a search.</a>';
+                            echo '<a class="mx-auto">No Properties to display.</a>';
                         }
                     }
 

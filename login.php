@@ -2,32 +2,32 @@
 
 session_start();
 
-if (isset($_POST['login'])) {
+if (isset($_POST['login'])) { // IF THE LOGIN BUTTON WAS PRESSED
     $_SESSION['username_try'] = $_POST['username_try'];
-    $usernametry =  $_SESSION['username_try']; // Saving username in session to put in form 
-    $password_try = $_POST['password_try']; // Not saving password in session, using POST instead
+    $usernametry =  $_SESSION['username_try']; // SAVE USERNAME ATTEMPT IN SESSION IN CASE ITS WRONG 
+    $password_try = $_POST['password_try']; // SEND PASSWORD TO POST, NOT SAVING IT IN SESSION
 
-    // Connect to Database & Run Query
+    // CONNECT TO DATABASE AND SEE IF USERNAME & PASSWORD MATCHES ATTEMPT
     include 'database/db_connection.php';
     $query = "SELECT * FROM `register` WHERE Username='$usernametry' AND Password='$password_try';";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
-    if (mysqli_num_rows($result) != 0) { // If login successfull
+    if (mysqli_num_rows($result) != 0) { // // IF MATCH
         while ($row = mysqli_fetch_assoc($result)) {
             $_SESSION['currentUserID'] = $row['RegID']; // Keep track of who the logged in user is at all times
             $_SESSION['login_error'] = null; // If a result was returned, reset login error in case it was set previously
             $_SESSION['username_try'] = null; // If a result was returned, reset username try because the user got logged in so this variable is no longer needed
 
             if ($row['Username'] == 'micasadmin') {
-                $_SESSION['userLevel'] = 'admin'; // Set permissions to admin
-                $_SESSION['redirect']['path'] = 'adminmenu.php';
+                $_SESSION['userLevel'] = 'admin'; // SET PERMISSIONS TO ADMIN
+                $_SESSION['redirect']['path'] = 'adminmenu.php'; // REDIRECT TO ADMIN MENU
             } else {
-                $_SESSION['userLevel'] = 'user'; // Set permissions to user so that different navigation links and levels of access are available
-                $_SESSION['redirect']['path'] = 'user-dashboard.php';
+                $_SESSION['userLevel'] = 'user'; // SET PERMISSIONS USER
+                $_SESSION['redirect']['path'] = 'user-dashboard.php'; // REDIRECT TO USER DASHBOARD 
             }
 
-            // REDIRECT TO SUCCESS PAGE
-            $_SESSION['redirect']['header'] = 'LOGIN SUCCESS';
+            // SUCCESS PAGE MESSAGE
+            $_SESSION['redirect']['header'] = 'Login Successful';
             $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
             header('Location: error-or-success.php');
         }

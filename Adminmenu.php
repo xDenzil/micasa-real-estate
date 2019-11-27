@@ -2,14 +2,15 @@
 session_start();
 include './database/db_connection.php';
 
-// get results from database
+// GET LISTS OF USERS FROM DATABASE, DO NOT GET THE DETAILS OF THE CURRENT LOGGED IN USER (THE ADMIN)
 $query = "SELECT * FROM register WHERE RegID <> '" . $_SESSION['currentUserID'] . "'ORDER BY RegID desc;";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
-
+// GET LIST OF PROPERTIES FROM DATABASE
 $query2 = "SELECT * FROM property;";
 $result2 = mysqli_query($conn, $query2) or die("<h1>Could not connect to database.</h1>");
 
+// IF SOMEONE THAT IS NOT AN ADMIN TRIES TO ACCESS THIS PAGE, REDIRECT THEM TO HOME
 if ($_SESSION['userLevel'] != 'admin') {
     $_SESSION['redirect']['path'] = 'index.php';
     $_SESSION['redirect']['header'] = 'Woops';
@@ -70,7 +71,7 @@ if ($_SESSION['userLevel'] != 'admin') {
 
         <div class="container bg-white m-5 mx-auto">
             <div class="row">
-                <div class="col-3  bg-light p-0">
+                <div class="col-12 col-md-12 col-lg-3  bg-light p-0">
                     <div class="col p-5">
                         <h1 class="text-black">Admin</h1>
                         <h1 class="text-black">Panel</h1>
@@ -82,7 +83,7 @@ if ($_SESSION['userLevel'] != 'admin') {
                         </div>
                     </div>
                 </div>
-                <div class="col-9 p-5">
+                <div class="col-12 col-md-12 col-lg-9 p-5">
                     <div class="row">
                         <div class="col-12">
                             <div class="tab-content" id="v-pills-tabContent">
@@ -99,6 +100,7 @@ if ($_SESSION['userLevel'] != 'admin') {
                                                         <th scope="col">Email</th>
                                                         <th scope="col"></th>
                                                         <th scope="col"></th>
+                                                        <th scope="col"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -112,15 +114,15 @@ if ($_SESSION['userLevel'] != 'admin') {
                                                             <td class="pt-4"><?php echo $row['LastName']; ?></td>
                                                             <td class="pt-4"><?php echo $row['Email']; ?></td>
 
-                                                            <td><a class="btn btn-success text-white" role="button" href="edit-user.php?RegID=<?php echo $row['RegID']; ?>">Edit</a></td>
+                                                            <td><a class="btn btn-primary text-white" role="button" href="add-or-edit-user.php?action=edit&RegID=<?php echo $row['RegID']; ?>">Edit</a></td>
                                                             <td><a class="btn btn-danger" role="button" href="scripts/delete-user.php?RegID=<?php echo $row['RegID']; ?>">Delete</a></td>
+                                                            <td><a class="btn btn-dark" role="button" href="add-or-edit-property.php?action=add&RegID=<?php echo $row['RegID']; ?>">Add Property</a></td>
                                                         </tr>
 
                                                     <?php } ?>
                                                 </tbody>
                                             </table>
-
-                                            <p><a href="registration.php">Add a new User</a></p>
+                                            <a class="btn btn-primary px-5" role="button" href="add-or-edit-user.php?action=add">Add User</a>
                                         </div>
 
 
@@ -148,9 +150,9 @@ if ($_SESSION['userLevel'] != 'admin') {
 <div class="p-4 property-body">
 <h2 class="property-title">' . $row2['Address1'] . '</h2>
 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row2['City'] . ", " . $row2['Parish'] . '</span>
-<strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row2['Price'] . '</strong>
+<strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row2['Price']) . '</strong>
 <div class="row">
-<div class="col-6"><input class="btn btn-success text-white btn-block" role="button" onclick="window.location.href=\'edit-property.php?propID=' . $row2['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
+<div class="col-6"><input class="btn btn-success text-white btn-block" role="button" onclick="window.location.href=\'add-or-edit-property.php?action=edit&propID=' . $row2['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
 <div class="col-6"><input class="btn btn-danger text-white btn-block" role="button"  onclick="window.location.href=\'scripts/delete-property.php?propID=' . $row2['PropertyID'] . '\'"name="delete-property" type="submit" value="Delete"></div>
 </div>
 </div>
@@ -159,7 +161,7 @@ if ($_SESSION['userLevel'] != 'admin') {
                                                 }
                                                 //$_SESSION['search_results'] = $row;
                                             } else {
-                                                echo 'Please make a search.';
+                                                echo 'No properties to display.';
                                             }
                                             ?>
                                         </div>
