@@ -34,7 +34,7 @@ USE `mi_casa`;
 DROP TABLE IF EXISTS `property`;
 CREATE TABLE IF NOT EXISTS `property` (
   `PropertyID` int(5) NOT NULL AUTO_INCREMENT,
-  `userID` int(5) NOT NULL,
+  `UserID` int(5) NOT NULL,
   `Address1` varchar(30) NOT NULL,
   `Address2` varchar(30),
   `City` varchar(20) NOT NULL,
@@ -53,28 +53,16 @@ CREATE TABLE IF NOT EXISTS `property` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `propertydetail`
---
-
--- DROP TABLE IF EXISTS `propertydetail`;
--- CREATE TABLE IF NOT EXISTS `propertydetail` (
---   `PropertyID` int(5) DEFAULT NULL,
---   `Detail` varchar(300) NOT NULL,
---   UNIQUE KEY `Foreign Key` (`PropertyID`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `propertyimage`
 --
 
 DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
-  `PropertyID` int(5) DEFAULT NULL,
-  `ImageURL` varchar(200) NOT NULL,
-  UNIQUE KEY `Foreign Key` (`PropertyID`)
+CREATE TABLE `gallery` (
+  `ImgID` varchar(30) NOT NULL,
+  `PropertyID` int(5) NOT NULL,
+  `ImageURL` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -91,44 +79,25 @@ CREATE TABLE IF NOT EXISTS `register` (
   `Telephone` varchar(10) NOT NULL,
   `Username` varchar(10) NOT NULL,
   `Password` varchar(10) NOT NULL,
-  PRIMARY KEY (`RegID`)
+  PRIMARY KEY (`RegID`),
+  UNIQUE KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
-
--- DROP TABLE IF EXISTS `user`;
--- CREATE TABLE IF NOT EXISTS `user` (
---   `Username` varchar(10) NOT NULL,
---   `Password` varchar(10) NOT NULL,
---   PRIMARY KEY (`Username`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
---
-
---
 -- Constraints for table `property`
 --
 ALTER TABLE `property`
-  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`);
+  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `register` (`RegID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `propertydetail`
--- --
--- ALTER TABLE `propertydetail`
---   ADD CONSTRAINT `propertydetail_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
+-- Constraints for table `gallery`
+--
 
---
--- Constraints for table `propertyimage`
---
 ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`ImgID`),
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
