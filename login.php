@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
 
             if ($row['Username'] == 'micasadmin') {
                 $_SESSION['userLevel'] = 'admin'; // Set permissions to admin
-                $_SESSION['redirect']['path'] = 'index.php';
+                $_SESSION['redirect']['path'] = 'adminmenu.php';
             } else {
                 $_SESSION['userLevel'] = 'user'; // Set permissions to user so that different navigation links and levels of access are available
                 $_SESSION['redirect']['path'] = 'user-dashboard.php';

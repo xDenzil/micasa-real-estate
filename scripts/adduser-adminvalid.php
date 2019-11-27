@@ -1,6 +1,6 @@
 <?php
 session_start(); // CONTINUING SESSION
-if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
+if (isset($_POST['adminadd'])) { //IF CONTINUE BUTTON IS PRESSED
     //session_destroy();
     foreach ($_POST as $key => $value) {
         $$key = $value;
@@ -15,7 +15,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     $password;
     // FIRST NAME VALIDATION
     if (empty($_POST['firstname'])) {
-        $_SESSION['firstname_error'] = "<span class='error small-text'>* Please enter your first name. </span>";
+        $_SESSION['firstname_error'] = "<span class='error small-text'>* Please enter user's first name. </span>";
         $_SESSION['firstname'] = null;
         $_SESSION['errFlag0'] = true;
     } else {
@@ -24,7 +24,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['firstname'] = $_POST['firstname'];
             $_SESSION['errFlag0'] = true;
         } else if (strlen($_POST['firstname']) < 3) {
-            $_SESSION['firstname_error'] = "<span class='error small-text'>* First name must be more than 3 characters long. </span>";
+            $_SESSION['firstname_error'] = "<span class='error small-text'>*User's first name must be more than 3 characters long. </span>";
             $_SESSION['firstname'] = $_POST['firstname'];
             $_SESSION['errFlag0'] = true;
         } else {
@@ -35,7 +35,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     }
     // LAST NAME VALIDATION
     if (empty($_POST['lastname'])) {
-        $_SESSION['lastname_error'] = "<span class='error small-text'>* Please enter your last name. </span>";
+        $_SESSION['lastname_error'] = "<span class='error small-text'>* Please enter user's last name. </span>";
         $_SESSION['lastname'] = null;
         $_SESSION['errFlag1'] = true;
     } else {
@@ -44,7 +44,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['lastname'] = $_POST['lastname'];
             $_SESSION['errFlag1'] = true;
         } else if (strlen($_POST['lastname']) < 3) {
-            $_SESSION['lastname_error'] = "<span class='error small-text'>* Last name must be more than 3 characters long. </span>";
+            $_SESSION['lastname_error'] = "<span class='error small-text'>*User's last name must be more than 3 characters long. </span>";
             $_SESSION['lastname'] = $_POST['lastname'];
             $_SESSION['errFlag1'] = true;
         } else {
@@ -55,7 +55,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     }
     // USERNAME VALIDATION
     if (empty($_POST['username'])) {
-        $_SESSION['username_error'] = "<span class='error small-text'>* Please enter a username. </span>";
+        $_SESSION['username_error'] = "<span class='error small-text'>* Please enter username. </span>";
         $_SESSION['username'] = null;
         $_SESSION['errFlag2'] = true;
     } else if (!preg_match("/^[a-zA-Z0-9_-]{3,16}$/", $_POST['username'])) {
@@ -69,7 +69,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     }
     // EMAIL ADDRESS VALIDATION
     if (empty($_POST['email'])) {
-        $_SESSION['email_error'] = "<span class='error small-text'>* Please enter your email address. </span>";
+        $_SESSION['email_error'] = "<span class='error small-text'>* Please enter user's email address. </span>";
         $_SESSION['email'] = null;
         $_SESSION['errFlag3'] = true;
     } else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -97,7 +97,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['errFlag4'] = false;
     }
     if (empty($_POST['phonenumber'])) {
-        $_SESSION['phonenumber_error'] = "<span class='error small-text'>* Please enter phone number. </span>";
+        $_SESSION['phonenumber_error'] = "<span class='error small-text'>* Please enter user's phone number. </span>";
         $_SESSION['phonenumber'] = null;
         $_SESSION['errFlag5'] = true;
         $phoneNumberCorrect = false;
@@ -150,7 +150,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         || ($_SESSION['errFlag6'] == true) || ($_SESSION['errFlag7'] == true) || ($_SESSION['errFlag8'] == true)
     ) {
         $_SESSION['errFlagPage1'] = true;
-        header("Location: ../registration.php");
+        header("Location: ../adduser-admin.php");
     } else {
         $_SESSION['errFlagPage1'] = false;
         $_SESSION['active'] = true;
@@ -160,12 +160,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password) 
         VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
         mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
-        //header('Location: ../user-dashboard.php');
-        $_SESSION['userLevel']='user';
-        $_SESSION['redirect']['header'] = 'REGISTRATION SUCCESS';
-        $_SESSION['redirect']['path'] = 'user-dashboard.php';
-        $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
-        header('Location: ../error-or-success.php');
+        header('Location: ../Adminmenu.php');
        
     }
 }

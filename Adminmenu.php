@@ -1,6 +1,7 @@
 <?php
 session_start();
 include './database/db_connection.php';
+
 // get results from database
 $query = "SELECT * FROM register WHERE RegID <> '" . $_SESSION['currentUserID'] . "'ORDER BY RegID desc;";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");

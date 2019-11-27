@@ -55,7 +55,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
     <div class=" container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-10">
-          <h1 class="mb-2">Registration</h1>
+          <h1 class="mb-2">Add New User</h1>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-12 col-lg-8 mb-5">
-            <form action="./scripts/validate_registration.php" method="POST" class="p-5">
+            <form action="./scripts/adduser-adminvalid.php" method="POST" class="p-5">
               <h1>User Information</h1>
               <p class="m-0">Please fill out the following fields.</p>
               <!--- FIRST NAME & LAST NAME SECTION --->
@@ -81,11 +81,11 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                   <input class="form-control 
                 <?php if (isset($firstname_error)) {
                   echo "is-invalid";
-                } ?>" type="text" name="firstname" value="<?php echo $_SESSION['firstname']; ?>"></div>
+                } ?>" type="text" name="firstname" value="<?php echo isset($_SESSION['firstname']); ?>"></div>
                 <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
               <?php if (isset($lastname_error)) {
                 echo "is-invalid";
-              } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname']; ?>"></div>
+              } ?>" type="text" name="lastname" value="<?php echo isset($_SESSION['lastname']); ?>"></div>
               </div>
               <!--- USERNAME AND EMAIL SECTION --->
               <?php if (isset($username_error)) {
@@ -101,14 +101,14 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                     </div><input class="form-control 
                   <?php if (isset($username_error)) {
                     echo "is-invalid";
-                  } ?>" type="text" name="username" value="<?php echo $_SESSION['username'] ?>">
+                  } ?>" type="text" name="username" value="<?php echo isset($_SESSION['username']) ?>">
                     <div class="input-group-append"></div>
                   </div>
                 </div>
                 <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
               <?php if (isset($email_error)) {
                 echo "is-invalid";
-              } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
+              } ?>" type="text" name="email" value="<?php echo isset($_SESSION['email']) ?>"></div>
               </div>
               <!--- PHONE NUMBER SECTION --->
               <?php if (isset($areacode_error)) {
@@ -124,14 +124,14 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
                       <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
                     <?php if (isset($areacode_error)) {
                       echo "is-invalid";
-                    } ?>" type="text" name="areacode" value="<?php echo $_SESSION['areacode'] ?>">
+                    } ?>" type="text" name="areacode" value="<?php echo isset($_SESSION['areacode']) ?>">
                       <div class="input-group-append"></div>
                     </div>
                   </div>
                   <div class="col col-md-7"><input class="form-control 
                 <?php if (isset($phonenumber_error)) {
                   echo "is-invalid";
-                } ?>" type="text" name="phonenumber" value="<?php echo $_SESSION['phonenumber'] ?>"></div>
+                } ?>" type="text" name="phonenumber" value="<?php echo isset($_SESSION['phonenumber']) ?>"></div>
                 </div>
               </div>
               <!--- PASSWORDS SECTION --->
@@ -147,13 +147,13 @@ if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) {
               <div class="form-group"><label>Password</label><input class="form-control 
             <?php if (isset($password_error)) {
               echo "is-invalid";
-            } ?>" type="password" name="password" value="<?php echo $_SESSION['password'] ?>"></div>
+            } ?>" type="password" name="password" value="<?php echo isset($_SESSION['password']) ?>"></div>
               <div class="form-group"><label>Confirm Password</label><input class="form-control 
             <?php if (isset($passwordconfirm_error)) {
               echo "is-invalid";
-            } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
+            } ?>" type="password" name="passwordconfirm" value="<?php echo isset($_SESSION['passwordconfirm']) ?>"></div>
               <!--- CONTINUE BUTTON --->
-              <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
+              <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="adminadd" value="Add User"></input>
             </form>
           </div>
           <div class="col-lg-4" hidden>
