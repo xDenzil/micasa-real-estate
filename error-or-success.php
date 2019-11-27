@@ -9,7 +9,7 @@ session_start();
 <head>
     <title>Mi Casa &mdash;</title>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="5; url = '<?php echo $_SESSION['redirect']['path']; ?>" />
+    <meta http-equiv="refresh" content="3; url = '<?php echo $_SESSION['redirect']['path']; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
     <link rel="stylesheet" href="assets/fonts/icomoon/style.css">
