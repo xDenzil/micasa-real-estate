@@ -2,59 +2,58 @@
 //session_start();
 include 'database/db_connection.php';
 //include 'scripts/validate_update_user.php';
-$RegID=$_REQUEST['RegID'];
-$query = "SELECT * FROM register WHERE RegID ='".$RegID."'"; 
+$RegID = $_REQUEST['RegID'];
+$query = "SELECT * FROM register WHERE RegID ='" . $RegID . "'";
 $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
 
-    while($row = mysqli_fetch_assoc($result)) {     
-        $firstname = $row['FirstName'];
-        $lastname= $row['LastName'];
-        $username = $row['Username'];
-        $email = $row['Email'];
-        $areacode = $row['Telephone'];
-        $phonenumber = $row['Telephone'];
-        $password = $row['Password'];
-    }
-    if(isset($_POST['Update']))
-    {   
-        /*//$RegID = $_POST['RegID'];
+while ($row = mysqli_fetch_assoc($result)) {
+    $firstname = $row['FirstName'];
+    $lastname = $row['LastName'];
+    $username = $row['Username'];
+    $email = $row['Email'];
+    $areacode = substr($row['Telephone'], 0, -7);
+    $phonenumber = substr($row['Telephone'], 3);
+    $password = $row['Password'];
+}
+if (isset($_POST['Update'])) {
+    /*//$RegID = $_POST['RegID'];
         $firstname=$_POST['firstname'];
         $lastname=$_POST['lastname'];
         $email=$_POST['email'];
         $phonenumber=$_POST['phonenumber'];
         $username=$_POST['username'];
         $password=$_POST['password'];*/
-        include 'scripts/validate_update_user.php'; // Validate if the entries are correct
-        if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) { 
-            foreach ($_SESSION as $key => $value) { // Show errors
-                $$key = $value;
-            }
-        }else{
-            $RegID = $_REQUEST['RegID'];
-            $firstname=$_POST['firstname'];
-            $lastname=$_POST['lastname'];
-            $email=$_POST['email'];
-            $areacode=$_POST['areacode'];
-            $phonenumber=$_POST['phonenumber'];
-            $username=$_POST['username'];
-            $password=$_POST['password'];
+    include 'scripts/validate_update_user.php'; // Validate if the entries are correct
+    if ((isset($_SESSION['errFlagEditPage'])) && ($_SESSION['errFlagEditPage']) == true) {
+        foreach ($_SESSION as $key => $value) { // Show errors
+            $$key = $value;
+        }
+    } else {
+        $RegID = $_REQUEST['RegID'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $areacode = $_POST['areacode'];
+        $phonenumber = $_POST['phonenumber'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-            $Update_query = "UPDATE register SET 
+        $Update_query = "UPDATE register SET 
             FirstName='$firstname',
             LastName='$lastname', 
             Email='$email',
             Telephone='$areacode$phonenumber',
             Username ='$username',
             Password = '$password'
-            WHERE RegID= '$RegID'";   
-            mysqli_query($conn, $Update_query) or die("<h1>Could not connect to database.</h1>");
-            //Redirect if Successful
-            header("Location: Adminmenu.php");
-        }
+            WHERE RegID= '$RegID'";
+        mysqli_query($conn, $Update_query) or die("<h1>Could not connect to database.</h1>");
+        //Redirect if Successful
+        header("Location: Adminmenu.php");
     }
-    
-    
- 
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,97 +143,103 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                 <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
                                         <div class="col-12">
-                                                <div>
+                                            <div>
                                                 <!-- UPDATE FORM -->
-                                                <form action="" method="POST" >
-                                                        <h1>User Information</h1>
+                                                <form action="" method="POST">
+                                                    <h1>User Information</h1>
 
-                                                            <p class="m-0">Please add updates to the relevant fields.</p>
-                                                            <div class="form-row mt-2">
-                                                            <!--- FIRST NAME & LAST NAME SECTION --->
-                                                                <?php if (isset($firstname_error)) {
-                                                                    echo $firstname_error;
-                                                                } ?>
-                                                                <?php if (isset($lastname_error)) {
-                                                                    echo $lastname_error;
-                                                                }
+                                                    <p class="m-0">Please add updates to the relevant fields.</p>
+                                                    <div class="form-row mt-2">
+                                                        <!--- FIRST NAME & LAST NAME SECTION --->
+                                                        <?php if (isset($firstname_error)) {
+                                                            echo $firstname_error;
+                                                        } ?>
+                                                        <?php if (isset($lastname_error)) {
+                                                            echo $lastname_error;
+                                                        }
 
-                                                                ?>
-                                                                <div class="form-row mt-2">
-                                                                    <div class="form-group col-md-6"><label>First Name</label>
-                                                                    <input class="form-control <?php if (isset($firstname_error)) { 
-                                                                        echo "is-invalid"; } ?>" type="text" name="firstname" value="<?php echo $firstname; ?>"></div>
-                                                                    <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
-                                                                    <?php if (isset($lastname_error)) { echo "is-invalid"; } ?>" type="text" name="lastname" value="<?php echo $lastname; ?>"></div>
-                                                                </div>
-
-
-                                                            <!--- USERNAME AND EMAIL SECTION --->
-                                                            <?php if (isset($username_error)) {
-                                                                        echo $username_error;
-                                                                    } ?>
-                                                                    <?php if (isset($email_error)) {
-                                                                        echo $email_error;
-                                                                    } ?>
-                                                                <div class="form-row">
-                                                                <div class="form-group col-md-6"><label>Username</label>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-prepend"><span class="input-group-text">@</span>
-                                                                    </div><input class="form-control <?php if (isset($username_error)) { echo "is-invalid"; } ?>" 
-                                                                    type="text" name="username" value="<?php echo $username; ?>">
-                                                                    <div class="input-group-append"></div>
-                                                                </div>
-                                                                </div>
-                                                                <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
-                                                                <?php if (isset($email_error)) { echo "is-invalid"; } ?>" type="text" name="email" value="
-                                                                <?php echo $email; ?>"></div>
-                                                            </div>
-                                                            </div>
-                                                           
-                                                            <!--- PHONE NUMBER SECTION --->
-                                                            <?php if (isset($areacode_error)) {
-                                                                echo $areacode_error;
-                                                            } ?>
-                                                            <?php if (isset($phonenumber_error)) {
-                                                                echo $phonenumber_error;
-                                                            } ?>
-                                                             <div class="form-group"><label>Phone Number</label>
-                                                                <div class="form-row">
-                                                                <div class="col col-md-5">
-                                                                    <div class="input-group">
-                                                                    <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
-                                                                    <?php if (isset($areacode_error)) {
-                                                                    echo "is-invalid";
-                                                                    } ?>" type="text" name="areacode" value="<?php echo $areacode ?>">
-                                                                    <div class="input-group-append"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col col-md-7"><input class="form-control 
-                                                                <?php if (isset($phonenumber_error)) {
-                                                                echo "is-invalid";
-                                                                } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber ?>"></div>
-                                                                </div>
-                                                            </div>        
-
-                                                            
-
-                                                            <!--- PASSWORDS SECTION --->         
-                                                            <?php if (isset($password_error)) {
-                                                                echo $password_error;
-                                                            } ?>
-                                                             <div class="form-group"><label>Password</label><input class="form-control 
-                                                                <?php if (isset($password_error)) {
-                                                                echo "is-invalid";
-                                                                } ?>" type="password" name="password" value="<?php echo $password ?>"></div>
-                                                            
-                                                            
-                                                            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>
-                                                            
-                                                     </form>
+                                                        ?>
                                                     </div>
-                                                
+                                                    <div class="form-row mt-2">
+                                                        <div class="form-group col-md-6"><label>First Name</label>
+                                                            <input class="form-control <?php if (isset($firstname_error)) {
+                                                                                            echo "is-invalid";
+                                                                                        } ?>" type="text" name="firstname" value="<?php echo $firstname; ?>"></div>
+                                                        <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
+                                                                    <?php if (isset($lastname_error)) {
+                                                                        echo "is-invalid";
+                                                                    } ?>" type="text" name="lastname" value="<?php echo $lastname; ?>"></div>
+                                                    </div>
+
+
+                                                    <!--- USERNAME AND EMAIL SECTION --->
+                                                    <?php if (isset($username_error)) {
+                                                        echo $username_error;
+                                                    } ?>
+                                                    <?php if (isset($email_error)) {
+                                                        echo $email_error;
+                                                    } ?>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6"><label>Username</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">@</span>
+                                                                </div><input class="form-control <?php if (isset($username_error)) {
+                                                                                                        echo "is-invalid";
+                                                                                                    } ?>" type="text" name="username" value="<?php echo $username; ?>">
+                                                                <div class="input-group-append"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6"><label>Email Address</label><input class="form-control 
+                                                                <?php if (isset($email_error)) {
+                                                                    echo "is-invalid";
+                                                                } ?>" type="text" name="email" value="<?php echo $email; ?>">
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+
+                                            <!--- PHONE NUMBER SECTION --->
+                                            <?php if (isset($areacode_error)) {
+                                                echo $areacode_error;
+                                            } ?>
+                                            <?php if (isset($phonenumber_error)) {
+                                                echo $phonenumber_error;
+                                            } ?>
+                                            <div class="form-group"><label>Phone Number</label>
+                                                <div class="form-row">
+                                                    <div class="col col-md-5">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend"><span class="input-group-text">+1</span></div><input class="form-control 
+                                                                    <?php if (isset($areacode_error)) {
+                                                                        echo "is-invalid";
+                                                                    } ?>" type="text" name="areacode" value="<?php echo $areacode ?>">
+                                                            <div class="input-group-append"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-7"><input class="form-control 
+                                                                <?php if (isset($phonenumber_error)) {
+                                                                    echo "is-invalid";
+                                                                } ?>" type="text" name="phonenumber" value="<?php echo $phonenumber ?>"></div>
                                                 </div>
+                                            </div>
+
+
+
+                                            <!--- PASSWORDS SECTION --->
+                                            <?php if (isset($password_error)) {
+                                                echo $password_error;
+                                            } ?>
+                                            <div class="form-group"><label>Password</label><input class="form-control 
+                                                                <?php if (isset($password_error)) {
+                                                                    echo "is-invalid";
+                                                                } ?>" type="password" name="password" value="<?php echo $password ?>"></div>
+
+
+                                            <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="Update" value="Update Record"></input>
+
+                                            </form>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -242,9 +247,11 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                     </div>
                 </div>
             </div>
-            
- <!-- FOOTER -->
- <?php include 'blocks/footer.php'; ?>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <?php include 'blocks/footer.php'; ?>
 </body>
 
 </html>
