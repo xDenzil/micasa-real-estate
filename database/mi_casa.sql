@@ -72,31 +72,20 @@ CREATE TABLE `gallery` (
 
 DROP TABLE IF EXISTS `register`;
 CREATE TABLE IF NOT EXISTS `register` (
-<<<<<<< HEAD
-=======
   `RegID` int(5) NOT NULL AUTO_INCREMENT,
->>>>>>> 3cf26dd23c08d4eb4a9cc84cb8963e0e35b0f41f
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
   `Telephone` varchar(10) NOT NULL,
   `Username` varchar(10) NOT NULL,
   `Password` varchar(10) NOT NULL,
-<<<<<<< HEAD
-  `Password2` varchar(10) NOT NULL,
-  PRIMARY KEY (`Username`)
+  PRIMARY KEY (`RegID`),
+  UNIQUE KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `propertydetail`
-=======
-  PRIMARY KEY (`RegID`),
-  UNIQUE KEY (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -108,8 +97,7 @@ ALTER TABLE `property`
 
 --
 -- Constraints for table `gallery`
->>>>>>> 3cf26dd23c08d4eb4a9cc84cb8963e0e35b0f41f
---
+
 
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`ImgID`),
