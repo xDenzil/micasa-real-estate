@@ -9,7 +9,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
             $$key = $value;
         }
     } else { // If there weren't any errors, update database
-        $query = "UPDATE `property` SET `Address1`='" . $_SESSION['address1'] . "',`Address2`='" . $_SESSION['address2'] . "' ,`City`='" . $_SESSION['city'] . "',`Parish`='" . $_SESSION['parish'] . "',`Size`='" . $_SESSION['landsize'] . "',`ListingType`='" . $_SESSION['listing_type'] . "',`PropertyType`='" . $_SESSION['property_type'] . "',`BuildingType`='" . $_SESSION['building_type'] . "',`NumBedroom`=" . $_SESSION['bedrooms'] . ",`NumBathroom`=" . $_SESSION['bathrooms'] . ",`Price`=" . $_SESSION['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
+        $query = "UPDATE `property` SET `Address1`='" . $_SESSION['prop']['address1'] . "',`Address2`='" . $_SESSION['prop']['address2'] . "' ,`City`='" . $_SESSION['prop']['city'] . "',`Parish`='" . $_SESSION['prop']['parish'] . "',`Size`='" . $_SESSION['prop']['landsize'] . "',`ListingType`='" . $_SESSION['prop']['listing_type'] . "',`PropertyType`='" . $_SESSION['prop']['property_type'] . "',`BuildingType`='" . $_SESSION['prop']['building_type'] . "',`NumBedroom`=" . $_SESSION['prop']['bedrooms'] . ",`NumBathroom`=" . $_SESSION['prop']['bathrooms'] . ",`Price`=" . $_SESSION['prop']['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
         $result = mysqli_query($conn, $query) or die("Failed to get data.");
         // Redirect to Success Page		         // Redirect to Success Page
         if ($_SESSION['userLevel'] == 'user') {
@@ -35,31 +35,21 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
         /*If there are results, output data into the input boxes 
         so the user can see what they edit.*/
         while ($row = $result->fetch_assoc()) {
-            $_SESSION['parish'] = $row['Parish'];
-            $_SESSION['address1'] = $row['Address1'];
-            $_SESSION['address2'] = $row['Address2'];
-            $_SESSION['city'] = $row['City'];
-            $_SESSION['landsize'] = $row['Size'];
-            $_SESSION['listing_type'] = $row['ListingType'];
-            $_SESSION['property_type'] = $row['PropertyType'];
-            $_SESSION['building_type'] = $row['BuildingType'];
-            $_SESSION['bedrooms'] = $row['NumBedroom'];
-            $_SESSION['bathrooms'] = $row['NumBathroom'];
-            $_SESSION['price'] = $row['Price'];
+            $_SESSION['prop']['parish'] = $row['Parish'];
+            $_SESSION['prop']['address1'] = $row['Address1'];
+            $_SESSION['prop']['address2'] = $row['Address2'];
+            $_SESSION['prop']['city'] = $row['City'];
+            $_SESSION['prop']['landsize'] = $row['Size'];
+            $_SESSION['prop']['listing_type'] = $row['ListingType'];
+            $_SESSION['prop']['property_type'] = $row['PropertyType'];
+            $_SESSION['prop']['building_type'] = $row['BuildingType'];
+            $_SESSION['prop']['bedrooms'] = $row['NumBedroom'];
+            $_SESSION['prop']['bathrooms'] = $row['NumBathroom'];
+            $_SESSION['prop']['price'] = $row['Price'];
         }
     } else { // If the property couldn't be found that belongs to the user logged in, reset all variables and show error page
-        $_SESSION['parish'] = null;
-        $_SESSION['address1'] = null;
-        $_SESSION['address2'] = null;
-        $_SESSION['city'] = null;
-        $_SESSION['landsize'] = null;
-        $_SESSION['listing_type'] = null;
-        $_SESSION['property_type'] = null;
-        $_SESSION['building_type'] = null;
-        $_SESSION['bedrooms'] = null;
-        $_SESSION['bathrooms'] = null;
-        $_SESSION['price'] = null;
-        $_SESSION['preview_img'] = null;
+        $_SESSION['prop'] = null;
+
         // Redirect to Error Page
         $_SESSION['redirect']['header'] = 'ERROR';
         $_SESSION['redirect']['path'] = 'user-dashboard.php';
@@ -133,7 +123,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
 
                             <div class="form-group mt-4"><label>Address Line 1</label><input class="form-control <?php if (isset($address1_error)) {
                                                                                                                         echo "is-invalid";
-                                                                                                                    } ?>" type="text" name="address1" value="<?php echo $_SESSION['address1'] ?>"></div>
+                                                                                                                    } ?>" type="text" name="address1" value="<?php echo $_SESSION['prop']['address1'] ?>"></div>
 
                             <!--- ADDRESS LINE 2 --->
 
@@ -143,7 +133,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
 
                             <div class="form-group"><label>Address Line 2</label><input class="form-control <?php if (isset($address2_error)) {
                                                                                                                 echo "is-invalid";
-                                                                                                            } ?>" type="text" name="address2" value="<?php echo $_SESSION['address2'] ?>"></div>
+                                                                                                            } ?>" type="text" name="address2" value="<?php echo $_SESSION['prop']['address2'] ?>"></div>
 
                             <!--- CITY & PARISH SECTION --->
 
@@ -159,50 +149,50 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
                             <div class="form-row">
                                 <div class="form-group col-md-6"><label>City</label><input class="form-control <?php if (isset($city_error)) {
                                                                                                                     echo "is-invalid";
-                                                                                                                } ?>" type="text" name="city" value="<?php echo $_SESSION['city'] ?>"></div>
+                                                                                                                } ?>" type="text" name="city" value="<?php echo $_SESSION['prop']['city'] ?>"></div>
                                 <div class="form-group col-md-6"><label>Parish</label>
-                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="parish" title="<?php if ($_SESSION['parish'] == null) {
+                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="parish" title="<?php if ($_SESSION['prop']['parish'] == null) {
                                                                                                                                     echo 'Select Parish';
                                                                                                                                 } else {
-                                                                                                                                    echo $_SESSION['parish'];
+                                                                                                                                    echo $_SESSION['prop']['parish'];
                                                                                                                                 } ?>">
-                                        <option <?php if ($_SESSION['parish'] == 'Kingston & St. Andrew') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Kingston & St. Andrew') {
                                                     echo 'selected="selected"';
                                                 } ?>>Kingston & St. Andrew</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Portland') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Portland') {
                                                     echo 'selected="selected"';
                                                 } ?>>Portland</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. Thomas') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. Thomas') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. Thomas</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. Catherine') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. Catherine') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. Catherine</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. Mary') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. Mary') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. Mary</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. Ann') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. Ann') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. Ann</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Manchester') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Manchester') {
                                                     echo 'selected="selected"';
                                                 } ?>>Manchester</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Clarendon') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Clarendon') {
                                                     echo 'selected="selected"';
                                                 } ?>>Clarendon</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Hanover') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Hanover') {
                                                     echo 'selected="selected"';
                                                 } ?>>Hanover</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Westmoreland') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Westmoreland') {
                                                     echo 'selected="selected"';
                                                 } ?>>Westmoreland</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. James') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. James') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. James</option>
-                                        <option <?php if ($_SESSION['parish'] == 'Trelawny') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'Trelawny') {
                                                     echo 'selected="selected"';
                                                 } ?>>Trelawny</option>
-                                        <option <?php if ($_SESSION['parish'] == 'St. Elizabeth') {
+                                        <option <?php if ($_SESSION['prop']['parish'] == 'St. Elizabeth') {
                                                     echo 'selected="selected"';
                                                 } ?>>St. Elizabeth</option>
                                     </select>
@@ -226,18 +216,18 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
 
                             <div class="form-row mt-4">
                                 <div class="form-group col-md-6"><label>Property Type</label>
-                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="property_type" title="<?php if ($_SESSION['property_type'] == null) {
+                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="property_type" title="<?php if ($_SESSION['prop']['property_type'] == null) {
                                                                                                                                             echo 'Select';
                                                                                                                                         } else {
-                                                                                                                                            echo $_SESSION['property_type'];
+                                                                                                                                            echo $_SESSION['prop']['property_type'];
                                                                                                                                         } ?>">
-                                        <option <?php if ($_SESSION['property_type'] == 'Vacant Lot') {
+                                        <option <?php if ($_SESSION['prop']['property_type'] == 'Vacant Lot') {
                                                     echo 'selected="selected"';
                                                 } ?>>Vacant Lot</option>
-                                        <option <?php if ($_SESSION['property_type'] == 'Residential') {
+                                        <option <?php if ($_SESSION['prop']['property_type'] == 'Residential') {
                                                     echo 'selected="selected"';
                                                 } ?>>Residential</option>
-                                        <option <?php if ($_SESSION['property_type'] == 'Commercial') {
+                                        <option <?php if ($_SESSION['prop']['property_type'] == 'Commercial') {
                                                     echo 'selected="selected"';
                                                 } ?>>Commercial</option>
 
@@ -246,7 +236,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
                                 <div class="form-group col-md-6"><label>Land Size</label>
                                     <div class="input-group"><input type="text" name="landsize" class="form-control <?php if (isset($landsize_error)) {
                                                                                                                         echo "is-invalid";
-                                                                                                                    } ?>" type="text" value="<?php echo $_SESSION['landsize'] ?>">
+                                                                                                                    } ?>" type="text" value="<?php echo $_SESSION['prop']['landsize'] ?>">
                                         <div class="input-group-prepend"><span class="input-group-text">acres</span></div>
                                         <div class="input-group-append"></div>
                                     </div>
@@ -272,41 +262,41 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
 
                             <div class="form-row">
                                 <div class="form-group col-md-4"><label>Building Type</label>
-                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="building_type" title="<?php if ($_SESSION['building_type'] == null) {
+                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="building_type" title="<?php if ($_SESSION['prop']['building_type'] == null) {
                                                                                                                                             echo 'Select';
                                                                                                                                         } else {
-                                                                                                                                            echo $_SESSION['building_type'];
+                                                                                                                                            echo $_SESSION['prop']['building_type'];
                                                                                                                                         } ?>">
-                                        <option <?php if ($_SESSION['building_type'] == 'Housing') {
+                                        <option <?php if ($_SESSION['prop']['building_type'] == 'Housing') {
                                                     echo 'selected="selected"';
                                                 } ?>>Housing</option>
-                                        <option <?php if ($_SESSION['building_type'] == 'Apartment') {
+                                        <option <?php if ($_SESSION['prop']['building_type'] == 'Apartment') {
                                                     echo 'selected="selected"';
                                                 } ?>>Apartment</option>
-                                        <option <?php if ($_SESSION['building_type'] == 'Town House') {
+                                        <option <?php if ($_SESSION['prop']['building_type'] == 'Town House') {
                                                     echo 'selected="selected"';
                                                 } ?>>Town House</option>
-                                        <option <?php if ($_SESSION['building_type'] == 'Office Space') {
+                                        <option <?php if ($_SESSION['prop']['building_type'] == 'Office Space') {
                                                     echo 'selected="selected"';
                                                 } ?>>Office Space</option>
-                                        <option <?php if ($_SESSION['building_type'] == 'None') {
+                                        <option <?php if ($_SESSION['prop']['building_type'] == 'None') {
                                                     echo 'selected="selected"';
                                                 } ?>>None</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4"><label># of Bedrooms</label><input type="number" name="bedrooms" min="0" class="form-control <?php if (isset($bedrooms_error)) {
                                                                                                                                                                     echo "is-invalid";
-                                                                                                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['bedrooms'])) {
+                                                                                                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['prop']['bedrooms'])) {
                                                                                                                                                                                                 echo '0';
                                                                                                                                                                                             } else {
-                                                                                                                                                                                                echo $_SESSION['bedrooms'];
+                                                                                                                                                                                                echo $_SESSION['prop']['bedrooms'];
                                                                                                                                                                                             } ?>"></div>
                                 <div class="form-group col-md-4"><label># of Bathrooms</label><input type="number" name="bathrooms" min="0" class="form-control <?php if (isset($bathrooms_error)) {
                                                                                                                                                                     echo "is-invalid";
-                                                                                                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['bathrooms'])) {
+                                                                                                                                                                } ?>" type="text" value="<?php if (!isset($_SESSION['prop']['bathrooms'])) {
                                                                                                                                                                                                 echo '0';
                                                                                                                                                                                             } else {
-                                                                                                                                                                                                echo $_SESSION['bathrooms'];
+                                                                                                                                                                                                echo $_SESSION['prop']['bathrooms'];
                                                                                                                                                                                             } ?>"></div>
                             </div>
 
@@ -324,18 +314,18 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>ListingType</label>
-                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="listing_type" title="<?php if ($_SESSION['listing_type'] == null) {
+                                    <select class="selectpicker" data-style="btn-dark" data-width="100%" name="listing_type" title="<?php if ($_SESSION['prop']['listing_type'] == null) {
                                                                                                                                         echo 'Select';
                                                                                                                                     } else {
-                                                                                                                                        echo $_SESSION['listing_type'];
+                                                                                                                                        echo $_SESSION['prop']['listing_type'];
                                                                                                                                     } ?>">
-                                        <option <?php if ($_SESSION['listing_type'] == 'Rent') {
+                                        <option <?php if ($_SESSION['prop']['listing_type'] == 'Rent') {
                                                     echo 'selected="selected"';
                                                 } ?>>Rent</option>
-                                        <option <?php if ($_SESSION['listing_type'] == 'Purchase') {
+                                        <option <?php if ($_SESSION['prop']['listing_type'] == 'Purchase') {
                                                     echo 'selected="selected"';
                                                 } ?>>Purchase</option>
-                                        <option <?php if ($_SESSION['listing_type'] == 'Lease') {
+                                        <option <?php if ($_SESSION['prop']['listing_type'] == 'Lease') {
                                                     echo 'selected="selected"';
                                                 } ?>>Lease</option>
                                     </select>
@@ -346,7 +336,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span></div><input type="text" name="price" class="form-control <?php if (isset($price_error)) {
                                                                                                                                                     echo "is-invalid";
-                                                                                                                                                } ?>" type="text" value="<?php echo $_SESSION['price'] ?>">
+                                                                                                                                                } ?>" type="text" value="<?php echo $_SESSION['prop']['price'] ?>">
                                     </div>
                                 </div>
                             </div>

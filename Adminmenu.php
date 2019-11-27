@@ -138,7 +138,7 @@ if ($_SESSION['userLevel'] != 'admin') {
                                                 //header('Location: ../property_search.php');
                                                 while ($row2 = mysqli_fetch_assoc($result2)) {
                                                     echo ' <div class="col-4">
-<div class="property-entry"> 
+<div class="property-entry mb-5"> 
 <a href="property-details.php?propID=' . $row2['PropertyID'] . '" class="property-thumbnail">
 <div class="offer-type-wrap">
 <span class="offer-type bg-primary px-3 p-2">' . $row2['ListingType'] . '</span>
