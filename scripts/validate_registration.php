@@ -1,19 +1,18 @@
 <?php
-
-
 session_start(); // CONTINUING SESSION
-include_once('../database/db_connection.php');
-
-
 if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     //session_destroy();
     foreach ($_POST as $key => $value) {
         $$key = $value;
         $_SESSION[$key] = $value;
     }
-
-
-
+    $firstname;
+    $lastname;
+    $username;
+    $email;
+    $areacode;
+    $phonenumber;
+    $password;
     // FIRST NAME VALIDATION
     if (empty($_POST['firstname'])) {
         $_SESSION['firstname_error'] = "<span class='error small-text'>* Please enter your first name. </span>";
@@ -29,14 +28,11 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['firstname'] = $_POST['firstname'];
             $_SESSION['errFlag0'] = true;
         } else {
-            $_SESSION['first_name'] = $_POST['firstname'];
+            $_SESSION['first_name'] = $_POST['firstname'];  
             $_SESSION['firstname_error'] = null;
             $_SESSION['errFlag0'] = false;
         }
     }
-
-
-
     // LAST NAME VALIDATION
     if (empty($_POST['lastname'])) {
         $_SESSION['lastname_error'] = "<span class='error small-text'>* Please enter your last name. </span>";
@@ -57,8 +53,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['errFlag1'] = false;
         }
     }
-
-
     // USERNAME VALIDATION
     if (empty($_POST['username'])) {
         $_SESSION['username_error'] = "<span class='error small-text'>* Please enter a username. </span>";
@@ -73,7 +67,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['username_error'] = null;
         $_SESSION['errFlag2'] = false;
     }
-
     // EMAIL ADDRESS VALIDATION
     if (empty($_POST['email'])) {
         $_SESSION['email_error'] = "<span class='error small-text'>* Please enter your email address. </span>";
@@ -88,7 +81,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['email_error'] = null;
         $_SESSION['errFlag3'] = false;
     }
-
     // PHONE NUMBER VALIDATION
     if (empty($_POST['areacode'])) {
         $_SESSION['areacode_error'] = "<span class='error small-text'>* Please enter the area code. </span>";
@@ -118,12 +110,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $phoneNumberCorrect = true;
         $_SESSION['errFlag5'] = false;
     }
-
-
-
     // PASSWORD VALIDATION
-
-
     if (empty($_POST['password'])) { // If password is empty
         $_SESSION['password_error'] = "<span class='error small-text'>* Please enter a password. </span>";
         $_SESSION['password'] = null;
@@ -138,7 +125,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['password_error'] = null;
         $_SESSION['errFlag6'] = false;
         $_SESSION['notmatching_error'] = null;
-
         if (empty($_POST['passwordconfirm'])) { // If confirm password is empty
             $_SESSION['passwordconfirm_error'] = "<span class='error small-text'>* Please confirm your password. </span>";
             $_SESSION['passwordconfirm'] = null;
@@ -147,7 +133,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             $_SESSION['passwordconfirm'] = $_POST['passwordconfirm'];
             $_SESSION['passwordconfirm_error'] = null;
             $_SESSION['errFlag7'] = false;
-
             if (($_SESSION['password']) == ($_SESSION['passwordconfirm'])) {
                 $_SESSION['validatedpassword'] = $_POST['password'];
                 $_SESSION['errFlag8'] = false;
@@ -159,9 +144,6 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
             }
         }
     }
-
-
-
     // FORM VALIDATION - Return current page if errors, progress if none.
     if (($_SESSION['errFlag0'] == true) || ($_SESSION['errFlag1'] == true) || ($_SESSION['errFlag2'] == true)
         || ($_SESSION['errFlag3'] == true) || ($_SESSION['errFlag4'] == true) || ($_SESSION['errFlag5'] == true)
@@ -172,11 +154,18 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
     } else {
         $_SESSION['errFlagPage1'] = false;
         $_SESSION['active'] = true;
-
-
-        $sql = "INSERT INTO `users`(`username`, `first_name`, `last_name`, `email`, `phone`, `password`) VALUES ('$username', '$firstname', '$lastname', '$email', '$phonenumber', '$password');";
-        $result = mysqli_query($conn, $sql) or die("Failed to get data");
-        //session_destroy();
-        header("Location: .././user-dashboard.php");
+        //connect and insert to database
+        include '../database/db_connection.php';
+        //$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
+        $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password) 
+        VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
+        mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+        //header('Location: ../user-dashboard.php');
+        $_SESSION['userLevel']='user';
+        $_SESSION['redirect']['header'] = 'REGISTRATION SUCCESS';
+        $_SESSION['redirect']['path'] = 'user-dashboard.php';
+        $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
+        header('Location: ../error-or-success.php');
+       
     }
 }

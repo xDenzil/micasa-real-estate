@@ -1,28 +1,11 @@
 <?php
-
 session_start();
-
-
 if ((isset($_SESSION['errFlagPage1'])) && ($_SESSION['errFlagPage1']) == true) { //IF SESSION FLAG IS SET AND IS TRUE
   foreach ($_SESSION as $key => $value) { //USE SESSION VARIABLE AS KEY VARIABLE TO ASSIGN VALUES
     $$key = $value;
   }
+  
 }
-//Doesn't work with "include('db_connection.php');" for me
-$conn = mysqli_connect("localhost", "root", "", "mi_casa") or die("<h1>Could not connect to database.</h1>");
-//Check if form is submitted
-if (isset($_POST['new']) && $_POST['new'] == 1) {
-  $username = $_REQUEST['Username'];
-  $firstname = $_REQUEST['FirstName'];
-  $lasttname = $_REQUEST['LastName'];
-  $email = $_REQUEST['Email'];
-  $phonenumber = $_REQUEST['Telephone'];
-  $password = $_REQUEST['Password'];
-  $password2 = $_REQUEST['Password2'];
-  $query = "INSERT INTO resgister (`Username`,`FirstName`,`LastName`,`Email`,`Telephone`,`Password`,`Password2`,)VALUES('$username','$firstname','$lastname','$email','$phonenumber','$password','$password2')";
-  mysqli_query($conn, $query) or die("Could not insert Data");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +36,7 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
 
   <!-- NAVIGATION SECTION -->
   <?php
-  switch ($_SESSION['userLevel']) {
+  switch (isset($_SESSION['userLevel'])) {
     case "user": //Not logged in
       require_once('blocks/user-navigation.php');
       break;
@@ -77,29 +60,22 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
       </div>
     </div>
     </div>
-
     <!-- REGISTRATION SECTION -->
     <div class="site-section">
       <div class="container">
         <div class="row justify-content-center">
-
           <div class="col-md-12 col-lg-8 mb-5">
-            <form action="./scripts/regisvalid.php" method="POST" class="p-5">
+            <form action="./scripts/validate_registration.php" method="POST" class="p-5">
               <h1>User Information</h1>
               <p class="m-0">Please fill out the following fields.</p>
-
-
               <!--- FIRST NAME & LAST NAME SECTION --->
-
               <?php if (isset($firstname_error)) {
                 echo $firstname_error;
               } ?>
               <?php if (isset($lastname_error)) {
                 echo $lastname_error;
               }
-
               ?>
-
               <div class="form-row mt-2">
                 <div class="form-group col-md-6"><label>First Name</label>
                   <input class="form-control 
@@ -109,20 +85,15 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                 <div class="form-group col-md-6"><label>Last Name</label><input class="form-control 
               <?php if (isset($lastname_error)) {
                 echo "is-invalid";
-              } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname'] ?>"></div>
+              } ?>" type="text" name="lastname" value="<?php echo $_SESSION['lastname']; ?>"></div>
               </div>
-
-
               <!--- USERNAME AND EMAIL SECTION --->
-
               <?php if (isset($username_error)) {
                 echo $username_error;
               } ?>
               <?php if (isset($email_error)) {
                 echo $email_error;
               } ?>
-
-
               <div class="form-row">
                 <div class="form-group col-md-6"><label>Username</label>
                   <div class="input-group">
@@ -139,18 +110,13 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                 echo "is-invalid";
               } ?>" type="text" name="email" value="<?php echo $_SESSION['email'] ?>"></div>
               </div>
-
-
               <!--- PHONE NUMBER SECTION --->
-
               <?php if (isset($areacode_error)) {
                 echo $areacode_error;
               } ?>
               <?php if (isset($phonenumber_error)) {
                 echo $phonenumber_error;
               } ?>
-
-
               <div class="form-group"><label>Phone Number</label>
                 <div class="form-row">
                   <div class="col col-md-5">
@@ -168,10 +134,7 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
                 } ?>" type="text" name="phonenumber" value="<?php echo $_SESSION['phonenumber'] ?>"></div>
                 </div>
               </div>
-
-
               <!--- PASSWORDS SECTION --->
-
               <?php if (isset($password_error)) {
                 echo $password_error;
               } ?>
@@ -181,8 +144,6 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
               <?php if (isset($notmatching_error)) {
                 echo $notmatching_error;
               } ?>
-
-
               <div class="form-group"><label>Password</label><input class="form-control 
             <?php if (isset($password_error)) {
               echo "is-invalid";
@@ -191,35 +152,25 @@ if (isset($_POST['new']) && $_POST['new'] == 1) {
             <?php if (isset($passwordconfirm_error)) {
               echo "is-invalid";
             } ?>" type="password" name="passwordconfirm" value="<?php echo $_SESSION['passwordconfirm'] ?>"></div>
-
-
               <!--- CONTINUE BUTTON --->
               <input class="btn btn-primary roundbut col-md-12 mt-4" type="submit" name="register" value="Sign Up"></input>
             </form>
           </div>
-
           <div class="col-lg-4" hidden>
             <div class="p-4 mb-3">
               <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
               <p class="mb-0 font-weight-bold">Address</p>
               <p class="mb-4">237 Old Hoope Rd, Kingston 6, JM</p>
-
               <p class="mb-0 font-weight-bold">Phone</p>
               <p class="mb-4"><a href="#">876-123-1562</a></p>
-
               <p class="mb-0 font-weight-bold">Email</p>
               <p class="mb-0"><a href="#">Scammadem_dehyaah@gmail.com</a></p>
-
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <!-- FOOTER -->
     <?php include 'blocks/footer.php'; ?>
-
-
 </body>
-
 </html>
