@@ -146,8 +146,8 @@ $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.
                                            <?php } ?>
                                             </tbody>
                                             </table>
-                                            
-                                            <p><a href="registration.php">Add a new User</a></p>
+                                            <!--Admin add user-->
+                                            <p><a class="btn btn-success text-white rouund m-0" role="button" href="adduser-admin.php">Add a new User</a></p>
                                         </div>
 
 
