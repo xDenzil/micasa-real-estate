@@ -29,7 +29,7 @@ if ($_GET['action'] == 'add') {
             $bathroom = $_SESSION['prop']['bathrooms'];
             $price = $_SESSION['prop']['price'];
 
-            //echo "user id: " . $userID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price;
+            // echo "user id: " . $userID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price;
 
             include 'database/db_connection.php';
             $query = "INSERT INTO `property`(`UserID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
@@ -61,6 +61,7 @@ if ($_GET['action'] == 'add') {
             $_SESSION['redirect']['header'] = 'Update Successful';
             $_SESSION['redirect']['message'] = 'Property Updated.';
             header('Location: error-or-success.php');
+            $_SESSION['prop'] = null;
         }
     } else {
         include './database/db_connection.php';
@@ -143,7 +144,6 @@ if ($_GET['action'] == 'add') {
     ?>
 
         <div class="site-section bg-black p-2 pt-4" name="nav-bg" style="height:120px;"></div>
-
         <div class="container m-5 mx-auto">
             <div class="row">
 

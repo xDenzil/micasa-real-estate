@@ -112,7 +112,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
                 <div class="p-4 property-body">
                     <h2 class="property-title">' . $row['Address1'] . '</h2>
                     <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
-                    <strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row['Price']) . '</strong>
+                    <strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row['Price'], 2) . '</strong>
                 </div>
             </div>
         </div>';

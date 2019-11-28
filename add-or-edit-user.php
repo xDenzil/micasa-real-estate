@@ -14,7 +14,7 @@ if ($_GET['action'] == 'edit') {
     // CONNECT TO DB AND POPULATE FIELDS WITH EXISTING DATA
     include './database/db_connection.php';
     $query = "SELECT * FROM register WHERE RegID ='" . $RegID . "'";
-    $result = mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+    $result = mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
 
     while ($row = mysqli_fetch_assoc($result)) {
         $firstname = $row['FirstName'];
@@ -47,7 +47,7 @@ if ($_GET['action'] == 'edit') {
 
             include './database/db_connection.php';
             $query = "UPDATE register SET FirstName='$firstname',LastName='$lastname', Email='$email',Telephone='$areacode$phonenumber',Username ='$username',Password = '$password' WHERE RegID= '$RegID';";
-            mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+            mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
 
 
             // REDIRECT TO ADMIN MENU PAGE

@@ -90,8 +90,8 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
                                     </a>
                                     <div class="p-4 property-body">
                                         <h2 class="property-title">' . $row['Address1'] . '</h2>
-                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . number_format($row['City']) . ", " . $row['Parish'] . '</span>
-                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . $row['Price'] . '</strong>
+                                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>' . $row['City'] . ", " . $row['Parish'] . '</span>
+                                        <strong class="property-price text-primary mb-3 d-block text-dark"> $' . number_format($row['Price'], 2) . '</strong>
                                         <ul class="property-specs-wrap mb-3 mb-lg-0">
                                             <li>
                                                 <span class="property-specs">Beds</span>

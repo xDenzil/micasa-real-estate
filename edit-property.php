@@ -19,6 +19,7 @@ if (isset($_POST['save-property-update'])) { // If the 'Save Changes' button was
         }
         $_SESSION['redirect']['header'] = 'SUCCESS';
         $_SESSION['redirect']['message'] = 'Property Updated.';
+        $_SESSION['prop'] = null;
         header('Location: error-or-success.php');
     }
 } else if (isset($_GET['propID'])) { // If the user hasn't pressed the 'Save Changes' button yet, just pull data from the database 

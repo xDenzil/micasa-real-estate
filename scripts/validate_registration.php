@@ -160,9 +160,9 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
 
         include '../database/db_connection.php';
 
-        $query = "INSERT INTO register(FirstName, LastName, Email, Telephone, Username, Password) 
+        $query = "INSERT INTO `register`(`FirstName`, `LastName`, `Email`, `Telephone`, `Username`, `Password`) 
         VALUES ('$firstname','$lastname','$email','$areacode$phonenumber','$username','$password');";
-        mysqli_query($conn, $query) or die("<h1>Could not connect to database.</h1>");
+        mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
         $_SESSION['userLevel'] = 'user';
 
         $query2 = "SELECT * FROM `register` WHERE Username='" . $_SESSION['username'] . "';";
