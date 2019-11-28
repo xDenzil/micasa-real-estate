@@ -94,19 +94,19 @@ session_start();
                             <div class="col-md-6">
                                 <label>Optional</label><br>
 
-                                <?php if (isset($gallery_1_error)) {
-                                    echo $gallery_1_error;
+                                <?php if (isset($_SESSION['add-new']['gallery_img_error'])) {
+                                    echo $_SESSION['add-new']['gallery_img_error'];
                                 } ?>
 
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery_1">
-                                        <label class="custom-file-label text-black" for="inputGroupFile02">Choose a</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="gallery[]" multiple>
+                                        <label class="custom-file-label text-black" for="inputGroupFile02">Choose</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <!--  <div class="col-md-6">
 
                                 <?php if (isset($gallery_2_error)) {
                                     echo $gallery_2_error;
@@ -146,7 +146,7 @@ session_start();
                                         <label class="custom-file-label text-black" for="inputGroupFile05">Choose</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-6">
                                 <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Finish">

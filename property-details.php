@@ -13,6 +13,9 @@ $query2 = "SELECT * FROM register, property WHERE (register.RegID = property.use
 $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
 
 
+$query3 = "SELECT * FROM gallery WHERE PropertyID ='$propertyID';";
+$result3 = mysqli_query($conn, $query3) or die("Failed to get data.");
+
 ?>
 
 
@@ -131,49 +134,47 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                                         <span class="caption-text">Parish</span>
                                         <strong class="d-block">' . $row['Parish'] . '</strong>
                                     </div>
-                                </div>
-    
-    
-    
-    
-    
-    
-                                <div class="row no-gutters mt-5">
-                                    <div class="col-12">
-                                        <h2 class="h4 text-black mb-3">Gallery</h2>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3">
-                                        <a href="assets/images/img_1.jpg" class="image-popup gal-item"><img src="assets/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3">
-                                        <a href="assets/images/img_2.jpg" class="image-popup gal-item"><img src="assets/images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3">
-                                        <a href="assets/images/img_3.jpg" class="image-popup gal-item"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3">
-                                        <a href="assets/images/img_4.jpg" class="image-popup gal-item"><img src="assets/images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                            </div>';
+                                </div>';
                             }
                         } else {
                             echo '';
-                        }
+                        } ?>
 
-                        ?>
 
-                    </div>
-                    <div class="col-lg-4">
 
-                        <div class="bg-white widget border rounded">
+                        <div class="row no-gutters mt-5">
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3">Gallery</h2>
+                            </div>
 
-                            <h3 class="h4 text-black widget-title mb-3">Owner</h3>
                             <?php
-                            if (mysqli_num_rows($result2) != 0) {
-                                //header('Location: ../property_search.php');
-                                while ($row2 = mysqli_fetch_assoc($result2)) {
-                                    echo '<div class="form-group">
+
+                            if (mysqli_num_rows($result3) != 0) {
+                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                    echo '<div class="col-sm-6 col-md-4 col-lg-3">
+                                    <a href="uploads/' . $row3['ImageURL'] . '" class="image-popup gal-item"><img src="uploads/' . $row3['ImageURL'] . '" alt="Image" class="img-fluid"></a>
+                                    </div>';
+                                }
+                            } else {
+                                echo 'No Gallery uploaded.';
+                            } ?>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4">
+
+                    <div class="bg-white widget border rounded">
+
+                        <h3 class="h4 text-black widget-title mb-3">Owner</h3>
+                        <?php
+                        if (mysqli_num_rows($result2) != 0) {
+                            //header('Location: ../property_search.php');
+                            while ($row2 = mysqli_fetch_assoc($result2)) {
+                                echo '<div class="form-group">
                                     <h2 class="text-primary">' . $row2['FirstName'] . " " . $row2['LastName'] . '</h1>
                                 </div>
                                 <div class="form-group">
@@ -187,20 +188,20 @@ $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
                                 <div class="form-group">
                                     <input type="button" id="phone" class="btn btn-primary" value="Contact" onclick="window.location.href=\'mailto:' . $row2['Email'] . '\'">
                                 </div>';
-                                }
-                            } else {
-                                echo ' Something went wrong.';
                             }
+                        } else {
+                            echo ' Something went wrong.';
+                        }
 
-                            ?>
-                            </form>
-                        </div>
-
-
+                        ?>
+                        </form>
                     </div>
 
+
                 </div>
+
             </div>
+        </div>
         </div>
 
 

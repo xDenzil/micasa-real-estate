@@ -17,14 +17,33 @@ $bathroom = $_SESSION['add-new']['bathrooms'];
 $price = $_SESSION['add-new']['price'];
 $previewImgUrl = $_SESSION['add-new']['preview_img'];
 
-//echo $userID . $address1 . $address2 . " city: " . $city . "parish: " . $parish . $size . $listingType . $propertyType . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price . "img: " . $previewImgUrl;
+if ($bedroom == '') {
+    $bedroom = 0;
+}
+
+if ($bathroom == '') {
+    $bathroom = 0;
+}
+
+//echo "userid: " . $userID . " address1: " . $address1 . " address2: " .  $address2 . " city: " . $city . " parish: " . $parish . " landsize: " . $size . " listing type: " .  $listingType . " property type: " . $propertyType . " building type: " . $buildingType . " bedroom: " . $bedroom . " bathroom:" . $bathroom . " price:" .  $price . " preview img: " . $previewImgUrl;
 
 
 //Connect to DB & Run Query
+
 include '../database/db_connection.php';
 $sql = "INSERT INTO `property`(`userID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
 VALUES ($userID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'$previewImgUrl');";
-$result = mysqli_query($conn, $sql) or die("Failed to get data");
+$result = mysqli_query($conn, $sql) or die("Failed to get property data");
+
+$last_id = mysqli_insert_id($conn);
+
+
+$sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
+    if ($z > 0) $sqlgallery .= ", ";
+    $sqlgallery .= "($last_id, '" . $_SESSION['add-new']['gallery_images_saved'][$z] . "')";
+}
+$result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
 
 
 $_SESSION['redirect']['header'] = 'SUCCESS';

@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `property` (
 
 DROP TABLE IF EXISTS `gallery`;
 CREATE TABLE `gallery` (
-  `ImgID` varchar(30) NOT NULL,
+  `ImgID` int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `PropertyID` int(5) NOT NULL,
   `ImageURL` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -100,7 +100,6 @@ ALTER TABLE `property`
 
 
 ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`ImgID`),
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`PropertyID`) REFERENCES `property` (`PropertyID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
