@@ -1,0 +1,2 @@
+USER: 3 | ADDRESS 1: Gallery 2 | ADDRESS2:  | CITY: Gallery 2 | PARISH: Kingston & St. Andrew | LAND SIZE: 500 | LISTING TYPE: Rent | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Housing | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 40
+
