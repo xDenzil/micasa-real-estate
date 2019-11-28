@@ -44,6 +44,7 @@ $_SESSION['redirect']['message'] = "";
 
 $currentUserID;
 $userLevel;
+$RegID;
 
 
 ?>
