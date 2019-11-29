@@ -1,0 +1,4 @@
+USER: 2 | ADDRESS 1: 30 Burlington Ave | ADDRESS2: Half Way Tree | CITY: Kingston | PARISH: Kingston & St. Andrew | LAND SIZE: 35 | LISTING TYPE: Purchase | PROPERTY TYPE: Commercial | BUILDING TYPE: Apartment | BEDROOMS: 2 | BATHROOMS: 1 | PRICE: 3500000
+
+USER: 2 | ADDRESS 1: 10 Wynter Drive | ADDRESS2:  | CITY: Portmore | PARISH: St. Catherine | LAND SIZE: 3.5 | LISTING TYPE: Purchase | PROPERTY TYPE: Residential | BUILDING TYPE: Town House | BEDROOMS: 3 | BATHROOMS: 2 | PRICE: 4500000
+
