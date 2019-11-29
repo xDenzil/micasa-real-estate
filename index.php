@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
             while ($row = mysqli_fetch_assoc($result)) {
               echo ' <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
-                <a href="property-details.php?propID=' . $row['PropertyID'] . '&userID=' . $row['userID'] . '" class="property-thumbnail">
+                <a href="property-details.php?propID=' . $row['PropertyID'] . '&UserID=' . $row['UserID'] . '" class="property-thumbnail">
                     <div class="offer-type-wrap">
                         <span class="offer-type bg-primary px-3 p-2">' . $row['ListingType'] . '</span>
                     </div>
