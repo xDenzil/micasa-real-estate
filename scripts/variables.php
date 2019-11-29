@@ -4,7 +4,7 @@ if(session_status()== PHP_SESSION_NONE){
 }
 
 isset($_SESSION['userLevel']) ? $_SESSION['userLevel'] = $_SESSION['userLevel'] : $_SESSION['userLevel']="" ;
-isset($_SESSION['currentUserID']) ? $_SESSION['currentUserID'] = $_SESSION['currentUserID'] : $_SESSION['currentUserID']="" ;
+isset($_SESSION['currentUserID']) ? $_SESSION['currentUserID'] = $_SESSION['currentUserID'] : $_SESSION['current']="" ;
 $_SESSION['price_min_search']="";
 $_SESSION['price_max_search']="";
 $_SESSION['address1']="";

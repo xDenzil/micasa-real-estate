@@ -92,7 +92,7 @@ if (isset($_POST['add-image'])) {
                     $_SESSION['add-new']['preview_img_error'] = null; // Reset error session variable if it was previously set
 
                     for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
-                        move_uploaded_file($_FILES['gallery']['tmp_name'][$i], '../uploads/' . $_FILES['gallery']['name'][$i]);
+                        move_uploaded_file($_FILES['gallery']['tmp_name'][$z], '../uploads/' . $_FILES['gallery']['name'][$z]);
                     }
 
                     // echo 'Preview Img: ' . $_SESSION['add-new']['preview_img'] . '<br>';
