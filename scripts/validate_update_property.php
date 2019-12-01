@@ -176,6 +176,7 @@ if (empty($_POST['price'])) {
 }
 
 
+// IMAGES
 
 
 if (($_SESSION['errFlag9'] == true) || ($_SESSION['errFlag10'] == true) || ($_SESSION['errFlag11'] == true) || ($_SESSION['errFlag12'] == true) || ($_SESSION['errFlag13'] == true) || ($_SESSION['errFlag14'] == true) || ($_SESSION['errFlag15'] == true) || ($_SESSION['errFlag16'] == true) || ($_SESSION['errFlag17'] == true) || ($_SESSION['errFlag18'] == true) || ($_SESSION['errFlag19'] == true)

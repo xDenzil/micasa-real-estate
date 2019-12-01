@@ -84,7 +84,7 @@ if (isset($_POST['login'])) { // IF THE LOGIN BUTTON WAS PRESSED
 
         <!-- LOGIN -->
 
-        <div class="section blu">
+        <div class="section blu-img">
             <div class="container">
                 <br><br><br><br>
                 <div class="row justify-content-center">

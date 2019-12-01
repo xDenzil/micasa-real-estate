@@ -53,7 +53,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
     <!-- IMAGE SLIDER -->
     <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover overlay" style="background-image: url(assets/images/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="site-blocks-cover overlay" style="background-image: url(uploads/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
@@ -64,7 +64,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data.");
           </div>
         </div>
       </div>
-      <div class="site-blocks-cover overlay" style="background-image: url(assets/images/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="site-blocks-cover overlay" style="background-image: url(uploads/bg_def3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">

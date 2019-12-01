@@ -49,7 +49,7 @@ session_start();
     ?>
 
         <!-- SECTION HEADER -->
-        <div class="site-blocks-cover inner-page-cover overlay bg-primary" style="background-image: url(assets/images/bg_def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
+        <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(uploads/bg-def2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5"">
     <div class=" container">
             <div class="row align-items-center justify-content-center text-center">
                 <div class="col-md-10">
@@ -65,7 +65,7 @@ session_start();
             <div class="container">
                 <div class="row mb-5 justify-content-center">
                     <form class="form-search col-lg-8 col-md-8" method="POST" enctype="multipart/form-data" action="./scripts/validate_imageuploads.php" style="margin-top: -100px;">
-                        <div class="row  align-items-end">
+                        <div class="row align-items-end">
 
                             <div class="col-md-12">
                                 <h1 class="text-white">Main Image</h1>
@@ -106,53 +106,12 @@ session_start();
                                 </div>
                             </div>
 
-                            <!--  <div class="col-md-6">
-
-                                <?php if (isset($gallery_2_error)) {
-                                    echo $gallery_2_error;
-                                } ?>
-
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile03" name="gallery_2">
-                                        <label class="custom-file-label text-black" for="inputGroupFile03">Choose</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <?php if (isset($gallery_3_error)) {
-                                    echo $gallery_3_error;
-                                } ?>
-
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile04" name="gallery_3">
-                                        <label class="custom-file-label text-black" for="inputGroupFile04">Choose</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <?php if (isset($gallery_4_error)) {
-                                    echo $gallery_4_error;
-                                } ?>
-
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile05" name="gallery_4">
-                                        <label class="custom-file-label text-black" for="inputGroupFile05">Choose</label>
-                                    </div>
-                                </div>
-                            </div> -->
-
                             <div class="col-md-6">
                                 <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Finish">
                             </div>
                         </div>
                     </form>
+
                 </div>
                 <div class="row">
                     <div class="col-md-12">

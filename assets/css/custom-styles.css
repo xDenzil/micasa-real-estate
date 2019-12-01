@@ -66,8 +66,12 @@
 }
 
 .blu {
-  /* background-color: #303168;*/
-  background-image: url("../../uploads/img_8.jpg");
+  background-color: #163571;
+}
+
+.blu-img {
+  background-image: url("../../uploads/blu-imgfade.jpg");
+  background-size: cover;
 }
 
 .section .dark {
