@@ -121,7 +121,7 @@ INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (60, '9', 'insi
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (61, '9', 'insidecomm_2.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (62, '9', 'comercial_BM.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (63, '9', 'commercial_back.jpg');
-INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (64, '10', 'lotfront_1.jpg');
+INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (64, '10', 'lotfront_1.png');
 
 
 
