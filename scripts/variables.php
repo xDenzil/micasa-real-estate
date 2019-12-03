@@ -41,9 +41,11 @@ $_SESSION['passwordconfirm']="";
 $_SESSION['redirect']['header'] = "";
 $_SESSION['redirect']['path'] = "";
 $_SESSION['redirect']['message'] = "";
+$_SESSION['errFlagEditProperty']="";
 
 $currentUserID;
 $userLevel;
+$preview_img;
 
 
 ?>

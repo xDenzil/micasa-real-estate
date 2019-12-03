@@ -192,7 +192,7 @@ if ($_SESSION['prop']['countfiles'] != 0) { // IF GALLERY WAS UPLOADED
         $fileName = $_FILES['gallery']['name'][$i];
         $fileType = $_FILES['gallery']['type'][$i];
         $fileSize = $_FILES['gallery']['size'][$i];
-        $fileError = $_FILES['preview_img']['error'][$i];
+        $fileError = $_FILES['gallery']['error'][$i];
 
         $fileExtension = explode(".", $fileName);
         $fileActualExtension = strtolower(end($fileExtension));
