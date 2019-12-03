@@ -165,6 +165,7 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         mysqli_query($conn, $query) or die("<h1>Could not get data.</h1>");
         $_SESSION['userLevel'] = 'user';
 
+        
         $query2 = "SELECT * FROM `register` WHERE Username='" . $_SESSION['username'] . "';";
         $result2 = mysqli_query($conn, $query2) or die("Failed to get data.");
 
@@ -177,5 +178,11 @@ if (isset($_POST['register'])) { //IF CONTINUE BUTTON IS PRESSED
         $_SESSION['redirect']['path'] = 'user-dashboard.php';
         $_SESSION['redirect']['message'] = 'Welcome' . " " . $row['FirstName'] . " " . $row['LastName'];
         header('Location: ../error-or-success.php');
+
+        $registration = fopen("../files/registration.txt", "a") or die("Unable to open file!");
+        $txt = "USER: " . $userID . " | FIRST NAME: " . $firstname . " | LAST NAME: " . $lastname . " | USERNAME: " . $username ."  | EMAIL: " . $email . " | PHONE NUMBER: " . $areacode . "". $phonenumber .  " | PASSWORD: " . $password . " \n\n";
+        fwrite($registration, $txt);
+        fclose($registration);
+
     }
 }
