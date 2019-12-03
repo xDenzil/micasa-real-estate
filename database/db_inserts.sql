@@ -107,7 +107,7 @@ INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (46, 
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (47, '7', 'bedroom_9.jpg');
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (48, '7', 'bathroom_7.jpg');
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (49, '7', 'bathroom_8.jpg');
-INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (40, '7', 'bathroom_6.jpg');
+INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (50, '7', 'bathroom_6.jpg');
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (51, '7', 'bathroom_10.jpg');
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (52, '7', 'livingrm_8.jpg');
 INSERT INTO `mi_casa`.`gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (53, '7', 'livingrm_4.jpg');
