@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $_SESSION['errFlagEditProperty'] == false;
 
+
 foreach ($_POST as $key => $value) {
     $$key = $value;
     $_SESSION[$key] = $value;
@@ -237,51 +238,67 @@ if ($_SESSION['prop']['countfiles'] != 0) { // IF GALLERY WAS UPLOADED
 
 
 // IMAGE UPLOAD VALIDATION
-$file = $_FILES['preview_img_up'];
-$fileName = $_FILES['preview_img_up']['name']; // eg. 'myfile.jpg'
-$fileSize = $_FILES['preview_img_up']['size']; // eg. 500000 - this is in Bytes
-$fileType = $_FILES['preview_img_up']['type']; // eg. 'image/jpeg'
-$fileError = $_FILES['preview_img_up']['error']; // will be 0 if there is no error
-$fileTempLocation = $_FILES['preview_img_up']['tmp_name']; // temporary location of file on user's computer
-$fileExtension = explode(".", $fileName); // Split file name into two, seprated by the '.' so 'myfile.jpg' becomes 'myfile' and 'jpg'
-$fileActualExtension = strtolower(end($fileExtension)); // 'end' function returns the second half of the split results. So 'jpg' in this case.
+if (empty($_FILES['preview_img_up']['name'])) {
+    $_SESSION['errFlag21'] = false;
+    $_SESSION['prop']['preview_img_error'] = null;
 
-$allowedFileTypes = array('jpg', 'jpeg', 'png');
-if (in_array($fileActualExtension, $allowedFileTypes)) { // If extension is inside the allowed file types array
-    if ($fileError == 0) {
-        if ($fileSize < 5000000) {
-            if ($_SESSION['prop']['ok'] == 'yes') {
+    if ($_SESSION['prop']['countfiles'] != 0) {
+        for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+            copy($_FILES['gallery']['tmp_name'][$z], 'uploads/' . $_FILES['gallery']['name'][$z]);
+        }
+    }
+} else {
+    $file = $_FILES['preview_img_up'];
+    $fileName = $_FILES['preview_img_up']['name']; // eg. 'myfile.jpg'
+    $fileSize = $_FILES['preview_img_up']['size']; // eg. 500000 - this is in Bytes
+    $fileType = $_FILES['preview_img_up']['type']; // eg. 'image/jpeg'
+    $fileError = $_FILES['preview_img_up']['error']; // will be 0 if there is no error
+    $fileTempLocation = $_FILES['preview_img_up']['tmp_name']; // temporary location of file on user's computer
+    $fileExtension = explode(".", $fileName); // Split file name into two, seprated by the '.' so 'myfile.jpg' becomes 'myfile' and 'jpg'
+    $fileActualExtension = strtolower(end($fileExtension)); // 'end' function returns the second half of the split results. So 'jpg' in this case.
 
-                $fileDestination = "uploads/" . $fileName;
-                copy($fileTempLocation, $fileDestination); // Move file from temp location on user machine to the new location on web 
-                $_SESSION['prop']['preview_img_up'] = $fileName; // Saving URL in the session to be sent to the Database later
-                $_SESSION['prop']['preview_img_error'] = null; // Reset error session variable if it was previously set
+    $allowedFileTypes = array('jpg', 'jpeg', 'png');
+    if (in_array($fileActualExtension, $allowedFileTypes)) { // If extension is inside the allowed file types array
+        if ($fileError == 0) {
+            if ($fileSize < 5000000) {
+                if ($_SESSION['prop']['ok'] == 'yes') {
 
-                for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
-                    copy($_FILES['gallery']['tmp_name'][$z], 'uploads/' . $_FILES['gallery']['name'][$z]);
+                    $fileDestination = "uploads/" . $fileName;
+                    copy($fileTempLocation, $fileDestination); // Move file from temp location on user machine to the new location on web 
+                    $_SESSION['prop']['preview_img_up'] = $fileName; // Saving URL in the session to be sent to the Database later
+                    $_SESSION['prop']['preview_img_error'] = null; // Reset error session variable if it was previously set
+
+                    for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+                        copy($_FILES['gallery']['tmp_name'][$z], 'uploads/' . $_FILES['gallery']['name'][$z]);
+                    }
+
+                    $_SESSION['errFlag21'] = false;
+
+                    //header('Location: save-new-property.php');
+                } else {
+                    echo 'gallery not good but preview good';
                 }
-
-                $_SESSION['errFlag21'] = false;
-
-                //header('Location: save-new-property.php');
             } else {
-                echo 'gallery not good but preview good';
+                unset($_SESSION['prop']['preview_img_up']);
+                $_SESSION['errFlag21'] = true;
+                $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* File size too large Must be less than 5mb.</span>";
             }
         } else {
             unset($_SESSION['prop']['preview_img_up']);
             $_SESSION['errFlag21'] = true;
-            $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* File size too large Must be less than 5mb.</span>";
+            $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* There was an error uploading this file.</span>";
         }
     } else {
         unset($_SESSION['prop']['preview_img_up']);
         $_SESSION['errFlag21'] = true;
-        $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* There was an error uploading this file.</span>";
+        $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* Nothing was selected OR Unsupported file type.</span>";
     }
-} else {
-    unset($_SESSION['prop']['preview_img_up']);
-    $_SESSION['errFlag21'] = true;
-    $_SESSION['prop']['preview_img_error'] = "<span class='error small-text'>* Nothing was selected OR Unsupported file type.</span>";
 }
+
+
+
+
+
 
 
 

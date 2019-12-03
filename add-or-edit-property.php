@@ -8,6 +8,7 @@ $_GET['action'] == 'edit' ? $btntitle = 'Save Changes' : $btntitle = 'Create Pro
 
 
 if ($_GET['action'] == 'add') {
+    $_SESSION['prop'] = null;
     if (isset($_POST['submit'])) { // IF THE SUBMIT BUTTON WAS CLICKED
         include 'scripts/validate_update_property.php'; // VALIDATE ENTRIES
 
@@ -73,20 +74,33 @@ if ($_GET['action'] == 'add') {
             }
         } else { // IF ALL DATA VALID, UPDATE DATABASE
             include './database/db_connection.php';
-            $query = "UPDATE `property` SET `Address1`='" . $_SESSION['prop']['address1'] . "',`Address2`='" . $_SESSION['prop']['address2'] . "' ,`City`='" . $_SESSION['prop']['city'] . "',`Parish`='" . $_SESSION['prop']['parish'] . "',`Size`='" . $_SESSION['prop']['landsize'] . "',`ListingType`='" . $_SESSION['prop']['listing_type'] . "',`PropertyType`='" . $_SESSION['prop']['property_type'] . "',`BuildingType`='" . $_SESSION['prop']['building_type'] . "',`NumBedroom`=" . $_SESSION['prop']['bedrooms'] . ",`NumBathroom`=" . $_SESSION['prop']['bathrooms'] . ",`Price`=" . $_SESSION['prop']['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
-            $result = mysqli_query($conn, $query) or die("Failed to get data.");
+            $query = "UPDATE `property` SET `Address1`='" . $_SESSION['prop']['address1'] . "',`Address2`='" . $_SESSION['prop']['address2'] . "' ,`City`='" . $_SESSION['prop']['city'] . "',`Parish`='" . $_SESSION['prop']['parish'] . "',`Size`='" . $_SESSION['prop']['landsize'] . "',`ListingType`='" . $_SESSION['prop']['listing_type'] . "',`PropertyType`='" . $_SESSION['prop']['property_type'] . "',`BuildingType`='" . $_SESSION['prop']['building_type'] . "',`NumBedroom`=" . $_SESSION['prop']['bedrooms'] . ",`NumBathroom`=" . $_SESSION['prop']['bathrooms'] . ",`Price`=" . $_SESSION['prop']['price'] . ",`PreviewImageURL`='" . $_SESSION['prop']['preview_img_up'] . "' WHERE `PropertyID`=" . $_GET['propID'] . ";";
+            $result = mysqli_query($conn, $query) or die("Failed to update property data.");
 
             // GALLERY IMAGE UPLOADING 
-            $last_id = mysqli_insert_id($conn);
-            $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
-            for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
-                if ($z > 0) $sqlgallery .= ", ";
-                $sqlgallery .= "($last_id, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+            if ($_SESSION['prop']['countfiles'] != 0) {
+                $propeID = $_GET['propID'];
+
+
+                $sqldel = "DELETE FROM `gallery` WHERE `PropertyID`=$propeID;";
+                $result4 = mysqli_query($conn, $sqldel) or die("Failed to delete from gallery");
+
+
+                $sqlgallery2 = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+                for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+                    if ($z > 0) $sqlgallery2 .= ", ";
+                    $sqlgallery2 .= "($propeID, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+                }
+                $result3 = mysqli_query($conn, $sqlgallery2) or die("Failed to get gallery data");
             }
-            $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
+
 
             // REDIRECT TO SUCCESS PAGE
-            $_SESSION['redirect']['path'] = 'adminmenu.php';
+            if ($_SESSION['userLevel'] == 'admin') {
+                $_SESSION['redirect']['path'] = 'adminmenu.php';
+            } else {
+                $_SESSION['redirect']['path'] = 'user-dashboard.php';
+            }
             $_SESSION['redirect']['header'] = 'Update Successful';
             $_SESSION['redirect']['message'] = 'Property Updated.';
             header('Location: error-or-success.php');
@@ -94,8 +108,13 @@ if ($_GET['action'] == 'add') {
         }
     } else {
         include './database/db_connection.php';
-        $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "';";
-        $result = mysqli_query($conn, $query) or die("Failed to get data.");
+        if ($_SESSION['userLevel'] == 'user') {
+            $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "' AND userID='" . $_SESSION['currentUserID'] . "';"; // To Display the Property Info    
+            $result = mysqli_query($conn, $query) or die("Failed to get data.");
+        } else {
+            $query = "SELECT * FROM `property` WHERE PropertyID='" . $_GET['propID'] . "';";
+            $result = mysqli_query($conn, $query) or die("Failed to get data from property db.");
+        }
 
         if ($result->num_rows > 0) {
             /*If there are results, output data into the input boxes 
@@ -112,13 +131,19 @@ if ($_GET['action'] == 'add') {
                 $_SESSION['prop']['bedrooms'] = $row['NumBedroom'];
                 $_SESSION['prop']['bathrooms'] = $row['NumBathroom'];
                 $_SESSION['prop']['price'] = $row['Price'];
+                $_SESSION['prop']['preview_img_up'] = $row['PreviewImageURL'];
             }
         } else { // If the property couldn't be found reset all variables and show error page
             $_SESSION['prop'] = null;
 
             // REFIRECT TO ERROR PAGE
             $_SESSION['redirect']['header'] = 'ERROR';
-            $_SESSION['redirect']['path'] = 'adminmenu.php';
+
+            if ($_SESSION['userLevel'] == 'admin') {
+                $_SESSION['redirect']['path'] = 'adminmenu.php';
+            } else {
+                $_SESSION['redirect']['path'] = 'user-dashboard.php';
+            }
             $_SESSION['redirect']['message'] = 'It seems you attempted something invalid.';
             header('Location: ./error-or-success.php');
         }
@@ -133,7 +158,7 @@ if ($_GET['action'] == 'add') {
 <html lang="en">
 
 <head>
-    <title>Mi Casa &mdash;</title>
+    <title>Mi Casa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
@@ -180,10 +205,18 @@ if ($_GET['action'] == 'add') {
                 <div class="col-12 col-md-12 col-lg-3 bg-light">
                     <div class="col-3 bg-light p-0">
                         <div class="col p-5">
-                            <h1 class="text-black">Admin</h1>
+                            <h1 class="text-black"><?php if ($_SESSION['userLevel'] == 'user') {
+                                                        echo 'User';
+                                                    } else {
+                                                        echo 'Admin';
+                                                    } ?></h1>
                             <h1 class="text-black">Panel</h1>
                             <br>
-                            <td><a class="btn btn-danger px-5" role="button" href="adminmenu.php">Go Back</a>
+                            <td><a class="btn btn-danger px-5" role="button" href="<?php if ($_SESSION['userLevel'] == 'admin') {
+                                                                                        echo 'adminmenu.php';
+                                                                                    } else {
+                                                                                        echo 'user-dashboard.php';
+                                                                                    } ?>">Go Back</a>
                         </div>
                     </div>
                 </div>
@@ -447,7 +480,11 @@ if ($_GET['action'] == 'add') {
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="preview_img_up" id="inputGroupFile01">
-                                            <label class="custom-file-label text-black" for="inputGroupFile01">Choose</label>
+                                            <label class="custom-file-label text-black" for="inputGroupFile01"><?php if (isset($_SESSION['prop']['preview_img_up'])) {
+                                                                                                                    echo $_SESSION['prop']['preview_img_up'];
+                                                                                                                } else {
+                                                                                                                    echo 'Choose';
+                                                                                                                } ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -458,7 +495,11 @@ if ($_GET['action'] == 'add') {
                                     <h4 class="">Gallery Images</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Optional</label><br>
+                                    <label><?php if ($_GET['action'] == 'edit') {
+                                                echo 'Choosing files here will overwrite the current gallery (if there is any). Leave untouched to have it remain.';
+                                            } else {
+                                                echo 'Tip: You can select multiple files.';
+                                            } ?></label><br>
 
                                     <?php if (isset($_SESSION['prop']['gallery_img_error'])) {
                                         echo $_SESSION['prop']['gallery_img_error'];
