@@ -2,3 +2,5 @@ USER:  | FIRST NAME: Gabriel | LAST NAME: Union | USERNAME: gabby  | EMAIL: gadd
 
 USER:  | FIRST NAME: Gabriel | LAST NAME: Union | USERNAME: gabby1  | EMAIL: gabbyunion@yahoo.com | PHONE NUMBER: 8762882264 | PASSWORD: gabby123 
 
+USER:  | FIRST NAME: Angel | LAST NAME: Forlife | USERNAME: angel  | EMAIL: akaksk@gmail.com | PHONE NUMBER: 8762822565 | PASSWORD: apple12 
+

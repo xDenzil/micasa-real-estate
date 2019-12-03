@@ -1,0 +1,2 @@
+USER: 7 | ADDRESS 1: Santa Cruz | ADDRESS2:  | CITY: Black river | PARISH: Portland | LAND SIZE: 3.5 | LISTING TYPE: Purchase | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Apartment | BEDROOMS: 2 | BATHROOMS: 2 | PRICE: 1526252
+
