@@ -4,3 +4,7 @@ USER: 2 | ADDRESS 1: 10 Wynter Drive | ADDRESS2:  | CITY: Portmore | PARISH: St.
 
 USER: 3 | ADDRESS 1: property | ADDRESS2:  | CITY: city | PARISH: St. James | LAND SIZE: 50 | LISTING TYPE: Purchase | PROPERTY TYPE: Residential | BUILDING TYPE: None | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 400
 
+USER: 3 | ADDRESS 1: seet yah | ADDRESS2:  | CITY: fwwfwfwf | PARISH: St. James | LAND SIZE: 2 | LISTING TYPE: Lease | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Office Space | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 2323232323
+
+USER: 3 | ADDRESS 1: copy | ADDRESS2:  | CITY: copy | PARISH: Kingston & St. Andrew | LAND SIZE: 5000 | LISTING TYPE: Rent | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Housing | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 50
+

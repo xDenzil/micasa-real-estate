@@ -33,8 +33,18 @@ if ($_GET['action'] == 'add') {
 
             include 'database/db_connection.php';
             $query = "INSERT INTO `property`(`UserID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-            VALUES ($RegID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'trsh');";
+            VALUES ($RegID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'" . $_SESSION['prop']['preview_img'] . "');";
             $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+
+            // GALLERY IMAGE UPLOADING 
+            $last_id = mysqli_insert_id($conn);
+            $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+            for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+                if ($z > 0) $sqlgallery .= ", ";
+                $sqlgallery .= "($last_id, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+            }
+            $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
 
             // REDIRECT TO SUCCESS PAGE
             $_SESSION['redirect']['path'] = 'adminmenu.php';
@@ -55,6 +65,15 @@ if ($_GET['action'] == 'add') {
             include './database/db_connection.php';
             $query = "UPDATE `property` SET `Address1`='" . $_SESSION['prop']['address1'] . "',`Address2`='" . $_SESSION['prop']['address2'] . "' ,`City`='" . $_SESSION['prop']['city'] . "',`Parish`='" . $_SESSION['prop']['parish'] . "',`Size`='" . $_SESSION['prop']['landsize'] . "',`ListingType`='" . $_SESSION['prop']['listing_type'] . "',`PropertyType`='" . $_SESSION['prop']['property_type'] . "',`BuildingType`='" . $_SESSION['prop']['building_type'] . "',`NumBedroom`=" . $_SESSION['prop']['bedrooms'] . ",`NumBathroom`=" . $_SESSION['prop']['bathrooms'] . ",`Price`=" . $_SESSION['prop']['price'] . " WHERE `PropertyID`=" . $_GET['propID'] . ";";
             $result = mysqli_query($conn, $query) or die("Failed to get data.");
+
+            // GALLERY IMAGE UPLOADING 
+            $last_id = mysqli_insert_id($conn);
+            $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+            for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+                if ($z > 0) $sqlgallery .= ", ";
+                $sqlgallery .= "($last_id, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+            }
+            $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
 
             // REDIRECT TO SUCCESS PAGE
             $_SESSION['redirect']['path'] = 'adminmenu.php';
@@ -443,9 +462,6 @@ if ($_GET['action'] == 'add') {
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Finish">
-                                </div>
                             </div>
                         </div>
 
@@ -465,6 +481,13 @@ if ($_GET['action'] == 'add') {
 
         <!-- FOOTER -->
         <?php include 'blocks/footer.php'; ?>
+
+        <!-- Getting the file name to show inside the input field -->
+        <script type="text/javascript">
+            $('.custom-file input').change(function(e) {
+                $(this).next('.custom-file-label').html(e.target.files[0].name);
+            });
+        </script>
 
 </body>
 

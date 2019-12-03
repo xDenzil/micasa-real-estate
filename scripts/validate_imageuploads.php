@@ -14,6 +14,7 @@ stored gallery locations are uploaded along with the preview image.
 
 session_start();
 if (isset($_POST['add-image'])) {
+
     $_SESSION['add-new']['gallery-status'] = '';
     $_SESSION['countfiles'] = count($_FILES['gallery']['name']);
 
@@ -87,12 +88,12 @@ if (isset($_POST['add-image'])) {
                 if ($_SESSION['add-new']['ok'] == 'yes') {
 
                     $fileDestination = "../uploads/" . $fileName;
-                    move_uploaded_file($fileTempLocation, $fileDestination); // Move file from temp location on user machine to the new location on web 
+                    copy($fileTempLocation, $fileDestination); // Move file from temp location on user machine to the new location on web 
                     $_SESSION['add-new']['preview_img'] = $fileName; // Saving URL in the session to be sent to the Database later
                     $_SESSION['add-new']['preview_img_error'] = null; // Reset error session variable if it was previously set
 
                     for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
-                        move_uploaded_file($_FILES['gallery']['tmp_name'][$z], '../uploads/' . $_FILES['gallery']['name'][$z]);
+                        copy($_FILES['gallery']['tmp_name'][$z], '../uploads/' . $_FILES['gallery']['name'][$z]);
                     }
 
                     // echo 'Preview Img: ' . $_SESSION['add-new']['preview_img'] . '<br>';
