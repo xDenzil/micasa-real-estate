@@ -28,23 +28,33 @@ if ($_GET['action'] == 'add') {
             $bedroom =  $_SESSION['prop']['bedrooms'];
             $bathroom = $_SESSION['prop']['bathrooms'];
             $price = $_SESSION['prop']['price'];
+            if ($bedroom == '') {
+                $bedroom = 0;
+            }
 
-            // echo "user id: " . $userID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . "bedroom: " . $bedroom . " bathroom:" . $bathroom . "price:" .  $price;
+            if ($bathroom == '') {
+                $bathroom = 0;
+            }
+
+            //echo "user id: " . $RegID . " address1: " . $address1 . " address 2: " . $address2 . " city: " . $city . " parish: " .  $parish . " size:" . $size . " listype: " . $listingType . " proptype: " . $propertyType . " buildtype: " . $buildingType . " bedroom: " . $bedroom . " bathroom:" . $bathroom . " price:" .  $price . " preview img: " . $_SESSION['prop']['preview_img'];
 
             include 'database/db_connection.php';
             $query = "INSERT INTO `property`(`UserID`, `Address1`, `Address2`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-            VALUES ($RegID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'" . $_SESSION['prop']['preview_img'] . "');";
-            $result = mysqli_query($conn, $query) or die("Failed to get data.");
+            VALUES ($RegID,'$address1','$address2','$city','$parish',$size,'$listingType','$propertyType','$buildingType',$bedroom,$bathroom,$price,'" . $_SESSION['prop']['preview_img_up'] . "');";
+            $result = mysqli_query($conn, $query) or die("Failed to insert property.");
 
 
             // GALLERY IMAGE UPLOADING 
-            $last_id = mysqli_insert_id($conn);
-            $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
-            for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
-                if ($z > 0) $sqlgallery .= ", ";
-                $sqlgallery .= "($last_id, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+            if ($_SESSION['prop']['countfiles'] != 0) {
+                $last_id = mysqli_insert_id($conn);
+                $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+                for ($z = 0; $z < $_SESSION['prop']['countfiles']; $z++) {
+                    if ($z > 0) $sqlgallery .= ", ";
+                    $sqlgallery .= "($last_id, '" . $_SESSION['prop']['gallery_images_saved'][$z] . "')";
+                }
+                $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to insert gallery.");
             }
-            $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
+
 
             // REDIRECT TO SUCCESS PAGE
             $_SESSION['redirect']['path'] = 'adminmenu.php';
@@ -436,7 +446,7 @@ if ($_GET['action'] == 'add') {
                                     } ?>
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="preview_img" id="inputGroupFile01">
+                                            <input type="file" class="custom-file-input" name="preview_img_up" id="inputGroupFile01">
                                             <label class="custom-file-label text-black" for="inputGroupFile01">Choose</label>
                                         </div>
                                     </div>
