@@ -8,3 +8,5 @@ USER: 3 | ADDRESS 1: seet yah | ADDRESS2:  | CITY: fwwfwfwf | PARISH: St. James 
 
 USER: 3 | ADDRESS 1: copy | ADDRESS2:  | CITY: copy | PARISH: Kingston & St. Andrew | LAND SIZE: 5000 | LISTING TYPE: Rent | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Housing | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 50
 
+USER: 3 | ADDRESS 1: Orchid Path | ADDRESS2: Mona Heights | CITY: Kingston 6 | PARISH: Kingston & St. Andrew | LAND SIZE: 3.5 | LISTING TYPE: Lease | PROPERTY TYPE: Residential | BUILDING TYPE: Housing | BEDROOMS: 2 | BATHROOMS: 1 | PRICE: 3500000
+
