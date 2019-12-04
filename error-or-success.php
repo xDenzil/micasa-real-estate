@@ -12,7 +12,7 @@ VARIABLES ARE DESTROYED AND READY TO BE SET AGAIN FOR ANOTHER REQUEST. */
 <html lang="en">
 
 <head>
-    <title>Mi Casa &mdash;</title>
+    <title>Redirecting - Mi Casa</title>
     <meta charset="utf-8">
     <meta http-equiv="refresh" content="3; url = '<?php echo $_SESSION['redirect']['path']; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

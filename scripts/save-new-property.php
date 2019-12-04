@@ -37,13 +37,14 @@ $result = mysqli_query($conn, $sql) or die("Failed to get property data");
 
 $last_id = mysqli_insert_id($conn);
 
-
-$sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
-for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
-    if ($z > 0) $sqlgallery .= ", ";
-    $sqlgallery .= "($last_id, '" . $_SESSION['add-new']['gallery_images_saved'][$z] . "')";
+if ($_SESSION['prop']['countfiles'] != 0) {
+    $sqlgallery = "INSERT INTO `gallery`(`PropertyID`, `ImageURL`) VALUES ";
+    for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
+        if ($z > 0) $sqlgallery .= ", ";
+        $sqlgallery .= "($last_id, '" . $_SESSION['add-new']['gallery_images_saved'][$z] . "')";
+    }
+    $result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
 }
-$result2 = mysqli_query($conn, $sqlgallery) or die("Failed to get gallery data");
 
 
 $_SESSION['redirect']['header'] = 'SUCCESS';

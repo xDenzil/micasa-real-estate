@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
 <html lang="en">
 
 <head>
-    <title>Mi Casa &mdash;</title>
+    <title>User Dashboard - Mi Casa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
@@ -112,7 +112,7 @@ $result = mysqli_query($conn, $query) or die("Failed to get data / Nothing to sh
                                         <br>
 
                                 <div class="row">
-                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" onclick="window.location.href=\'edit-property.php?propID=' . $row['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
+                                <div class="col-6"><input class="btn btn-success text-white btn-block rounded-2" role="button" onclick="window.location.href=\'add-or-edit-property.php?action=edit&propID=' . $row['PropertyID'] . '\'" name="edit-property" type="submit" value="Edit"></div>
                                 <div class="col-6"><input class="btn btn-danger text-white btn-block rounded-2" role="button"  onclick="window.location.href=\'scripts/delete-property.php?propID=' . $row['PropertyID'] . '\'"name="delete-property" type="submit" value="Delete"></div>
                                 </div>
                                     </div>

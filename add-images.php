@@ -9,7 +9,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <title>Mi Casa &mdash;</title>
+    <title>Add Images - Mi Casa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
@@ -92,7 +92,7 @@ session_start();
                                 <h1 class="text-white">Gallery Images</h1>
                             </div>
                             <div class="col-md-6">
-                                <label>Optional</label><br>
+                                <label>Tip: Select multiple files when the window opens</label><br>
 
                                 <?php if (isset($_SESSION['add-new']['gallery_img_error'])) {
                                     echo $_SESSION['add-new']['gallery_img_error'];
@@ -106,7 +106,7 @@ session_start();
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input class="btn btn-success text-white btn-block rounded-2" role="submit" name="add-image" type="submit" value="Finish">
                             </div>
                         </div>
