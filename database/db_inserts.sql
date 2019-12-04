@@ -52,10 +52,10 @@ INSERT INTO `mi_casa`.`property`(`userID`, `Address1`, `City`, `Parish`, `Size`,
 VALUES (4,'10 Orchid Path','Mona','Kingston & St.Andrew',3.5,'Lease','Residential','Apartment',2,1,4500000,'img_11.jpg');
 
 INSERT INTO `mi_casa`.`property`(`userID`, `Address1`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-VALUES (5,'35 Caledonia Road','Mandeville','Manchester',0.5,'Lease','Commercial','Office Space ',0,1,125000,'commercial_1.jpg');
+VALUES (5,'35 Caledonia Road','Mandeville','Manchester',0.5,'Lease','Commercial','Office Space ',0,1,125000,'commerical_1.jpg');
 
 INSERT INTO `mi_casa`.`property`(`userID`, `Address1`, `City`, `Parish`, `Size`, `ListingType`, `PropertyType`, `BuildingType`, `NumBedroom`, `NumBathroom`, `Price`, `PreviewImageURL`) 
-VALUES (5,'bankhouse lane','Falmouth','Trelawny',30.5,'Purchase','vacant Lot','Housing',0,0,35600000,'aeriallot_1.jpg');
+VALUES (5,'Bankhouse Lane','Falmouth','Trelawny',30.5,'Purchase','vacant Lot','Housing',0,0,35600000,'aeriallot_1.jpg');
 
 --GALLERY IMAGES
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (1, '1', 'bathroom_3.jpg');
@@ -107,7 +107,7 @@ INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (46, '7', 'bedr
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (47, '7', 'bedroom_9.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (48, '7', 'bathroom_7.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (49, '7', 'bathroom_8.jpg');
-INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (40, '7', 'bathroom_6.jpg');
+INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (50, '7', 'bathroom_6.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (51, '7', 'bathroom_10.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (52, '7', 'livingrm_8.jpg');
 INSERT INTO `gallery` (`ImgID`, `PropertyID`, `ImageURL`) VALUES (53, '7', 'livingrm_4.jpg');
