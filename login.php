@@ -9,7 +9,7 @@ if (isset($_POST['login'])) { // IF THE LOGIN BUTTON WAS PRESSED
 
     // CONNECT TO DATABASE AND SEE IF USERNAME & PASSWORD MATCHES ATTEMPT
     include 'database/db_connection.php';
-    $query = "SELECT * FROM `register` WHERE Username='$usernametry' AND Password='$password_try';";
+    $query = "SELECT * FROM `register` WHERE Username='$usernametry' AND BINARY Password='$password_try';";
     $result = mysqli_query($conn, $query) or die("Failed to get data.");
 
     if (mysqli_num_rows($result) != 0) { // // IF MATCH
