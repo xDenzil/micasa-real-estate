@@ -8,3 +8,5 @@ USER: 3 | ADDRESS 1: seet yah | ADDRESS2:  | CITY: fwwfwfwf | PARISH: St. James 
 
 USER: 3 | ADDRESS 1: copy | ADDRESS2:  | CITY: copy | PARISH: Kingston & St. Andrew | LAND SIZE: 5000 | LISTING TYPE: Rent | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: Housing | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 50
 
+USER: 3 | ADDRESS 1: 8 Wint Drive | ADDRESS2:  | CITY: Normani | PARISH: Portland | LAND SIZE: 40000 | LISTING TYPE: Purchase | PROPERTY TYPE: Vacant Lot | BUILDING TYPE: None | BEDROOMS: 0 | BATHROOMS: 0 | PRICE: 4000000
+

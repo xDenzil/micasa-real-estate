@@ -96,11 +96,6 @@ if (isset($_POST['add-image'])) {
                         copy($_FILES['gallery']['tmp_name'][$z], '../uploads/' . $_FILES['gallery']['name'][$z]);
                     }
 
-                    // echo 'Preview Img: ' . $_SESSION['add-new']['preview_img'] . '<br>';
-                    // for ($z = 0; $z < $_SESSION['countfiles']; $z++) {
-                    //     echo 'Gallery Img: ' . $_SESSION['add-new']['gallery_images_saved'][$z] . '<br>';
-                    // };
-
                     header('Location: save-new-property.php');
                 } else {
                     echo 'gallery not good but preview good';
