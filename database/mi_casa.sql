@@ -11,6 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET @@auto_increment_increment=1;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,8 +23,8 @@ SET time_zone = "+00:00";
 -- Database: `mi_casa`
 --
 
-CREATE DATABASE IF NOT EXISTS `mi_casa` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `mi_casa`;
+-- CREATE DATABASE IF NOT EXISTS `mi_casa` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+-- USE `mi_casa`;
 
 -- --------------------------------------------------------
 
