@@ -1,0 +1,98 @@
+.home {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-image: url("../img/breno-assis-r3WAWU5Fi5Q-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: scroll;
+}
+
+.small-text {
+  font-size: 10pt;
+}
+
+.fade {
+  opacity: 0.5;
+}
+
+.activesection {
+  border-bottom: 5px solid #007bff;
+}
+
+.error {
+  color: red;
+}
+
+.site-section {
+  padding: 0;
+}
+
+.site-footer {
+  background: black;
+  padding: 3em;
+}
+
+.btn {
+  padding: 0.65rem 0.75rem;
+}
+
+.form-search .btn[type="submit"] {
+  height: auto;
+}
+
+/* old blue #364e68 new blue #163571 nice shade blue-ish rgb(79, 79, 176)*/
+
+.rouund {
+  border-radius: 25px;
+  min-width: 100px;
+  margin: 10px;
+}
+
+.head {
+  font-size: 44px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 800;
+  font-variant: normal;
+  color: #163571;
+  line-height: 60px;
+}
+
+.site-blocks-cover.inner-page-cover,
+.site-blocks-cover.inner-page-cover .row {
+  min-height: 500px;
+  /*background-color: #163571;*/
+  /*background: none;*/
+}
+
+.blu {
+  background-color: #163571;
+}
+
+.blu-img {
+  background-image: url("../../uploads/blu-imgfade.jpg");
+  background-size: cover;
+}
+
+.section .dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bgg {
+  background-image: url("../images/bg-def2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: scroll;
+}
+
+.push {
+  margin-top: 100px;
+}
+
+.vertical-centerr {
+  /* min-height: 100%; Fallback for browsers do NOT support vh unit */
+  height: 100vh; /* These two lines are counted as one :-)       */
+  width: 100%;
+  /* display: flex; */
+  /* align-items: center; */
+}
